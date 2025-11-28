@@ -1710,57 +1710,106 @@
         
         // Send email notification
         async function sendEmailNotification(data) {
-            // Method 1: Try webhook/API endpoint
-            try {
-                // You can configure this to use:
-                // - Formspree: https://formspree.io/f/YOUR_FORM_ID
-                // - EmailJS: via their SDK
-                // - Custom webhook: your own endpoint
-                // - Nextcloud webhook: if configured
-                
-                const response = await fetch('https://formspree.io/f/contacto@gruposolmex.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _subject: `🚂 Nuevo Lead Solmex: ${data.empresa}`,
-                        nombre: data.nombre,
-                        empresa: data.empresa,
-                        correo: data.correo,
-                        telefono: data.telefono,
-                        mensaje: data.mensaje,
-                        timestamp: data.timestamp,
-                        source: data.source
-                    })
-                });
-                
-                if (response.ok) {
-                    console.log('✅ Email notification sent successfully');
-                    return true;
+            let emailSent = false;
+            
+            // Method 1: Try Formspree (if configured)
+            if (SOLMEX_CONFIG.formspreeId && SOLMEX_CONFIG.formspreeId !== 'YOUR_FORMSPREE_ID') {
+                try {
+                    const response = await fetch(`https://formspree.io/f/${SOLMEX_CONFIG.formspreeId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            _subject: `🚂 Nuevo Lead Solmex: ${data.empresa}`,
+                            _replyto: data.correo,
+                            nombre: data.nombre,
+                            empresa: data.empresa,
+                            correo: data.correo,
+                            telefono: data.telefono,
+                            mensaje: data.mensaje,
+                            timestamp: data.timestamp,
+                            source: data.source
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        console.log('✅ Email notification sent via Formspree');
+                        emailSent = true;
+                    }
+                } catch (error) {
+                    console.log('Formspree error:', error);
                 }
-            } catch (error) {
-                console.log('Webhook not configured, using fallback method');
             }
             
-            // Method 2: Fallback - Store in localStorage for later retrieval
-            // This ensures no lead is lost even if email fails
+            // Method 2: Try custom webhook (if configured)
+            if (!emailSent && SOLMEX_CONFIG.customWebhook) {
+                try {
+                    const response = await fetch(SOLMEX_CONFIG.customWebhook, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    if (response.ok) {
+                        console.log('✅ Email notification sent via custom webhook');
+                        emailSent = true;
+                    }
+                } catch (error) {
+                    console.log('Custom webhook error:', error);
+                }
+            }
+            
+            // Always store in localStorage as backup
             try {
                 const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
-                leads.push(data);
+                leads.push({ ...data, emailSent });
                 localStorage.setItem('solmex_leads', JSON.stringify(leads));
                 console.log('📋 Lead stored locally as backup');
             } catch (e) {
                 console.log('Could not store lead locally');
             }
             
-            // Method 3: Open mailto as last resort (commented out - enable if needed)
-            // window.open(`mailto:${SOLMEX_CONFIG.notifyEmail}?subject=Nuevo Lead: ${data.empresa}&body=${encodeURIComponent(
-            //     `Nuevo contacto desde la landing page:\n\nNombre: ${data.nombre}\nEmpresa: ${data.empresa}\nCorreo: ${data.correo}\nTeléfono: ${data.telefono}\nMensaje: ${data.mensaje}\n\nFecha: ${data.timestamp}`
-            // )}`);
+            // Log configuration hint if email not sent
+            if (!emailSent) {
+                console.log('💡 To enable email notifications:');
+                console.log('   1. Go to https://formspree.io and create a free form');
+                console.log('   2. Copy your form ID (e.g., "xyzabcde")');
+                console.log('   3. Replace YOUR_FORMSPREE_ID in SOLMEX_CONFIG');
+            }
             
-            return false;
+            return emailSent;
+        }
+        
+        // Helper: View stored leads (run in console: viewStoredLeads())
+        function viewStoredLeads() {
+            const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
+            console.table(leads);
+            return leads;
+        }
+        
+        // Helper: Export leads as CSV
+        function exportLeadsCSV() {
+            const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
+            if (leads.length === 0) {
+                console.log('No leads to export');
+                return;
+            }
+            const headers = Object.keys(leads[0]).join(',');
+            const rows = leads.map(lead => 
+                Object.values(lead).map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')
+            );
+            const csv = [headers, ...rows].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `solmex-leads-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            console.log(`✅ Exported ${leads.length} leads`);
         }
         
         function closeModal() {
