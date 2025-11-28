@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Tarjeta de Presentación (En Blanco)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --card-width: 90mm;
+            --card-height: 55mm;
+            --crop-length: 4mm;
+            --gap: 3mm;
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+        }
+        
+        @page {
+            size: letter landscape;
+            margin: 5mm;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .instructions {
+            max-width: 900px;
+            margin: 0 auto 24px;
+            background: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #0A0A0A;
+        }
+        
+        .instructions p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255,148,59,0.4);
+        }
+        
+        /* Print Sheet */
+        .print-sheet {
+            width: 279.4mm;
+            height: 200mm;
+            background: white;
+            margin: 0 auto 20px;
+            padding: 6mm;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sheet-label {
+            position: absolute;
+            top: 2mm;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 7px;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, var(--card-width));
+            grid-template-rows: repeat(3, var(--card-height));
+            gap: var(--gap);
+            justify-content: center;
+            align-content: center;
+            height: 100%;
+            padding-top: 4mm;
+        }
+        
+        .card-wrapper {
+            position: relative;
+            width: var(--card-width);
+            height: var(--card-height);
+        }
+        
+        /* Crop Marks */
+        .crop-tl, .crop-tr, .crop-bl, .crop-br {
+            position: absolute;
+            width: var(--crop-length);
+            height: var(--crop-length);
+        }
+        
+        .crop-tl { top: calc(-1 * var(--gap) / 2 - var(--crop-length)); left: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-tr { top: calc(-1 * var(--gap) / 2 - var(--crop-length)); right: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-bl { bottom: calc(-1 * var(--gap) / 2 - var(--crop-length)); left: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-br { bottom: calc(-1 * var(--gap) / 2 - var(--crop-length)); right: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        
+        .crop-tl::before, .crop-tl::after,
+        .crop-tr::before, .crop-tr::after,
+        .crop-bl::before, .crop-bl::after,
+        .crop-br::before, .crop-br::after {
+            content: '';
+            position: absolute;
+            background: #000;
+        }
+        
+        .crop-tl::before { bottom: 0; right: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-tl::after { bottom: 0; right: 0; width: 0.2mm; height: var(--crop-length); }
+        .crop-tr::before { bottom: 0; left: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-tr::after { bottom: 0; left: 0; width: 0.2mm; height: var(--crop-length); }
+        .crop-bl::before { top: 0; right: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-bl::after { top: 0; right: 0; width: 0.2mm; height: var(--crop-length); }
+        .crop-br::before { top: 0; left: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-br::after { top: 0; left: 0; width: 0.2mm; height: var(--crop-length); }
+        
+        /* Business Card */
+        .business-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5mm;
+            overflow: hidden;
+        }
+        
+        .business-card.front {
+            background: white;
+            border: 0.2mm solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5mm;
+            position: relative;
+        }
+        
+        .business-card.front::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 12mm 12mm;
+            border-color: transparent transparent var(--solmex-orange) transparent;
+        }
+        
+        .card-logo {
+            width: 28mm;
+            height: auto;
+        }
+        
+        .card-placeholder {
+            color: #ddd;
+            font-size: 2.5mm;
+        }
+        
+        .card-placeholder-line {
+            height: 3mm;
+            background: #f5f5f5;
+            border-radius: 1mm;
+            margin-bottom: 2mm;
+        }
+        
+        .card-placeholder-line.short { width: 60%; }
+        .card-placeholder-line.medium { width: 80%; }
+        
+        .business-card.back {
+            background: linear-gradient(135deg, var(--solmex-orange) 0%, var(--solmex-sunrise) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+        
+        .back-logo {
+            width: 18mm;
+            filter: brightness(0) invert(1);
+        }
+        
+        .page-break {
+            text-align: center;
+            padding: 16px 0;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        .specs-footer {
+            position: absolute;
+            bottom: 2mm;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            font-size: 6px;
+            color: #ccc;
+        }
+        
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            html, body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                height: auto;
+            }
+            
+            .instructions { display: none !important; }
+            
+            .print-sheet {
+                box-shadow: none;
+                margin: 0;
+                padding: 5mm;
+                page-break-inside: avoid;
+                height: auto;
+                min-height: 0;
+            }
+            
+            .print-sheet:first-of-type { page-break-after: always; }
+            .print-sheet:last-of-type { page-break-after: avoid; }
+            
+            .sheet-label, .specs-footer, .page-break { display: none !important; }
+            
+            .business-card.front { border: none; }
+            .business-card.back {
+                background: linear-gradient(135deg, #FF943B 0%, #FFD91C 100%) !important;
+            }
+            .business-card.front::after {
+                border-color: transparent transparent #FF943B transparent !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>📇 Plantilla de Tarjetas en Blanco</h1>
+        <p>Esta plantilla está lista para imprimir directamente. Los espacios en blanco son para que escribas o imprimas encima la información de cada persona.</p>
+        <p><strong>Uso:</strong> Imprime esta hoja y luego usa otra impresora o método para agregar los datos personales, o escríbelos a mano.</p>
+        <p><strong>Especificaciones:</strong> 9 tarjetas por hoja (90×55mm cada una) con marcas de corte.</p>
+        <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+    
+    <!-- Front Side -->
+    <div class="print-sheet">
+        <div class="sheet-label">Frente — Plantilla en blanco con logo</div>
+        <div class="cards-grid">
+            <!-- 9 blank front cards -->
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/logo-solmex-full-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-placeholder">
+                        <div class="card-placeholder-line"></div>
+                        <div class="card-placeholder-line short"></div>
+                        <div class="card-placeholder-line medium" style="margin-top: 4mm;"></div>
+                        <div class="card-placeholder-line medium"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="specs-footer">
+            <span>90×55mm</span>
+            <span>Radio 1.5mm</span>
+            <span>CMYK</span>
+        </div>
+    </div>
+    
+    <div class="page-break">— Página 2: Reverso —</div>
+    
+    <!-- Back Side -->
+    <div class="print-sheet">
+        <div class="sheet-label">Reverso — Cortar por marcas</div>
+        <div class="cards-grid">
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+            <div class="card-wrapper"><div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div><div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div></div>
+        </div>
+        <div class="specs-footer">
+            <span>90×55mm</span>
+            <span>Radio 1.5mm</span>
+            <span>CMYK</span>
+        </div>
+    </div>
+</body>
+</html>
+

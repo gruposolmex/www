@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Hoja Membretada (En Blanco)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .instructions {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #0A0A0A;
+        }
+        
+        .instructions p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .print-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+        
+        .letterhead {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            margin: 0 auto;
+            padding: 1in;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5in;
+        }
+        
+        .header-logo {
+            width: 2in;
+        }
+        
+        .company-info {
+            text-align: right;
+            font-size: 10px;
+            color: #8B9197;
+            line-height: 1.6;
+        }
+        
+        .content-area {
+            min-height: 6in;
+        }
+        
+        .footer {
+            position: absolute;
+            bottom: 0.75in;
+            left: 1in;
+            right: 1in;
+            padding-top: 12px;
+            border-top: 3px solid #FF943B;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: #8B9197;
+        }
+        
+        @media print {
+            body { 
+                background: white;
+                padding: 0;
+            }
+            .instructions { display: none; }
+            .letterhead {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>📄 Hoja Membretada en Blanco</h1>
+        <p>Esta plantilla está lista para imprimir. El área de contenido está vacía para que escribas o imprimas encima tu texto.</p>
+        <p><strong>Uso:</strong> Imprime varias copias y úsalas para cartas, documentos oficiales, etc.</p>
+        <p><strong>Tamaño:</strong> Carta (8.5" × 11")</p>
+        <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+    
+    <div class="letterhead">
+        <div class="header">
+            <img src="../../logo/logo-solmex-full-dark.svg" alt="Grupo Solmex" class="header-logo">
+            <div class="company-info">
+                Grupo Solmex S.A. de C.V.<br>
+                Vivero 193, Entre Habaneras y Palmeras<br>
+                Fracc. Jardines de Virginia<br>
+                C.P. 94294, Veracruz, México
+            </div>
+        </div>
+        
+        <div class="content-area">
+            <!-- Área vacía para contenido -->
+        </div>
+        
+        <div class="footer">
+            <span>Tel: +52 229 264 4088</span>
+            <span>gruposolmex.com</span>
+            <span>info@gruposolmex.com</span>
+        </div>
+    </div>
+</body>
+</html>
+

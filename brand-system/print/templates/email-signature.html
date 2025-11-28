@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Firma de Correo Electrónico</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400;500;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+        
+        .instructions {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--carbon-black);
+        }
+        
+        .instructions p, .instructions li {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .instructions ul { 
+            margin-left: 24px; 
+            margin-bottom: 16px;
+        }
+        
+        .customizer {
+            background: #FFF9E6;
+            border: 1px solid #FFD91C;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+        
+        .customizer h3 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: var(--carbon-black);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .form-group.full {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group input {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--solmex-orange);
+        }
+        
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: white;
+            border: 1px solid #ddd;
+            color: var(--steel-gray);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Signature Preview */
+        .preview-section {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .preview-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+        
+        .signature-container {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Email Signature Styles */
+        .email-signature {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #333;
+            max-width: 500px;
+        }
+        
+        .sig-divider {
+            border: none;
+            border-top: 2px solid #FF943B;
+            margin: 16px 0;
+            width: 60px;
+        }
+        
+        .sig-main {
+            display: table;
+            width: 100%;
+        }
+        
+        .sig-logo-cell {
+            display: table-cell;
+            vertical-align: top;
+            padding-right: 20px;
+            width: 120px;
+        }
+        
+        .sig-logo {
+            width: 100px;
+            height: auto;
+        }
+        
+        .sig-info-cell {
+            display: table-cell;
+            vertical-align: top;
+            border-left: 2px solid #FF943B;
+            padding-left: 20px;
+        }
+        
+        .sig-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0A0A0A;
+            margin-bottom: 2px;
+        }
+        
+        .sig-title {
+            font-size: 13px;
+            color: #FF943B;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .sig-contact {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        
+        .sig-contact a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .sig-contact a:hover {
+            color: #FF943B;
+        }
+        
+        .sig-contact strong {
+            color: #333;
+        }
+        
+        .sig-address {
+            font-size: 11px;
+            color: #999;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+        
+        .sig-social {
+            margin-top: 12px;
+        }
+        
+        .sig-social a {
+            display: inline-block;
+            margin-right: 8px;
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .sig-social a:hover {
+            color: #FF943B;
+        }
+        
+        .sig-banner {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            border-radius: 6px;
+            display: table;
+        }
+        
+        .sig-banner-text {
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Code preview */
+        .code-section {
+            margin-top: 32px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--carbon-black);
+            color: white;
+        }
+        
+        .code-header span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background: var(--solmex-orange);
+        }
+        
+        .code-content {
+            padding: 20px;
+            background: #1a1a1a;
+            max-height: 300px;
+            overflow: auto;
+        }
+        
+        .code-content pre {
+            font-family: 'SF Mono', Monaco, 'Consolas', monospace;
+            font-size: 11px;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        /* Variant Tabs */
+        .variant-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: var(--solmex-orange);
+            color: white;
+            border-color: var(--solmex-orange);
+        }
+        
+        .tab-btn:hover:not(.active) {
+            border-color: var(--solmex-orange);
+        }
+        
+        .variant-content {
+            display: none;
+        }
+        
+        .variant-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>✉️ Generador de Firma de Correo</h1>
+        
+        <div class="customizer">
+            <h3>✏️ Personaliza tu firma</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nombre completo</label>
+                    <input type="text" id="inputName" value="Carlos Mendoza García" oninput="updateSignature()">
+                </div>
+                <div class="form-group">
+                    <label>Cargo</label>
+                    <input type="text" id="inputTitle" value="Director de Operaciones" oninput="updateSignature()">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="inputPhone" value="+52 229 264 4088" oninput="updateSignature()">
+                </div>
+                <div class="form-group">
+                    <label>Celular (opcional)</label>
+                    <input type="text" id="inputMobile" value="" placeholder="+52 229 XXX XXXX" oninput="updateSignature()">
+                </div>
+                <div class="form-group full">
+                    <label>Email</label>
+                    <input type="text" id="inputEmail" value="carlos.mendoza@gruposolmex.com" oninput="updateSignature()">
+                </div>
+            </div>
+        </div>
+        
+        <p><strong>Instrucciones de uso:</strong></p>
+        <ul>
+            <li><strong>Gmail:</strong> Configuración → Ver todos los ajustes → Firma → pegar HTML o usar la vista previa</li>
+            <li><strong>Outlook:</strong> Archivo → Opciones → Correo → Firmas → Nueva → pegar contenido</li>
+            <li><strong>Apple Mail:</strong> Mail → Preferencias → Firmas → crear nueva → pegar</li>
+        </ul>
+        
+        <div class="btn-row">
+            <button class="btn btn-primary" onclick="copySignatureHTML()">📋 Copiar HTML</button>
+            <button class="btn btn-secondary" onclick="selectSignature()">🖱️ Seleccionar para copiar</button>
+        </div>
+    </div>
+    
+    <div class="preview-section">
+        <div class="variant-tabs">
+            <button class="tab-btn active" onclick="showVariant('standard')">Estándar</button>
+            <button class="tab-btn" onclick="showVariant('compact')">Compacta</button>
+            <button class="tab-btn" onclick="showVariant('minimal')">Minimalista</button>
+        </div>
+        
+        <!-- Standard Variant -->
+        <div class="variant-content active" id="variant-standard">
+            <div class="preview-label">Vista Previa — Firma Estándar</div>
+            <div class="signature-container">
+                <div class="email-signature" id="signature-standard">
+                    <hr class="sig-divider">
+                    <div class="sig-main">
+                        <div class="sig-logo-cell">
+                            <img src="../../logo/logo-solmex-full-dark.svg" alt="Grupo Solmex" class="sig-logo">
+                        </div>
+                        <div class="sig-info-cell">
+                            <div class="sig-name" data-field="name">Carlos Mendoza García</div>
+                            <div class="sig-title" data-field="title">Director de Operaciones</div>
+                            <div class="sig-contact"><strong>Tel:</strong> <a href="tel:+522292644088" data-field="phone">+52 229 264 4088</a></div>
+                            <div class="sig-contact sig-mobile" style="display: none;"><strong>Cel:</strong> <a href="" data-field="mobile"></a></div>
+                            <div class="sig-contact"><strong>Email:</strong> <a href="mailto:carlos.mendoza@gruposolmex.com" data-field="email">carlos.mendoza@gruposolmex.com</a></div>
+                            <div class="sig-contact"><strong>Web:</strong> <a href="https://gruposolmex.com">gruposolmex.com</a></div>
+                            <div class="sig-address">
+                                Vivero 193, Entre Habaneras y Palmeras<br>
+                                Fracc. Jardines de Virginia, C.P. 94294<br>
+                                Veracruz, México
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sig-banner">
+                        <span class="sig-banner-text">🚆 Red inteligente de terminales logísticas en México</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Compact Variant -->
+        <div class="variant-content" id="variant-compact">
+            <div class="preview-label">Vista Previa — Firma Compacta</div>
+            <div class="signature-container">
+                <div class="email-signature" id="signature-compact">
+                    <hr class="sig-divider">
+                    <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 13px;">
+                        <tr>
+                            <td style="padding-right: 16px; vertical-align: middle;">
+                                <img src="../../logo/logo-solmex-full-dark.svg" alt="Grupo Solmex" width="90">
+                            </td>
+                            <td style="border-left: 2px solid #FF943B; padding-left: 16px;">
+                                <div style="font-weight: bold; font-size: 14px; color: #0A0A0A;" data-field="name">Carlos Mendoza García</div>
+                                <div style="color: #FF943B; font-size: 12px; margin-bottom: 6px;" data-field="title">Director de Operaciones</div>
+                                <div style="font-size: 12px; color: #666;">
+                                    <span data-field="phone">+52 229 264 4088</span> | 
+                                    <a href="mailto:carlos.mendoza@gruposolmex.com" style="color: #666;" data-field="email">carlos.mendoza@gruposolmex.com</a> | 
+                                    <a href="https://gruposolmex.com" style="color: #666;">gruposolmex.com</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Minimal Variant -->
+        <div class="variant-content" id="variant-minimal">
+            <div class="preview-label">Vista Previa — Firma Minimalista</div>
+            <div class="signature-container">
+                <div class="email-signature" id="signature-minimal">
+                    <div style="font-family: Arial, sans-serif; font-size: 13px; color: #333;">
+                        <div style="display: inline-block; border-bottom: 2px solid #FF943B; padding-bottom: 8px; margin-bottom: 8px;">
+                            <strong data-field="name">Carlos Mendoza García</strong><br>
+                            <span style="color: #FF943B; font-size: 12px;" data-field="title">Director de Operaciones</span> · <span style="color: #999;">Grupo Solmex</span>
+                        </div>
+                        <div style="font-size: 12px; color: #666;">
+                            <span data-field="phone">+52 229 264 4088</span> · 
+                            <a href="mailto:carlos.mendoza@gruposolmex.com" style="color: #FF943B;" data-field="email">carlos.mendoza@gruposolmex.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HTML Code -->
+        <div class="code-section">
+            <div class="code-header">
+                <span>Código HTML</span>
+                <button class="copy-btn" onclick="copySignatureHTML()">Copiar código</button>
+            </div>
+            <div class="code-content">
+                <pre id="htmlCode"></pre>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentVariant = 'standard';
+        
+        function updateSignature() {
+            const name = document.getElementById('inputName').value;
+            const title = document.getElementById('inputTitle').value;
+            const phone = document.getElementById('inputPhone').value;
+            const mobile = document.getElementById('inputMobile').value;
+            const email = document.getElementById('inputEmail').value;
+            
+            // Update all name fields
+            document.querySelectorAll('[data-field="name"]').forEach(el => el.textContent = name);
+            document.querySelectorAll('[data-field="title"]').forEach(el => el.textContent = title);
+            
+            // Update phone
+            document.querySelectorAll('[data-field="phone"]').forEach(el => {
+                if (el.tagName === 'A') {
+                    el.href = 'tel:' + phone.replace(/\s/g, '');
+                }
+                el.textContent = phone;
+            });
+            
+            // Update mobile
+            document.querySelectorAll('.sig-mobile').forEach(el => {
+                el.style.display = mobile ? 'block' : 'none';
+            });
+            document.querySelectorAll('[data-field="mobile"]').forEach(el => {
+                if (el.tagName === 'A') {
+                    el.href = 'tel:' + mobile.replace(/\s/g, '');
+                }
+                el.textContent = mobile;
+            });
+            
+            // Update email
+            document.querySelectorAll('[data-field="email"]').forEach(el => {
+                if (el.tagName === 'A') {
+                    el.href = 'mailto:' + email;
+                }
+                el.textContent = email;
+            });
+            
+            updateHTMLCode();
+        }
+        
+        function showVariant(variant) {
+            currentVariant = variant;
+            
+            // Update tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.variant-content').forEach(content => content.classList.remove('active'));
+            document.getElementById('variant-' + variant).classList.add('active');
+            
+            updateHTMLCode();
+        }
+        
+        function updateHTMLCode() {
+            const signature = document.getElementById('signature-' + currentVariant);
+            const htmlCode = signature.innerHTML
+                .replace(/\s+/g, ' ')
+                .replace(/> </g, '>\n<')
+                .trim();
+            document.getElementById('htmlCode').textContent = htmlCode;
+        }
+        
+        function copySignatureHTML() {
+            const signature = document.getElementById('signature-' + currentVariant);
+            const html = signature.innerHTML;
+            
+            navigator.clipboard.writeText(html).then(() => {
+                alert('✅ HTML copiado al portapapeles');
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = html;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('✅ HTML copiado al portapapeles');
+            });
+        }
+        
+        function selectSignature() {
+            const signature = document.getElementById('signature-' + currentVariant);
+            const range = document.createRange();
+            range.selectNodeContents(signature);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            alert('✅ Firma seleccionada. Ahora puedes copiar (Ctrl+C / Cmd+C) y pegar en tu cliente de correo.');
+        }
+        
+        // Initialize
+        updateHTMLCode();
+    </script>
+</body>
+</html>
+
