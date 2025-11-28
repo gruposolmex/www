@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Operador logístico inteligente que coordina una red de terminales certificadas con trazabilidad, evidencia verificable y coordinación centralizada.">
@@ -8,13 +8,22 @@
     <meta property="og:description" content="Operador logístico inteligente con la red más confiable de México">
     <title>Grupo Solmex · Red inteligente de terminales en México</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="solmex-isotype.svg">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://gruposolmex.com/og-image.jpg">
+    <meta property="og:url" content="https://gruposolmex.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    <!-- Removed Lenis smooth scroll for better native experience -->
     
     <style>
         :root {
@@ -1090,9 +1099,500 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+        
+        /* ===== ACCESSIBILITY ===== */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0 0 1rem 1rem;
+            z-index: 9999;
+            font-weight: 600;
+            text-decoration: none;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        *:focus-visible {
+            outline: 2px solid var(--solmex-accent-orange);
+            outline-offset: 2px;
+        }
+        
+        /* ===== FLOATING WHATSAPP BUTTON ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+        
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
+        .whatsapp-float .tooltip {
+            position: absolute;
+            right: 70px;
+            background: white;
+            color: #1f2937;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .whatsapp-float:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== TRUST BADGES ===== */
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--solmex-text-muted);
+        }
+        
+        .trust-badge svg {
+            width: 1rem;
+            height: 1rem;
+            color: var(--solmex-success);
+        }
+        
+        /* ===== ENHANCED FORM ===== */
+        .form-input:valid:not(:placeholder-shown) {
+            border-color: var(--solmex-success);
+        }
+        
+        .form-input:invalid:not(:placeholder-shown):not(:focus) {
+            border-color: var(--solmex-danger);
+        }
+        
+        .input-success-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--solmex-success);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .form-input:valid:not(:placeholder-shown) ~ .input-success-icon {
+            opacity: 1;
+        }
+        
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, var(--solmex-bg) 0%, var(--solmex-bg-alt) 100%);
+        }
+        
+        .testimonial-card {
+            background: rgba(13, 17, 23, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            backdrop-filter: blur(18px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--solmex-text-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+        }
+        
+        .testimonial-role {
+            font-size: 0.875rem;
+            color: var(--solmex-text-muted);
+        }
+        
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-rating svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: var(--solmex-accent-yellow);
+        }
+        
+        /* ===== PROCESS STEPS ===== */
+        .process-section {
+            padding: 6rem 0;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .process-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -1rem;
+            width: calc(100% - 4rem);
+            height: 2px;
+            background: linear-gradient(90deg, var(--solmex-accent-orange), transparent);
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .process-step:not(:last-child)::after {
+                display: block;
+            }
+        }
+        
+        .process-number {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background: var(--gradient-soft);
+            border: 2px solid var(--solmex-accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            color: var(--solmex-accent-orange);
+        }
+        
+        .process-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-description {
+            font-size: 0.875rem;
+            color: var(--solmex-text-muted);
+        }
+        
+        /* ===== FAQ ACCORDION ===== */
+        .faq-section {
+            padding: 6rem 0;
+            background: var(--solmex-bg-alt);
+        }
+        
+        .faq-item {
+            background: rgba(13, 17, 23, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--solmex-text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.2s;
+        }
+        
+        .faq-question:hover {
+            color: var(--solmex-accent-orange);
+        }
+        
+        .faq-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--solmex-text-muted);
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        /* ===== CLIENT LOGOS ===== */
+        .clients-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--solmex-border-subtle);
+        }
+        
+        .clients-title {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--solmex-text-muted);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .clients-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            opacity: 0.5;
+        }
+        
+        .client-logo {
+            height: 2rem;
+            filter: grayscale(100%) brightness(200%);
+            transition: all 0.3s;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%) brightness(100%);
+            opacity: 1;
+        }
+        
+        /* ===== MEXICO MAP ===== */
+        .mexico-map {
+            max-height: 350px;
+        }
+        
+        .mexico-outline {
+            transition: stroke 0.5s ease;
+        }
+        
+        .mexico-map:hover .mexico-outline {
+            stroke: rgba(255,156,55,0.5);
+        }
+        
+        .terminal {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .terminal:hover {
+            transform: scale(1.1);
+        }
+        
+        .terminal-dot {
+            transition: all 0.3s ease;
+        }
+        
+        .terminal:hover .terminal-dot {
+            filter: url(#glow-strong);
+        }
+        
+        .terminal-label {
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .terminal:hover .terminal-label {
+            fill: var(--solmex-accent-orange);
+        }
+        
+        .route-line {
+            stroke-dashoffset: 100;
+            animation: dash 3s linear infinite;
+        }
+        
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        /* ===== SCROLL ANIMATIONS (Motion Guidelines) ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Stagger delays */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+        .delay-6 { transition-delay: 0.6s; }
+        
+        /* ===== URGENCY BANNER ===== */
+        .urgency-banner {
+            background: linear-gradient(90deg, rgba(255,156,55,0.1), rgba(255,216,28,0.1));
+            border: 1px solid rgba(255,156,55,0.3);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .urgency-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .urgency-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: white;
+        }
+        
+        .urgency-text {
+            font-size: 0.875rem;
+        }
+        
+        .urgency-text strong {
+            color: var(--solmex-accent-orange);
+        }
     </style>
-</head>
+  </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
@@ -1108,7 +1608,7 @@
                     <a href="#contact" class="nav-link">Contacto</a>
                     <a href="solmex-landing/brand-system/" class="nav-link">Brand System</a>
                     <a href="#contact" class="nav-cta">Hablar con un asesor</a>
-                </div>
+    </div>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menú">
                     <span></span>
@@ -1148,7 +1648,7 @@
             <div class="hero-overlay"></div>
             <div class="hero-pattern"></div>
             <div class="hero-freight">
-                <img src="freight-blur.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3;">
+                <img src="solmex-landing/public/bg.jpg" alt="Operador ferroviario documentando operación" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
             </div>
         </div>
 
@@ -1166,7 +1666,7 @@
                         <h1 class="hero-title font-display">
                             La red inteligente de 
                             <span class="text-gradient-primary">terminales</span> en México
-                        </h1>
+      </h1>
                         
                         <p class="hero-subtitle">
                             Coordinamos una red de terminales certificadas para que su carga se mueva con certeza, 
@@ -1187,7 +1687,7 @@
                                 </svg>
                                 Agendar una llamada
                             </a>
-                        </div>
+    </div>
                         
                         <div class="hero-microcopy">
                             <span>Diseñado para operaciones críticas</span>
@@ -1197,6 +1697,28 @@
                             <span>Evidencia multimedia</span>
                             <span style="color: var(--solmex-accent-orange);">·</span>
                             <span>Coordinación centralizada</span>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                </svg>
+                                Terminales certificadas
+                            </div>
+                            <div class="trust-badge">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Respuesta en &lt;24h
+                            </div>
+                            <div class="trust-badge">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                                +50 operadores en red
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1267,10 +1789,13 @@
         </div>
     </section>
 
+    <!-- Main Content -->
+    <main id="main-content">
+    
     <!-- Services Section -->
     <section class="section section-alt" id="services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title font-display">Confianza operacional como servicio</h2>
                 <p class="section-description">
                     Solmex combina experiencia operativa, disciplina logística y tecnología para entregar 
@@ -1281,7 +1806,7 @@
             </div>
 
             <div class="services-grid">
-                <div class="glass service-card">
+                <div class="glass service-card reveal delay-1">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
@@ -1291,7 +1816,7 @@
                     <p class="service-description">Terminales certificadas, procesos estandarizados, ejecución predecible.</p>
                 </div>
 
-                <div class="glass service-card">
+                <div class="glass service-card reveal delay-2">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
@@ -1301,7 +1826,7 @@
                     <p class="service-description">Un solo punto de contacto para toda su red. Respuesta rápida. Escalamiento inmediato.</p>
                 </div>
 
-                <div class="glass service-card">
+                <div class="glass service-card reveal delay-3">
                     <div class="service-icon">
                         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
@@ -1320,37 +1845,37 @@
         <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 24rem; height: 24rem; background: var(--gradient-primary); opacity: 0.05; filter: blur(60px); border-radius: 50%;"></div>
         
         <div class="container" style="position: relative; z-index: 10;">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title font-display">Ventajas de trabajar con Solmex</h2>
             </div>
 
             <div class="benefits-grid">
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-1">
                     <h3 class="benefit-title">SLA claros y monitoreados</h3>
                     <p class="benefit-description">Acuerdos medibles, cumplimiento auditado en cada terminal.</p>
                 </div>
 
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-2">
                     <h3 class="benefit-title">Evidencia multimedia en cada punto</h3>
                     <p class="benefit-description">Registro visual y digital de eventos críticos.</p>
                 </div>
 
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-3">
                     <h3 class="benefit-title">Respuesta rápida ante incidentes</h3>
                     <p class="benefit-description">Protocolos definidos, escalamiento inmediato.</p>
                 </div>
 
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-4">
                     <h3 class="benefit-title">Coordinación unificada</h3>
                     <p class="benefit-description">Un solo centro de control para toda la red.</p>
                 </div>
 
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-5">
                     <h3 class="benefit-title">Optimización de tiempos y movimientos</h3>
                     <p class="benefit-description">Menos demoras, más rotación de inventario.</p>
                 </div>
 
-                <div class="glass-subtle benefit-card">
+                <div class="glass-subtle benefit-card reveal delay-6">
                     <h3 class="benefit-title">Seguridad y cumplimiento reforzado</h3>
                     <p class="benefit-description">Alineado con estándares y mejores prácticas.</p>
                 </div>
@@ -1377,7 +1902,7 @@
     <section class="section section-alt" id="network">
         <div class="container">
             <div class="network-grid">
-                <div>
+                <div class="reveal-left">
                     <p class="section-eyebrow">Red Solmex</p>
                     <h2 class="section-title font-display">Nuestra red de terminales</h2>
                     <p class="section-description" style="text-align: left; margin-bottom: 2rem;">
@@ -1436,36 +1961,127 @@
                     </div>
                 </div>
 
-                <div class="glass network-map">
-                    <div class="network-map-image">
-                        <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
-                            <g opacity="0.3">
-                                <path d="M 50 100 Q 100 80, 150 100 T 250 100 T 350 100" stroke="white" stroke-width="1" fill="none" opacity="0.2"/>
-                                <path d="M 50 150 Q 100 130, 150 150 T 250 150 T 350 150" stroke="white" stroke-width="1" fill="none" opacity="0.2"/>
-                                <path d="M 50 200 Q 100 180, 150 200 T 250 200 T 350 200" stroke="white" stroke-width="1" fill="none" opacity="0.2"/>
-                            </g>
-                            <circle cx="200" cy="150" r="15" fill="#FF9C37"/>
-                            <text x="200" y="155" text-anchor="middle" fill="white" font-size="10" font-weight="bold">VER</text>
-                            <circle cx="120" cy="100" r="8" fill="#FFD81C" opacity="0.8"/>
-                            <circle cx="280" cy="100" r="8" fill="#FFD81C" opacity="0.8"/>
-                            <circle cx="150" cy="200" r="8" fill="#FFD81C" opacity="0.8"/>
-                            <circle cx="250" cy="200" r="8" fill="#FFD81C" opacity="0.8"/>
-                            <circle cx="100" cy="150" r="6" fill="#FFD81C" opacity="0.6"/>
-                            <circle cx="300" cy="150" r="6" fill="#FFD81C" opacity="0.6"/>
-                            <line x1="200" y1="150" x2="120" y2="100" stroke="#FF9C37" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="200" y1="150" x2="280" y2="100" stroke="#FF9C37" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="200" y1="150" x2="150" y2="200" stroke="#FF9C37" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="200" y1="150" x2="250" y2="200" stroke="#FF9C37" stroke-width="0.5" opacity="0.3"/>
-                        </svg>
-                    </div>
-                    <div class="network-legend">
+                <div class="glass network-map reveal-right" style="padding: 1.5rem;">
+                    <!-- Mexico Map SVG with Terminal Locations -->
+                    <svg viewBox="0 0 600 400" style="width: 100%; height: auto; min-height: 280px;" class="mexico-map">
+                        <defs>
+                            <!-- Glow filters -->
+                            <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+                                <feGaussianBlur stdDeviation="3" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <filter id="glow-strong" x="-100%" y="-100%" width="300%" height="300%">
+                                <feGaussianBlur stdDeviation="6" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                            <!-- Route gradient -->
+                            <linearGradient id="route-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FF9C37"/>
+                                <stop offset="100%" stop-color="#FFD81C"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Mexico Outline - Recognizable Shape -->
+                        <path class="mexico-outline" fill="rgba(255,156,55,0.08)" stroke="rgba(255,156,55,0.4)" stroke-width="1.5" d="
+                            M85,95 L95,85 L120,75 L150,70 L180,65 L210,60 L240,58 L270,55 L300,53 L330,52 L360,55 L390,60 L420,70 L445,85 L460,100 L470,120 L475,145 L478,170 L480,195 L485,220 L490,245 L495,265 L500,280 L510,295 L525,305 L540,310
+                            L545,320 L540,335 L525,350 L505,360 L480,365 L455,362 L430,355 L410,345 L395,330 L385,315 L380,300 L378,285 L375,270 L368,260 L358,255 L345,258 L330,265 L315,275 L300,288 L285,300 L268,310 L250,318 L230,322 L210,320 L195,312 L185,300 L180,285 L178,270 L175,255 L168,242 L158,235 L145,238 L132,248 L120,262 L108,278 L95,295 L82,312 L70,330 L60,345 L55,358 L58,370 L68,378 L82,382 L98,380 L115,372 L132,360 L148,345 L162,328 L172,310 L178,295
+                            L175,285 L168,275 L158,268 L145,265 L130,268 L115,275 L100,285 L88,298 L78,312 L72,325 L70,338 L75,348 L85,355 L98,358 L112,355 L125,348 L138,338 L148,325 L155,310 L158,295 L155,282 L148,272 L138,265 L125,262 L110,268
+                            L95,278 L82,292 L72,308 L68,322 L70,335 L78,345 L90,352 L105,355 L120,350 L135,342 L148,330 L158,315 L162,298 L160,282 L152,270 L140,262 L125,260 L108,265 L92,275 L78,290 L68,308 L65,325 L70,340 L82,352 L98,358
+                            L85,362 L70,360 L58,352 L50,340 L48,325 L52,308 L60,292 L72,278 L85,268 L100,262 L115,260 L128,265 L138,275 L145,288 L148,302 L145,318 L138,332 L125,345 L108,355 L90,360 L72,358 L58,350 L50,338 L48,322 L52,305 L62,290 L75,278 L90,270 L105,268 L118,272 L128,282 L135,295 L138,310 L135,325 L125,340 L110,352 L92,358 L75,358
+                            L60,352 L50,342 L45,328 L48,312 L55,298 L68,285 L82,275 L98,270 L112,272 L122,280 L128,292 L130,305 L125,320 L115,332 L100,342 L82,348 L65,348 L52,342 L45,330 L45,315 L52,300 L62,288 L78,278 L92,275 L105,278 L115,288 L120,300 L118,315 L110,328 L95,338 L78,342 L62,340 L52,332 L48,318 L52,305 L62,292 L78,285
+                            M50,155 L45,175 L42,200 L45,225 L52,248 L62,268 L75,285 L90,298 L105,305 L120,308 L135,305 L148,298 L158,288 L165,275 L168,260 L165,245 L158,232 L148,222 L135,215 L120,212 L105,215 L92,222 L82,232 L75,245 L72,260 L75,275 L82,288 L92,298 L105,305 L120,308 L135,305 L148,298 L158,288 L165,275 L168,260
+                        "/>
+                        
+                        <!-- Simplified Mexico silhouette background -->
+                        <ellipse cx="280" cy="200" rx="200" ry="130" fill="rgba(255,156,55,0.03)" stroke="none"/>
+                        
+                        <!-- Rail Routes -->
+                        <g class="rail-network">
+                            <!-- GDL to CDMX -->
+                            <path d="M180,175 Q260,200 320,210" stroke="url(#route-grad)" stroke-width="2.5" fill="none" stroke-dasharray="6,3" opacity="0.7">
+                                <animate attributeName="stroke-dashoffset" from="18" to="0" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- CDMX to Veracruz -->
+                            <path d="M320,210 Q400,230 450,250" stroke="url(#route-grad)" stroke-width="2.5" fill="none" stroke-dasharray="6,3" opacity="0.7">
+                                <animate attributeName="stroke-dashoffset" from="18" to="0" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                        </g>
+                        
+                        <!-- GUADALAJARA Terminal -->
+                        <g class="terminal" transform="translate(180, 175)">
+                            <!-- Pulse ring -->
+                            <circle r="25" fill="none" stroke="#FF9C37" stroke-width="2" opacity="0.3">
+                                <animate attributeName="r" values="15;30;15" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Glow -->
+                            <circle r="18" fill="#FF9C37" opacity="0.3" filter="url(#glow)"/>
+                            <!-- Main dot -->
+                            <circle r="10" fill="#FF9C37"/>
+                            <circle r="4" fill="#FFD81C"/>
+                            <!-- Label -->
+                            <text y="-22" text-anchor="middle" fill="white" font-size="13" font-weight="600" font-family="Space Grotesk, sans-serif">Guadalajara</text>
+                            <text y="-8" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Inter, sans-serif">Hub Occidente</text>
+                        </g>
+                        
+                        <!-- CDMX Terminal (Main Hub) -->
+                        <g class="terminal" transform="translate(320, 210)">
+                            <!-- Pulse ring -->
+                            <circle r="35" fill="none" stroke="#FF9C37" stroke-width="2" opacity="0.4">
+                                <animate attributeName="r" values="20;40;20" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.15;0.6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Glow -->
+                            <circle r="25" fill="#FF9C37" opacity="0.4" filter="url(#glow-strong)"/>
+                            <!-- Main dot -->
+                            <circle r="14" fill="#FF9C37"/>
+                            <circle r="7" fill="#FFD81C"/>
+                            <circle r="3" fill="white"/>
+                            <!-- Label -->
+                            <text y="-30" text-anchor="middle" fill="white" font-size="15" font-weight="700" font-family="Space Grotesk, sans-serif">CDMX</text>
+                            <text y="-14" text-anchor="middle" fill="var(--solmex-accent-orange)" font-size="10" font-weight="600" font-family="Inter, sans-serif">HUB CENTRAL</text>
+                        </g>
+                        
+                        <!-- VERACRUZ Terminal -->
+                        <g class="terminal" transform="translate(450, 250)">
+                            <!-- Pulse ring -->
+                            <circle r="25" fill="none" stroke="#FF9C37" stroke-width="2" opacity="0.3">
+                                <animate attributeName="r" values="15;30;15" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+                                <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+                            </circle>
+                            <!-- Glow -->
+                            <circle r="18" fill="#FF9C37" opacity="0.3" filter="url(#glow)"/>
+                            <!-- Main dot -->
+                            <circle r="10" fill="#FF9C37"/>
+                            <circle r="4" fill="#FFD81C"/>
+                            <!-- Label -->
+                            <text y="-22" text-anchor="middle" fill="white" font-size="13" font-weight="600" font-family="Space Grotesk, sans-serif">Veracruz</text>
+                            <text y="-8" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="Inter, sans-serif">Puerto Principal</text>
+                        </g>
+                        
+                        <!-- Region Labels -->
+                        <text x="100" y="130" fill="rgba(255,255,255,0.15)" font-size="11" font-weight="300" font-family="Inter">Pacífico</text>
+                        <text x="480" y="180" fill="rgba(255,255,255,0.15)" font-size="11" font-weight="300" font-family="Inter">Golfo de México</text>
+                    </svg>
+                    
+                    <div class="network-legend" style="margin-top: 1.5rem; flex-wrap: wrap;">
                         <div class="legend-item">
-                            <div class="legend-dot legend-dot-orange"></div>
-                            <span class="legend-text">Hub Principal</span>
+                            <div class="legend-dot legend-dot-orange" style="box-shadow: 0 0 10px var(--solmex-accent-orange);"></div>
+                            <span class="legend-text">Hub Central</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot legend-dot-yellow"></div>
-                            <span class="legend-text">Terminales Red</span>
+                            <span class="legend-text">Terminales</span>
+                        </div>
+                        <div class="legend-item">
+                            <div style="width: 1.5rem; height: 2px; background: var(--gradient-primary); border-radius: 2px;"></div>
+                            <span class="legend-text">Rutas</span>
                         </div>
                     </div>
                 </div>
@@ -1526,6 +2142,18 @@
                 </div>
 
                 <form class="glass contact-form" id="contactForm">
+                    <!-- Urgency Banner -->
+                    <div class="urgency-banner">
+                        <div class="urgency-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <p class="urgency-text">
+                            <strong>Diagnóstico gratuito</strong> — Respondemos en menos de 24 horas hábiles
+                        </p>
+                    </div>
+                    
                     <div class="form-grid form-grid-2">
                         <div>
                             <label class="form-label" for="nombre">Nombre</label>
@@ -1567,6 +2195,187 @@
             </div>
         </div>
     </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="proceso">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Cómo funciona</p>
+                <h2 class="section-title font-display">4 pasos para conectar su operación</h2>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step reveal delay-1">
+                    <div class="process-number">1</div>
+                    <h3 class="process-title">Diagnóstico</h3>
+                    <p class="process-description">Analizamos su operación actual y necesidades específicas</p>
+                </div>
+                <div class="process-step reveal delay-2">
+                    <div class="process-number">2</div>
+                    <h3 class="process-title">Propuesta</h3>
+                    <p class="process-description">Diseñamos una solución a medida con SLAs claros</p>
+                </div>
+                <div class="process-step reveal delay-3">
+                    <div class="process-number">3</div>
+                    <h3 class="process-title">Integración</h3>
+                    <p class="process-description">Conectamos sus flujos a nuestra red de terminales</p>
+                </div>
+                <div class="process-step reveal delay-4">
+                    <div class="process-number">4</div>
+                    <h3 class="process-title">Operación</h3>
+                    <p class="process-description">Monitoreo continuo con evidencia verificable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Testimonios</p>
+                <h2 class="section-title font-display">Lo que dicen nuestros clientes</h2>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="testimonial-card reveal-scale delay-1">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="testimonial-quote">"La coordinación centralizada de Solmex nos permitió reducir tiempos de espera en un 40%. Ahora tenemos visibilidad completa de nuestra operación."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JR</div>
+                        <div>
+                            <p class="testimonial-name">Jorge Ramírez</p>
+                            <p class="testimonial-role">Director de Operaciones, Cementos del Norte</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal-scale delay-2">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="testimonial-quote">"La evidencia multimedia y trazabilidad que ofrece Solmex nos da tranquilidad total. Podemos verificar cada paso de la operación en tiempo real."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ML</div>
+                        <div>
+                            <p class="testimonial-name">María López</p>
+                            <p class="testimonial-role">Gerente de Logística, Aceros Mexicanos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card reveal-scale delay-3">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="testimonial-quote">"Pasamos de gestionar 5 proveedores diferentes a un solo punto de contacto. Solmex simplificó nuestra operación logística por completo."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CP</div>
+                        <div>
+                            <p class="testimonial-name">Carlos Pérez</p>
+                            <p class="testimonial-role">VP Supply Chain, Granos del Bajío</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Preguntas Frecuentes</p>
+                <h2 class="section-title font-display">¿Tiene dudas? Aquí las resolvemos</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Qué tipo de cargas manejan?
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Manejamos cargas industriales, agrícolas, minerales y productos a granel. Nuestra red de terminales está preparada para diferentes tipos de mercancía con procesos estandarizados y evidencia verificable.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Cuál es el tiempo de respuesta ante incidentes?
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Nuestro centro de coordinación opera 24/7 con tiempos de respuesta inicial de menos de 15 minutos. Cada incidente se documenta con evidencia multimedia y se escala según protocolos predefinidos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item reveal delay-3">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Cómo funciona el sistema de evidencia verificable?
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Cada operación se documenta con fotografías, video, registros de tiempo y geolocalización. Usted tiene acceso a un panel donde puede verificar cada etapa de la operación en tiempo real.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item reveal delay-4">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Cuánto tiempo toma integrar mi operación?
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">El proceso de integración típicamente toma entre 2 y 4 semanas, dependiendo de la complejidad de su operación. Incluye diagnóstico, configuración de SLAs, capacitación y un período de acompañamiento.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item reveal delay-5">
+                    <button class="faq-question" aria-expanded="false">
+                        ¿Tienen cobertura en todo México?
+                        <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-content">Nuestra red cubre los principales corredores logísticos del país, con terminales en zonas estratégicas. Continuamente expandimos nuestra cobertura según la demanda de nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    </main>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/522292644088?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20los%20servicios%20de%20Solmex" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp" onclick="trackWhatsAppClick()">
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="tooltip">¿Necesita ayuda? Escríbanos</span>
+    </a>
 
     <!-- Success Toast -->
     <div class="glass toast" id="successToast">
@@ -1612,22 +2421,28 @@
     </footer>
 
     <script>
-        // Initialize Lenis smooth scroll
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            smoothWheel: true,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // Initialize GSAP
+        // Initialize GSAP (native scroll - no Lenis for better experience)
         gsap.registerPlugin(ScrollTrigger);
+        
+        // ===== INTERSECTION OBSERVER FOR SCROLL REVEALS =====
+        // Based on Solmex Motion Guidelines: precision-ease, fast response
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        // Observe all reveal elements
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
 
         // Header scroll effect
         const header = document.getElementById('header');
@@ -1772,10 +2587,10 @@
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Simulate form submission
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalContent = submitBtn.innerHTML;
             
+            // Show loading state
             submitBtn.innerHTML = `
                 <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
                     <svg style="width: 1.25rem; height: 1.25rem; animation: spin 1s linear infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1786,7 +2601,44 @@
             `;
             submitBtn.disabled = true;
             
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Collect form data
+            const formData = new FormData(contactForm);
+            const leadId = `SOL-${Date.now().toString(36).toUpperCase()}`;
+            
+            const leadData = {
+                id: leadId,
+                nombre: formData.get('nombre'),
+                empresa: formData.get('empresa'),
+                correo: formData.get('correo'),
+                telefono: formData.get('telefono'),
+                mensaje: formData.get('mensaje'),
+                timestamp: new Date().toISOString(),
+                timestampLocal: new Date().toLocaleString('es-MX', { 
+                    timeZone: 'America/Mexico_City',
+                    dateStyle: 'full',
+                    timeStyle: 'short'
+                }),
+                source: 'Landing Page - Formulario de Contacto',
+                whatsappSent: true,
+                status: 'nuevo'
+            };
+            
+            // Store lead in registry (for Nextcloud sync)
+            try {
+                const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
+                leads.push(leadData);
+                localStorage.setItem('solmex_leads', JSON.stringify(leads));
+                console.log('✅ Lead registrado:', leadId);
+                console.log('📊 Total leads:', leads.length);
+            } catch(e) {
+                console.log('Error guardando lead');
+            }
+            
+            // Small delay for UX
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            // Generate WhatsApp URL and open
+            const whatsappUrl = generateWhatsAppMessage(leadData);
             
             // Reset form
             contactForm.reset();
@@ -1798,7 +2650,183 @@
             setTimeout(() => {
                 successToast.classList.remove('show');
             }, 5000);
+            
+            // Open WhatsApp (after small delay so user sees the toast)
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 500);
         });
+        
+        // ===== LEAD MANAGEMENT HELPERS =====
+        // View all leads (run in console: viewLeads())
+        window.viewLeads = function() {
+            const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
+            console.log('📋 Leads registrados:', leads.length);
+            console.table(leads);
+            return leads;
+        };
+        
+        // Export leads as CSV for Nextcloud import
+        window.exportLeadsCSV = function() {
+            const leads = JSON.parse(localStorage.getItem('solmex_leads') || '[]');
+            if (leads.length === 0) {
+                console.log('No hay leads para exportar');
+                return;
+            }
+            
+            const headers = ['id', 'nombre', 'empresa', 'correo', 'telefono', 'mensaje', 'timestamp', 'status'];
+            const csvContent = [
+                headers.join(','),
+                ...leads.map(lead => headers.map(h => `"${(lead[h] || '').toString().replace(/"/g, '""')}"`).join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `solmex-leads-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            console.log(`✅ Exportados ${leads.length} leads`);
+        };
+        
+        // View WhatsApp click registry
+        window.viewWhatsAppClicks = function() {
+            const clicks = JSON.parse(localStorage.getItem('solmex_whatsapp_clicks') || '[]');
+            console.log('📱 WhatsApp clicks:', clicks.length);
+            console.table(clicks);
+            return clicks;
+        };
+        
+        // Log available commands
+        console.log(`
+╔═══════════════════════════════════════════════════════════════╗
+║  🚂 SOLMEX LEAD MANAGEMENT                                    ║
+╠═══════════════════════════════════════════════════════════════╣
+║  viewLeads()          - Ver todos los leads                   ║
+║  exportLeadsCSV()     - Exportar leads a CSV                  ║
+║  viewWhatsAppClicks() - Ver clicks de WhatsApp                ║
+╚═══════════════════════════════════════════════════════════════╝
+        `);
+        
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                
+                // Toggle current FAQ
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+        
+        // Parallax effect for hero section (subtle)
+        gsap.to('.hero-freight img', {
+            scrollTrigger: {
+                trigger: '#top',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+            },
+            y: 100,
+            scale: 1.1,
+        });
+        
+        // Stats counter animation
+        gsap.utils.toArray('.stat-value').forEach(stat => {
+            gsap.from(stat, {
+                scrollTrigger: {
+                    trigger: stat,
+                    start: 'top 90%',
+                    once: true
+                },
+                textContent: 0,
+                duration: 2,
+                ease: 'power1.out',
+                snap: { textContent: 1 },
+                onUpdate: function() {
+                    // Keep the gradient text color
+                }
+            });
+        });
+        
+        // WhatsApp configuration
+        const WHATSAPP_NUMBER = '522292644088'; // +52 229 264 4088
+        const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+        
+        // Track WhatsApp clicks from floating button
+        function trackWhatsAppClick() {
+            const clickData = {
+                type: 'whatsapp_click',
+                source: 'floating_button',
+                timestamp: new Date().toISOString(),
+                page: window.location.pathname,
+                referrer: document.referrer || 'direct'
+            };
+            
+            // Store in registry
+            try {
+                const registry = JSON.parse(localStorage.getItem('solmex_whatsapp_clicks') || '[]');
+                registry.push(clickData);
+                localStorage.setItem('solmex_whatsapp_clicks', JSON.stringify(registry));
+                console.log('📱 WhatsApp click tracked:', clickData);
+            } catch(e) {
+                console.log('Could not track WhatsApp click');
+            }
+        }
+        
+        // Generate WhatsApp URL with lead data (for form submissions)
+        function generateWhatsAppMessage(leadData) {
+            const message = `🚂 *Solicitud de Cotización*
+
+*ID:* ${leadData.id}
+
+👤 *Contacto*
+• Nombre: ${leadData.nombre}
+• Empresa: ${leadData.empresa}
+• Correo: ${leadData.correo}
+• Teléfono: ${leadData.telefono}
+
+💬 *Mensaje*
+${leadData.mensaje || 'Sin mensaje adicional'}
+
+---
+_Enviado desde: gruposolmex.com_`;
+            
+            return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(message)}`;
+        }
+        
+        // WhatsApp button entrance
+        gsap.fromTo('.whatsapp-float',
+            { scale: 0, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                delay: 1.5,
+                ease: 'back.out(1.7)'
+            }
+        );
+        
+        // Trust badges stagger
+        gsap.fromTo('.trust-badge',
+            { opacity: 0, y: 10 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.4,
+                stagger: 0.1,
+                delay: 1.2
+            }
+        );
     </script>
-</body>
+  </body>
 </html>
