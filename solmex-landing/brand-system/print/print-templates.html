@@ -183,6 +183,75 @@
             height: auto;
         }
         
+        /* Download Section */
+        .download-section {
+            margin-top: 48px;
+            padding: 32px;
+            background: rgba(255,148,59,0.1);
+            border: 1px solid rgba(255,148,59,0.3);
+            border-radius: 16px;
+        }
+        
+        .download-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--solmex-orange);
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .download-btn:hover {
+            background: var(--solmex-orange);
+            border-color: var(--solmex-orange);
+            transform: translateY(-2px);
+        }
+        
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+        
+        .download-btn-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .download-btn-name {
+            font-weight: 600;
+        }
+        
+        .download-btn-size {
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        .download-btn:hover .download-btn-size {
+            color: rgba(255,255,255,0.7);
+        }
+        
         .card-info {
             color: var(--carbon-black);
         }
@@ -515,7 +584,7 @@
             <div class="card-demo">
                 <div class="card-preview">
                     <div class="business-card front">
-                        <img src="../logo/solmex-logo.svg" alt="Solmex" class="card-logo">
+                        <img src="../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
                         <div class="card-info">
                             <div class="card-name">Carlos Mendoza</div>
                             <div class="card-title">Director de Operaciones</div>
@@ -561,6 +630,34 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="download-section">
+                <div class="download-title">⬇️ Download Templates</div>
+                <div class="download-grid">
+                    <a href="downloads/business-card-front.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Front Side</span>
+                            <span class="download-btn-size">SVG • 300dpi</span>
+                        </div>
+                    </a>
+                    <a href="downloads/business-card-back.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Back Side</span>
+                            <span class="download-btn-size">SVG • 300dpi</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </section>
         
         <!-- Letterhead -->
@@ -575,7 +672,7 @@
                 <div class="letterhead-preview">
                     <div class="letterhead">
                         <div class="letterhead-header">
-                            <img src="../logo/solmex-logo.svg" alt="Solmex" class="letterhead-logo">
+                            <img src="../logo/solmex-logo-dark.svg" alt="Solmex" class="letterhead-logo">
                             <div class="letterhead-company">
                                 Grupo Solmex S.A. de C.V.<br>
                                 Av. Industrial 1234<br>
@@ -625,6 +722,23 @@
                     </ul>
                 </div>
             </div>
+            
+            <div class="download-section">
+                <div class="download-title">⬇️ Download Template</div>
+                <div class="download-grid">
+                    <a href="downloads/letterhead.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Letterhead Template</span>
+                            <span class="download-btn-size">SVG • Letter Size • 300dpi</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </section>
         
         <!-- Envelopes -->
@@ -638,7 +752,7 @@
             <div class="envelope-grid">
                 <div class="envelope-card">
                     <div class="envelope">
-                        <img src="../logo/solmex-logo.svg" alt="Solmex" class="envelope-logo">
+                        <img src="../logo/solmex-logo-dark.svg" alt="Solmex" class="envelope-logo">
                         <div class="envelope-return">
                             Grupo Solmex S.A. de C.V.<br>
                             Av. Industrial 1234<br>
@@ -651,10 +765,27 @@
                 
                 <div class="envelope-card">
                     <div class="envelope" style="aspect-ratio: 6.5/9.5;">
-                        <img src="../logo/solmex-logo.svg" alt="Solmex" class="envelope-logo">
+                        <img src="../logo/solmex-logo-dark.svg" alt="Solmex" class="envelope-logo">
                     </div>
                     <div class="envelope-name">A4 Document Envelope</div>
                     <div class="envelope-type">324 × 229 mm</div>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <div class="download-title">⬇️ Download Templates</div>
+                <div class="download-grid">
+                    <a href="downloads/envelope-commercial.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">#10 Commercial Envelope</span>
+                            <span class="download-btn-size">SVG • 241 × 105 mm</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -750,6 +881,113 @@
                     <div class="paper-name">Silk Coated</div>
                     <div class="paper-details">170-250gsm • Matte</div>
                     <div class="paper-use">Brochures, presentations</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- All Downloads Section -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">06 — Downloads</div>
+                <h2 class="section-title">Complete Print Kit</h2>
+                <p class="section-desc">Download all print templates and logo variants for professional printing.</p>
+            </div>
+            
+            <div class="download-section" style="background: rgba(255,255,255,0.03);">
+                <div class="download-title">📁 Print Templates</div>
+                <div class="download-grid" style="margin-bottom: 32px;">
+                    <a href="downloads/business-card-front.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Business Card (Front)</span>
+                            <span class="download-btn-size">SVG • 90×55mm • 300dpi</span>
+                        </div>
+                    </a>
+                    <a href="downloads/business-card-back.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Business Card (Back)</span>
+                            <span class="download-btn-size">SVG • 90×55mm • 300dpi</span>
+                        </div>
+                    </a>
+                    <a href="downloads/letterhead.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Letterhead</span>
+                            <span class="download-btn-size">SVG • Letter • 300dpi</span>
+                        </div>
+                    </a>
+                    <a href="downloads/envelope-commercial.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">#10 Envelope</span>
+                            <span class="download-btn-size">SVG • 241×105mm</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="download-title">🎨 Logo Variants for Print</div>
+                <div class="download-grid">
+                    <a href="../logo/solmex-logo.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Logo (Light Center)</span>
+                            <span class="download-btn-size">For dark backgrounds</span>
+                        </div>
+                    </a>
+                    <a href="../logo/solmex-logo-dark.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Logo (Dark Center)</span>
+                            <span class="download-btn-size">For light backgrounds</span>
+                        </div>
+                    </a>
+                    <a href="../logo/logo-solmex-full.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Full Logo + Wordmark</span>
+                            <span class="download-btn-size">Complete horizontal lockup</span>
+                        </div>
+                    </a>
+                    <a href="../logo/logo-solmex-text.svg" download class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7,10 12,15 17,10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Text Only</span>
+                            <span class="download-btn-size">Wordmark only variant</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>
