@@ -649,14 +649,59 @@
         <div class="container">
             <div class="download-card">
                 <h2 class="download-title">Download Brand Assets</h2>
-                <p class="download-desc">Get the complete Grupo Solmex brand package including logos, fonts, templates, and guidelines.</p>
-                <a href="#" class="download-btn">
-                <span>Download Brand Kit</span>
-                <span>↓</span>
-            </a>
-        </div>
+                <p class="download-desc">Quick access to the most commonly used brand files.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; text-align: left;">
+                    <a href="logo/solmex-logo.svg" download style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; text-decoration: none; transition: all 0.2s;">
+                        <span style="font-size: 20px;">◉</span>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px;">Primary Logo</div>
+                            <div style="font-size: 11px; color: var(--concrete);">SVG</div>
+                        </div>
+                    </a>
+                    <a href="logo/logo-solmex-full.svg" download style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; text-decoration: none; transition: all 0.2s;">
+                        <span style="font-size: 20px;">▬</span>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px;">Full Logo</div>
+                            <div style="font-size: 11px; color: var(--concrete);">SVG</div>
+                        </div>
+                    </a>
+                    <a href="logo/logo-solmex-text.svg" download style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; text-decoration: none; transition: all 0.2s;">
+                        <span style="font-size: 20px;">Aa</span>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px;">Wordmark</div>
+                            <div style="font-size: 11px; color: var(--concrete);">SVG</div>
+                        </div>
+                    </a>
+                    <a href="icons/icon-system.svg" download="solmex-icons.svg" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; text-decoration: none; transition: all 0.2s;">
+                        <span style="font-size: 20px;">⬡</span>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px;">Icon Set</div>
+                            <div style="font-size: 11px; color: var(--concrete);">SVG</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="print/print-templates.html" class="download-btn" style="background: var(--gradient-45);">
+                        <span>Print Templates</span>
+                        <span>→</span>
+                    </a>
+                    <a href="documentation/brand-guidelines.md" download class="download-btn" style="background: rgba(255,255,255,0.1); color: white;">
+                        <span>Brand Guidelines</span>
+                        <span>↓</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
+    
+    <style>
+        .download-section a[style*="background: rgba"]:hover {
+            background: var(--solmex-orange) !important;
+            border-color: var(--solmex-orange) !important;
+        }
+    </style>
     
     <!-- Footer -->
     <footer class="footer">
