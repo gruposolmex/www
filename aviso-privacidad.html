@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad - Grupo Solmex</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --aluminum: #B0B5BA;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-logo .orange { color: var(--solmex-orange); }
+        
+        .header-subtitle {
+            font-size: 14px;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .document-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .document-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--carbon-black);
+        }
+        
+        .document-subtitle {
+            font-size: 18px;
+            color: var(--steel-gray);
+            margin-bottom: 20px;
+        }
+        
+        .document-meta {
+            font-size: 14px;
+            color: var(--concrete);
+            line-height: 1.8;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--carbon-black);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--solmex-orange);
+        }
+        
+        .section-content {
+            color: var(--steel-gray);
+            line-height: 1.8;
+        }
+        
+        .section-content p {
+            margin-bottom: 16px;
+        }
+        
+        .section-content ul, .section-content ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .section-content li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: #FFF9E6;
+            border-left: 4px solid var(--solmex-orange);
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 4px;
+        }
+        
+        .highlight-box strong {
+            color: var(--carbon-black);
+            font-weight: 600;
+        }
+        
+        .contact-info {
+            background: var(--carbon-black);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .contact-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--solmex-orange);
+        }
+        
+        .contact-info p {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        
+        .contact-info a {
+            color: var(--solmex-orange);
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer {
+            background: var(--carbon-black);
+            color: var(--concrete);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+        
+        .footer a {
+            color: var(--solmex-orange);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--solmex-orange);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media print {
+            .back-link { display: none; }
+            .header { background: var(--carbon-black) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <span>GRUPO</span><span class="orange">SOLMEX</span>
+        </div>
+        <div class="header-subtitle">Soluciones Logísticas de México</div>
+    </div>
+    
+    <div class="container">
+        <a href="index.html" class="back-link">← Volver al inicio</a>
+        
+        <div class="document-header">
+            <h1 class="document-title">Aviso de Privacidad</h1>
+            <p class="document-subtitle">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</p>
+            <div class="document-meta">
+                <p><strong>Responsable:</strong> Soluciones Logísticas FyT S.A. de C.V.</p>
+                <p><strong>Última actualización:</strong> <span id="currentDate"></span></p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">I. Responsable del Tratamiento de sus Datos Personales</h2>
+            <div class="section-content">
+                <p><strong>Soluciones Logísticas FyT S.A. de C.V.</strong>, con domicilio en Vivero 193, Entre Habaneras y Palmeras, Fracc. Jardines de Virginia, C.P. 94294, Veracruz, México, es responsable del tratamiento de sus datos personales.</p>
+                <p>Para cualquier asunto relacionado con el tratamiento de sus datos personales, puede contactarnos a través de:</p>
+                <ul>
+                    <li><strong>Correo electrónico:</strong> <a href="mailto:privacidad@gruposolmex.com">privacidad@gruposolmex.com</a></li>
+                    <li><strong>Teléfono:</strong> +52 229 264 4088</li>
+                    <li><strong>Sitio web:</strong> <a href="https://www.gruposolmex.com">www.gruposolmex.com</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">II. Datos Personales que Recabamos</h2>
+            <div class="section-content">
+                <p>Para las finalidades señaladas en el presente aviso, recabamos los siguientes datos personales:</p>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Datos de Identificación:</h3>
+                <ul>
+                    <li>Nombre completo</li>
+                    <li>Correo electrónico</li>
+                    <li>Número telefónico</li>
+                    <li>Empresa u organización</li>
+                    <li>Cargo o puesto</li>
+                </ul>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Datos de Contacto:</h3>
+                <ul>
+                    <li>Dirección física</li>
+                    <li>Números telefónicos (fijo y móvil)</li>
+                    <li>Correo electrónico</li>
+                </ul>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Datos de Operación (cuando aplique):</h3>
+                <ul>
+                    <li>Información sobre operaciones logísticas</li>
+                    <li>Datos de carga y transporte</li>
+                    <li>Información de terminales y rutas</li>
+                    <li>Registros de comunicación</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>Nota importante:</strong> No recabamos datos personales sensibles (como información financiera, médica o de preferencias políticas) a menos que sea estrictamente necesario para la prestación de nuestros servicios y con su consentimiento expreso.
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">III. Finalidades del Tratamiento</h2>
+            <div class="section-content">
+                <p>Sus datos personales serán utilizados para las siguientes finalidades:</p>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Finalidades Primarias (necesarias para la relación comercial):</h3>
+                <ul>
+                    <li>Identificarlo y contactarlo para responder a sus solicitudes de información</li>
+                    <li>Proporcionar información sobre nuestros servicios logísticos</li>
+                    <li>Realizar el diagnóstico y análisis de sus necesidades operativas</li>
+                    <li>Elaborar y presentar propuestas comerciales y cotizaciones</li>
+                    <li>Gestionar y ejecutar los servicios logísticos contratados</li>
+                    <li>Coordinar operaciones en terminales y rutas</li>
+                    <li>Mantener comunicación durante la prestación de servicios</li>
+                    <li>Facturar y cobrar los servicios prestados</li>
+                    <li>Cumplir con obligaciones contractuales y legales</li>
+                </ul>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Finalidades Secundarias (no necesarias, pero que nos permiten brindarle mejor servicio):</h3>
+                <ul>
+                    <li>Enviar información promocional sobre nuevos servicios o actualizaciones</li>
+                    <li>Realizar encuestas de satisfacción y mejora continua</li>
+                    <li>Invitar a eventos, webinars o capacitaciones</li>
+                    <li>Enviar boletines informativos y comunicaciones de marketing</li>
+                    <li>Realizar análisis estadísticos y de mercado</li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <strong>Consentimiento:</strong> Si usted no desea que sus datos personales sean tratados para las finalidades secundarias, puede manifestarlo a través del correo electrónico <a href="mailto:privacidad@gruposolmex.com">privacidad@gruposolmex.com</a> o mediante el procedimiento de derechos ARCO descrito más adelante.
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">IV. Transferencia de Datos Personales</h2>
+            <div class="section-content">
+                <p>Sus datos personales pueden ser transferidos y tratados por terceros, nacionales o extranjeros, distintos a Soluciones Logísticas FyT S.A. de C.V., en los siguientes casos:</p>
+                
+                <ul>
+                    <li><strong>Proveedores de servicios:</strong> Empresas que nos prestan servicios de tecnología, hosting, análisis de datos, servicios de mensajería y comunicación, siempre bajo estrictos acuerdos de confidencialidad.</li>
+                    <li><strong>Operadores logísticos:</strong> Terminales, transportistas y operadores que forman parte de nuestra red, únicamente para la ejecución de servicios contratados.</li>
+                    <li><strong>Autoridades:</strong> Cuando sea requerido por ley, orden judicial o autoridad competente.</li>
+                    <li><strong>Asesores profesionales:</strong> Abogados, contadores, auditores, siempre bajo obligaciones de confidencialidad.</li>
+                </ul>
+                
+                <p>En todos los casos, las transferencias se realizan bajo estrictos acuerdos de confidencialidad y protección de datos, y los terceros están obligados a mantener la misma protección que establecemos en este aviso.</p>
+                
+                <div class="highlight-box">
+                    <strong>Transferencias sin consentimiento:</strong> No realizamos transferencias de datos personales sin su consentimiento, salvo las excepciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">V. Medidas de Seguridad</h2>
+            <div class="section-content">
+                <p>Implementamos medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado, entre las que se encuentran:</p>
+                
+                <ul>
+                    <li>Cifrado de datos en tránsito y en reposo</li>
+                    <li>Control de acceso mediante autenticación y autorización</li>
+                    <li>Monitoreo y registro de accesos a sistemas</li>
+                    <li>Copias de seguridad periódicas</li>
+                    <li>Capacitación constante a nuestro personal sobre protección de datos</li>
+                    <li>Políticas y procedimientos internos de seguridad de la información</li>
+                    <li>Actualización constante de sistemas y software de seguridad</li>
+                </ul>
+                
+                <p>Sin embargo, es importante señalar que ningún sistema es 100% seguro, por lo que no podemos garantizar la seguridad absoluta de sus datos personales.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">VI. Derechos ARCO</h2>
+            <div class="section-content">
+                <p>Usted tiene derecho de ejercer en cualquier momento sus derechos de <strong>Acceso, Rectificación, Cancelación u Oposición</strong> (derechos ARCO) respecto de sus datos personales, así como revocar su consentimiento para el tratamiento de los mismos.</p>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Descripción de los derechos:</h3>
+                <ul>
+                    <li><strong>Acceso:</strong> Conocer qué datos personales tenemos de usted y para qué los utilizamos.</li>
+                    <li><strong>Rectificación:</strong> Solicitar la corrección de sus datos personales cuando sean inexactos o incompletos.</li>
+                    <li><strong>Cancelación:</strong> Solicitar que eliminemos sus datos personales de nuestros registros cuando considere que no están siendo utilizados conforme a los principios y deberes previstos en la ley.</li>
+                    <li><strong>Oposición:</strong> Oponerse al tratamiento de sus datos personales para fines específicos.</li>
+                </ul>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Procedimiento para ejercer sus derechos ARCO:</h3>
+                <p>Para ejercer sus derechos ARCO, debe presentar una solicitud mediante:</p>
+                <ul>
+                    <li><strong>Correo electrónico:</strong> <a href="mailto:privacidad@gruposolmex.com">privacidad@gruposolmex.com</a></li>
+                    <li><strong>Correo postal:</strong> Vivero 193, Entre Habaneras y Palmeras, Fracc. Jardines de Virginia, C.P. 94294, Veracruz, México</li>
+                </ul>
+                
+                <p>Su solicitud debe contener:</p>
+                <ol>
+                    <li>Nombre del titular y domicilio para recibir notificaciones</li>
+                    <li>Documentos que acrediten su identidad o la representación legal</li>
+                    <li>Descripción clara y precisa de los datos personales respecto de los que busca ejercer algún derecho ARCO</li>
+                    <li>Cualquier otro elemento que facilite la localización de los datos personales</li>
+                </ol>
+                
+                <p>Le responderemos a su solicitud en un plazo máximo de <strong>20 días hábiles</strong> contados desde la fecha en que la recibamos. En caso de que la solicitud sea procedente, la haremos efectiva en un plazo máximo de <strong>15 días hábiles</strong>.</p>
+                
+                <div class="highlight-box">
+                    <strong>Medios para comunicar la respuesta:</strong> La respuesta a su solicitud se le comunicará al correo electrónico que nos proporcione, o en su defecto, al domicilio que indique en su solicitud.
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">VII. Uso de Cookies y Tecnologías de Rastreo</h2>
+            <div class="section-content">
+                <p>Nuestro sitio web utiliza cookies y tecnologías similares para mejorar su experiencia de navegación, analizar el tráfico del sitio y personalizar el contenido. Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestro sitio web.</p>
+                
+                <h3 style="font-size: 18px; font-weight: 600; margin-top: 20px; margin-bottom: 12px; color: var(--carbon-black);">Tipos de cookies que utilizamos:</h3>
+                <ul>
+                    <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio web</li>
+                    <li><strong>Cookies de análisis:</strong> Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web</li>
+                    <li><strong>Cookies de funcionalidad:</strong> Permiten recordar sus preferencias y personalizar su experiencia</li>
+                </ul>
+                
+                <p>Puede configurar su navegador para rechazar cookies, aunque esto puede afectar algunas funcionalidades del sitio web.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">VIII. Modificaciones al Aviso de Privacidad</h2>
+            <div class="section-content">
+                <p>Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad, para la atención de novedades legislativas, políticas internas o nuevos requerimientos para la prestación u ofrecimiento de nuestros servicios.</p>
+                
+                <p>Las modificaciones al aviso de privacidad estarán disponibles a través de nuestro sitio web <a href="https://www.gruposolmex.com/aviso-privacidad.html">www.gruposolmex.com/aviso-privacidad.html</a> y le notificaremos los cambios mediante el correo electrónico que nos haya proporcionado.</p>
+                
+                <p>Le recomendamos revisar periódicamente este aviso de privacidad para estar informado sobre cómo protegemos sus datos personales.</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">IX. Consentimiento</h2>
+            <div class="section-content">
+                <p>Al proporcionar sus datos personales a través de nuestros formularios, correo electrónico, teléfono o cualquier otro medio, usted acepta y consiente el tratamiento de sus datos personales de conformidad con los términos y condiciones del presente aviso de privacidad.</p>
+                
+                <p>Si usted no está de acuerdo con alguno de los términos aquí establecidos, le solicitamos que se abstenga de proporcionarnos sus datos personales.</p>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Contacto para Asuntos de Privacidad</h3>
+            <p><strong>Soluciones Logísticas FyT S.A. de C.V.</strong></p>
+            <p>Vivero 193, Entre Habaneras y Palmeras<br>
+            Fracc. Jardines de Virginia<br>
+            C.P. 94294, Veracruz, México</p>
+            <p><strong>Correo electrónico:</strong> <a href="mailto:privacidad@gruposolmex.com">privacidad@gruposolmex.com</a></p>
+            <p><strong>Teléfono:</strong> +52 229 264 4088</p>
+            <p><strong>Sitio web:</strong> <a href="https://www.gruposolmex.com">www.gruposolmex.com</a></p>
+            <p style="margin-top: 20px; font-size: 14px; color: var(--concrete);">
+                Si considera que su derecho de protección de datos personales ha sido lesionado por alguna conducta de nuestros empleados o de nuestras actuaciones o respuestas, presume que en el tratamiento de sus datos personales existe alguna violación a las disposiciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, podrá interponer la denuncia o queja correspondiente ante el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI).
+            </p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© <span id="currentYear"></span> Soluciones Logísticas FyT S.A. de C.V. Todos los derechos reservados.</p>
+        <p style="margin-top: 8px;">
+            <a href="index.html">Inicio</a> | 
+            <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+        </p>
+    </div>
+    
+    <script>
+        // Set current date
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('es-MX', options);
+        document.getElementById('currentYear').textContent = now.getFullYear();
+    </script>
+</body>
+</html>
+
