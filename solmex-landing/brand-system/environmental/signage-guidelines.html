@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Environmental & Signage Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--solmex-orange);
+        }
+        
+        .signage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        
+        .signage-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .signage-preview {
+            height: 220px;
+            background: var(--steel-gray);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Terminal ID Sign */
+        .terminal-sign {
+            background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);
+        }
+        
+        .terminal-mock {
+            width: 200px;
+            height: 120px;
+            background: var(--carbon-black);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(255, 148, 59, 0.3);
+            border: 2px solid var(--solmex-orange);
+        }
+        
+        .terminal-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .terminal-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        /* Directional Sign */
+        .directional-sign {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+        }
+        
+        .dir-mock {
+            background: var(--carbon-black);
+            padding: 16px 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        
+        .dir-arrow {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 20px solid var(--solmex-orange);
+        }
+        
+        .dir-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        /* Safety Sign */
+        .safety-sign {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+        }
+        
+        .safety-mock {
+            background: white;
+            padding: 20px 32px;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 6px solid var(--solmex-orange);
+        }
+        
+        .safety-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .safety-text {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--carbon-black);
+        }
+        
+        /* Vehicle Wrap */
+        .vehicle-sign {
+            background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 100%);
+        }
+        
+        .vehicle-mock {
+            width: 200px;
+            height: 80px;
+            background: white;
+            border-radius: 8px 8px 4px 4px;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        
+        .vehicle-mock::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 30px;
+            width: 30px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+        }
+        
+        .vehicle-mock::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 30px;
+            width: 30px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+        }
+        
+        .vehicle-brand {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--carbon-black) 0%, var(--carbon-black) 30%, transparent 100%);
+            border-radius: 8px 8px 4px 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 16px;
+        }
+        
+        .vehicle-logo {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        
+        .signage-info {
+            padding: 24px;
+        }
+        
+        .signage-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .signage-specs {
+            font-size: 13px;
+            color: var(--concrete);
+            margin-bottom: 12px;
+        }
+        
+        .signage-desc {
+            font-size: 14px;
+            color: var(--steel-gray);
+        }
+        
+        .hierarchy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        
+        .hierarchy-table th,
+        .hierarchy-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--mist);
+        }
+        
+        .hierarchy-table th {
+            background: var(--polar);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--concrete);
+        }
+        
+        .hierarchy-level {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+        
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .material-card {
+            background: var(--polar);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .material-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--mist);
+            border-radius: 8px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .material-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .material-use {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .floor-graphics {
+            background: var(--steel-gray);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 24px;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .floor-zone {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .zone-safety {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .zone-loading {
+            background: #16A34A;
+            color: white;
+        }
+        
+        .zone-restricted {
+            background: #DC2626;
+            color: white;
+        }
+        
+        .zone-walkway {
+            background: #3B82F6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Environmental Design</h1>
+        <p class="subtitle">Signage systems, wayfinding, and facility graphics for Grupo Solmex locations</p>
+    </div>
+    
+    <div class="container">
+        <!-- Signage Types -->
+        <div class="section">
+            <h2 class="section-title">Signage System</h2>
+            <div class="signage-grid">
+                <div class="signage-card">
+                    <div class="signage-preview terminal-sign">
+                        <div class="terminal-mock">
+                            <div class="terminal-logo"></div>
+                            <div class="terminal-text">VER-001</div>
+                        </div>
+                    </div>
+                    <div class="signage-info">
+                        <div class="signage-name">Terminal Identification</div>
+                        <div class="signage-specs">3m height • Illuminated • Visible from 100m</div>
+                        <div class="signage-desc">Primary terminal identification for facility entrances. LED-backlit with weather-resistant housing.</div>
+                    </div>
+                </div>
+                
+                <div class="signage-card">
+                    <div class="signage-preview directional-sign">
+                        <div class="dir-mock">
+                            <div class="dir-text">CARGA / LOADING</div>
+                            <div class="dir-arrow"></div>
+                        </div>
+                    </div>
+                    <div class="signage-info">
+                        <div class="signage-name">Directional Signage</div>
+                        <div class="signage-specs">2m height • Reflective • Visible from 50m</div>
+                        <div class="signage-desc">Wayfinding signs with bilingual text. High-visibility reflective materials for day/night visibility.</div>
+                    </div>
+                </div>
+                
+                <div class="signage-card">
+                    <div class="signage-preview safety-sign">
+                        <div class="safety-mock">
+                            <div class="safety-icon">⚠</div>
+                            <div class="safety-text">ÁREA RESTRINGIDA<br>PERSONAL AUTORIZADO</div>
+                        </div>
+                    </div>
+                    <div class="signage-info">
+                        <div class="signage-name">Safety & Compliance</div>
+                        <div class="signage-specs">Variable • Regulatory compliant</div>
+                        <div class="signage-desc">Safety and regulatory signage meeting Mexican NOM standards. Brand-integrated where permitted.</div>
+                    </div>
+                </div>
+                
+                <div class="signage-card">
+                    <div class="signage-preview vehicle-sign">
+                        <div class="vehicle-mock">
+                            <div class="vehicle-brand">
+                                <div class="vehicle-logo"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signage-info">
+                        <div class="signage-name">Vehicle Branding</div>
+                        <div class="signage-specs">Full/partial wrap • Fleet standard</div>
+                        <div class="signage-desc">Fleet vehicle livery with logo placement, gradient fade, and unit identification.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Signage Hierarchy -->
+        <div class="section">
+            <h2 class="section-title">Signage Hierarchy</h2>
+            <div class="card">
+                <div class="card-title">Visibility Levels</div>
+                <table class="hierarchy-table">
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Type</th>
+                            <th>Height</th>
+                            <th>Visibility</th>
+                            <th>Illumination</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="hierarchy-level">1</span></td>
+                            <td>Terminal ID</td>
+                            <td>3m+</td>
+                            <td>100m</td>
+                            <td>LED backlit</td>
+                        </tr>
+                        <tr>
+                            <td><span class="hierarchy-level">2</span></td>
+                            <td>Directional</td>
+                            <td>2m</td>
+                            <td>50m</td>
+                            <td>Reflective</td>
+                        </tr>
+                        <tr>
+                            <td><span class="hierarchy-level">3</span></td>
+                            <td>Informational</td>
+                            <td>1m</td>
+                            <td>10m</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td><span class="hierarchy-level">4</span></td>
+                            <td>Safety</td>
+                            <td>Variable</td>
+                            <td>5m</td>
+                            <td>Per regulation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Floor Graphics -->
+        <div class="section">
+            <h2 class="section-title">Floor Graphics & Zones</h2>
+            <div class="card">
+                <div class="card-title">Zone Color System</div>
+                <p style="color: var(--steel-gray); margin-bottom: 16px;">Floor graphics use industrial-grade materials and brand-aligned colors for zone designation.</p>
+                
+                <div class="floor-graphics">
+                    <div class="floor-zone zone-safety">SAFETY<br>ZONE</div>
+                    <div class="floor-zone zone-loading">LOADING<br>ZONE</div>
+                    <div class="floor-zone zone-restricted">RESTRICTED<br>AREA</div>
+                    <div class="floor-zone zone-walkway">PEDESTRIAN<br>WALKWAY</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Materials -->
+        <div class="section">
+            <h2 class="section-title">Materials & Durability</h2>
+            <div class="card">
+                <div class="card-title">Recommended Materials</div>
+                <div class="material-grid">
+                    <div class="material-card">
+                        <div class="material-icon">🔲</div>
+                        <div class="material-name">Aluminum Composite</div>
+                        <div class="material-use">Exterior signage, facades</div>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">💡</div>
+                        <div class="material-name">LED Modules</div>
+                        <div class="material-use">Illuminated signs</div>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">🛡️</div>
+                        <div class="material-name">Reflective Vinyl</div>
+                        <div class="material-use">Directional, safety signs</div>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">🏋️</div>
+                        <div class="material-name">Industrial Epoxy</div>
+                        <div class="material-use">Floor graphics</div>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">🚗</div>
+                        <div class="material-name">Vehicle Vinyl</div>
+                        <div class="material-use">Fleet branding, wraps</div>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">⚡</div>
+                        <div class="material-name">Acrylic/LED</div>
+                        <div class="material-use">Interior illuminated</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Vehicle Specifications -->
+        <div class="section">
+            <h2 class="section-title">Vehicle Branding Specifications</h2>
+            <div class="card">
+                <div class="card-title">Fleet Standard</div>
+                <table class="hierarchy-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Placement</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Logo</td>
+                            <td>Cab doors (both sides)</td>
+                            <td>600mm width</td>
+                        </tr>
+                        <tr>
+                            <td>Gradient wrap</td>
+                            <td>Trailer sides</td>
+                            <td>Full coverage with fade</td>
+                        </tr>
+                        <tr>
+                            <td>Safety striping</td>
+                            <td>Rear, regulation areas</td>
+                            <td>Per NOM standards</td>
+                        </tr>
+                        <tr>
+                            <td>Unit number</td>
+                            <td>Cab doors, trailer rear</td>
+                            <td>Space Grotesk, 200mm</td>
+                        </tr>
+                        <tr>
+                            <td>Contact info</td>
+                            <td>Trailer sides</td>
+                            <td>Inter, 100mm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

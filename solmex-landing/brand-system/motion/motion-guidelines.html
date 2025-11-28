@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Motion & Animation Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.15; }
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--solmex-orange);
+        }
+        
+        .easing-demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .easing-demo {
+            background: var(--polar);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .easing-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .easing-code {
+            font-family: 'SF Mono', monospace;
+            font-size: 11px;
+            color: var(--concrete);
+            margin-bottom: 20px;
+        }
+        
+        .easing-track {
+            height: 4px;
+            background: var(--mist);
+            border-radius: 2px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .easing-ball {
+            width: 16px;
+            height: 16px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            position: absolute;
+            top: -6px;
+            left: 0;
+        }
+        
+        .easing-demo:hover .ball-ease-out {
+            animation: slideEaseOut 1s ease-out forwards;
+        }
+        
+        .easing-demo:hover .ball-ease-in-out {
+            animation: slideEaseInOut 1s ease-in-out forwards;
+        }
+        
+        .easing-demo:hover .ball-spring {
+            animation: slideSpring 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        
+        .easing-demo:hover .ball-standard {
+            animation: slideStandard 1s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+        }
+        
+        @keyframes slideEaseOut {
+            to { left: calc(100% - 16px); }
+        }
+        
+        @keyframes slideEaseInOut {
+            to { left: calc(100% - 16px); }
+        }
+        
+        @keyframes slideSpring {
+            to { left: calc(100% - 16px); }
+        }
+        
+        @keyframes slideStandard {
+            to { left: calc(100% - 16px); }
+        }
+        
+        .duration-demo {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        
+        .duration-item {
+            text-align: center;
+        }
+        
+        .duration-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--mist);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .duration-circle::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            transform: scale(0);
+            transition-property: transform;
+        }
+        
+        .duration-circle.fast::after { transition-duration: 150ms; }
+        .duration-circle.normal::after { transition-duration: 200ms; }
+        .duration-circle.slow::after { transition-duration: 400ms; }
+        .duration-circle.page::after { transition-duration: 600ms; }
+        
+        .duration-circle:hover::after {
+            transform: scale(1);
+        }
+        
+        .duration-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.2s;
+        }
+        
+        .duration-circle:hover .duration-value {
+            color: white;
+        }
+        
+        .duration-label {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .animation-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .anim-card {
+            background: var(--polar);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .anim-card:hover {
+            background: white;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .anim-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            margin: 0 auto 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .anim-card:hover .anim-icon.scale {
+            transform: scale(1.2);
+        }
+        
+        .anim-card:hover .anim-icon.rotate {
+            transform: rotate(180deg);
+        }
+        
+        .anim-card:hover .anim-icon.translate {
+            transform: translateY(-8px);
+        }
+        
+        .anim-card:hover .anim-icon.fade {
+            opacity: 0.5;
+        }
+        
+        .anim-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .anim-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .logo-animation {
+            width: 120px;
+            height: 120px;
+            margin: 40px auto;
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+        
+        .logo-animation img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            75% { transform: translateY(5px) rotate(-2deg); }
+        }
+        
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        
+        .principle-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            border-left: 4px solid var(--solmex-orange);
+        }
+        
+        .principle-title {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .principle-desc {
+            font-size: 14px;
+            color: var(--steel-gray);
+        }
+        
+        .code-block {
+            background: var(--carbon-black);
+            color: #E4E7E9;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        
+        .code-comment { color: var(--concrete); }
+        .code-property { color: var(--solmex-orange); }
+        .code-value { color: var(--solmex-sunrise); }
+        
+        .stagger-demo {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .stagger-item {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            opacity: 0;
+            animation: staggerIn 0.4s ease-out forwards;
+        }
+        
+        .stagger-item:nth-child(1) { animation-delay: 0.1s; }
+        .stagger-item:nth-child(2) { animation-delay: 0.2s; }
+        .stagger-item:nth-child(3) { animation-delay: 0.3s; }
+        .stagger-item:nth-child(4) { animation-delay: 0.4s; }
+        .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes staggerIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Motion & Animation</h1>
+        <p class="subtitle">Guidelines for creating purposeful, delightful motion in Grupo Solmex interfaces</p>
+    </div>
+    
+    <div class="container">
+        <!-- Principles -->
+        <div class="section">
+            <h2 class="section-title">Motion Principles</h2>
+            <div class="principle-grid">
+                <div class="principle-card">
+                    <div class="principle-title">Purposeful</div>
+                    <div class="principle-desc">Every animation serves a function—guiding attention, providing feedback, or enhancing understanding. Avoid decoration-only motion.</div>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">Quick & Responsive</div>
+                    <div class="principle-desc">Animations should feel snappy and responsive. Users shouldn't wait for animations to complete before continuing.</div>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">Natural</div>
+                    <div class="principle-desc">Motion should feel physical and natural. Use easing functions that mimic real-world physics.</div>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-title">Consistent</div>
+                    <div class="principle-desc">Similar elements should animate in similar ways. This builds familiarity and reduces cognitive load.</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Logo Animation -->
+        <div class="section">
+            <h2 class="section-title">Logo Animation</h2>
+            <div class="card">
+                <div class="card-title">Floating Logo</div>
+                <p style="color: var(--steel-gray); margin-bottom: 16px;">The Solmex logo may use a subtle floating animation to add life to static pages. Keep the movement gentle and elegant.</p>
+                <div class="logo-animation">
+                    <img src="../logo/solmex-logo.svg" alt="Solmex Logo">
+                </div>
+                <div class="code-block">
+                    <span class="code-comment">/* Logo Float Animation */</span><br>
+                    <span class="code-property">@keyframes logoFloat</span> {<br>
+                    &nbsp;&nbsp;0%, 100% { <span class="code-property">transform:</span> <span class="code-value">translateY(0)</span>; }<br>
+                    &nbsp;&nbsp;50% { <span class="code-property">transform:</span> <span class="code-value">translateY(-10px)</span>; }<br>
+                    }<br><br>
+                    .logo { <span class="code-property">animation:</span> <span class="code-value">logoFloat 6s ease-in-out infinite</span>; }
+                </div>
+            </div>
+        </div>
+        
+        <!-- Easing Functions -->
+        <div class="section">
+            <h2 class="section-title">Easing Functions</h2>
+            <div class="card">
+                <div class="card-title">Hover to Preview (Animation resets on mouse leave)</div>
+                <div class="easing-demos">
+                    <div class="easing-demo">
+                        <div class="easing-name">Standard (Default)</div>
+                        <div class="easing-code">cubic-bezier(0.4, 0.0, 0.2, 1)</div>
+                        <div class="easing-track">
+                            <div class="easing-ball ball-standard"></div>
+                        </div>
+                    </div>
+                    <div class="easing-demo">
+                        <div class="easing-name">Ease Out</div>
+                        <div class="easing-code">ease-out</div>
+                        <div class="easing-track">
+                            <div class="easing-ball ball-ease-out"></div>
+                        </div>
+                    </div>
+                    <div class="easing-demo">
+                        <div class="easing-name">Ease In-Out</div>
+                        <div class="easing-code">ease-in-out</div>
+                        <div class="easing-track">
+                            <div class="easing-ball ball-ease-in-out"></div>
+                        </div>
+                    </div>
+                    <div class="easing-demo">
+                        <div class="easing-name">Spring</div>
+                        <div class="easing-code">cubic-bezier(0.68, -0.55, 0.265, 1.55)</div>
+                        <div class="easing-track">
+                            <div class="easing-ball ball-spring"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Durations -->
+        <div class="section">
+            <h2 class="section-title">Duration Scale</h2>
+            <div class="card">
+                <div class="card-title">Hover the circles to see timing</div>
+                <div class="duration-demo">
+                    <div class="duration-item">
+                        <div class="duration-circle fast">
+                            <span class="duration-value">150ms</span>
+                        </div>
+                        <div class="duration-label">Micro-interactions</div>
+                    </div>
+                    <div class="duration-item">
+                        <div class="duration-circle normal">
+                            <span class="duration-value">200ms</span>
+                        </div>
+                        <div class="duration-label">Standard UI</div>
+                    </div>
+                    <div class="duration-item">
+                        <div class="duration-circle slow">
+                            <span class="duration-value">400ms</span>
+                        </div>
+                        <div class="duration-label">Complex changes</div>
+                    </div>
+                    <div class="duration-item">
+                        <div class="duration-circle page">
+                            <span class="duration-value">600ms</span>
+                        </div>
+                        <div class="duration-label">Page transitions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Transform Types -->
+        <div class="section">
+            <h2 class="section-title">Transform Types</h2>
+            <div class="card">
+                <div class="card-title">Hover to see transforms in action</div>
+                <div class="animation-showcase">
+                    <div class="anim-card">
+                        <div class="anim-icon scale"></div>
+                        <div class="anim-label">Scale</div>
+                        <div class="anim-desc">Emphasis & focus</div>
+                    </div>
+                    <div class="anim-card">
+                        <div class="anim-icon rotate"></div>
+                        <div class="anim-label">Rotate</div>
+                        <div class="anim-desc">Toggle states</div>
+                    </div>
+                    <div class="anim-card">
+                        <div class="anim-icon translate"></div>
+                        <div class="anim-label">Translate</div>
+                        <div class="anim-desc">Movement & lift</div>
+                    </div>
+                    <div class="anim-card">
+                        <div class="anim-icon fade"></div>
+                        <div class="anim-label">Opacity</div>
+                        <div class="anim-desc">Appearance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stagger -->
+        <div class="section">
+            <h2 class="section-title">Staggered Animations</h2>
+            <div class="card">
+                <div class="card-title">Sequential Reveal</div>
+                <p style="color: var(--steel-gray); margin-bottom: 16px;">When multiple elements enter the view, stagger their animations with 100ms delays for a polished, orchestrated feel.</p>
+                <div class="stagger-demo">
+                    <div class="stagger-item"></div>
+                    <div class="stagger-item"></div>
+                    <div class="stagger-item"></div>
+                    <div class="stagger-item"></div>
+                    <div class="stagger-item"></div>
+                </div>
+                <div class="code-block">
+                    <span class="code-comment">/* Stagger Pattern */</span><br>
+                    .item:nth-child(1) { <span class="code-property">animation-delay:</span> <span class="code-value">0.1s</span>; }<br>
+                    .item:nth-child(2) { <span class="code-property">animation-delay:</span> <span class="code-value">0.2s</span>; }<br>
+                    .item:nth-child(3) { <span class="code-property">animation-delay:</span> <span class="code-value">0.3s</span>; }<br>
+                    <span class="code-comment">/* Continue pattern... */</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CSS Variables -->
+        <div class="section">
+            <h2 class="section-title">Motion Tokens</h2>
+            <div class="card">
+                <div class="card-title">CSS Custom Properties</div>
+                <div class="code-block">
+                    <span class="code-comment">/* Motion Tokens */</span><br><br>
+                    <span class="code-comment">/* Easing */</span><br>
+                    <span class="code-property">--ease-default:</span> <span class="code-value">cubic-bezier(0.4, 0.0, 0.2, 1);</span><br>
+                    <span class="code-property">--ease-in:</span> <span class="code-value">cubic-bezier(0.4, 0.0, 1, 1);</span><br>
+                    <span class="code-property">--ease-out:</span> <span class="code-value">cubic-bezier(0.0, 0.0, 0.2, 1);</span><br>
+                    <span class="code-property">--ease-spring:</span> <span class="code-value">cubic-bezier(0.68, -0.55, 0.265, 1.55);</span><br><br>
+                    <span class="code-comment">/* Durations */</span><br>
+                    <span class="code-property">--duration-instant:</span> <span class="code-value">100ms;</span><br>
+                    <span class="code-property">--duration-fast:</span> <span class="code-value">150ms;</span><br>
+                    <span class="code-property">--duration-normal:</span> <span class="code-value">200ms;</span><br>
+                    <span class="code-property">--duration-slow:</span> <span class="code-value">400ms;</span><br>
+                    <span class="code-property">--duration-page:</span> <span class="code-value">600ms;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

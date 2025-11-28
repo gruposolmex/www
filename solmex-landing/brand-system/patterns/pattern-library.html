@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Pattern Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .pattern-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .pattern-preview {
+            height: 200px;
+            position: relative;
+        }
+        
+        .pattern-info {
+            padding: 24px;
+        }
+        
+        .pattern-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .pattern-desc {
+            font-size: 14px;
+            color: var(--steel-gray);
+        }
+        
+        .pattern-usage {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--mist);
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Patterns */
+        .pattern-diagonal {
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 148, 59, 0.1) 10px,
+                    rgba(255, 148, 59, 0.1) 20px
+                );
+            background-color: var(--polar);
+        }
+        
+        .pattern-dots {
+            background-image: 
+                radial-gradient(circle, var(--solmex-orange) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            background-color: var(--polar);
+        }
+        
+        .pattern-grid-lines {
+            background-image: 
+                linear-gradient(rgba(255, 148, 59, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 148, 59, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-color: var(--polar);
+        }
+        
+        .pattern-gradient-fade {
+            background: linear-gradient(135deg, 
+                rgba(255, 148, 59, 0.2) 0%, 
+                rgba(255, 217, 28, 0.1) 50%,
+                transparent 100%);
+            background-color: var(--polar);
+        }
+        
+        .pattern-topographic {
+            background: var(--carbon-black);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pattern-topographic::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-radial-gradient(
+                    circle at 50% 50%,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 148, 59, 0.1) 21px,
+                    rgba(255, 148, 59, 0.1) 22px
+                );
+        }
+        
+        .pattern-chevron {
+            background: 
+                linear-gradient(135deg, var(--polar) 25%, transparent 25%),
+                linear-gradient(225deg, var(--polar) 25%, transparent 25%),
+                linear-gradient(45deg, var(--polar) 25%, transparent 25%),
+                linear-gradient(315deg, var(--polar) 25%, rgba(255, 148, 59, 0.1) 25%);
+            background-size: 40px 40px;
+            background-color: rgba(255, 148, 59, 0.1);
+        }
+        
+        .pattern-noise {
+            background: var(--polar);
+            position: relative;
+        }
+        
+        .pattern-noise::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+        }
+        
+        .pattern-corner-accent {
+            background: var(--polar);
+            position: relative;
+        }
+        
+        .pattern-corner-accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-primary);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+        
+        .large-preview {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        
+        .large-preview-area {
+            height: 300px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .demo-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .demo-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .demo-card p {
+            color: var(--steel-gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .demo-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .code-block {
+            background: var(--carbon-black);
+            color: #E4E7E9;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        
+        .code-comment { color: var(--concrete); }
+        .code-property { color: var(--solmex-orange); }
+        .code-value { color: var(--solmex-sunrise); }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Pattern Library</h1>
+        <p class="subtitle">Visual patterns and textures for Grupo Solmex brand applications</p>
+    </div>
+    
+    <div class="container">
+        <!-- Pattern Overview -->
+        <div class="section">
+            <h2 class="section-title">Brand Patterns</h2>
+            <p style="color: var(--steel-gray); margin-bottom: 32px;">These patterns add visual interest while maintaining brand consistency. Use sparingly to enhance backgrounds and create depth.</p>
+            
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-diagonal"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">45° Diagonal Lines</div>
+                        <div class="pattern-desc">Subtle diagonal stripes at the brand's signature 45° angle.</div>
+                        <div class="pattern-usage">Use: Section backgrounds, headers</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-dots"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Dot Grid</div>
+                        <div class="pattern-desc">Evenly spaced dots on an 8px baseline grid.</div>
+                        <div class="pattern-usage">Use: Presentation slides, technical documents</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-grid-lines"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Grid Lines</div>
+                        <div class="pattern-desc">Clean orthogonal grid suggesting precision.</div>
+                        <div class="pattern-usage">Use: Technical specifications, data displays</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-gradient-fade"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Gradient Fade</div>
+                        <div class="pattern-desc">Soft gradient wash adding warmth and depth.</div>
+                        <div class="pattern-usage">Use: Hero sections, feature highlights</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-topographic"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Topographic</div>
+                        <div class="pattern-desc">Concentric circles suggesting movement and logistics.</div>
+                        <div class="pattern-usage">Use: Dark backgrounds, premium materials</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-chevron"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Chevron</div>
+                        <div class="pattern-desc">Directional pattern indicating progress.</div>
+                        <div class="pattern-usage">Use: Progress sections, call-to-action areas</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-noise"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Subtle Noise</div>
+                        <div class="pattern-desc">Texture overlay adding depth to flat colors.</div>
+                        <div class="pattern-usage">Use: Hero images, photography overlays</div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-corner-accent"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Corner Accent</div>
+                        <div class="pattern-desc">Triangular corner element echoing the logo cut.</div>
+                        <div class="pattern-usage">Use: Cards, documents, certificates</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usage Example -->
+        <div class="section">
+            <h2 class="section-title">Pattern in Context</h2>
+            <div class="large-preview">
+                <div class="large-preview-area pattern-gradient-fade">
+                    <div class="demo-card">
+                        <h3>Terminal Network</h3>
+                        <p>98.7% availability across all certified terminals</p>
+                        <button class="demo-btn">View Dashboard</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="large-preview">
+                <div class="large-preview-area pattern-topographic">
+                    <div class="demo-card">
+                        <h3>Real-Time Tracking</h3>
+                        <p>Complete visibility of your logistics operations</p>
+                        <button class="demo-btn">Track Shipment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CSS Code -->
+        <div class="section">
+            <h2 class="section-title">Implementation</h2>
+            <div class="code-block">
+                <span class="code-comment">/* Diagonal Lines Pattern */</span><br>
+                .pattern-diagonal {<br>
+                &nbsp;&nbsp;<span class="code-property">background:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">repeating-linear-gradient(</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">45deg,</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">transparent,</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">transparent 10px,</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">rgba(255, 148, 59, 0.1) 10px,</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">rgba(255, 148, 59, 0.1) 20px</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">)</span>;<br>
+                }<br><br>
+                <span class="code-comment">/* Dot Grid Pattern */</span><br>
+                .pattern-dots {<br>
+                &nbsp;&nbsp;<span class="code-property">background-image:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">radial-gradient(circle, #FF943B 1.5px, transparent 1.5px)</span>;<br>
+                &nbsp;&nbsp;<span class="code-property">background-size:</span> <span class="code-value">24px 24px</span>;<br>
+                }<br><br>
+                <span class="code-comment">/* Grid Lines Pattern */</span><br>
+                .pattern-grid {<br>
+                &nbsp;&nbsp;<span class="code-property">background-image:</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">linear-gradient(rgba(255, 148, 59, 0.15) 1px, transparent 1px),</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">linear-gradient(90deg, rgba(255, 148, 59, 0.15) 1px, transparent 1px)</span>;<br>
+                &nbsp;&nbsp;<span class="code-property">background-size:</span> <span class="code-value">24px 24px</span>;<br>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

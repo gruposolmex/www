@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Photography Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--solmex-orange);
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .photo-example {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .photo-placeholder {
+            height: 200px;
+            background: var(--steel-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            position: relative;
+        }
+        
+        .photo-placeholder.good {
+            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--carbon-black) 100%);
+        }
+        
+        .photo-placeholder.good::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 50%;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 148, 59, 0.3) 0%, transparent 100%);
+        }
+        
+        .photo-placeholder.bad {
+            background: linear-gradient(180deg, #888 0%, #666 100%);
+        }
+        
+        .photo-info {
+            padding: 16px;
+        }
+        
+        .photo-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .photo-label.good {
+            color: #16A34A;
+        }
+        
+        .photo-label.bad {
+            color: #DC2626;
+        }
+        
+        .photo-desc {
+            font-size: 13px;
+            color: var(--steel-gray);
+        }
+        
+        .composition-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .comp-card {
+            background: var(--steel-gray);
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .comp-card.rule-of-thirds::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(to right, transparent 32.5%, rgba(255,255,255,0.3) 33%, rgba(255,255,255,0.3) 33.5%, transparent 34%, transparent 65.5%, rgba(255,255,255,0.3) 66%, rgba(255,255,255,0.3) 66.5%, transparent 67%),
+                linear-gradient(to bottom, transparent 32.5%, rgba(255,255,255,0.3) 33%, rgba(255,255,255,0.3) 33.5%, transparent 34%, transparent 65.5%, rgba(255,255,255,0.3) 66%, rgba(255,255,255,0.3) 66.5%, transparent 67%);
+        }
+        
+        .comp-card.leading-lines::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(135deg, transparent 45%, rgba(255, 148, 59, 0.4) 50%, transparent 55%);
+        }
+        
+        .comp-card.negative-space::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 40%;
+            height: 30%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            opacity: 0.8;
+        }
+        
+        .comp-label {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .color-treatment {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .treatment-card {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .treatment-preview {
+            height: 150px;
+            background: linear-gradient(135deg, var(--steel-gray), var(--carbon-black));
+        }
+        
+        .treatment-preview.original {
+            filter: none;
+        }
+        
+        .treatment-preview.treated {
+            filter: saturate(0.8) contrast(1.15);
+            position: relative;
+        }
+        
+        .treatment-preview.treated::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 148, 59, 0.1), transparent);
+        }
+        
+        .treatment-label {
+            background: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .subject-card {
+            background: var(--polar);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .subject-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .subject-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .subject-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .spec-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        
+        .spec-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--mist);
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            color: var(--steel-gray);
+        }
+        
+        .spec-value {
+            font-family: 'SF Mono', monospace;
+            font-weight: 600;
+            color: var(--solmex-orange);
+        }
+        
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .do-box, .dont-box {
+            padding: 24px;
+            border-radius: 12px;
+        }
+        
+        .do-box {
+            background: rgba(22, 163, 74, 0.1);
+            border: 2px solid #16A34A;
+        }
+        
+        .dont-box {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid #DC2626;
+        }
+        
+        .do-label, .dont-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .do-label { color: #16A34A; }
+        .dont-label { color: #DC2626; }
+        
+        .do-box ul, .dont-box ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--steel-gray);
+        }
+        
+        .do-box li::before {
+            content: "✓ ";
+            color: #16A34A;
+        }
+        
+        .dont-box li::before {
+            content: "✕ ";
+            color: #DC2626;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Photography Guidelines</h1>
+        <p class="subtitle">Visual direction for authentic, powerful imagery that represents Grupo Solmex</p>
+    </div>
+    
+    <div class="container">
+        <!-- Visual Style -->
+        <div class="section">
+            <h2 class="section-title">Visual Style: Industrial Minimalism</h2>
+            <div class="card">
+                <div class="card-title">Core Aesthetic</div>
+                <p style="color: var(--steel-gray); margin-bottom: 24px;">Grupo Solmex photography should convey precision, reliability, and operational excellence. Images should feel clean, purposeful, and professional—never cluttered or chaotic.</p>
+                
+                <div class="do-dont">
+                    <div class="do-box">
+                        <div class="do-label">APPROVED STYLE</div>
+                        <ul>
+                            <li>Clean, organized industrial spaces</li>
+                            <li>Dramatic lighting with deep shadows</li>
+                            <li>45° angles in composition</li>
+                            <li>Minimum 40% negative space</li>
+                            <li>Real equipment and locations</li>
+                            <li>Desaturated with warm highlights</li>
+                        </ul>
+                    </div>
+                    <div class="dont-box">
+                        <div class="dont-label">AVOID</div>
+                        <ul>
+                            <li>Generic stock photography</li>
+                            <li>Cluttered, messy environments</li>
+                            <li>Oversaturated colors</li>
+                            <li>Soft focus or blur effects</li>
+                            <li>Posed, unnatural scenarios</li>
+                            <li>Busy backgrounds</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subject Matter -->
+        <div class="section">
+            <h2 class="section-title">Subject Matter</h2>
+            <div class="card">
+                <div class="card-title">Approved Subjects</div>
+                <div class="subject-grid">
+                    <div class="subject-card">
+                        <div class="subject-icon">🏭</div>
+                        <div class="subject-name">Terminals & Facilities</div>
+                        <div class="subject-desc">Clean, well-organized terminal operations</div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">🚛</div>
+                        <div class="subject-name">Fleet & Vehicles</div>
+                        <div class="subject-desc">Professional transport equipment</div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">⚙️</div>
+                        <div class="subject-name">Equipment</div>
+                        <div class="subject-desc">Forklifts, cranes, handling gear</div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">👷</div>
+                        <div class="subject-name">Personnel</div>
+                        <div class="subject-desc">Workers in proper safety gear</div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">📦</div>
+                        <div class="subject-name">Cargo & Containers</div>
+                        <div class="subject-desc">Organized storage and shipping</div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon">💻</div>
+                        <div class="subject-name">Technology</div>
+                        <div class="subject-desc">Dashboards, tracking, monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Composition -->
+        <div class="section">
+            <h2 class="section-title">Composition Guidelines</h2>
+            <div class="card">
+                <div class="card-title">Composition Techniques</div>
+                <div class="composition-demo">
+                    <div>
+                        <div class="comp-card rule-of-thirds"></div>
+                        <div class="comp-label">Rule of Thirds</div>
+                    </div>
+                    <div>
+                        <div class="comp-card leading-lines"></div>
+                        <div class="comp-label">45° Leading Lines</div>
+                    </div>
+                    <div>
+                        <div class="comp-card negative-space"></div>
+                        <div class="comp-label">Negative Space</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Color Treatment -->
+        <div class="section">
+            <h2 class="section-title">Color Treatment</h2>
+            <div class="card">
+                <div class="card-title">Post-Processing Specifications</div>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Saturation</span>
+                        <span class="spec-value">-20%</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Contrast</span>
+                        <span class="spec-value">+15%</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Highlights</span>
+                        <span class="spec-value">+10 warm</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Shadows</span>
+                        <span class="spec-value">-5 cool</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Orange Tint</span>
+                        <span class="spec-value">Subtle in highlights</span>
+                    </li>
+                </ul>
+                
+                <div class="color-treatment">
+                    <div class="treatment-card">
+                        <div class="treatment-preview original"></div>
+                        <div class="treatment-label">Before Treatment</div>
+                    </div>
+                    <div class="treatment-card">
+                        <div class="treatment-preview treated"></div>
+                        <div class="treatment-label">After Treatment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lighting -->
+        <div class="section">
+            <h2 class="section-title">Lighting Guidelines</h2>
+            <div class="card">
+                <div class="card-title">Lighting Specifications</div>
+                <p style="color: var(--steel-gray); margin-bottom: 16px;">Lighting should emphasize texture, depth, and the industrial nature of logistics operations.</p>
+                
+                <div class="photo-grid">
+                    <div class="photo-example">
+                        <div class="photo-placeholder good">
+                            <span>Golden hour / Dramatic industrial</span>
+                        </div>
+                        <div class="photo-info">
+                            <div class="photo-label good">✓ Approved</div>
+                            <div class="photo-desc">Dramatic side lighting with deep shadows creates visual interest</div>
+                        </div>
+                    </div>
+                    <div class="photo-example">
+                        <div class="photo-placeholder bad">
+                            <span>Flat overhead lighting</span>
+                        </div>
+                        <div class="photo-info">
+                            <div class="photo-label bad">✕ Avoid</div>
+                            <div class="photo-desc">Flat, even lighting lacks dimension and feels generic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technical Specs -->
+        <div class="section">
+            <h2 class="section-title">Technical Specifications</h2>
+            <div class="card">
+                <div class="card-title">Image Requirements</div>
+                <ul class="spec-list">
+                    <li>
+                        <span class="spec-label">Minimum Resolution</span>
+                        <span class="spec-value">3000px (web), 300dpi (print)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">File Format</span>
+                        <span class="spec-value">RAW for archive, JPEG for delivery</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Color Space</span>
+                        <span class="spec-value">sRGB (web), Adobe RGB (print)</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Aspect Ratios</span>
+                        <span class="spec-value">16:9, 4:3, 1:1</span>
+                    </li>
+                    <li>
+                        <span class="spec-label">Compression</span>
+                        <span class="spec-value">Maximum quality (85-100%)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

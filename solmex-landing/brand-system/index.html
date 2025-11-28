@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo Solmex - Brand System Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,31 +14,32 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0A0A0A 0%, #2C3E44 100%);
+            background: linear-gradient(135deg, #0A0A0A 0%, #1a2428 50%, #2C3E44 100%);
             min-height: 100vh;
             color: white;
             padding: 40px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
         
         .logo-container {
             display: inline-block;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
         
         .logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 148, 59, 0.3));
         }
         
         @keyframes float {
@@ -48,10 +49,10 @@
         
         h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 56px;
+            font-size: 52px;
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             background: linear-gradient(45deg, #FF943B, #FFD91C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -59,30 +60,52 @@
         }
         
         .tagline {
-            font-size: 20px;
+            font-size: 18px;
             color: #8B9197;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
         
         .version {
+            font-size: 13px;
+            color: #5a6066;
+            font-family: 'SF Mono', 'Monaco', monospace;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            margin-top: 48px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 14px;
-            color: #8B9197;
-            font-family: 'SF Mono', monospace;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #FF943B;
+        }
+        
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 148, 59, 0.3), transparent);
         }
         
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 16px;
-            padding: 32px;
+            padding: 28px;
             transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
             cursor: pointer;
             text-decoration: none;
@@ -98,7 +121,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #FF943B, #FFD91C);
             transform: scaleX(0);
             transition: transform 0.3s;
@@ -106,10 +129,10 @@
         }
         
         .card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 148, 59, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 148, 59, 0.25);
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
         
         .card:hover:before {
@@ -117,43 +140,63 @@
         }
         
         .card-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #FF943B, #FFD91C);
-            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, rgba(255, 148, 59, 0.2), rgba(255, 217, 28, 0.1));
+            border: 1px solid rgba(255, 148, 59, 0.3);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 20px;
         }
         
         .card-title {
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .card-description {
-            font-size: 14px;
+            font-size: 13px;
             color: #8B9197;
             line-height: 1.5;
         }
         
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(45deg, #FF943B, #FFD91C);
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
         .stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+            margin-top: 40px;
         }
         
         .stat {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
         }
         
         .stat-value {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
             background: linear-gradient(45deg, #FF943B, #FFD91C);
             -webkit-background-clip: text;
@@ -162,57 +205,76 @@
         }
         
         .stat-label {
-            font-size: 14px;
+            font-size: 11px;
             color: #8B9197;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 8px;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
         }
         
         .footer {
             text-align: center;
             padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #8B9197;
-            font-size: 14px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: #5a6066;
+            font-size: 13px;
         }
         
-        .download-section {
-            background: rgba(255, 148, 59, 0.1);
-            border: 1px solid rgba(255, 148, 59, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .download-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-        
-        .download-description {
-            color: #8B9197;
-            margin-bottom: 24px;
-        }
-        
-        .download-button {
-            display: inline-flex;
+        .footer-brand {
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
-            padding: 16px 32px;
-            background: linear-gradient(45deg, #FF943B, #FFD91C);
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        
+        .footer-logo {
+            width: 24px;
+            height: 24px;
+            opacity: 0.5;
+        }
+        
+        .footer-name {
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
+            color: #8B9197;
+        }
+        
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .logo-variant {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
             transition: all 0.3s;
         }
         
-        .download-button:hover {
+        .logo-variant:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 148, 59, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 148, 59, 0.3);
+        }
+        
+        .logo-variant img {
+            max-width: 100%;
+            max-height: 60px;
+            margin-bottom: 12px;
+        }
+        
+        .logo-variant-name {
+            font-size: 12px;
+            font-weight: 500;
+            color: #8B9197;
         }
     </style>
 </head>
@@ -220,47 +282,64 @@
     <div class="container">
         <div class="header">
             <div class="logo-container">
-                <svg class="logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-                            <stop offset="0%" style="stop-color:#FF943B" />
-                            <stop offset="100%" style="stop-color:#FFD91C" />
-                        </linearGradient>
-                        <mask id="logoMask">
-                            <rect width="200" height="200" fill="white"/>
-                            <polygon points="200,200 140,200 200,140" fill="black"/>
-                        </mask>
-                    </defs>
-                    <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" mask="url(#logoMask)"/>
-                </svg>
+                <img src="logo/solmex-logo.svg" alt="Grupo Solmex Logo" class="logo">
             </div>
             <h1>GRUPO SOLMEX</h1>
             <p class="tagline">Brand Identity System</p>
-            <p class="version">Version 1.0 | 2025</p>
+            <p class="version">v2.0 — Updated November 2025</p>
         </div>
         
         <div class="stats">
             <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Logo Variants</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Icons</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">9</div>
+                <div class="stat-label">Brand Colors</div>
+            </div>
+            <div class="stat">
                 <div class="stat-value">12</div>
-                <div class="stat-label">Brand Assets</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">24</div>
-                <div class="stat-label">Icon Library</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">5</div>
-                <div class="stat-label">Color Palettes</div>
+                <div class="stat-label">Guidelines</div>
             </div>
         </div>
         
-        <div class="grid">
-            <a href="logo/solmex-logo.svg" class="card">
-                <div class="card-icon">◉</div>
-                <div class="card-title">Logo & Identity</div>
-                <div class="card-description">Official logo files in multiple formats with usage guidelines and clear space requirements.</div>
+        <!-- Logo Assets Section -->
+        <div class="section-header">
+            <span class="section-title">Logo Assets</span>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="logo-grid">
+            <a href="logo/solmex-logo.svg" class="logo-variant" download>
+                <img src="logo/solmex-logo.svg" alt="Solmex Icon">
+                <div class="logo-variant-name">Icon Only (Square)</div>
             </a>
-            
+            <a href="logo/logo-solmex-full.svg" class="logo-variant" download>
+                <img src="logo/logo-solmex-full.svg" alt="Full Logo">
+                <div class="logo-variant-name">Full Logo with Text</div>
+            </a>
+            <a href="logo/logo-solmex-text.svg" class="logo-variant" download>
+                <img src="logo/logo-solmex-text.svg" alt="Text Logo">
+                <div class="logo-variant-name">Text Only</div>
+            </a>
+            <a href="logo/logo-solmex-square.svg" class="logo-variant" download>
+                <img src="logo/logo-solmex-square.svg" alt="Square Logo">
+                <div class="logo-variant-name">Square Mark</div>
+            </a>
+        </div>
+        
+        <!-- Core Elements Section -->
+        <div class="section-header">
+            <span class="section-title">Core Elements</span>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="grid">
             <a href="colors/color-palette.html" class="card">
                 <div class="card-icon">🎨</div>
                 <div class="card-title">Color System</div>
@@ -270,7 +349,7 @@
             <a href="typography/typography-specimen.html" class="card">
                 <div class="card-icon">Aa</div>
                 <div class="card-title">Typography</div>
-                <div class="card-description">Type scale, font families, and hierarchy system for consistent communication.</div>
+                <div class="card-description">Type scale, font families (Inter & Space Grotesk), and hierarchy system.</div>
             </a>
             
             <a href="icons/icon-system.svg" class="card">
@@ -279,31 +358,87 @@
                 <div class="card-description">24px grid-based icon library with operational, movement, data, and safety categories.</div>
             </a>
             
+            <a href="patterns/pattern-library.html" class="card">
+                <div class="card-icon">◫</div>
+                <div class="card-title">Pattern Library</div>
+                <div class="card-description">Visual patterns and textures for backgrounds, including diagonal lines, dots, and gradients.</div>
+            </a>
+        </div>
+        
+        <!-- Digital Section -->
+        <div class="section-header">
+            <span class="section-title">Digital</span>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="grid">
             <a href="ui-kit/components.html" class="card">
                 <div class="card-icon">🔲</div>
                 <div class="card-title">UI Components</div>
                 <div class="card-description">Complete component library including buttons, cards, forms, tables, and navigation.</div>
             </a>
             
-            <a href="documentation/brand-guidelines.md" class="card">
-                <div class="card-icon">📋</div>
-                <div class="card-title">Brand Guidelines</div>
-                <div class="card-description">Comprehensive documentation covering all aspects of brand implementation.</div>
+            <a href="digital/digital-guidelines.html" class="card">
+                <div class="card-icon">💻</div>
+                <div class="card-title">Digital Guidelines</div>
+                <div class="card-description">Web and app design standards, grid system, spacing, and interaction patterns.</div>
+            </a>
+            
+            <a href="motion/motion-guidelines.html" class="card">
+                <div class="card-icon">▸</div>
+                <div class="card-title">Motion & Animation</div>
+                <div class="card-description">Animation principles, easing functions, duration scales, and interactive examples.</div>
             </a>
         </div>
         
-        <div class="download-section">
-            <h2 class="download-title">Complete Brand Package</h2>
-            <p class="download-description">Download all brand assets, templates, and guidelines in a single package.</p>
-            <a href="#" class="download-button">
-                <span>Download Brand Kit</span>
-                <span>↓</span>
+        <!-- Physical Section -->
+        <div class="section-header">
+            <span class="section-title">Physical Applications</span>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="grid">
+            <a href="print/print-templates.html" class="card">
+                <div class="card-icon">📄</div>
+                <div class="card-title">Print Templates</div>
+                <div class="card-description">Business cards, letterhead, envelopes, and print specifications with CMYK colors.</div>
+            </a>
+            
+            <a href="environmental/signage-guidelines.html" class="card">
+                <div class="card-icon">🏢</div>
+                <div class="card-title">Environmental Design</div>
+                <div class="card-description">Signage systems, wayfinding, facility graphics, and vehicle branding standards.</div>
+            </a>
+            
+            <a href="photography/photography-guidelines.html" class="card">
+                <div class="card-icon">📷</div>
+                <div class="card-title">Photography</div>
+                <div class="card-description">Visual style guidelines, color treatment, composition rules, and lighting specifications.</div>
+            </a>
+        </div>
+        
+        <!-- Documentation Section -->
+        <div class="section-header">
+            <span class="section-title">Documentation</span>
+            <div class="section-line"></div>
+        </div>
+        
+        <div class="grid">
+            <a href="documentation/brand-guidelines.md" class="card">
+                <div class="card-badge">Complete</div>
+                <div class="card-icon">📋</div>
+                <div class="card-title">Brand Guidelines</div>
+                <div class="card-description">Comprehensive documentation covering all aspects of brand implementation and usage rules.</div>
             </a>
         </div>
         
         <div class="footer">
+            <div class="footer-brand">
+                <img src="logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+                <span class="footer-name">GRUPO SOLMEX</span>
+            </div>
             <p>© 2025 Grupo Solmex. Intelligent Logistics Network.</p>
-            <p style="margin-top: 8px;">Precision. Connected. Delivered.</p>
+            <p style="margin-top: 4px; color: #8B9197;">Precision · Connected · Delivered</p>
         </div>
     </div>
 </body>

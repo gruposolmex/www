@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Digital Design Guidelines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-amber: #FFAD5C;
+            --solmex-gold: #FFC67D;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--solmex-orange);
+        }
+        
+        .card-content {
+            color: var(--steel-gray);
+            font-size: 14px;
+        }
+        
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .spec-item {
+            background: var(--polar);
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .spec-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .spec-label {
+            font-size: 12px;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+        
+        .breakpoint-visual {
+            display: flex;
+            align-items: end;
+            gap: 16px;
+            margin-top: 24px;
+            padding: 24px;
+            background: var(--carbon-black);
+            border-radius: 12px;
+        }
+        
+        .device {
+            background: var(--steel-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        .device.mobile {
+            width: 60px;
+            height: 100px;
+        }
+        
+        .device.tablet {
+            width: 100px;
+            height: 130px;
+        }
+        
+        .device.desktop {
+            width: 180px;
+            height: 120px;
+        }
+        
+        .code-block {
+            background: var(--carbon-black);
+            color: #E4E7E9;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        
+        .code-comment {
+            color: var(--concrete);
+        }
+        
+        .code-property {
+            color: var(--solmex-orange);
+        }
+        
+        .code-value {
+            color: var(--solmex-sunrise);
+        }
+        
+        .spacing-demo {
+            display: flex;
+            align-items: end;
+            gap: 8px;
+            margin-top: 24px;
+        }
+        
+        .spacing-box {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        
+        .do-dont {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        
+        .do-box, .dont-box {
+            padding: 24px;
+            border-radius: 12px;
+        }
+        
+        .do-box {
+            background: rgba(22, 163, 74, 0.1);
+            border: 2px solid #16A34A;
+        }
+        
+        .dont-box {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid #DC2626;
+        }
+        
+        .do-label, .dont-label {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .do-label {
+            color: #16A34A;
+        }
+        
+        .dont-label {
+            color: #DC2626;
+        }
+        
+        .do-box ul, .dont-box ul {
+            list-style: none;
+            font-size: 14px;
+            color: var(--steel-gray);
+        }
+        
+        .do-box li::before {
+            content: "✓ ";
+            color: #16A34A;
+        }
+        
+        .dont-box li::before {
+            content: "✕ ";
+            color: #DC2626;
+        }
+        
+        .interaction-demo {
+            background: white;
+            border: 1px solid var(--mist);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 24px;
+        }
+        
+        .demo-button {
+            padding: 12px 24px;
+            background: var(--gradient-primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+            margin-right: 16px;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 148, 59, 0.3);
+        }
+        
+        .demo-button:active {
+            transform: translateY(0);
+        }
+        
+        .demo-button.secondary {
+            background: transparent;
+            border: 1px solid var(--solmex-orange);
+            color: var(--solmex-orange);
+        }
+        
+        .demo-button.secondary:hover {
+            background: rgba(255, 148, 59, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Digital Design Guidelines</h1>
+        <p class="subtitle">Web, mobile, and application design standards for Grupo Solmex</p>
+    </div>
+    
+    <div class="container">
+        <!-- Grid System -->
+        <div class="section">
+            <h2 class="section-title">Grid System</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">12-Column Grid</div>
+                    <div class="card-content">
+                        <p>All digital layouts use a 12-column grid system with consistent gutters and margins. This provides flexibility for various content arrangements while maintaining visual harmony.</p>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <div class="spec-value">12</div>
+                                <div class="spec-label">Columns</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">24px</div>
+                                <div class="spec-label">Gutter</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">80px</div>
+                                <div class="spec-label">Desktop Margin</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-value">24px</div>
+                                <div class="spec-label">Mobile Margin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Responsive Breakpoints</div>
+                    <div class="card-content">
+                        <p>Design mobile-first, then progressively enhance for larger screens. These breakpoints align with common device categories.</p>
+                        <div class="breakpoint-visual">
+                            <div class="device mobile">375px</div>
+                            <div class="device tablet">768px</div>
+                            <div class="device desktop">1440px</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Spacing System -->
+        <div class="section">
+            <h2 class="section-title">Spacing System</h2>
+            <div class="card">
+                <div class="card-title">8px Baseline Grid</div>
+                <div class="card-content">
+                    <p>All spacing values are multiples of 8px, creating consistent rhythm and visual alignment throughout the interface.</p>
+                    <div class="spacing-demo">
+                        <div>
+                            <div class="spacing-box" style="width: 8px; height: 8px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">4px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 16px; height: 16px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">8px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">16px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 32px; height: 32px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">24px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 48px; height: 48px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">32px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 64px; height: 64px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">48px</div>
+                        </div>
+                        <div>
+                            <div class="spacing-box" style="width: 80px; height: 80px;"></div>
+                            <div class="spec-label" style="margin-top: 8px;">64px</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Border Radius -->
+        <div class="section">
+            <h2 class="section-title">Border Radius System</h2>
+            <div class="card">
+                <div class="card-title">Rounded Corners</div>
+                <div class="card-content">
+                    <p>Consistent border radius values create a cohesive, modern interface feel while maintaining the industrial precision of the brand.</p>
+                    <div class="code-block">
+                        <span class="code-comment">/* Border Radius Tokens */</span><br>
+                        <span class="code-property">--radius-sm:</span> <span class="code-value">4px;</span>   <span class="code-comment">/* Small elements, chips */</span><br>
+                        <span class="code-property">--radius-md:</span> <span class="code-value">8px;</span>   <span class="code-comment">/* Buttons, inputs */</span><br>
+                        <span class="code-property">--radius-lg:</span> <span class="code-value">12px;</span>  <span class="code-comment">/* Cards, containers */</span><br>
+                        <span class="code-property">--radius-xl:</span> <span class="code-value">16px;</span>  <span class="code-comment">/* Modals, large cards */</span><br>
+                        <span class="code-property">--radius-full:</span> <span class="code-value">9999px;</span> <span class="code-comment">/* Pills, avatars */</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shadows -->
+        <div class="section">
+            <h2 class="section-title">Elevation & Shadows</h2>
+            <div class="card">
+                <div class="card-title">Shadow System</div>
+                <div class="card-content">
+                    <p>Shadows create visual hierarchy and indicate elevation. Use sparingly to avoid visual clutter.</p>
+                    <div class="code-block">
+                        <span class="code-comment">/* Shadow Tokens */</span><br>
+                        <span class="code-property">--shadow-sm:</span> <span class="code-value">0 1px 2px rgba(10, 10, 10, 0.05);</span><br>
+                        <span class="code-property">--shadow-md:</span> <span class="code-value">0 4px 6px rgba(10, 10, 10, 0.1);</span><br>
+                        <span class="code-property">--shadow-lg:</span> <span class="code-value">0 10px 15px rgba(10, 10, 10, 0.15);</span><br>
+                        <span class="code-property">--shadow-xl:</span> <span class="code-value">0 20px 25px rgba(10, 10, 10, 0.2);</span><br>
+                        <span class="code-property">--shadow-glow:</span> <span class="code-value">0 0 20px rgba(255, 148, 59, 0.3);</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactions -->
+        <div class="section">
+            <h2 class="section-title">Interaction Design</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Hover States</div>
+                    <div class="card-content">
+                        <p>Interactive elements should provide clear visual feedback. Use subtle transforms and shadows to indicate interactivity.</p>
+                        <div class="interaction-demo">
+                            <button class="demo-button">Primary Action</button>
+                            <button class="demo-button secondary">Secondary</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-title">Animation Timing</div>
+                    <div class="card-content">
+                        <p>Consistent easing functions create smooth, natural-feeling interactions.</p>
+                        <div class="code-block">
+                            <span class="code-comment">/* Timing Function */</span><br>
+                            <span class="code-property">--ease-default:</span> <span class="code-value">cubic-bezier(0.4, 0.0, 0.2, 1);</span><br><br>
+                            <span class="code-comment">/* Durations */</span><br>
+                            <span class="code-property">--duration-fast:</span> <span class="code-value">150ms;</span><br>
+                            <span class="code-property">--duration-normal:</span> <span class="code-value">200ms;</span><br>
+                            <span class="code-property">--duration-slow:</span> <span class="code-value">400ms;</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Do's and Don'ts -->
+        <div class="section">
+            <h2 class="section-title">Best Practices</h2>
+            <div class="card">
+                <div class="card-title">Digital Design Guidelines</div>
+                <div class="do-dont">
+                    <div class="do-box">
+                        <div class="do-label">DO</div>
+                        <ul>
+                            <li>Use the 8px baseline grid consistently</li>
+                            <li>Maintain sufficient touch targets (44x44px min)</li>
+                            <li>Ensure WCAG AA contrast ratios</li>
+                            <li>Design mobile-first, enhance for desktop</li>
+                            <li>Use subtle animations for feedback</li>
+                            <li>Keep interactions under 400ms</li>
+                        </ul>
+                    </div>
+                    <div class="dont-box">
+                        <div class="dont-label">DON'T</div>
+                        <ul>
+                            <li>Mix spacing values outside the system</li>
+                            <li>Use shadows excessively</li>
+                            <li>Create jarring or sudden transitions</li>
+                            <li>Ignore keyboard navigation</li>
+                            <li>Use auto-playing audio or video</li>
+                            <li>Sacrifice performance for aesthetics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- App Icon Guidelines -->
+        <div class="section">
+            <h2 class="section-title">App Icon Guidelines</h2>
+            <div class="card">
+                <div class="card-title">Mobile App Icons</div>
+                <div class="card-content">
+                    <p>The Solmex logo mark should be used for all app icons. Export at required sizes with appropriate padding.</p>
+                    <div class="spec-grid">
+                        <div class="spec-item">
+                            <div class="spec-value">1024</div>
+                            <div class="spec-label">iOS App Store</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">512</div>
+                            <div class="spec-label">Play Store</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">180</div>
+                            <div class="spec-label">iOS Home Screen</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">192</div>
+                            <div class="spec-label">Android Home</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">32</div>
+                            <div class="spec-label">Favicon</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">16</div>
+                            <div class="spec-label">Browser Tab</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

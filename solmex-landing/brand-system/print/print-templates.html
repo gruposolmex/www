@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Print Templates & Collateral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            color: var(--carbon-black);
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--steel-gray);
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .header {
+            background: var(--carbon-black);
+            padding: 80px 40px 60px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 24px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--solmex-orange);
+        }
+        
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .template-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .template-preview {
+            aspect-ratio: 1.8;
+            background: var(--mist);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Business Card Preview */
+        .business-card-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .bc-mock {
+            width: 180px;
+            height: 100px;
+            background: var(--carbon-black);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bc-mock::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-primary);
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        }
+        
+        .bc-logo {
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .bc-name {
+            color: white;
+            font-size: 9px;
+            font-weight: 600;
+        }
+        
+        .bc-title {
+            color: var(--concrete);
+            font-size: 7px;
+        }
+        
+        /* Letterhead Preview */
+        .letterhead-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .lh-mock {
+            width: 140px;
+            height: 180px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            position: relative;
+            padding: 16px;
+        }
+        
+        .lh-mock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+        }
+        
+        .lh-logo {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        
+        .lh-line {
+            height: 3px;
+            background: var(--mist);
+            margin-bottom: 6px;
+            border-radius: 2px;
+        }
+        
+        .lh-line:nth-child(3) { width: 80%; }
+        .lh-line:nth-child(4) { width: 90%; }
+        .lh-line:nth-child(5) { width: 70%; }
+        .lh-line:nth-child(6) { width: 85%; }
+        .lh-line:nth-child(7) { width: 60%; }
+        
+        /* Folder Preview */
+        .folder-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .folder-mock {
+            width: 160px;
+            height: 120px;
+            background: var(--carbon-black);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .folder-mock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+        
+        .folder-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+        }
+        
+        /* Envelope Preview */
+        .envelope-preview {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        
+        .env-mock {
+            width: 180px;
+            height: 90px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            position: relative;
+            padding: 12px;
+        }
+        
+        .env-mock::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .env-logo {
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-primary);
+            border-radius: 3px;
+        }
+        
+        .template-info {
+            padding: 20px;
+        }
+        
+        .template-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .template-specs {
+            font-size: 13px;
+            color: var(--concrete);
+            margin-bottom: 16px;
+        }
+        
+        .template-features {
+            list-style: none;
+            font-size: 13px;
+        }
+        
+        .template-features li {
+            padding: 4px 0;
+            color: var(--steel-gray);
+        }
+        
+        .template-features li::before {
+            content: "• ";
+            color: var(--solmex-orange);
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        
+        .spec-table th,
+        .spec-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--mist);
+            font-size: 14px;
+        }
+        
+        .spec-table th {
+            background: var(--polar);
+            font-weight: 600;
+            color: var(--steel-gray);
+        }
+        
+        .spec-table td:first-child {
+            font-weight: 500;
+        }
+        
+        .color-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .color-spec-card {
+            background: var(--polar);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .color-spec-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .color-spec-value {
+            font-family: 'SF Mono', monospace;
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .download-section {
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            padding: 32px;
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .download-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .download-desc {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            background: white;
+            color: var(--solmex-orange);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    
+    <div class="header">
+        <h1>Print Templates</h1>
+        <p class="subtitle">Stationery, collateral, and print specifications for Grupo Solmex</p>
+    </div>
+    
+    <div class="container">
+        <!-- Template Gallery -->
+        <div class="section">
+            <h2 class="section-title">Stationery System</h2>
+            <div class="template-grid">
+                <div class="template-card">
+                    <div class="template-preview business-card-preview">
+                        <div class="bc-mock">
+                            <div class="bc-logo"></div>
+                            <div class="bc-name">CARLOS MENDOZA</div>
+                            <div class="bc-title">Director de Operaciones</div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Business Cards</div>
+                        <div class="template-specs">90×50mm | 400gsm matte</div>
+                        <ul class="template-features">
+                            <li>Soft-touch lamination</li>
+                            <li>Spot UV on logo</li>
+                            <li>Gradient edge painting</li>
+                            <li>45° corner accent</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-preview letterhead-preview">
+                        <div class="lh-mock">
+                            <div class="lh-logo"></div>
+                            <div class="lh-line"></div>
+                            <div class="lh-line"></div>
+                            <div class="lh-line"></div>
+                            <div class="lh-line"></div>
+                            <div class="lh-line"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Letterhead</div>
+                        <div class="template-specs">A4 (210×297mm) | 120gsm uncoated</div>
+                        <ul class="template-features">
+                            <li>5% logo watermark</li>
+                            <li>30mm top margin</li>
+                            <li>20mm side margins</li>
+                            <li>Gradient header bar</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-preview folder-preview">
+                        <div class="folder-mock">
+                            <div class="folder-logo"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Corporate Folder</div>
+                        <div class="template-specs">A4 with 10mm spine</div>
+                        <ul class="template-features">
+                            <li>Matte lamination exterior</li>
+                            <li>Uncoated interior</li>
+                            <li>Die-cut 45° corner</li>
+                            <li>Business card slot</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="template-card">
+                    <div class="template-preview envelope-preview">
+                        <div class="env-mock">
+                            <div class="env-logo"></div>
+                        </div>
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">Envelopes</div>
+                        <div class="template-specs">DL (220×110mm) | 100gsm</div>
+                        <ul class="template-features">
+                            <li>Window option available</li>
+                            <li>Peel & seal closure</li>
+                            <li>Gradient bottom stripe</li>
+                            <li>Logo on flap</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Print Specifications -->
+        <div class="section">
+            <h2 class="section-title">Print Specifications</h2>
+            <div class="card">
+                <div class="card-title">Technical Requirements</div>
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Specification</th>
+                            <th>Value</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Resolution</td>
+                            <td>300 DPI minimum</td>
+                            <td>At final print size</td>
+                        </tr>
+                        <tr>
+                            <td>Color Mode</td>
+                            <td>CMYK</td>
+                            <td>Convert from RGB before export</td>
+                        </tr>
+                        <tr>
+                            <td>Bleed</td>
+                            <td>3mm all sides</td>
+                            <td>Extend backgrounds to bleed</td>
+                        </tr>
+                        <tr>
+                            <td>Safe Zone</td>
+                            <td>5mm from trim</td>
+                            <td>Keep text and logos inside</td>
+                        </tr>
+                        <tr>
+                            <td>Rich Black</td>
+                            <td>C60 M40 Y40 K100</td>
+                            <td>For large solid areas only</td>
+                        </tr>
+                        <tr>
+                            <td>File Format</td>
+                            <td>PDF/X-1a or PDF/X-4</td>
+                            <td>Embed fonts, flatten transparency</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Color Specifications -->
+        <div class="section">
+            <h2 class="section-title">Print Color Specifications</h2>
+            <div class="card">
+                <div class="card-title">Spot & Process Colors</div>
+                <div class="color-specs">
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Solmex Orange (Spot)</div>
+                        <div class="color-spec-value">PANTONE 1505 C<br>PANTONE 1505 U</div>
+                    </div>
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Solmex Orange (CMYK)</div>
+                        <div class="color-spec-value">C0 M50 Y85 K0</div>
+                    </div>
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Solmex Yellow (Spot)</div>
+                        <div class="color-spec-value">PANTONE 116 C<br>PANTONE 116 U</div>
+                    </div>
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Solmex Yellow (CMYK)</div>
+                        <div class="color-spec-value">C0 M15 Y95 K0</div>
+                    </div>
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Carbon Black</div>
+                        <div class="color-spec-value">C70 M60 Y50 K90</div>
+                    </div>
+                    <div class="color-spec-card">
+                        <div class="color-spec-title">Metallic Option</div>
+                        <div class="color-spec-value">PANTONE 871 C (Gold)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Paper Specifications -->
+        <div class="section">
+            <h2 class="section-title">Paper & Finishing</h2>
+            <div class="card">
+                <div class="card-title">Recommended Materials</div>
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>Paper Stock</th>
+                            <th>Finish</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Business Cards</td>
+                            <td>400gsm Matte Art</td>
+                            <td>Soft-touch lamination + Spot UV</td>
+                        </tr>
+                        <tr>
+                            <td>Letterhead</td>
+                            <td>120gsm Uncoated</td>
+                            <td>Natural finish</td>
+                        </tr>
+                        <tr>
+                            <td>Folders</td>
+                            <td>350gsm Matte Art</td>
+                            <td>Matte lamination + Die-cut</td>
+                        </tr>
+                        <tr>
+                            <td>Brochures</td>
+                            <td>170gsm Silk</td>
+                            <td>Silk finish or soft-touch</td>
+                        </tr>
+                        <tr>
+                            <td>Premium Collateral</td>
+                            <td>300gsm Cotton</td>
+                            <td>Letterpress + Foil stamp</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Download Section -->
+        <div class="download-section">
+            <div class="download-title">Download Print Templates</div>
+            <div class="download-desc">Get all print-ready templates in Adobe InDesign and PDF formats</div>
+            <button class="download-btn">Download Template Pack</button>
+        </div>
+    </div>
+</body>
+</html>
+

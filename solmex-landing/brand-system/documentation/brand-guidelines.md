@@ -44,10 +44,20 @@ Ser la red logística más confiable y transparente de México, estableciendo el
 ## Logo Usage
 
 ### Primary Logo
-The Grupo Solmex logo consists of a perfect circle with a 45° diagonal cut at the bottom-right corner, filled with a gradient from Solmex Orange (#FF943B) to Solmex Sunrise (#FFD91C).
+The Grupo Solmex logo consists of two interlocking stylized "S" shapes that form a dynamic, flowing symbol representing connectivity, movement, and the seamless flow of logistics operations. The mark features a gradient from Solmex Orange (#FF943B/#FF9C37) to Solmex Sunrise (#FFD91C/#FFD81C), with a white circular accent at the center representing precision and clarity.
+
+The logo symbolizes:
+- **Connectivity** - The interlocking forms represent the unified network of terminals
+- **Flow** - The curved lines suggest smooth, continuous logistics operations
+- **Partnership** - The two elements working together as one cohesive system
+
+### Logo Variants
+- **Square Mark**: The icon-only version for app icons, favicons, and small applications
+- **Full Logo**: The mark combined with "GRUPO SOLMEX" wordmark and tagline
+- **Text Only**: The wordmark "GRUPO SOLMEX" with subtitle for horizontal applications
 
 ### Clear Space
-Maintain a minimum clear space around the logo equal to the height of the diagonal cut (approximately 25% of the logo diameter).
+Maintain a minimum clear space around the logo equal to 25% of the logo's height on all sides.
 
 ### Minimum Sizes
 - **Digital**: 16px minimum height
