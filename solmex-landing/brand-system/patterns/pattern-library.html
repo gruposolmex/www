@@ -4,44 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo Solmex - Pattern Library</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
             --solmex-orange: #FF943B;
             --solmex-sunrise: #FFD91C;
-            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
             --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
             --steel-gray: #2C3E44;
             --concrete: #8B9197;
+            --aluminum: #B0B5BA;
             --mist: #E4E7E9;
             --polar: #F8F9FA;
         }
         
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--polar);
-            color: var(--carbon-black);
+            background: var(--carbon-black);
+            color: white;
             line-height: 1.6;
         }
         
         .nav-back {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: white;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 10px 16px;
             border-radius: 8px;
             text-decoration: none;
-            color: var(--steel-gray);
+            color: var(--concrete);
             font-weight: 500;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 13px;
             transition: all 0.2s;
             z-index: 100;
         }
@@ -51,388 +50,720 @@
             color: white;
         }
         
-        .header {
-            background: var(--carbon-black);
-            padding: 80px 40px 60px;
-            color: white;
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
         }
         
-        .header h1 {
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255, 148, 59, 0.03) 40px,
+                    rgba(255, 148, 59, 0.03) 80px
+                );
+        }
+        
+        .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 48px;
+            font-size: 14px;
             font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
             margin-bottom: 16px;
-            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
         }
         
-        .header .subtitle {
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-sub {
             font-size: 18px;
             color: var(--concrete);
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 60px 40px;
+            padding: 0 40px;
         }
         
         .section {
-            margin-bottom: 80px;
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 48px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
         }
         
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 600;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--mist);
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
         }
         
+        .section-desc {
+            font-size: 15px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        /* Pattern Grid */
         .pattern-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
         
         .pattern-card {
-            background: white;
-            border-radius: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .pattern-card:hover {
+            border-color: rgba(255, 148, 59, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .pattern-card.featured {
+            grid-column: span 2;
         }
         
         .pattern-preview {
-            height: 200px;
+            height: 240px;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .pattern-card.featured .pattern-preview {
+            height: 320px;
         }
         
         .pattern-info {
             padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
         
         .pattern-name {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 8px;
         }
         
         .pattern-desc {
-            font-size: 14px;
-            color: var(--steel-gray);
-        }
-        
-        .pattern-usage {
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid var(--mist);
-            font-size: 12px;
+            font-size: 13px;
             color: var(--concrete);
+            margin-bottom: 16px;
         }
         
-        /* Patterns */
-        .pattern-diagonal {
+        .pattern-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .pattern-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            padding: 4px 10px;
+            background: rgba(255, 148, 59, 0.1);
+            border-radius: 4px;
+            color: var(--solmex-orange);
+        }
+        
+        /* Individual Patterns */
+        .pattern-45-stripes {
             background: 
                 repeating-linear-gradient(
                     45deg,
                     transparent,
-                    transparent 10px,
-                    rgba(255, 148, 59, 0.1) 10px,
-                    rgba(255, 148, 59, 0.1) 20px
+                    transparent 20px,
+                    rgba(255, 148, 59, 0.15) 20px,
+                    rgba(255, 148, 59, 0.15) 40px
                 );
-            background-color: var(--polar);
         }
         
-        .pattern-dots {
+        .pattern-dot-grid {
             background-image: 
-                radial-gradient(circle, var(--solmex-orange) 1.5px, transparent 1.5px);
+                radial-gradient(rgba(255, 148, 59, 0.3) 1.5px, transparent 1.5px);
             background-size: 24px 24px;
-            background-color: var(--polar);
         }
         
-        .pattern-grid-lines {
-            background-image: 
-                linear-gradient(rgba(255, 148, 59, 0.15) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 148, 59, 0.15) 1px, transparent 1px);
-            background-size: 24px 24px;
-            background-color: var(--polar);
+        .pattern-tech-grid {
+            background: 
+                linear-gradient(rgba(255, 148, 59, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 148, 59, 0.1) 1px, transparent 1px);
+            background-size: 48px 48px;
         }
         
-        .pattern-gradient-fade {
-            background: linear-gradient(135deg, 
-                rgba(255, 148, 59, 0.2) 0%, 
-                rgba(255, 217, 28, 0.1) 50%,
-                transparent 100%);
-            background-color: var(--polar);
+        .pattern-radial {
+            background: 
+                repeating-radial-gradient(
+                    circle at center,
+                    transparent 0,
+                    transparent 20px,
+                    rgba(255, 148, 59, 0.08) 20px,
+                    rgba(255, 148, 59, 0.08) 40px
+                );
         }
         
-        .pattern-topographic {
+        .pattern-corner-cut {
+            position: relative;
+            background: linear-gradient(135deg, var(--graphite) 0%, var(--carbon-black) 100%);
+        }
+        
+        .pattern-corner-cut::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 80px 80px;
+            border-color: transparent transparent rgba(255, 148, 59, 0.3) transparent;
+        }
+        
+        .pattern-noise {
+            background-color: var(--graphite);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+        }
+        
+        .pattern-gradient-mesh {
+            background: 
+                linear-gradient(45deg, rgba(255, 148, 59, 0.2) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(255, 148, 59, 0.2) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(255, 217, 28, 0.2) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(255, 217, 28, 0.2) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+        }
+        
+        .pattern-flow-lines {
             background: var(--carbon-black);
             position: relative;
             overflow: hidden;
         }
         
-        .pattern-topographic::before {
+        .pattern-flow-lines::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background-image: 
-                repeating-radial-gradient(
-                    circle at 50% 50%,
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
                     transparent,
-                    transparent 20px,
-                    rgba(255, 148, 59, 0.1) 21px,
-                    rgba(255, 148, 59, 0.1) 22px
+                    transparent 40px,
+                    rgba(255, 148, 59, 0.05) 40px,
+                    rgba(255, 148, 59, 0.05) 41px
+                );
+            transform: rotate(15deg);
+        }
+        
+        /* Theme Variants */
+        .variant-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .variant-card {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .variant-preview {
+            height: 200px;
+            position: relative;
+        }
+        
+        .variant-label {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 6px 12px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 6px;
+            backdrop-filter: blur(4px);
+        }
+        
+        /* Light variants */
+        .pattern-45-stripes-light {
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    white,
+                    white 20px,
+                    rgba(255, 148, 59, 0.1) 20px,
+                    rgba(255, 148, 59, 0.1) 40px
                 );
         }
         
-        .pattern-chevron {
-            background: 
-                linear-gradient(135deg, var(--polar) 25%, transparent 25%),
-                linear-gradient(225deg, var(--polar) 25%, transparent 25%),
-                linear-gradient(45deg, var(--polar) 25%, transparent 25%),
-                linear-gradient(315deg, var(--polar) 25%, rgba(255, 148, 59, 0.1) 25%);
-            background-size: 40px 40px;
-            background-color: rgba(255, 148, 59, 0.1);
+        .pattern-dot-grid-light {
+            background-color: white;
+            background-image: 
+                radial-gradient(rgba(255, 148, 59, 0.4) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
         }
         
-        .pattern-noise {
-            background: var(--polar);
-            position: relative;
+        /* Usage Examples */
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
         
-        .pattern-noise::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-        }
-        
-        .pattern-corner-accent {
-            background: var(--polar);
-            position: relative;
-        }
-        
-        .pattern-corner-accent::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: var(--gradient-primary);
-            clip-path: polygon(100% 0, 0 0, 100% 100%);
-        }
-        
-        .large-preview {
-            background: white;
+        .example-card {
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
         }
         
-        .large-preview-area {
-            height: 300px;
+        .example-preview {
+            height: 180px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px;
         }
         
-        .demo-card {
-            background: white;
-            padding: 32px;
+        .example-content {
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             text-align: center;
-            max-width: 300px;
+            max-width: 200px;
         }
         
-        .demo-card h3 {
+        .example-content h4 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
+            font-size: 16px;
             margin-bottom: 8px;
         }
         
-        .demo-card p {
-            color: var(--steel-gray);
-            font-size: 14px;
-            margin-bottom: 16px;
+        .example-content p {
+            font-size: 12px;
+            color: var(--concrete);
         }
         
-        .demo-btn {
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
+        .example-info {
+            padding: 16px;
+            background: var(--graphite);
         }
         
-        .code-block {
-            background: var(--carbon-black);
-            color: #E4E7E9;
-            padding: 24px;
-            border-radius: 12px;
-            font-family: 'SF Mono', 'Monaco', monospace;
+        .example-name {
             font-size: 13px;
-            line-height: 1.8;
-            overflow-x: auto;
-            margin-top: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
         
-        .code-comment { color: var(--concrete); }
-        .code-property { color: var(--solmex-orange); }
-        .code-value { color: var(--solmex-sunrise); }
+        .example-use {
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        /* CSS Code */
+        .code-block {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--concrete);
+        }
+        
+        .code-comment {
+            color: var(--iron);
+        }
+        
+        .code-selector {
+            color: var(--solmex-orange);
+        }
+        
+        .code-property {
+            color: var(--aluminum);
+        }
+        
+        .code-value {
+            color: var(--solmex-sunrise);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
+        }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    <a href="../index.html" class="nav-back">← Brand System</a>
     
-    <div class="header">
-        <h1>Pattern Library</h1>
-        <p class="subtitle">Visual patterns and textures for Grupo Solmex brand applications</p>
-    </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-title">Pattern Library</div>
+        <h1 class="hero-headline">Industrial Textures</h1>
+        <p class="hero-sub">Patterns derived from the Solmex logo geometry—45° angles, radial forms, and technical grids that reinforce brand identity.</p>
+    </section>
     
     <div class="container">
-        <!-- Pattern Overview -->
-        <div class="section">
-            <h2 class="section-title">Brand Patterns</h2>
-            <p style="color: var(--steel-gray); margin-bottom: 32px;">These patterns add visual interest while maintaining brand consistency. Use sparingly to enhance backgrounds and create depth.</p>
+        <!-- Primary Patterns -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Core Patterns</div>
+                <h2 class="section-title">Signature Textures</h2>
+                <p class="section-desc">Primary patterns extracted from logo construction. Use these to add visual interest while maintaining brand consistency.</p>
+            </div>
             
             <div class="pattern-grid">
-                <div class="pattern-card">
-                    <div class="pattern-preview pattern-diagonal"></div>
+                <div class="pattern-card featured">
+                    <div class="pattern-preview pattern-45-stripes"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">45° Diagonal Lines</div>
-                        <div class="pattern-desc">Subtle diagonal stripes at the brand's signature 45° angle.</div>
-                        <div class="pattern-usage">Use: Section backgrounds, headers</div>
+                        <div class="pattern-name">45° Diagonal Stripes</div>
+                        <div class="pattern-desc">The signature Solmex pattern derived from the logo's diagonal flow. Use as primary background texture for hero sections and marketing materials.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">hero</span>
+                            <span class="pattern-tag">marketing</span>
+                            <span class="pattern-tag">print</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="pattern-card">
-                    <div class="pattern-preview pattern-dots"></div>
+                    <div class="pattern-preview pattern-radial"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Dot Grid</div>
-                        <div class="pattern-desc">Evenly spaced dots on an 8px baseline grid.</div>
-                        <div class="pattern-usage">Use: Presentation slides, technical documents</div>
+                        <div class="pattern-name">Radial Rings</div>
+                        <div class="pattern-desc">Concentric circles inspired by the logo's central nexus. Use for focus areas and data visualization backgrounds.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">dashboard</span>
+                            <span class="pattern-tag">focus</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="pattern-card">
-                    <div class="pattern-preview pattern-grid-lines"></div>
+                    <div class="pattern-preview pattern-dot-grid"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Grid Lines</div>
-                        <div class="pattern-desc">Clean orthogonal grid suggesting precision.</div>
-                        <div class="pattern-usage">Use: Technical specifications, data displays</div>
+                        <div class="pattern-name">Precision Dot Grid</div>
+                        <div class="pattern-desc">Engineering-inspired dot matrix for technical applications and form backgrounds.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">forms</span>
+                            <span class="pattern-tag">technical</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="pattern-card">
-                    <div class="pattern-preview pattern-gradient-fade"></div>
+                    <div class="pattern-preview pattern-tech-grid"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Gradient Fade</div>
-                        <div class="pattern-desc">Soft gradient wash adding warmth and depth.</div>
-                        <div class="pattern-usage">Use: Hero sections, feature highlights</div>
+                        <div class="pattern-name">Technical Grid</div>
+                        <div class="pattern-desc">Precise grid lines for data-heavy interfaces and technical documentation.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">data</span>
+                            <span class="pattern-tag">charts</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="pattern-card">
-                    <div class="pattern-preview pattern-topographic"></div>
+                <div class="pattern-card featured">
+                    <div class="pattern-preview pattern-corner-cut"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Topographic</div>
-                        <div class="pattern-desc">Concentric circles suggesting movement and logistics.</div>
-                        <div class="pattern-usage">Use: Dark backgrounds, premium materials</div>
-                    </div>
-                </div>
-                
-                <div class="pattern-card">
-                    <div class="pattern-preview pattern-chevron"></div>
-                    <div class="pattern-info">
-                        <div class="pattern-name">Chevron</div>
-                        <div class="pattern-desc">Directional pattern indicating progress.</div>
-                        <div class="pattern-usage">Use: Progress sections, call-to-action areas</div>
+                        <div class="pattern-name">Corner Cut Accent</div>
+                        <div class="pattern-desc">A signature visual element derived from the logo's geometric cut. Use as card accents and container decorations.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">cards</span>
+                            <span class="pattern-tag">accent</span>
+                            <span class="pattern-tag">containers</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="pattern-card">
                     <div class="pattern-preview pattern-noise"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Subtle Noise</div>
-                        <div class="pattern-desc">Texture overlay adding depth to flat colors.</div>
-                        <div class="pattern-usage">Use: Hero images, photography overlays</div>
+                        <div class="pattern-name">Industrial Noise</div>
+                        <div class="pattern-desc">Subtle texture overlay that adds depth and industrial character to solid backgrounds.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">overlay</span>
+                            <span class="pattern-tag">texture</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="pattern-card">
-                    <div class="pattern-preview pattern-corner-accent"></div>
+                    <div class="pattern-preview pattern-gradient-mesh"></div>
                     <div class="pattern-info">
-                        <div class="pattern-name">Corner Accent</div>
-                        <div class="pattern-desc">Triangular corner element echoing the logo cut.</div>
-                        <div class="pattern-usage">Use: Cards, documents, certificates</div>
+                        <div class="pattern-name">Gradient Mesh</div>
+                        <div class="pattern-desc">Geometric mesh pattern using brand gradient colors for premium backgrounds.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">premium</span>
+                            <span class="pattern-tag">background</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pattern-card">
+                    <div class="pattern-preview pattern-flow-lines"></div>
+                    <div class="pattern-info">
+                        <div class="pattern-name">Flow Lines</div>
+                        <div class="pattern-desc">Subtle angled lines suggesting movement and logistics flow.</div>
+                        <div class="pattern-tags">
+                            <span class="pattern-tag">subtle</span>
+                            <span class="pattern-tag">motion</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Usage Example -->
-        <div class="section">
-            <h2 class="section-title">Pattern in Context</h2>
-            <div class="large-preview">
-                <div class="large-preview-area pattern-gradient-fade">
-                    <div class="demo-card">
-                        <h3>Terminal Network</h3>
-                        <p>98.7% availability across all certified terminals</p>
-                        <button class="demo-btn">View Dashboard</button>
-                    </div>
-                </div>
+        <!-- Theme Variants -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Theme Variants</div>
+                <h2 class="section-title">Light & Dark Modes</h2>
+                <p class="section-desc">All patterns are available in both dark and light variants for different application contexts.</p>
             </div>
             
-            <div class="large-preview">
-                <div class="large-preview-area pattern-topographic">
-                    <div class="demo-card">
-                        <h3>Real-Time Tracking</h3>
-                        <p>Complete visibility of your logistics operations</p>
-                        <button class="demo-btn">Track Shipment</button>
+            <div class="variant-grid">
+                <div class="variant-card">
+                    <div class="variant-preview pattern-45-stripes">
+                        <span class="variant-label">Dark Mode</span>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview pattern-45-stripes-light">
+                        <span class="variant-label" style="color: var(--steel-gray);">Light Mode</span>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview pattern-dot-grid">
+                        <span class="variant-label">Dark Mode</span>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview pattern-dot-grid-light">
+                        <span class="variant-label" style="color: var(--steel-gray);">Light Mode</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- CSS Code -->
-        <div class="section">
-            <h2 class="section-title">Implementation</h2>
-            <div class="code-block">
-                <span class="code-comment">/* Diagonal Lines Pattern */</span><br>
-                .pattern-diagonal {<br>
-                &nbsp;&nbsp;<span class="code-property">background:</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">repeating-linear-gradient(</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">45deg,</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">transparent,</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">transparent 10px,</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">rgba(255, 148, 59, 0.1) 10px,</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">rgba(255, 148, 59, 0.1) 20px</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">)</span>;<br>
-                }<br><br>
-                <span class="code-comment">/* Dot Grid Pattern */</span><br>
-                .pattern-dots {<br>
-                &nbsp;&nbsp;<span class="code-property">background-image:</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">radial-gradient(circle, #FF943B 1.5px, transparent 1.5px)</span>;<br>
-                &nbsp;&nbsp;<span class="code-property">background-size:</span> <span class="code-value">24px 24px</span>;<br>
-                }<br><br>
-                <span class="code-comment">/* Grid Lines Pattern */</span><br>
-                .pattern-grid {<br>
-                &nbsp;&nbsp;<span class="code-property">background-image:</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">linear-gradient(rgba(255, 148, 59, 0.15) 1px, transparent 1px),</span><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-value">linear-gradient(90deg, rgba(255, 148, 59, 0.15) 1px, transparent 1px)</span>;<br>
-                &nbsp;&nbsp;<span class="code-property">background-size:</span> <span class="code-value">24px 24px</span>;<br>
-                }
+        <!-- Usage Examples -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Application</div>
+                <h2 class="section-title">In Context</h2>
+                <p class="section-desc">Examples of patterns applied in real interface contexts.</p>
             </div>
-        </div>
+            
+            <div class="usage-examples">
+                <div class="example-card">
+                    <div class="example-preview pattern-45-stripes">
+                        <div class="example-content">
+                            <h4>Hero Section</h4>
+                            <p>Main landing page header with content overlay</p>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <div class="example-name">Marketing Hero</div>
+                        <div class="example-use">45° stripes at 15% opacity</div>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-preview pattern-tech-grid">
+                        <div class="example-content">
+                            <h4>Dashboard</h4>
+                            <p>Data visualization canvas</p>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <div class="example-name">Analytics Background</div>
+                        <div class="example-use">Tech grid at 10% opacity</div>
+                    </div>
+                </div>
+                
+                <div class="example-card">
+                    <div class="example-preview pattern-dot-grid">
+                        <div class="example-content">
+                            <h4>Form Input</h4>
+                            <p>User input areas</p>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <div class="example-name">Form Background</div>
+                        <div class="example-use">Dot grid at 30% opacity</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CSS Implementation -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Implementation</div>
+                <h2 class="section-title">CSS Code</h2>
+                <p class="section-desc">Copy these CSS snippets to implement patterns in your projects.</p>
+            </div>
+            
+            <div class="code-block">
+                <pre><span class="code-comment">/* 45° Diagonal Stripes - Solmex Signature Pattern */</span>
+<span class="code-selector">.pattern-stripes</span> {
+  <span class="code-property">background:</span> <span class="code-value">repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    rgba(255, 148, 59, 0.15) 20px,
+    rgba(255, 148, 59, 0.15) 40px
+  )</span>;
+}
+
+<span class="code-comment">/* Precision Dot Grid */</span>
+<span class="code-selector">.pattern-dots</span> {
+  <span class="code-property">background-image:</span> <span class="code-value">radial-gradient(
+    rgba(255, 148, 59, 0.3) 1.5px,
+    transparent 1.5px
+  )</span>;
+  <span class="code-property">background-size:</span> <span class="code-value">24px 24px</span>;
+}
+
+<span class="code-comment">/* Technical Grid */</span>
+<span class="code-selector">.pattern-grid</span> {
+  <span class="code-property">background:</span> 
+    <span class="code-value">linear-gradient(rgba(255, 148, 59, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 148, 59, 0.1) 1px, transparent 1px)</span>;
+  <span class="code-property">background-size:</span> <span class="code-value">48px 48px</span>;
+}
+
+<span class="code-comment">/* Radial Rings */</span>
+<span class="code-selector">.pattern-radial</span> {
+  <span class="code-property">background:</span> <span class="code-value">repeating-radial-gradient(
+    circle at center,
+    transparent 0,
+    transparent 20px,
+    rgba(255, 148, 59, 0.08) 20px,
+    rgba(255, 148, 59, 0.08) 40px
+  )</span>;
+}
+
+<span class="code-comment">/* Corner Cut Accent */</span>
+<span class="code-selector">.pattern-corner</span>::after {
+  <span class="code-property">content:</span> <span class="code-value">''</span>;
+  <span class="code-property">position:</span> <span class="code-value">absolute</span>;
+  <span class="code-property">bottom:</span> <span class="code-value">0</span>;
+  <span class="code-property">right:</span> <span class="code-value">0</span>;
+  <span class="code-property">border-style:</span> <span class="code-value">solid</span>;
+  <span class="code-property">border-width:</span> <span class="code-value">0 0 60px 60px</span>;
+  <span class="code-property">border-color:</span> <span class="code-value">transparent transparent rgba(255, 148, 59, 0.3) transparent</span>;
+}</pre>
+            </div>
+        </section>
+        
+        <!-- Usage Guidelines -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">05 — Guidelines</div>
+                <h2 class="section-title">Best Practices</h2>
+                <p class="section-desc">Rules for using patterns effectively while maintaining brand integrity.</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+                <div>
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; color: #16A34A; margin-bottom: 16px;">✓ Do</h3>
+                    <ul style="color: var(--aluminum); font-size: 14px; line-height: 2.2; list-style: none;">
+                        <li>• Use patterns at low opacity (10-30%) as subtle textures</li>
+                        <li>• Ensure content remains readable over patterned backgrounds</li>
+                        <li>• Maintain consistent pattern scales across similar elements</li>
+                        <li>• Use corner cuts on cards and containers for brand accent</li>
+                        <li>• Apply noise overlay to add depth to solid backgrounds</li>
+                        <li>• Use 45° stripes for primary marketing materials</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 18px; color: #DC2626; margin-bottom: 16px;">✕ Don't</h3>
+                    <ul style="color: var(--aluminum); font-size: 14px; line-height: 2.2; list-style: none;">
+                        <li>• Never use patterns at full opacity—they should be subtle</li>
+                        <li>• Don't combine multiple patterns in close proximity</li>
+                        <li>• Avoid patterns that compete with important content</li>
+                        <li>• Don't use non-brand colors in pattern fills</li>
+                        <li>• Avoid changing pattern angles (stick to 45° and 90°)</li>
+                        <li>• Don't stretch or distort patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
+    
+    <footer class="footer">
+        <img src="../logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
 </body>
 </html>
-

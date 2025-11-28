@@ -1,293 +1,417 @@
 # Grupo Solmex Brand Guidelines
-## Version 1.0 | 2025
+
+**Version 2.0** | November 2025
 
 ---
 
 ## Table of Contents
 
-1. [Brand Foundation](#brand-foundation)
-2. [Logo Usage](#logo-usage)
+1. [Brand Overview](#brand-overview)
+2. [Logo System](#logo-system)
 3. [Color System](#color-system)
 4. [Typography](#typography)
 5. [Iconography](#iconography)
-6. [Photography](#photography)
-7. [Digital Applications](#digital-applications)
-8. [Print Collateral](#print-collateral)
-9. [Environmental Design](#environmental-design)
-10. [Brand Voice](#brand-voice)
+6. [Pattern Library](#pattern-library)
+7. [UI Components](#ui-components)
+8. [Motion & Animation](#motion--animation)
+9. [Photography](#photography)
+10. [Print System](#print-system)
+11. [Environmental Design](#environmental-design)
+12. [Social & Marketing](#social--marketing)
 
 ---
 
-## Brand Foundation
+## Brand Overview
 
-### Mission
-Grupo Solmex opera como el coordinador logístico inteligente de México, unificando terminales certificadas bajo un estándar de excelencia operacional.
+### Brand Essence
 
-### Vision
-Ser la red logística más confiable y transparente de México, estableciendo el estándar para operaciones industriales inteligentes.
+Grupo Solmex is an **Intelligent Logistics Operator** serving Mexico's industrial corridors. Our brand communicates:
 
-### Core Values
-- **Precisión** - Zero defectos en cada operación
-- **Transparencia** - Visibilidad total en tiempo real
-- **Confiabilidad** - 98.7% de disponibilidad garantizada
-- **Inteligencia** - Decisiones basadas en datos
+- **Reliability** — Consistent, dependable operations
+- **Precision** — Engineered accuracy in every detail
+- **Industrial Discipline** — Professional, systematic approach
+- **Network Intelligence** — Smart, connected logistics
+- **Operational Trust** — Transparent, verifiable execution
 
-### Brand Personality
-- Industrial
-- Minimal
-- Preciso
-- Confiable
-- Autoritativo
+### Brand Positioning
+
+> "Industrial-grade Apple + modern rail logistics"
+
+Our visual identity balances rugged industrial heritage with modern technological sophistication. We are confident without being arrogant, technical without being cold, and professional without being generic.
+
+### Brand Tone
+
+- Strong and sharp
+- Minimal and confident
+- Engineered and technical
+- Rugged infrastructure meets modern intelligence
 
 ---
 
-## Logo Usage
+## Logo System
 
-### Primary Logo
-The Grupo Solmex logo consists of two interlocking stylized "S" shapes that form a dynamic, flowing symbol representing connectivity, movement, and the seamless flow of logistics operations. The mark features a gradient from Solmex Orange (#FF943B/#FF9C37) to Solmex Sunrise (#FFD91C/#FFD81C), with a white circular accent at the center representing precision and clarity.
+### Logo Construction
 
-The logo symbolizes:
-- **Connectivity** - The interlocking forms represent the unified network of terminals
-- **Flow** - The curved lines suggest smooth, continuous logistics operations
-- **Partnership** - The two elements working together as one cohesive system
+The Solmex mark consists of two interlocking "S" forms representing the seamless flow of intelligent logistics networks.
+
+#### Anatomy
+
+1. **Upper Flow Element** — Represents outbound logistics flow
+2. **Lower Flow Element** — Represents inbound logistics, completing the cycle
+3. **Central Nexus** — White circular core representing the command center
+4. **Gradient Energy** — Vertical gradient from Orange (#FF9C37) to Gold (#FFD81C)
+
+### Geometry
+
+| Property | Value |
+|----------|-------|
+| Aspect Ratio | 1.225:1 (489×399px) |
+| Gradient Angle | 90° (vertical) |
+| Flow Angle | 45° diagonal |
+| Core Diameter | 20% of height |
+| Mirror Rotation | 180° |
 
 ### Logo Variants
-- **Square Mark**: The icon-only version for app icons, favicons, and small applications
-- **Full Logo**: The mark combined with "GRUPO SOLMEX" wordmark and tagline
-- **Text Only**: The wordmark "GRUPO SOLMEX" with subtitle for horizontal applications
+
+1. **Primary Isotype** — Default mark for all primary applications
+2. **Full Logo + Wordmark** — Headers, documents, formal materials
+3. **Horizontal Wordmark** — Navigation, footers, constrained spaces
+4. **Monochrome White** — Brand backgrounds, overlays
+5. **Monochrome Dark** — Single-color printing, watermarks
 
 ### Clear Space
-Maintain a minimum clear space around the logo equal to 25% of the logo's height on all sides.
+
+Minimum clear space equals **25% of the mark's height** on all sides.
 
 ### Minimum Sizes
-- **Digital**: 16px minimum height
-- **Print**: 8mm minimum height
-- **Signage**: 30mm minimum height
+
+| Context | Minimum Size |
+|---------|-------------|
+| Digital (favicon) | 24px |
+| Digital (standard) | 32px |
+| Print | 10mm |
+| Signage (outdoor) | 50mm |
 
 ### Logo Don'ts
-- ❌ Do not rotate the logo
-- ❌ Do not change the gradient angle
-- ❌ Do not apply effects or shadows
-- ❌ Do not alter the proportions
-- ❌ Do not place on busy backgrounds
 
-### Acceptable Variations
-- **Full Color**: Primary gradient version
-- **Monotone**: Single color for single-color printing
-- **Reversed**: White on dark backgrounds
-- **Watermark**: 10% opacity for document backgrounds
+- ✕ Do not rotate
+- ✕ Do not stretch or distort
+- ✕ Do not add effects (shadows, glows)
+- ✕ Do not change colors
+- ✕ Do not outline or stroke
+- ✕ Do not use on busy backgrounds
 
 ---
 
 ## Color System
 
-### Primary Palette
+### Primary Brand Spectrum
 
-#### Brand Gradient Colors
-```
-SOLMEX ORANGE    #FF943B    RGB(255, 148, 59)     Primary
-SOLMEX AMBER     #FFAD5C    RGB(255, 173, 92)     Mid-gradient
-SOLMEX GOLD      #FFC67D    RGB(255, 198, 125)    Highlight
-SOLMEX SUNRISE   #FFD91C    RGB(255, 217, 28)     Secondary
+| Color | HEX | RGB | CMYK | Pantone |
+|-------|-----|-----|------|---------|
+| Solmex Orange | #FF943B | 255, 148, 59 | 0, 50, 85, 0 | 151 C |
+| Solmex Orange Alt | #FF9C37 | 255, 156, 55 | 0, 47, 83, 0 | 1375 C |
+| Solmex Amber | #FFAD5C | 255, 173, 92 | 0, 36, 68, 0 | 1365 C |
+| Solmex Gold | #FFC67D | 255, 198, 125 | 0, 26, 55, 0 | 134 C |
+| Solmex Sunrise | #FFD91C | 255, 217, 28 | 0, 12, 92, 0 | 116 C |
+
+### Gradients
+
+```css
+/* Primary (Vertical) */
+linear-gradient(180deg, #FF9C37 0%, #FFD81C 100%)
+
+/* Diagonal */
+linear-gradient(45deg, #FF943B 0%, #FFD91C 100%)
+
+/* Horizontal */
+linear-gradient(90deg, #FF943B 0%, #FFD91C 100%)
+
+/* Radial */
+radial-gradient(circle, #FFD91C 0%, #FF943B 100%)
 ```
 
-#### Neutral Colors
-```
-CARBON BLACK     #0A0A0A    RGB(10, 10, 10)       Primary text
-STEEL GRAY       #2C3E44    RGB(44, 62, 68)       Secondary text
-CONCRETE         #8B9197    RGB(139, 145, 151)    Tertiary
-MIST             #E4E7E9    RGB(228, 231, 233)    Borders
-POLAR            #F8F9FA    RGB(248, 249, 250)    Backgrounds
-```
+### Industrial Neutrals
 
-#### Semantic Colors
-```
-SIGNAL RED       #DC2626    RGB(220, 38, 38)      Errors/Critical
-SAFETY GREEN     #16A34A    RGB(22, 163, 74)      Success/Safe
-```
+| Color | HEX | RGB | Use |
+|-------|-----|-----|-----|
+| Carbon Black | #0A0A0A | 10, 10, 10 | Primary backgrounds |
+| Graphite | #1A1A1A | 26, 26, 26 | Surface backgrounds |
+| Steel Gray | #2C3E44 | 44, 62, 68 | Primary neutral |
+| Iron | #4A5568 | 74, 85, 104 | Secondary text |
+| Concrete | #8B9197 | 139, 145, 151 | Body text |
+| Aluminum | #B0B5BA | 176, 181, 186 | Muted elements |
+| Mist | #E4E7E9 | 228, 231, 233 | Borders |
+| Polar | #F8F9FA | 248, 249, 250 | Light backgrounds |
 
-### Color Usage Rules
+### Semantic Colors
 
-#### Distribution
-- 60% Neutral tones (backgrounds, text, UI elements)
-- 30% Primary orange/gradient (CTAs, highlights, branding)
-- 10% Accent colors (alerts, status indicators)
+| Color | HEX | Use |
+|-------|-----|-----|
+| Signal Red | #DC2626 | Errors, alerts, critical |
+| Safety Green | #16A34A | Success, operational |
+| Warning Amber | #F59E0B | Caution, pending |
+| Info Blue | #3B82F6 | Information, links |
 
-#### Accessibility
-All text must meet WCAG AA standards minimum:
-- Small text (< 18px): 4.5:1 contrast ratio
-- Large text (≥ 18px): 3:1 contrast ratio
-- UI elements: 3:1 contrast ratio
+### Usage Distribution
+
+- **60%** — Neutral tones (backgrounds, text)
+- **30%** — Primary orange spectrum (CTAs, accents)
+- **10%** — Semantic/accent colors
 
 ---
 
 ## Typography
 
-### Type Families
+### Font Families
 
-#### Primary: Inter
-- **Usage**: Body text, UI elements, data
-- **Weights**: 400 Regular, 500 Medium, 600 Semibold, 700 Bold
-- **Character**: Geometric, precise, highly legible
+#### Space Grotesk — Display & Headlines
+A geometric sans-serif with technical, engineered aesthetic.
 
-#### Secondary: Space Grotesk
-- **Usage**: Headlines, display text, emphasis
-- **Weights**: 400 Regular, 500 Medium, 600 Semibold, 700 Bold
-- **Character**: Technical, distinctive, industrial
+**Weights:** Regular 400, Medium 500, SemiBold 600, Bold 700
+
+**Use for:** Headlines, titles, brand statements, display text
+
+#### Inter — Body & UI
+Optimized for screens with excellent legibility at all sizes.
+
+**Weights:** Light 300, Regular 400, Medium 500, SemiBold 600, Bold 700
+
+**Use for:** Body text, UI elements, paragraphs
+
+#### JetBrains Mono — Code & Data
+Monospace typeface for technical content.
+
+**Weights:** Regular 400, Medium 500, SemiBold 600
+
+**Use for:** Code, data displays, labels, technical content
 
 ### Type Scale
 
-```
-H1    48/56px   -0.02em   600   Space Grotesk
-H2    36/44px   -0.01em   600   Space Grotesk
-H3    28/36px    0.00em   600   Inter
-H4    24/32px    0.00em   500   Inter
-H5    20/28px    0.00em   500   Inter
-H6    16/24px    0.00em   600   Inter
+| Style | Font | Size | Weight | Line Height | Letter Spacing |
+|-------|------|------|--------|-------------|----------------|
+| Display | Space Grotesk | 72px | Bold | 1.0 | -0.03em |
+| H1 | Space Grotesk | 56px | SemiBold | 1.1 | -0.02em |
+| H2 | Space Grotesk | 40px | SemiBold | 1.2 | -0.02em |
+| H3 | Space Grotesk | 32px | SemiBold | 1.3 | -0.01em |
+| H4 | Space Grotesk | 24px | SemiBold | 1.3 | 0 |
+| H5 | Inter | 20px | SemiBold | 1.4 | 0 |
+| H6 | Inter | 18px | SemiBold | 1.4 | 0 |
+| Body Large | Inter | 18px | Regular | 1.6 | 0 |
+| Body | Inter | 16px | Regular | 1.6 | 0 |
+| Body Small | Inter | 14px | Regular | 1.5 | 0 |
+| Caption | Inter | 12px | Medium | 1.4 | 0 |
+| Label | JetBrains Mono | 11px | Medium | 1.0 | 0.1em |
 
-Body L  16/24px  0.00em   400   Inter
-Body    14/22px  0.00em   400   Inter
-Small   13/20px  0.00em   400   Inter
-Caption 12/16px  0.02em   400   Inter
-Overline 10/12px 0.10em   600   Inter (ALL CAPS)
-```
+### Letter Spacing Guidelines
 
-### Typography Best Practices
-- Maximum 65 characters per line for body text
-- Use tabular figures for all numerical data
-- Maintain consistent baseline grid (8px)
-- Never stretch or compress typefaces
+| Context | Value | Use |
+|---------|-------|-----|
+| Tight | -0.03em | Display headlines, H1-H3 |
+| Normal | 0 | Body text, UI elements |
+| Wide | +0.2em | Labels, badges, small caps |
 
 ---
 
 ## Iconography
 
-### Icon Construction
-- **Grid**: 24×24px with 20×20px live area
-- **Stroke**: 1.5px consistent weight
-- **Style**: Monoline, geometric, no fills
-- **Corners**: 2px radius for rounded elements
-- **Angle**: 45° for directional elements (matching logo)
+### Grid System
+
+All icons are built on a **24×24 pixel grid** with:
+- **1.5px** standard stroke weight
+- **2px** corner radius
+- **2px** safe zone padding
+
+### Stroke Weights
+
+| Weight | Use |
+|--------|-----|
+| 1px | Light / Small sizes (16px) |
+| 1.5px | Standard (default) |
+| 2px | Bold / Emphasis |
+| 2.5px | Heavy / Large sizes (48px+) |
+
+### Size Scale
+
+| Size | Context |
+|------|---------|
+| 16px | Dense UI, inline |
+| 20px | Navigation |
+| 24px | Standard (default) |
+| 32px | Feature emphasis |
+| 48px | Hero/display |
 
 ### Icon Categories
-1. **Operational**: Terminal, Gate, Dock, Crane, Forklift
-2. **Movement**: Arrows, Routes, Flow, Transfer, Sync
-3. **Data**: Dashboard, Analytics, Reports, Metrics
-4. **Safety**: Shield, Alert, Verified, Checkpoint
 
-### Icon Usage
-- Always use at defined pixel sizes (16px, 20px, 24px, 32px)
-- Maintain consistent color across icon sets
-- Use Solmex Orange (#FF943B) for primary icons
-- Use Carbon Black (#0A0A0A) for secondary icons
+- **Operations** — shipment, route, terminal, truck, railcar
+- **Movement** — arrows, transfer, dispatch, sync
+- **Compliance** — secure, verified, warning, locked
+- **Data** — charts, analytics, database, network
+- **Actions** — search, add, edit, delete, settings
+
+---
+
+## Pattern Library
+
+### Core Patterns
+
+#### 45° Diagonal Stripes (Signature)
+```css
+background: repeating-linear-gradient(
+  45deg,
+  transparent,
+  transparent 20px,
+  rgba(255, 148, 59, 0.15) 20px,
+  rgba(255, 148, 59, 0.15) 40px
+);
+```
+
+#### Precision Dot Grid
+```css
+background-image: radial-gradient(
+  rgba(255, 148, 59, 0.3) 1.5px,
+  transparent 1.5px
+);
+background-size: 24px 24px;
+```
+
+#### Technical Grid
+```css
+background: 
+  linear-gradient(rgba(255, 148, 59, 0.1) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 148, 59, 0.1) 1px, transparent 1px);
+background-size: 48px 48px;
+```
+
+#### Radial Rings
+```css
+background: repeating-radial-gradient(
+  circle at center,
+  transparent 0,
+  transparent 20px,
+  rgba(255, 148, 59, 0.08) 20px,
+  rgba(255, 148, 59, 0.08) 40px
+);
+```
+
+### Pattern Guidelines
+
+**Do:**
+- Use patterns at low opacity (10-30%)
+- Ensure content remains readable
+- Use 45° stripes for primary marketing
+
+**Don't:**
+- Use patterns at full opacity
+- Combine multiple patterns
+- Change pattern angles
+
+---
+
+## Motion & Animation
+
+### Motion Principles
+
+1. **Fast Response** — Interactions feel immediate (100-150ms onset)
+2. **Slow Settle** — Elements ease into position (200-300ms settle)
+3. **Continuous Flow** — Motion feels connected and fluid
+
+### Easing Functions
+
+```css
+--ease-standard: cubic-bezier(0.4, 0, 0.2, 1);   /* Default */
+--ease-decelerate: cubic-bezier(0.0, 0, 0.2, 1); /* Enter */
+--ease-accelerate: cubic-bezier(0.4, 0, 1, 1);   /* Exit */
+--ease-emphasis: cubic-bezier(0.25, 0.1, 0.25, 1); /* Attention */
+```
+
+### Duration Scale
+
+| Token | Duration | Use |
+|-------|----------|-----|
+| Instant | 100ms | Micro-interactions |
+| Fast | 150ms | Button states |
+| Normal | 200ms | Default transitions |
+| Slow | 300ms | Complex transitions |
+| Emphasis | 500ms | Page transitions |
+
+### Common Transitions
+
+```css
+/* Button Hover */
+transition: transform 200ms var(--ease-standard),
+            box-shadow 200ms var(--ease-standard);
+
+/* Card Elevation */
+transition: all 300ms var(--ease-standard);
+```
 
 ---
 
 ## Photography
 
 ### Visual Style
-**Industrial Minimalism** - Clean, precise, purposeful imagery that reinforces operational excellence.
 
-### Photography Guidelines
+- **Mood:** Confident, professional, industrial yet human
+- **Lighting:** Golden hour, directional, high contrast
+- **Subjects:** Rail operations, terminals, workers, machinery
+- **Textures:** Steel, concrete, industrial patterns
 
-#### Subject Matter
-- Industrial machinery and equipment
-- Terminal operations and logistics
-- Safety-equipped workers
-- Clean, organized spaces
-- Technology interfaces
+### Color Grading
 
-#### Composition
-- Rule of thirds
-- Leading lines at 45° angles
-- Minimum 40% negative space
-- Human or equipment for scale reference
+| Grade | Application |
+|-------|------------|
+| Warm Tones | Hero imagery, sunrise/sunset, brand-forward |
+| Industrial Neutral | Documentation, technical, operational |
+| Cool Blue | Night operations, technology (sparingly) |
 
-#### Color Treatment
-- Desaturate by 20%
-- Warm highlights +10
-- Cool shadows -5
-- Increase contrast 15%
-- Subtle orange tint in highlights
+### Composition
 
-#### Lighting
-- Golden hour for exterior shots
-- Dramatic industrial lighting
-- Avoid flat, overhead lighting
-- Emphasize texture and materials
+- Use rule of thirds for key subjects
+- Incorporate 45° diagonal lines for dynamism
+- Show scale with human elements
+- Center symmetry for architectural/hero shots
 
-### Image Don'ts
-- ❌ Stock photos with generic business people
-- ❌ Cluttered or disorganized scenes
-- ❌ Oversaturated colors
-- ❌ Soft focus or blur effects
+### Don'ts
+
+- ✕ Generic stock photos
+- ✕ Over-saturated or heavily filtered
+- ✕ Messy or disorganized scenes
+- ✕ Visible safety violations
+- ✕ Low-resolution or blurry images
 
 ---
 
-## Digital Applications
-
-### Website Design
-
-#### Layout Principles
-- 12-column grid system
-- 8px baseline grid
-- Maximum content width: 1440px
-- Minimum margins: 24px mobile, 80px desktop
-
-#### Component Styling
-```css
-/* Buttons */
-border-radius: 8px;
-padding: 12px 24px;
-transition: all 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
-
-/* Cards */
-border-radius: 12px;
-border: 1px solid #E4E7E9;
-box-shadow: 0 2px 8px rgba(10, 10, 10, 0.05);
-
-/* Inputs */
-border-radius: 8px;
-border: 1px solid #E4E7E9;
-padding: 12px 16px;
-```
-
-### Motion Principles
-- **Easing**: cubic-bezier(0.4, 0.0, 0.2, 1)
-- **Micro-interactions**: 200ms
-- **Page transitions**: 400-600ms
-- **Direction**: Follow 45° angle for slides
-- **Parallax**: 0.1 scroll ratio maximum
-
-### Mobile Considerations
-- Touch targets minimum 44×44px
-- Increased spacing on mobile (1.5x)
-- Simplified navigation patterns
-- Performance over aesthetics
-
----
-
-## Print Collateral
+## Print System
 
 ### Business Cards
-- **Size**: 90×50mm (standard Mexico)
-- **Paper**: 400gsm matte with soft-touch coating
-- **Special**: Spot UV on logo, gradient edge painting
+
+**Size:** 90 × 55 mm
+**Paper:** 400gsm Uncoated
+**Finish:** Soft Touch Laminate
+**Special:** Spot UV on logo
 
 ### Letterhead
-- **Paper**: 120gsm uncoated
-- **Watermark**: 5% logo opacity
-- **Margins**: 30mm top, 20mm sides, 25mm bottom
 
-### Corporate Folder
-- **Size**: A4 with 10mm spine
-- **Finish**: Matte lamination outside, uncoated inside
-- **Special**: Die-cut 45° angle on cover corner
+**Size:** Letter (8.5 × 11")
+**Paper:** 120gsm Premium Bond
+**Color:** Natural White
+**Print:** 4/0 (Front only)
 
-### Print Color Specifications
-- **4-Color Process**: CMYK with gradient builds
-- **Spot Colors**: Pantone 1505 C (Orange), Pantone 116 C (Yellow)
-- **Special Inks**: Consider metallic orange for premium applications
+### CMYK Values
+
+| Color | C | M | Y | K |
+|-------|---|---|---|---|
+| Solmex Orange | 0 | 50 | 85 | 0 |
+| Solmex Sunrise | 0 | 12 | 92 | 0 |
+| Carbon Black | 75 | 68 | 67 | 90 |
+| Steel Gray | 75 | 55 | 50 | 40 |
+
+### Paper Recommendations
+
+- **Letterhead/Documents:** 100-120gsm Premium Uncoated
+- **Business Cards:** 350-400gsm Heavy Uncoated
+- **Brochures:** 170-250gsm Silk Coated
 
 ---
 
@@ -295,101 +419,60 @@ padding: 12px 16px;
 
 ### Signage System
 
-#### Hierarchy Levels
-1. **Terminal ID**: 3m height, illuminated, visible from 100m
-2. **Directional**: 2m height, reflective, visible from 50m
-3. **Informational**: 1m height, eye-level mounting
-4. **Safety**: High-visibility yellow/orange, regulatory compliance
+| Type | Material | Finish | Min Size |
+|------|----------|--------|----------|
+| Building Signs | Aluminum composite | Powder coated | 800mm height |
+| Wayfinding | Acrylic/Aluminum | Matte laminate | 400mm width |
+| Safety Signs | Rigid PVC | Reflective vinyl | 300 × 200mm |
+| Floor Graphics | Anti-slip vinyl | Textured | 500mm diameter |
 
 ### Vehicle Branding
-- Logo placement on cab doors (600mm)
-- Full trailer wrap with gradient fade
-- Safety striping at regulation angles
-- Unit numbers in Space Grotesk
 
-### Facility Graphics
-- Wall graphics at 45° angles
-- Floor wayfinding with industrial-grade materials
-- Safety zones in brand colors
-- Digital displays with brand templates
+- **Trucks:** Full wrap with gradient top, white base
+- **Railcars:** Horizontal gradient band on steel gray
+- **Fleet Vehicles:** Logo decal on doors
 
----
+### PPE & Uniforms
 
-## Brand Voice
-
-### Tone of Voice
-
-#### We Are:
-- **Authoritative** but not arrogant
-- **Precise** but not robotic
-- **Confident** but not boastful
-- **Technical** but accessible
-
-#### We Are Not:
-- Playful or casual
-- Overly complex
-- Passive or uncertain
-- Generic or templated
-
-### Messaging Framework
-
-#### Primary Message
-"La red logística más confiable de México"
-
-#### Supporting Messages
-- Coordinación inteligente de terminales
-- Visibilidad total en tiempo real
-- Estándares unificados de excelencia
-- Evidencia multimedia en cada punto
-
-### Writing Guidelines
-- Use active voice
-- Lead with benefits
-- Include specific metrics when possible
-- Avoid jargon without context
-- Keep sentences concise and direct
+- **Safety Vests:** Logo on back panel
+- **Hard Hats:** Logo decal on front
+- **Work Shirts:** Embroidered logo
+- **Jackets:** Full back print
 
 ---
 
-## Implementation Checklist
+## Social & Marketing
 
-### Launch Essentials
-- [ ] Logo files in all formats (SVG, PNG, EPS)
-- [ ] Color palette documentation
-- [ ] Typography specimens
-- [ ] Icon library (24 minimum)
-- [ ] Photography guidelines
-- [ ] Business card template
-- [ ] Letterhead template
-- [ ] Email signature template
-- [ ] PowerPoint template
-- [ ] Social media templates
+### Post Templates
 
-### Quality Control
-- [ ] Accessibility compliance (WCAG AA)
-- [ ] Color reproduction tests
-- [ ] Typography licensing confirmed
-- [ ] Asset organization system
-- [ ] Version control established
+| Platform | Size | Format |
+|----------|------|--------|
+| LinkedIn Square | 1200 × 1200px | PNG |
+| LinkedIn Landscape | 1200 × 627px | PNG |
+| Twitter/X | 1200 × 675px | PNG |
 
----
+### Template Types
 
-## Contact & Resources
+1. **Statement Posts** — Brand messaging on dark background
+2. **Announcement Posts** — Gradient background with icon
+3. **Statistics Posts** — KPI highlight with pattern texture
+4. **Case Study Cards** — Project showcase with metrics
 
-### Brand Management
-For questions about brand implementation or to request additional assets, contact:
-- Brand Team: marca@gruposolmex.mx
-- Asset Library: [Internal URL]
-- Guidelines Updates: [Version Control System]
+### Presentation Slides
 
-### File Naming Convention
-```
-[category]_[element]_[variant]_[size]_[version]
-Example: logo_primary_gradient_1080px_v1.svg
-```
+- **Title Slide:** Full gradient background with logo
+- **Content Slide:** White background, section label, two-column layout
+- **Aspect Ratio:** 16:9
 
 ---
 
-*These guidelines are living documents and will evolve with the brand. Last updated: 2025*
+## Contact
 
-© 2025 Grupo Solmex. All rights reserved.
+For brand inquiries and asset requests:
+
+**Email:** brand@gruposolmex.com
+**Website:** gruposolmex.com
+
+---
+
+*© 2025 Grupo Solmex. All rights reserved.*

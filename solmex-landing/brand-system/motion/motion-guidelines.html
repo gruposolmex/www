@@ -4,44 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo Solmex - Motion & Animation Guidelines</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
             --solmex-orange: #FF943B;
             --solmex-sunrise: #FFD91C;
-            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
             --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
             --steel-gray: #2C3E44;
             --concrete: #8B9197;
+            --aluminum: #B0B5BA;
             --mist: #E4E7E9;
             --polar: #F8F9FA;
         }
         
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--polar);
-            color: var(--carbon-black);
+            background: var(--carbon-black);
+            color: white;
             line-height: 1.6;
         }
         
         .nav-back {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: white;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 10px 16px;
             border-radius: 8px;
             text-decoration: none;
-            color: var(--steel-gray);
+            color: var(--concrete);
             font-weight: 500;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 13px;
             transition: all 0.2s;
             z-index: 100;
         }
@@ -51,565 +50,813 @@
             color: white;
         }
         
-        .header {
-            background: var(--carbon-black);
-            padding: 80px 40px 60px;
-            color: white;
-            overflow: hidden;
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .hero-animation {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 48px;
             position: relative;
         }
         
-        .header::before {
-            content: '';
+        .hero-circle {
             position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 400px;
-            height: 400px;
-            background: var(--gradient-primary);
+            inset: 0;
+            border: 3px solid var(--solmex-orange);
             border-radius: 50%;
-            opacity: 0.1;
-            animation: pulse 4s ease-in-out infinite;
+            border-right-color: transparent;
+            animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.1); opacity: 0.15; }
+        .hero-circle:nth-child(2) {
+            inset: 15px;
+            border-color: var(--solmex-sunrise);
+            border-right-color: transparent;
+            animation-delay: -0.5s;
+            animation-direction: reverse;
         }
         
-        .header h1 {
+        .hero-circle:nth-child(3) {
+            inset: 30px;
+            border-color: var(--solmex-orange);
+            border-right-color: transparent;
+            animation-delay: -1s;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 48px;
+            font-size: 14px;
             font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
             margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            position: relative;
         }
         
-        .header .subtitle {
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        
+        .hero-sub {
             font-size: 18px;
             color: var(--concrete);
-            position: relative;
+            max-width: 600px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 60px 40px;
+            padding: 0 40px;
         }
         
         .section {
-            margin-bottom: 80px;
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 48px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
         }
         
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 600;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--mist);
-        }
-        
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 24px;
-        }
-        
-        .card-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--solmex-orange);
-        }
-        
-        .easing-demos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .easing-demo {
-            background: var(--polar);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-        }
-        
-        .easing-name {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        
-        .easing-code {
-            font-family: 'SF Mono', monospace;
-            font-size: 11px;
-            color: var(--concrete);
-            margin-bottom: 20px;
-        }
-        
-        .easing-track {
-            height: 4px;
-            background: var(--mist);
-            border-radius: 2px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-        
-        .easing-ball {
-            width: 16px;
-            height: 16px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            position: absolute;
-            top: -6px;
-            left: 0;
-        }
-        
-        .easing-demo:hover .ball-ease-out {
-            animation: slideEaseOut 1s ease-out forwards;
-        }
-        
-        .easing-demo:hover .ball-ease-in-out {
-            animation: slideEaseInOut 1s ease-in-out forwards;
-        }
-        
-        .easing-demo:hover .ball-spring {
-            animation: slideSpring 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-        
-        .easing-demo:hover .ball-standard {
-            animation: slideStandard 1s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-        }
-        
-        @keyframes slideEaseOut {
-            to { left: calc(100% - 16px); }
-        }
-        
-        @keyframes slideEaseInOut {
-            to { left: calc(100% - 16px); }
-        }
-        
-        @keyframes slideSpring {
-            to { left: calc(100% - 16px); }
-        }
-        
-        @keyframes slideStandard {
-            to { left: calc(100% - 16px); }
-        }
-        
-        .duration-demo {
-            display: flex;
-            gap: 32px;
-            margin-top: 24px;
-        }
-        
-        .duration-item {
-            text-align: center;
-        }
-        
-        .duration-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: var(--mist);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            letter-spacing: -0.02em;
             margin-bottom: 12px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
         
-        .duration-circle::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            transform: scale(0);
-            transition-property: transform;
-        }
-        
-        .duration-circle.fast::after { transition-duration: 150ms; }
-        .duration-circle.normal::after { transition-duration: 200ms; }
-        .duration-circle.slow::after { transition-duration: 400ms; }
-        .duration-circle.page::after { transition-duration: 600ms; }
-        
-        .duration-circle:hover::after {
-            transform: scale(1);
-        }
-        
-        .duration-value {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-            transition: color 0.2s;
-        }
-        
-        .duration-circle:hover .duration-value {
-            color: white;
-        }
-        
-        .duration-label {
-            font-size: 12px;
+        .section-desc {
+            font-size: 15px;
             color: var(--concrete);
+            max-width: 600px;
         }
         
-        .animation-showcase {
+        /* Principles Grid */
+        .principles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-top: 24px;
-        }
-        
-        .anim-card {
-            background: var(--polar);
-            border-radius: 12px;
-            padding: 32px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .anim-card:hover {
-            background: white;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-        
-        .anim-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            margin: 0 auto 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-        }
-        
-        .anim-card:hover .anim-icon.scale {
-            transform: scale(1.2);
-        }
-        
-        .anim-card:hover .anim-icon.rotate {
-            transform: rotate(180deg);
-        }
-        
-        .anim-card:hover .anim-icon.translate {
-            transform: translateY(-8px);
-        }
-        
-        .anim-card:hover .anim-icon.fade {
-            opacity: 0.5;
-        }
-        
-        .anim-label {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-        
-        .anim-desc {
-            font-size: 12px;
-            color: var(--concrete);
-        }
-        
-        .logo-animation {
-            width: 120px;
-            height: 120px;
-            margin: 40px auto;
-            animation: logoFloat 4s ease-in-out infinite;
-        }
-        
-        .logo-animation img {
-            width: 100%;
-            height: 100%;
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-5px) rotate(2deg); }
-            75% { transform: translateY(5px) rotate(-2deg); }
-        }
-        
-        .principle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
         
         .principle-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            border-left: 4px solid var(--solmex-orange);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s;
         }
         
-        .principle-title {
+        .principle-card:hover {
+            border-color: rgba(255, 148, 59, 0.3);
+        }
+        
+        .principle-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-45);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        
+        .principle-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
             font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .principle-desc {
             font-size: 14px;
-            color: var(--steel-gray);
+            color: var(--concrete);
         }
         
-        .code-block {
-            background: var(--carbon-black);
-            color: #E4E7E9;
+        /* Easing Curves */
+        .easing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        .easing-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
             padding: 24px;
-            border-radius: 12px;
-            font-family: 'SF Mono', 'Monaco', monospace;
-            font-size: 13px;
-            line-height: 1.8;
-            overflow-x: auto;
-            margin-top: 16px;
+            text-align: center;
         }
         
-        .code-comment { color: var(--concrete); }
-        .code-property { color: var(--solmex-orange); }
-        .code-value { color: var(--solmex-sunrise); }
-        
-        .stagger-demo {
+        .easing-visual {
+            height: 120px;
+            margin-bottom: 20px;
+            position: relative;
             display: flex;
-            gap: 12px;
-            margin-top: 24px;
+            align-items: flex-end;
         }
         
-        .stagger-item {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-primary);
+        .easing-ball {
+            width: 20px;
+            height: 20px;
+            background: var(--solmex-orange);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .easing-card:hover .easing-ball {
+            animation: move 1.5s infinite;
+        }
+        
+        .easing-card:nth-child(1):hover .easing-ball {
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .easing-card:nth-child(2):hover .easing-ball {
+            animation-timing-function: cubic-bezier(0.0, 0, 0.2, 1);
+        }
+        
+        .easing-card:nth-child(3):hover .easing-ball {
+            animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+        }
+        
+        .easing-card:nth-child(4):hover .easing-ball {
+            animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        @keyframes move {
+            0%, 100% { left: 0; }
+            50% { left: calc(100% - 20px); }
+        }
+        
+        .easing-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .easing-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--solmex-orange);
+            background: rgba(255, 148, 59, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .easing-use {
+            font-size: 12px;
+            color: var(--concrete);
+            margin-top: 8px;
+        }
+        
+        /* Duration Scale */
+        .duration-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+        
+        .duration-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .duration-bar {
+            height: 8px;
+            background: var(--graphite);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+        
+        .duration-fill {
+            height: 100%;
+            background: var(--gradient-45);
+            border-radius: 4px;
+            animation: grow linear infinite;
+        }
+        
+        .duration-card:nth-child(1) .duration-fill { animation-duration: 0.1s; }
+        .duration-card:nth-child(2) .duration-fill { animation-duration: 0.15s; }
+        .duration-card:nth-child(3) .duration-fill { animation-duration: 0.2s; }
+        .duration-card:nth-child(4) .duration-fill { animation-duration: 0.3s; }
+        .duration-card:nth-child(5) .duration-fill { animation-duration: 0.5s; }
+        
+        @keyframes grow {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .duration-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--solmex-orange);
+            margin-bottom: 4px;
+        }
+        
+        .duration-name {
+            font-size: 12px;
+            color: var(--aluminum);
+            margin-bottom: 4px;
+        }
+        
+        .duration-use {
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        /* Interactive Demos */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .demo-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .demo-preview {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            background: var(--graphite);
+        }
+        
+        .demo-button {
+            padding: 14px 32px;
+            background: var(--gradient-45);
+            border: none;
             border-radius: 8px;
-            opacity: 0;
-            animation: staggerIn 0.4s ease-out forwards;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--carbon-black);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .stagger-item:nth-child(1) { animation-delay: 0.1s; }
-        .stagger-item:nth-child(2) { animation-delay: 0.2s; }
-        .stagger-item:nth-child(3) { animation-delay: 0.3s; }
-        .stagger-item:nth-child(4) { animation-delay: 0.4s; }
-        .stagger-item:nth-child(5) { animation-delay: 0.5s; }
+        .demo-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 148, 59, 0.3);
+        }
         
-        @keyframes staggerIn {
-            from {
+        .demo-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+        
+        .demo-card-element {
+            width: 100%;
+            max-width: 280px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .demo-card-element:hover {
+            border-color: rgba(255, 148, 59, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+        
+        .demo-card-element h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .demo-card-element p {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .demo-toggle {
+            width: 56px;
+            height: 32px;
+            background: var(--steel-gray);
+            border-radius: 16px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .demo-toggle::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .demo-toggle.active {
+            background: var(--solmex-orange);
+        }
+        
+        .demo-toggle.active::after {
+            transform: translateX(24px);
+        }
+        
+        .demo-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 148, 59, 0.2);
+            border-top-color: var(--solmex-orange);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        
+        .demo-info {
+            padding: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .demo-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .demo-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Logo Animation */
+        .logo-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 40px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+        }
+        
+        .logo-stage {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .logo-stage img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: logoReveal 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes logoReveal {
+            0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: scale(0.9);
+                filter: blur(10px);
             }
-            to {
+            20% {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
+                filter: blur(0);
             }
+            80% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.05);
+                filter: blur(5px);
+            }
+        }
+        
+        .logo-timeline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        .logo-timeline-bar {
+            width: 300px;
+            height: 4px;
+            background: var(--steel-gray);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .logo-timeline-fill {
+            height: 100%;
+            background: var(--gradient-45);
+            animation: timeline 2s linear infinite;
+        }
+        
+        @keyframes timeline {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 24px;
+            overflow-x: auto;
+            margin-top: 32px;
+        }
+        
+        .code-block pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            color: var(--concrete);
+        }
+        
+        .code-comment { color: var(--iron); }
+        .code-property { color: var(--aluminum); }
+        .code-value { color: var(--solmex-orange); }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
         }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    <a href="../index.html" class="nav-back">← Brand System</a>
     
-    <div class="header">
-        <h1>Motion & Animation</h1>
-        <p class="subtitle">Guidelines for creating purposeful, delightful motion in Grupo Solmex interfaces</p>
-    </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-animation">
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+        </div>
+        <div class="hero-title">Motion System</div>
+        <h1 class="hero-headline">Precision in Motion</h1>
+        <p class="hero-sub">Motion design principles that communicate reliability, precision, and intelligent responsiveness—the core of Solmex brand character.</p>
+    </section>
     
     <div class="container">
-        <!-- Principles -->
-        <div class="section">
-            <h2 class="section-title">Motion Principles</h2>
-            <div class="principle-grid">
+        <!-- Motion Principles -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Principles</div>
+                <h2 class="section-title">Motion Philosophy</h2>
+                <p class="section-desc">Every animation should feel intentional, efficient, and engineered—reflecting the precision of logistics operations.</p>
+            </div>
+            
+            <div class="principles-grid">
                 <div class="principle-card">
-                    <div class="principle-title">Purposeful</div>
-                    <div class="principle-desc">Every animation serves a function—guiding attention, providing feedback, or enhancing understanding. Avoid decoration-only motion.</div>
+                    <div class="principle-icon">⚡</div>
+                    <div class="principle-name">Fast Response</div>
+                    <div class="principle-desc">Interactions should feel immediate. The system responds instantly to user input with quick onset animations (100-150ms).</div>
                 </div>
                 <div class="principle-card">
-                    <div class="principle-title">Quick & Responsive</div>
-                    <div class="principle-desc">Animations should feel snappy and responsive. Users shouldn't wait for animations to complete before continuing.</div>
+                    <div class="principle-icon">🎯</div>
+                    <div class="principle-name">Slow Settle</div>
+                    <div class="principle-desc">Elements ease gently into their final position. Deceleration creates a sense of precision landing (200-300ms).</div>
                 </div>
                 <div class="principle-card">
-                    <div class="principle-title">Natural</div>
-                    <div class="principle-desc">Motion should feel physical and natural. Use easing functions that mimic real-world physics.</div>
-                </div>
-                <div class="principle-card">
-                    <div class="principle-title">Consistent</div>
-                    <div class="principle-desc">Similar elements should animate in similar ways. This builds familiarity and reduces cognitive load.</div>
+                    <div class="principle-icon">🔄</div>
+                    <div class="principle-name">Continuous Flow</div>
+                    <div class="principle-desc">Like logistics operations, motion should feel continuous and connected. Stagger animations create visual flow.</div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <!-- Easing Curves -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Easing</div>
+                <h2 class="section-title">Timing Functions</h2>
+                <p class="section-desc">Custom easing curves that define the Solmex motion character. Hover to preview.</p>
+            </div>
+            
+            <div class="easing-grid">
+                <div class="easing-card">
+                    <div class="easing-visual">
+                        <div class="easing-ball"></div>
+                    </div>
+                    <div class="easing-name">Standard</div>
+                    <div class="easing-value">cubic-bezier(0.4, 0, 0.2, 1)</div>
+                    <div class="easing-use">Default for most animations</div>
+                </div>
+                <div class="easing-card">
+                    <div class="easing-visual">
+                        <div class="easing-ball"></div>
+                    </div>
+                    <div class="easing-name">Decelerate</div>
+                    <div class="easing-value">cubic-bezier(0.0, 0, 0.2, 1)</div>
+                    <div class="easing-use">Enter transitions</div>
+                </div>
+                <div class="easing-card">
+                    <div class="easing-visual">
+                        <div class="easing-ball"></div>
+                    </div>
+                    <div class="easing-name">Accelerate</div>
+                    <div class="easing-value">cubic-bezier(0.4, 0, 1, 1)</div>
+                    <div class="easing-use">Exit transitions</div>
+                </div>
+                <div class="easing-card">
+                    <div class="easing-visual">
+                        <div class="easing-ball"></div>
+                    </div>
+                    <div class="easing-name">Emphasis</div>
+                    <div class="easing-value">cubic-bezier(0.25, 0.1, 0.25, 1)</div>
+                    <div class="easing-use">Attention-grabbing</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Duration Scale -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Duration</div>
+                <h2 class="section-title">Timing Scale</h2>
+                <p class="section-desc">A consistent duration scale ensures predictable, professional motion.</p>
+            </div>
+            
+            <div class="duration-grid">
+                <div class="duration-card">
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                    </div>
+                    <div class="duration-value">100ms</div>
+                    <div class="duration-name">Instant</div>
+                    <div class="duration-use">Micro-interactions</div>
+                </div>
+                <div class="duration-card">
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                    </div>
+                    <div class="duration-value">150ms</div>
+                    <div class="duration-name">Fast</div>
+                    <div class="duration-use">Button states</div>
+                </div>
+                <div class="duration-card">
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                    </div>
+                    <div class="duration-value">200ms</div>
+                    <div class="duration-name">Normal</div>
+                    <div class="duration-use">Default transitions</div>
+                </div>
+                <div class="duration-card">
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                    </div>
+                    <div class="duration-value">300ms</div>
+                    <div class="duration-name">Slow</div>
+                    <div class="duration-use">Complex transitions</div>
+                </div>
+                <div class="duration-card">
+                    <div class="duration-bar">
+                        <div class="duration-fill"></div>
+                    </div>
+                    <div class="duration-value">500ms</div>
+                    <div class="duration-name">Emphasis</div>
+                    <div class="duration-use">Page transitions</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Interactive Demos -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Micro-interactions</div>
+                <h2 class="section-title">Component Motion</h2>
+                <p class="section-desc">Interactive examples of motion applied to common UI elements.</p>
+            </div>
+            
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <button class="demo-button">Primary Action</button>
+                    </div>
+                    <div class="demo-info">
+                        <div class="demo-name">Button Hover</div>
+                        <div class="demo-desc">Lift effect with shadow expansion. 200ms standard easing.</div>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <div class="demo-card-element">
+                            <h4>Card Component</h4>
+                            <p>Hover to see elevation change</p>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <div class="demo-name">Card Elevation</div>
+                        <div class="demo-desc">Subtle lift with increased shadow depth. 300ms standard easing.</div>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <div class="demo-toggle" onclick="this.classList.toggle('active')"></div>
+                    </div>
+                    <div class="demo-info">
+                        <div class="demo-name">Toggle Switch</div>
+                        <div class="demo-desc">Click to toggle. Spring-like motion with 300ms emphasis easing.</div>
+                    </div>
+                </div>
+                
+                <div class="demo-card">
+                    <div class="demo-preview">
+                        <div class="demo-spinner"></div>
+                    </div>
+                    <div class="demo-info">
+                        <div class="demo-name">Loading Spinner</div>
+                        <div class="demo-desc">Continuous rotation with standard easing. 1000ms loop.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- Logo Animation -->
-        <div class="section">
-            <h2 class="section-title">Logo Animation</h2>
-            <div class="card">
-                <div class="card-title">Floating Logo</div>
-                <p style="color: var(--steel-gray); margin-bottom: 16px;">The Solmex logo may use a subtle floating animation to add life to static pages. Keep the movement gentle and elegant.</p>
-                <div class="logo-animation">
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">05 — Brand Animation</div>
+                <h2 class="section-title">Logo Reveal Sequence</h2>
+                <p class="section-desc">The official logo animation for video intros and loading screens.</p>
+            </div>
+            
+            <div class="logo-animation">
+                <div class="logo-stage">
                     <img src="../logo/solmex-logo.svg" alt="Solmex Logo">
                 </div>
-                <div class="code-block">
-                    <span class="code-comment">/* Logo Float Animation */</span><br>
-                    <span class="code-property">@keyframes logoFloat</span> {<br>
-                    &nbsp;&nbsp;0%, 100% { <span class="code-property">transform:</span> <span class="code-value">translateY(0)</span>; }<br>
-                    &nbsp;&nbsp;50% { <span class="code-property">transform:</span> <span class="code-value">translateY(-10px)</span>; }<br>
-                    }<br><br>
-                    .logo { <span class="code-property">animation:</span> <span class="code-value">logoFloat 6s ease-in-out infinite</span>; }
+                <div class="logo-timeline">
+                    <span>0s</span>
+                    <div class="logo-timeline-bar">
+                        <div class="logo-timeline-fill"></div>
+                    </div>
+                    <span>2s</span>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Easing Functions -->
-        <div class="section">
-            <h2 class="section-title">Easing Functions</h2>
-            <div class="card">
-                <div class="card-title">Hover to Preview (Animation resets on mouse leave)</div>
-                <div class="easing-demos">
-                    <div class="easing-demo">
-                        <div class="easing-name">Standard (Default)</div>
-                        <div class="easing-code">cubic-bezier(0.4, 0.0, 0.2, 1)</div>
-                        <div class="easing-track">
-                            <div class="easing-ball ball-standard"></div>
-                        </div>
-                    </div>
-                    <div class="easing-demo">
-                        <div class="easing-name">Ease Out</div>
-                        <div class="easing-code">ease-out</div>
-                        <div class="easing-track">
-                            <div class="easing-ball ball-ease-out"></div>
-                        </div>
-                    </div>
-                    <div class="easing-demo">
-                        <div class="easing-name">Ease In-Out</div>
-                        <div class="easing-code">ease-in-out</div>
-                        <div class="easing-track">
-                            <div class="easing-ball ball-ease-in-out"></div>
-                        </div>
-                    </div>
-                    <div class="easing-demo">
-                        <div class="easing-name">Spring</div>
-                        <div class="easing-code">cubic-bezier(0.68, -0.55, 0.265, 1.55)</div>
-                        <div class="easing-track">
-                            <div class="easing-ball ball-spring"></div>
-                        </div>
-                    </div>
-                </div>
+        <!-- CSS Implementation -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">06 — Implementation</div>
+                <h2 class="section-title">CSS Variables</h2>
+                <p class="section-desc">Copy these motion tokens for consistent animation implementation.</p>
             </div>
-        </div>
-        
-        <!-- Durations -->
-        <div class="section">
-            <h2 class="section-title">Duration Scale</h2>
-            <div class="card">
-                <div class="card-title">Hover the circles to see timing</div>
-                <div class="duration-demo">
-                    <div class="duration-item">
-                        <div class="duration-circle fast">
-                            <span class="duration-value">150ms</span>
-                        </div>
-                        <div class="duration-label">Micro-interactions</div>
-                    </div>
-                    <div class="duration-item">
-                        <div class="duration-circle normal">
-                            <span class="duration-value">200ms</span>
-                        </div>
-                        <div class="duration-label">Standard UI</div>
-                    </div>
-                    <div class="duration-item">
-                        <div class="duration-circle slow">
-                            <span class="duration-value">400ms</span>
-                        </div>
-                        <div class="duration-label">Complex changes</div>
-                    </div>
-                    <div class="duration-item">
-                        <div class="duration-circle page">
-                            <span class="duration-value">600ms</span>
-                        </div>
-                        <div class="duration-label">Page transitions</div>
-                    </div>
-                </div>
+            
+            <div class="code-block">
+                <pre><span class="code-comment">/* Grupo Solmex - Motion System */</span>
+:root {
+  <span class="code-comment">/* Easing Functions */</span>
+  <span class="code-property">--ease-standard:</span> <span class="code-value">cubic-bezier(0.4, 0, 0.2, 1)</span>;
+  <span class="code-property">--ease-decelerate:</span> <span class="code-value">cubic-bezier(0.0, 0, 0.2, 1)</span>;
+  <span class="code-property">--ease-accelerate:</span> <span class="code-value">cubic-bezier(0.4, 0, 1, 1)</span>;
+  <span class="code-property">--ease-emphasis:</span> <span class="code-value">cubic-bezier(0.25, 0.1, 0.25, 1)</span>;
+  
+  <span class="code-comment">/* Duration Scale */</span>
+  <span class="code-property">--duration-instant:</span> <span class="code-value">100ms</span>;
+  <span class="code-property">--duration-fast:</span> <span class="code-value">150ms</span>;
+  <span class="code-property">--duration-normal:</span> <span class="code-value">200ms</span>;
+  <span class="code-property">--duration-slow:</span> <span class="code-value">300ms</span>;
+  <span class="code-property">--duration-emphasis:</span> <span class="code-value">500ms</span>;
+  
+  <span class="code-comment">/* Common Transitions */</span>
+  <span class="code-property">--transition-fast:</span> <span class="code-value">all 150ms var(--ease-standard)</span>;
+  <span class="code-property">--transition-normal:</span> <span class="code-value">all 200ms var(--ease-standard)</span>;
+  <span class="code-property">--transition-slow:</span> <span class="code-value">all 300ms var(--ease-standard)</span>;
+}
+
+<span class="code-comment">/* Button Hover */</span>
+<span class="code-property">.btn</span> {
+  <span class="code-property">transition:</span> <span class="code-value">transform var(--duration-normal) var(--ease-standard),
+              box-shadow var(--duration-normal) var(--ease-standard)</span>;
+}
+<span class="code-property">.btn:hover</span> {
+  <span class="code-property">transform:</span> <span class="code-value">translateY(-2px)</span>;
+  <span class="code-property">box-shadow:</span> <span class="code-value">0 8px 24px rgba(255, 148, 59, 0.3)</span>;
+}
+
+<span class="code-comment">/* Card Elevation */</span>
+<span class="code-property">.card</span> {
+  <span class="code-property">transition:</span> <span class="code-value">var(--transition-slow)</span>;
+}
+<span class="code-property">.card:hover</span> {
+  <span class="code-property">transform:</span> <span class="code-value">translateY(-4px)</span>;
+  <span class="code-property">box-shadow:</span> <span class="code-value">0 12px 32px rgba(0, 0, 0, 0.4)</span>;
+}</pre>
             </div>
-        </div>
-        
-        <!-- Transform Types -->
-        <div class="section">
-            <h2 class="section-title">Transform Types</h2>
-            <div class="card">
-                <div class="card-title">Hover to see transforms in action</div>
-                <div class="animation-showcase">
-                    <div class="anim-card">
-                        <div class="anim-icon scale"></div>
-                        <div class="anim-label">Scale</div>
-                        <div class="anim-desc">Emphasis & focus</div>
-                    </div>
-                    <div class="anim-card">
-                        <div class="anim-icon rotate"></div>
-                        <div class="anim-label">Rotate</div>
-                        <div class="anim-desc">Toggle states</div>
-                    </div>
-                    <div class="anim-card">
-                        <div class="anim-icon translate"></div>
-                        <div class="anim-label">Translate</div>
-                        <div class="anim-desc">Movement & lift</div>
-                    </div>
-                    <div class="anim-card">
-                        <div class="anim-icon fade"></div>
-                        <div class="anim-label">Opacity</div>
-                        <div class="anim-desc">Appearance</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Stagger -->
-        <div class="section">
-            <h2 class="section-title">Staggered Animations</h2>
-            <div class="card">
-                <div class="card-title">Sequential Reveal</div>
-                <p style="color: var(--steel-gray); margin-bottom: 16px;">When multiple elements enter the view, stagger their animations with 100ms delays for a polished, orchestrated feel.</p>
-                <div class="stagger-demo">
-                    <div class="stagger-item"></div>
-                    <div class="stagger-item"></div>
-                    <div class="stagger-item"></div>
-                    <div class="stagger-item"></div>
-                    <div class="stagger-item"></div>
-                </div>
-                <div class="code-block">
-                    <span class="code-comment">/* Stagger Pattern */</span><br>
-                    .item:nth-child(1) { <span class="code-property">animation-delay:</span> <span class="code-value">0.1s</span>; }<br>
-                    .item:nth-child(2) { <span class="code-property">animation-delay:</span> <span class="code-value">0.2s</span>; }<br>
-                    .item:nth-child(3) { <span class="code-property">animation-delay:</span> <span class="code-value">0.3s</span>; }<br>
-                    <span class="code-comment">/* Continue pattern... */</span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- CSS Variables -->
-        <div class="section">
-            <h2 class="section-title">Motion Tokens</h2>
-            <div class="card">
-                <div class="card-title">CSS Custom Properties</div>
-                <div class="code-block">
-                    <span class="code-comment">/* Motion Tokens */</span><br><br>
-                    <span class="code-comment">/* Easing */</span><br>
-                    <span class="code-property">--ease-default:</span> <span class="code-value">cubic-bezier(0.4, 0.0, 0.2, 1);</span><br>
-                    <span class="code-property">--ease-in:</span> <span class="code-value">cubic-bezier(0.4, 0.0, 1, 1);</span><br>
-                    <span class="code-property">--ease-out:</span> <span class="code-value">cubic-bezier(0.0, 0.0, 0.2, 1);</span><br>
-                    <span class="code-property">--ease-spring:</span> <span class="code-value">cubic-bezier(0.68, -0.55, 0.265, 1.55);</span><br><br>
-                    <span class="code-comment">/* Durations */</span><br>
-                    <span class="code-property">--duration-instant:</span> <span class="code-value">100ms;</span><br>
-                    <span class="code-property">--duration-fast:</span> <span class="code-value">150ms;</span><br>
-                    <span class="code-property">--duration-normal:</span> <span class="code-value">200ms;</span><br>
-                    <span class="code-property">--duration-slow:</span> <span class="code-value">400ms;</span><br>
-                    <span class="code-property">--duration-page:</span> <span class="code-value">600ms;</span>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
+    
+    <footer class="footer">
+        <img src="../logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
 </body>
 </html>
-

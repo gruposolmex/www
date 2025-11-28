@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Logo System & Anatomy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-orange-alt: #FF9C37;
+            --solmex-amber: #FFAD5C;
+            --solmex-gold: #FFC67D;
+            --solmex-sunrise: #FFD91C;
+            --solmex-sunrise-alt: #FFD81C;
+            --gradient-primary: linear-gradient(180deg, #FF9C37 0%, #FFD81C 100%);
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+            --signal-red: #DC2626;
+            --safety-green: #16A34A;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--carbon-black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--concrete);
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+            border-color: var(--solmex-orange);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 148, 59, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .hero-logo {
+            width: 280px;
+            height: auto;
+            margin-bottom: 48px;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 60px rgba(255, 148, 59, 0.3));
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--concrete);
+            text-align: center;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section {
+            padding: 120px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 64px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        
+        .section-desc {
+            font-size: 16px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        /* Logo Anatomy */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .anatomy-visual {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 64px;
+            position: relative;
+        }
+        
+        .anatomy-visual img {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .anatomy-callout {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--solmex-orange);
+            background: var(--carbon-black);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 148, 59, 0.3);
+        }
+        
+        .anatomy-list {
+            list-style: none;
+        }
+        
+        .anatomy-item {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .anatomy-item:last-child {
+            border-bottom: none;
+        }
+        
+        .anatomy-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .anatomy-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .anatomy-desc {
+            font-size: 14px;
+            color: var(--concrete);
+        }
+        
+        /* Geometry Section */
+        .geometry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .geometry-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .geometry-visual {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .geometry-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: var(--gradient-45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .geometry-unit {
+            font-size: 20px;
+            color: var(--concrete);
+        }
+        
+        .geometry-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .geometry-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Logo Variants */
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .variant-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .variant-card:hover {
+            border-color: rgba(255, 148, 59, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .variant-preview {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+        }
+        
+        .variant-preview.dark {
+            background: var(--carbon-black);
+        }
+        
+        .variant-preview.light {
+            background: white;
+        }
+        
+        .variant-preview.gradient {
+            background: var(--gradient-45);
+        }
+        
+        .variant-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .variant-info {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .variant-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .variant-use {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Clear Space */
+        .clearspace-demo {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 64px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .clearspace-inner {
+            position: relative;
+            padding: 60px;
+            border: 2px dashed rgba(255, 148, 59, 0.5);
+        }
+        
+        .clearspace-inner img {
+            width: 200px;
+            display: block;
+        }
+        
+        .clearspace-marker {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--solmex-orange);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .clearspace-marker.top {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .clearspace-marker.bottom {
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .clearspace-marker.left {
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        
+        .clearspace-marker.right {
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+        }
+        
+        /* Minimum Sizes */
+        .sizes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            align-items: end;
+        }
+        
+        .size-item {
+            text-align: center;
+        }
+        
+        .size-preview {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .size-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--solmex-orange);
+            margin-bottom: 4px;
+        }
+        
+        .size-context {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Don'ts */
+        .donts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .dont-card {
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .dont-preview {
+            height: 160px;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .dont-preview::after {
+            content: '✕';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 24px;
+            height: 24px;
+            background: var(--signal-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        
+        .dont-preview img {
+            max-width: 60%;
+            max-height: 60%;
+            opacity: 0.6;
+        }
+        
+        .dont-preview.rotated img {
+            transform: rotate(15deg);
+        }
+        
+        .dont-preview.stretched img {
+            transform: scaleX(1.5);
+        }
+        
+        .dont-preview.shadowed img {
+            filter: drop-shadow(0 0 20px rgba(255, 148, 59, 0.8));
+        }
+        
+        .dont-preview.colored img {
+            filter: hue-rotate(180deg);
+        }
+        
+        .dont-preview.outlined img {
+            filter: brightness(0) invert(1);
+            opacity: 0.3;
+        }
+        
+        .dont-preview.busy {
+            background: repeating-linear-gradient(45deg, #333, #333 10px, #444 10px, #444 20px);
+        }
+        
+        .dont-info {
+            padding: 16px;
+        }
+        
+        .dont-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--signal-red);
+        }
+        
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+        }
+        
+        .specs-table th,
+        .specs-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .specs-table th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--concrete);
+        }
+        
+        .specs-table td {
+            font-size: 14px;
+        }
+        
+        .specs-table td:first-child {
+            font-weight: 600;
+        }
+        
+        .specs-table code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            background: rgba(255, 148, 59, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--solmex-orange);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Brand System</a>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <img src="solmex-logo.svg" alt="Solmex Logo" class="hero-logo">
+        <div class="hero-title">Logo System</div>
+        <h1 class="hero-headline">The Mark of<br>Intelligent Logistics</h1>
+        <p class="hero-sub">A comprehensive analysis of the Grupo Solmex isotype—geometry, construction, and strategic application rules.</p>
+    </section>
+    
+    <div class="container">
+        <!-- Logo Anatomy -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Anatomy</div>
+                <h2 class="section-title">Logo Construction</h2>
+                <p class="section-desc">The Solmex mark is composed of two interlocking "S" forms representing the seamless flow of intelligent logistics networks.</p>
+            </div>
+            
+            <div class="anatomy-grid">
+                <div class="anatomy-visual">
+                    <img src="solmex-logo.svg" alt="Logo Anatomy">
+                </div>
+                
+                <ul class="anatomy-list">
+                    <li class="anatomy-item">
+                        <div class="anatomy-number">01</div>
+                        <div class="anatomy-name">Upper Flow Element</div>
+                        <div class="anatomy-desc">The upper "S" curve represents outbound logistics flow—goods moving from origin to network. Features a dynamic trailing edge suggesting speed and efficiency.</div>
+                    </li>
+                    <li class="anatomy-item">
+                        <div class="anatomy-number">02</div>
+                        <div class="anatomy-name">Lower Flow Element</div>
+                        <div class="anatomy-desc">The mirrored lower form represents inbound logistics—completing the cycle. Together they create an infinite loop of operational continuity.</div>
+                    </li>
+                    <li class="anatomy-item">
+                        <div class="anatomy-number">03</div>
+                        <div class="anatomy-name">Central Nexus</div>
+                        <div class="anatomy-desc">The white circular core represents the command center—the intelligent hub where all logistics data converges. It symbolizes clarity, precision, and real-time visibility.</div>
+                    </li>
+                    <li class="anatomy-item">
+                        <div class="anatomy-number">04</div>
+                        <div class="anatomy-name">Gradient Energy</div>
+                        <div class="anatomy-desc">The vertical gradient (Orange → Gold) represents the sunrise—a new era of logistics. It flows from energy (#FF9C37) to optimism (#FFD81C).</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Geometry -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Geometry</div>
+                <h2 class="section-title">Mathematical Foundation</h2>
+                <p class="section-desc">Every curve and proportion is engineered for visual harmony and brand recognition at any scale.</p>
+            </div>
+            
+            <div class="geometry-grid">
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">1.225<span class="geometry-unit">:1</span></span>
+                    </div>
+                    <div class="geometry-label">Aspect Ratio</div>
+                    <div class="geometry-desc">Width to height proportion of the isotype (489×399px)</div>
+                </div>
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">90<span class="geometry-unit">°</span></span>
+                    </div>
+                    <div class="geometry-label">Gradient Angle</div>
+                    <div class="geometry-desc">Primary vertical gradient direction (top to bottom)</div>
+                </div>
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">45<span class="geometry-unit">°</span></span>
+                    </div>
+                    <div class="geometry-label">Flow Angle</div>
+                    <div class="geometry-desc">Diagonal emphasis for motion and dynamism</div>
+                </div>
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">20<span class="geometry-unit">%</span></span>
+                    </div>
+                    <div class="geometry-label">Core Diameter</div>
+                    <div class="geometry-desc">White nexus relative to total mark height</div>
+                </div>
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">180<span class="geometry-unit">°</span></span>
+                    </div>
+                    <div class="geometry-label">Mirror Rotation</div>
+                    <div class="geometry-desc">Lower element is 180° rotation of upper</div>
+                </div>
+                <div class="geometry-card">
+                    <div class="geometry-visual">
+                        <span class="geometry-value">∞</span>
+                    </div>
+                    <div class="geometry-label">Symbolic Form</div>
+                    <div class="geometry-desc">Interlocking curves suggest infinite continuity</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Logo Variants -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Variants</div>
+                <h2 class="section-title">Official Configurations</h2>
+                <p class="section-desc">Six approved logo configurations for different contexts and applications.</p>
+            </div>
+            
+            <div class="variants-grid">
+                <div class="variant-card">
+                    <div class="variant-preview dark">
+                        <img src="solmex-logo.svg" alt="Primary Mark">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">Primary Isotype</div>
+                        <div class="variant-use">Default mark for all primary applications</div>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview dark">
+                        <img src="logo-solmex-full.svg" alt="Full Logo" style="max-height: 80px;">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">Full Logo + Wordmark</div>
+                        <div class="variant-use">Headers, documents, formal materials</div>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview dark">
+                        <img src="logo-solmex-text.svg" alt="Text Logo" style="max-height: 60px;">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">Horizontal Wordmark</div>
+                        <div class="variant-use">Navigation, footers, constrained spaces</div>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview light">
+                        <img src="solmex-logo.svg" alt="Light Background">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">On Light Backgrounds</div>
+                        <div class="variant-use">Print, light UI themes</div>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview gradient">
+                        <img src="solmex-logo.svg" alt="On Gradient" style="filter: brightness(0) invert(1);">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">Monochrome White</div>
+                        <div class="variant-use">Brand backgrounds, overlays</div>
+                    </div>
+                </div>
+                <div class="variant-card">
+                    <div class="variant-preview dark" style="background: #1a1a1a;">
+                        <img src="solmex-logo.svg" alt="Monochrome" style="filter: grayscale(1) brightness(1.2);">
+                    </div>
+                    <div class="variant-info">
+                        <div class="variant-name">Monochrome</div>
+                        <div class="variant-use">Single-color printing, watermarks</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Clear Space -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Clear Space</div>
+                <h2 class="section-title">Protection Zone</h2>
+                <p class="section-desc">Minimum clear space ensures the logo maintains presence and legibility. The exclusion zone equals 25% of the mark's height on all sides.</p>
+            </div>
+            
+            <div class="clearspace-demo">
+                <div class="clearspace-inner">
+                    <span class="clearspace-marker top">← 0.25x →</span>
+                    <span class="clearspace-marker bottom">← 0.25x →</span>
+                    <span class="clearspace-marker left">← 0.25x →</span>
+                    <span class="clearspace-marker right">← 0.25x →</span>
+                    <img src="solmex-logo.svg" alt="Clear Space Demo">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Minimum Sizes -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">05 — Minimum Sizes</div>
+                <h2 class="section-title">Scale Boundaries</h2>
+                <p class="section-desc">To maintain brand integrity, never reproduce the logo below these minimum dimensions.</p>
+            </div>
+            
+            <div class="sizes-grid">
+                <div class="size-item">
+                    <div class="size-preview">
+                        <img src="solmex-logo.svg" alt="Digital" style="width: 24px;">
+                    </div>
+                    <div class="size-value">24px</div>
+                    <div class="size-context">Digital (favicon)</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-preview">
+                        <img src="solmex-logo.svg" alt="Digital Standard" style="width: 32px;">
+                    </div>
+                    <div class="size-value">32px</div>
+                    <div class="size-context">Digital (standard)</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-preview">
+                        <img src="solmex-logo.svg" alt="Print" style="width: 48px;">
+                    </div>
+                    <div class="size-value">10mm</div>
+                    <div class="size-context">Print (minimum)</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-preview">
+                        <img src="solmex-logo.svg" alt="Signage" style="width: 80px;">
+                    </div>
+                    <div class="size-value">50mm</div>
+                    <div class="size-context">Signage (outdoor)</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Don'ts -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">06 — Incorrect Usage</div>
+                <h2 class="section-title">Logo Don'ts</h2>
+                <p class="section-desc">Protect brand integrity by avoiding these common misuses.</p>
+            </div>
+            
+            <div class="donts-grid">
+                <div class="dont-card">
+                    <div class="dont-preview rotated">
+                        <img src="solmex-logo.svg" alt="Rotated">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not rotate</div>
+                    </div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-preview stretched">
+                        <img src="solmex-logo.svg" alt="Stretched">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not stretch or distort</div>
+                    </div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-preview shadowed">
+                        <img src="solmex-logo.svg" alt="Shadow">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not add effects</div>
+                    </div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-preview colored">
+                        <img src="solmex-logo.svg" alt="Recolored">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not change colors</div>
+                    </div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-preview outlined">
+                        <img src="solmex-logo.svg" alt="Outlined">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not outline or stroke</div>
+                    </div>
+                </div>
+                <div class="dont-card">
+                    <div class="dont-preview busy">
+                        <img src="solmex-logo.svg" alt="Busy Background">
+                    </div>
+                    <div class="dont-info">
+                        <div class="dont-label">Do not use on busy backgrounds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- File Specifications -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">07 — Specifications</div>
+                <h2 class="section-title">File Reference</h2>
+                <p class="section-desc">Technical specifications for all official logo assets.</p>
+            </div>
+            
+            <table class="specs-table">
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>File</th>
+                        <th>Dimensions</th>
+                        <th>Format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primary Isotype</td>
+                        <td><code>solmex-logo.svg</code></td>
+                        <td>489 × 399 px</td>
+                        <td>SVG (vector)</td>
+                    </tr>
+                    <tr>
+                        <td>Full Logo</td>
+                        <td><code>logo-solmex-full.svg</code></td>
+                        <td>2342 × 399 px</td>
+                        <td>SVG (vector)</td>
+                    </tr>
+                    <tr>
+                        <td>Wordmark Only</td>
+                        <td><code>logo-solmex-text.svg</code></td>
+                        <td>1732 × 301 px</td>
+                        <td>SVG (vector)</td>
+                    </tr>
+                    <tr>
+                        <td>Square Mark</td>
+                        <td><code>logo-solmex-square.svg</code></td>
+                        <td>489 × 399 px</td>
+                        <td>SVG (vector)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <img src="solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
+</body>
+</html>
+

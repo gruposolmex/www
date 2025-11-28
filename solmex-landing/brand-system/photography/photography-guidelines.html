@@ -3,45 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo Solmex - Photography Guidelines</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Grupo Solmex - Photography System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         :root {
             --solmex-orange: #FF943B;
             --solmex-sunrise: #FFD91C;
-            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
             --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
             --steel-gray: #2C3E44;
             --concrete: #8B9197;
+            --aluminum: #B0B5BA;
             --mist: #E4E7E9;
             --polar: #F8F9FA;
         }
         
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--polar);
-            color: var(--carbon-black);
+            background: var(--carbon-black);
+            color: white;
             line-height: 1.6;
         }
         
         .nav-back {
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: white;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 10px 16px;
             border-radius: 8px;
             text-decoration: none;
-            color: var(--steel-gray);
+            color: var(--concrete);
             font-weight: 500;
-            font-size: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 13px;
             transition: all 0.2s;
             z-index: 100;
         }
@@ -51,536 +50,750 @@
             color: white;
         }
         
-        .header {
-            background: var(--carbon-black);
-            padding: 80px 40px 60px;
-            color: white;
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 148, 59, 0.05) 0%, transparent 50%);
         }
         
-        .header h1 {
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-45);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 36px;
+        }
+        
+        .hero-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 48px;
+            font-size: 14px;
             font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
             margin-bottom: 16px;
-            letter-spacing: -0.02em;
         }
         
-        .header .subtitle {
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        
+        .hero-sub {
             font-size: 18px;
             color: var(--concrete);
+            max-width: 600px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 60px 40px;
+            padding: 0 40px;
         }
         
         .section {
-            margin-bottom: 80px;
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 48px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
         }
         
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 28px;
+            font-size: 36px;
             font-weight: 600;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--mist);
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
         }
         
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 24px;
+        .section-desc {
+            font-size: 15px;
+            color: var(--concrete);
+            max-width: 600px;
         }
         
-        .card-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--solmex-orange);
-        }
-        
-        .photo-grid {
+        /* Theme Grid */
+        .theme-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
         
-        .photo-example {
-            background: white;
-            border-radius: 12px;
+        .theme-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
         }
         
-        .photo-placeholder {
-            height: 200px;
-            background: var(--steel-gray);
+        .theme-card:hover {
+            border-color: rgba(255, 148, 59, 0.3);
+            transform: translateY(-4px);
+        }
+        
+        .theme-card.featured {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        
+        .theme-preview {
+            aspect-ratio: 16/10;
+            background: var(--graphite);
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 14px;
-            position: relative;
         }
         
-        .photo-placeholder.good {
-            background: linear-gradient(135deg, var(--steel-gray) 0%, var(--carbon-black) 100%);
+        .theme-card.featured .theme-preview {
+            aspect-ratio: auto;
+            height: 100%;
+            min-height: 400px;
         }
         
-        .photo-placeholder.good::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 50%;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 148, 59, 0.3) 0%, transparent 100%);
-        }
-        
-        .photo-placeholder.bad {
-            background: linear-gradient(180deg, #888 0%, #666 100%);
-        }
-        
-        .photo-info {
-            padding: 16px;
-        }
-        
-        .photo-label {
-            font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 4px;
-        }
-        
-        .photo-label.good {
-            color: #16A34A;
-        }
-        
-        .photo-label.bad {
-            color: #DC2626;
-        }
-        
-        .photo-desc {
-            font-size: 13px;
-            color: var(--steel-gray);
-        }
-        
-        .composition-demo {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 24px;
-        }
-        
-        .comp-card {
-            background: var(--steel-gray);
-            border-radius: 8px;
-            aspect-ratio: 4/3;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .comp-card.rule-of-thirds::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+        .theme-preview-placeholder {
+            width: 80%;
+            height: 80%;
             background: 
-                linear-gradient(to right, transparent 32.5%, rgba(255,255,255,0.3) 33%, rgba(255,255,255,0.3) 33.5%, transparent 34%, transparent 65.5%, rgba(255,255,255,0.3) 66%, rgba(255,255,255,0.3) 66.5%, transparent 67%),
-                linear-gradient(to bottom, transparent 32.5%, rgba(255,255,255,0.3) 33%, rgba(255,255,255,0.3) 33.5%, transparent 34%, transparent 65.5%, rgba(255,255,255,0.3) 66%, rgba(255,255,255,0.3) 66.5%, transparent 67%);
+                linear-gradient(135deg, var(--steel-gray) 0%, var(--graphite) 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
         }
         
-        .comp-card.leading-lines::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(135deg, transparent 45%, rgba(255, 148, 59, 0.4) 50%, transparent 55%);
+        .theme-preview-icon {
+            font-size: 48px;
+            opacity: 0.3;
         }
         
-        .comp-card.negative-space::after {
-            content: '';
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 40%;
-            height: 30%;
-            background: var(--gradient-primary);
-            border-radius: 4px;
-            opacity: 0.8;
+        .theme-card.featured .theme-preview-icon {
+            font-size: 72px;
         }
         
-        .comp-label {
-            text-align: center;
-            margin-top: 8px;
+        .theme-preview-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .theme-info {
+            padding: 20px;
+        }
+        
+        .theme-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .theme-desc {
             font-size: 13px;
-            font-weight: 500;
+            color: var(--concrete);
         }
         
-        .color-treatment {
+        /* Style Guide */
+        .style-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
-            margin-top: 24px;
         }
         
-        .treatment-card {
-            border-radius: 12px;
+        .style-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 32px;
+        }
+        
+        .style-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .style-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--gradient-45);
+            border-radius: 2px;
+        }
+        
+        .style-list {
+            list-style: none;
+        }
+        
+        .style-list li {
+            font-size: 14px;
+            color: var(--aluminum);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .style-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .style-list li::before {
+            content: '•';
+            color: var(--solmex-orange);
+            font-weight: bold;
+        }
+        
+        /* Color Grading */
+        .grading-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .grading-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
             overflow: hidden;
         }
         
-        .treatment-preview {
-            height: 150px;
-            background: linear-gradient(135deg, var(--steel-gray), var(--carbon-black));
-        }
-        
-        .treatment-preview.original {
-            filter: none;
-        }
-        
-        .treatment-preview.treated {
-            filter: saturate(0.8) contrast(1.15);
-            position: relative;
-        }
-        
-        .treatment-preview.treated::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 148, 59, 0.1), transparent);
-        }
-        
-        .treatment-label {
-            background: white;
-            padding: 12px;
-            text-align: center;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
-        .subject-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-        
-        .subject-card {
-            background: var(--polar);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .subject-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--gradient-primary);
-            border-radius: 12px;
-            margin: 0 auto 12px;
+        .grading-preview {
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
         }
         
-        .subject-name {
-            font-weight: 600;
+        .grading-preview.warm {
+            background: linear-gradient(135deg, 
+                rgba(255, 148, 59, 0.3) 0%, 
+                rgba(255, 217, 28, 0.2) 100%);
+        }
+        
+        .grading-preview.neutral {
+            background: linear-gradient(135deg, 
+                var(--steel-gray) 0%, 
+                var(--graphite) 100%);
+        }
+        
+        .grading-preview.cool {
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.2) 0%, 
+                var(--steel-gray) 100%);
+        }
+        
+        .grading-preview-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--concrete);
+            padding: 8px 16px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 6px;
+        }
+        
+        .grading-info {
+            padding: 20px;
+        }
+        
+        .grading-name {
             font-size: 14px;
-            margin-bottom: 4px;
+            font-weight: 600;
+            margin-bottom: 8px;
         }
         
-        .subject-desc {
+        .grading-desc {
             font-size: 12px;
             color: var(--concrete);
         }
         
-        .spec-list {
-            list-style: none;
-            margin-top: 16px;
-        }
-        
-        .spec-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--mist);
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-        }
-        
-        .spec-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .spec-label {
-            color: var(--steel-gray);
-        }
-        
-        .spec-value {
-            font-family: 'SF Mono', monospace;
-            font-weight: 600;
-            color: var(--solmex-orange);
-        }
-        
-        .do-dont {
+        /* Do's and Don'ts */
+        .donts-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
-            margin-top: 24px;
         }
         
-        .do-box, .dont-box {
-            padding: 24px;
-            border-radius: 12px;
+        .dont-section {
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+            padding: 32px;
         }
         
-        .do-box {
-            background: rgba(22, 163, 74, 0.1);
-            border: 2px solid #16A34A;
+        .dont-section.do {
+            border: 1px solid rgba(22, 163, 74, 0.3);
         }
         
-        .dont-box {
-            background: rgba(220, 38, 38, 0.1);
-            border: 2px solid #DC2626;
+        .dont-section.dont {
+            border: 1px solid rgba(220, 38, 38, 0.3);
         }
         
-        .do-label, .dont-label {
+        .dont-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
             font-weight: 600;
-            font-size: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
         
-        .do-label { color: #16A34A; }
-        .dont-label { color: #DC2626; }
-        
-        .do-box ul, .dont-box ul {
-            list-style: none;
-            font-size: 14px;
-            color: var(--steel-gray);
-        }
-        
-        .do-box li::before {
-            content: "✓ ";
+        .dont-section.do .dont-header {
             color: #16A34A;
         }
         
-        .dont-box li::before {
-            content: "✕ ";
+        .dont-section.dont .dont-header {
             color: #DC2626;
+        }
+        
+        .dont-list {
+            list-style: none;
+        }
+        
+        .dont-list li {
+            font-size: 14px;
+            color: var(--aluminum);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        
+        .dont-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Composition Guide */
+        .composition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .composition-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .composition-visual {
+            aspect-ratio: 4/3;
+            background: var(--graphite);
+            position: relative;
+        }
+        
+        .composition-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .composition-grid-lines {
+            width: 80%;
+            height: 80%;
+            border: 1px dashed rgba(255, 148, 59, 0.5);
+            position: relative;
+        }
+        
+        .composition-grid-lines.thirds::before,
+        .composition-grid-lines.thirds::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 148, 59, 0.3);
+        }
+        
+        .composition-grid-lines.thirds::before {
+            top: 33.33%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            box-shadow: 0 calc(33.33% + 1px) 0 rgba(255, 148, 59, 0.3);
+        }
+        
+        .composition-grid-lines.thirds::after {
+            left: 33.33%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            box-shadow: calc(33.33% + 1px) 0 0 rgba(255, 148, 59, 0.3);
+        }
+        
+        .composition-grid-lines.diagonal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 49%, rgba(255, 148, 59, 0.3) 49%, rgba(255, 148, 59, 0.3) 51%, transparent 51%);
+        }
+        
+        .composition-grid-lines.center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .composition-grid-lines.center::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--solmex-orange);
+            border-radius: 50%;
+        }
+        
+        .composition-info {
+            padding: 16px;
+        }
+        
+        .composition-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .composition-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
         }
     </style>
 </head>
 <body>
-    <a href="../index.html" class="nav-back">← Back to Brand System</a>
+    <a href="../index.html" class="nav-back">← Brand System</a>
     
-    <div class="header">
-        <h1>Photography Guidelines</h1>
-        <p class="subtitle">Visual direction for authentic, powerful imagery that represents Grupo Solmex</p>
-    </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-icon">📷</div>
+        <div class="hero-title">Photography System</div>
+        <h1 class="hero-headline">Visual Storytelling</h1>
+        <p class="hero-sub">Photography guidelines that capture the scale, precision, and human element of intelligent logistics operations.</p>
+    </section>
     
     <div class="container">
-        <!-- Visual Style -->
-        <div class="section">
-            <h2 class="section-title">Visual Style: Industrial Minimalism</h2>
-            <div class="card">
-                <div class="card-title">Core Aesthetic</div>
-                <p style="color: var(--steel-gray); margin-bottom: 24px;">Grupo Solmex photography should convey precision, reliability, and operational excellence. Images should feel clean, purposeful, and professional—never cluttered or chaotic.</p>
+        <!-- Themes -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Subject Matter</div>
+                <h2 class="section-title">Photography Themes</h2>
+                <p class="section-desc">Core visual themes that tell the Grupo Solmex story.</p>
+            </div>
+            
+            <div class="theme-grid">
+                <div class="theme-card featured">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">🚂</div>
+                            <div class="theme-preview-text">Rail Operations</div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="do-dont">
-                    <div class="do-box">
-                        <div class="do-label">APPROVED STYLE</div>
-                        <ul>
-                            <li>Clean, organized industrial spaces</li>
-                            <li>Dramatic lighting with deep shadows</li>
-                            <li>45° angles in composition</li>
-                            <li>Minimum 40% negative space</li>
-                            <li>Real equipment and locations</li>
-                            <li>Desaturated with warm highlights</li>
-                        </ul>
+                <div class="theme-card">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">🏭</div>
+                            <div class="theme-preview-text">Terminals</div>
+                        </div>
                     </div>
-                    <div class="dont-box">
-                        <div class="dont-label">AVOID</div>
-                        <ul>
-                            <li>Generic stock photography</li>
-                            <li>Cluttered, messy environments</li>
-                            <li>Oversaturated colors</li>
-                            <li>Soft focus or blur effects</li>
-                            <li>Posed, unnatural scenarios</li>
-                            <li>Busy backgrounds</li>
-                        </ul>
+                    <div class="theme-info">
+                        <div class="theme-name">Terminal Infrastructure</div>
+                        <div class="theme-desc">Warehouses, loading docks, and operational facilities</div>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">👷</div>
+                            <div class="theme-preview-text">People</div>
+                        </div>
+                    </div>
+                    <div class="theme-info">
+                        <div class="theme-name">Human Element</div>
+                        <div class="theme-desc">Workers, operators, and team collaboration</div>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">⚙️</div>
+                            <div class="theme-preview-text">Machinery</div>
+                        </div>
+                    </div>
+                    <div class="theme-info">
+                        <div class="theme-name">Equipment & Tech</div>
+                        <div class="theme-desc">Cranes, vehicles, and control systems</div>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">📦</div>
+                            <div class="theme-preview-text">Cargo</div>
+                        </div>
+                    </div>
+                    <div class="theme-info">
+                        <div class="theme-name">Goods & Materials</div>
+                        <div class="theme-desc">Containers, pallets, and transported goods</div>
+                    </div>
+                </div>
+                
+                <div class="theme-card">
+                    <div class="theme-preview">
+                        <div class="theme-preview-placeholder">
+                            <div class="theme-preview-icon">🌅</div>
+                            <div class="theme-preview-text">Environment</div>
+                        </div>
+                    </div>
+                    <div class="theme-info">
+                        <div class="theme-name">Industrial Landscape</div>
+                        <div class="theme-desc">Wide shots showing scale and network reach</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Subject Matter -->
-        <div class="section">
-            <h2 class="section-title">Subject Matter</h2>
-            <div class="card">
-                <div class="card-title">Approved Subjects</div>
-                <div class="subject-grid">
-                    <div class="subject-card">
-                        <div class="subject-icon">🏭</div>
-                        <div class="subject-name">Terminals & Facilities</div>
-                        <div class="subject-desc">Clean, well-organized terminal operations</div>
+        <!-- Visual Style -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Visual Style</div>
+                <h2 class="section-title">Aesthetic Guidelines</h2>
+                <p class="section-desc">The visual qualities that define Solmex photography.</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-title">Lighting</div>
+                    <ul class="style-list">
+                        <li>Golden hour and blue hour preferred</li>
+                        <li>Strong directional light for drama</li>
+                        <li>Industrial artificial lighting at night</li>
+                        <li>High contrast with deep shadows</li>
+                        <li>Backlit silhouettes for scale</li>
+                    </ul>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-title">Mood & Tone</div>
+                    <ul class="style-list">
+                        <li>Confident and professional</li>
+                        <li>Industrial yet human</li>
+                        <li>Scale and grandeur</li>
+                        <li>Precision and order</li>
+                        <li>Forward-looking optimism</li>
+                    </ul>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-title">Textures</div>
+                    <ul class="style-list">
+                        <li>Weathered steel and metal</li>
+                        <li>Concrete and asphalt</li>
+                        <li>Rust and patina (controlled)</li>
+                        <li>Clean modern surfaces</li>
+                        <li>Industrial patterns and repetition</li>
+                    </ul>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-title">Focus & Depth</div>
+                    <ul class="style-list">
+                        <li>Sharp focus on key subjects</li>
+                        <li>Shallow depth for portraits</li>
+                        <li>Deep focus for wide operations</li>
+                        <li>Motion blur for movement</li>
+                        <li>Crisp detail on equipment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Color Grading -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Color Treatment</div>
+                <h2 class="section-title">Color Grading</h2>
+                <p class="section-desc">Post-processing guidelines to maintain visual consistency.</p>
+            </div>
+            
+            <div class="grading-demo">
+                <div class="grading-card">
+                    <div class="grading-preview warm">
+                        <span class="grading-preview-text">Warm Grade</span>
                     </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">🚛</div>
-                        <div class="subject-name">Fleet & Vehicles</div>
-                        <div class="subject-desc">Professional transport equipment</div>
+                    <div class="grading-info">
+                        <div class="grading-name">Primary — Warm Tones</div>
+                        <div class="grading-desc">Golden highlights, amber midtones. Use for hero imagery, sunrise/sunset operations, and brand-forward content.</div>
                     </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">⚙️</div>
-                        <div class="subject-name">Equipment</div>
-                        <div class="subject-desc">Forklifts, cranes, handling gear</div>
+                </div>
+                
+                <div class="grading-card">
+                    <div class="grading-preview neutral">
+                        <span class="grading-preview-text">Neutral Grade</span>
                     </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">👷</div>
-                        <div class="subject-name">Personnel</div>
-                        <div class="subject-desc">Workers in proper safety gear</div>
+                    <div class="grading-info">
+                        <div class="grading-name">Secondary — Industrial Neutral</div>
+                        <div class="grading-desc">Desaturated tones, steel grays. Use for technical documentation, operational imagery, and professional contexts.</div>
                     </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">📦</div>
-                        <div class="subject-name">Cargo & Containers</div>
-                        <div class="subject-desc">Organized storage and shipping</div>
+                </div>
+                
+                <div class="grading-card">
+                    <div class="grading-preview cool">
+                        <span class="grading-preview-text">Cool Grade</span>
                     </div>
-                    <div class="subject-card">
-                        <div class="subject-icon">💻</div>
-                        <div class="subject-name">Technology</div>
-                        <div class="subject-desc">Dashboards, tracking, monitoring</div>
+                    <div class="grading-info">
+                        <div class="grading-name">Accent — Cool Blue</div>
+                        <div class="grading-desc">Blue-tinted shadows, night operations. Use sparingly for contrast and nighttime/technology imagery.</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
         <!-- Composition -->
-        <div class="section">
-            <h2 class="section-title">Composition Guidelines</h2>
-            <div class="card">
-                <div class="card-title">Composition Techniques</div>
-                <div class="composition-demo">
-                    <div>
-                        <div class="comp-card rule-of-thirds"></div>
-                        <div class="comp-label">Rule of Thirds</div>
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Composition</div>
+                <h2 class="section-title">Framing Guidelines</h2>
+                <p class="section-desc">Compositional rules that create visual impact.</p>
+            </div>
+            
+            <div class="composition-grid">
+                <div class="composition-card">
+                    <div class="composition-visual">
+                        <div class="composition-overlay">
+                            <div class="composition-grid-lines thirds"></div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="comp-card leading-lines"></div>
-                        <div class="comp-label">45° Leading Lines</div>
-                    </div>
-                    <div>
-                        <div class="comp-card negative-space"></div>
-                        <div class="comp-label">Negative Space</div>
+                    <div class="composition-info">
+                        <div class="composition-name">Rule of Thirds</div>
+                        <div class="composition-desc">Place key subjects at intersection points</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Color Treatment -->
-        <div class="section">
-            <h2 class="section-title">Color Treatment</h2>
-            <div class="card">
-                <div class="card-title">Post-Processing Specifications</div>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Saturation</span>
-                        <span class="spec-value">-20%</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Contrast</span>
-                        <span class="spec-value">+15%</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Highlights</span>
-                        <span class="spec-value">+10 warm</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Shadows</span>
-                        <span class="spec-value">-5 cool</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Orange Tint</span>
-                        <span class="spec-value">Subtle in highlights</span>
-                    </li>
-                </ul>
                 
-                <div class="color-treatment">
-                    <div class="treatment-card">
-                        <div class="treatment-preview original"></div>
-                        <div class="treatment-label">Before Treatment</div>
+                <div class="composition-card">
+                    <div class="composition-visual">
+                        <div class="composition-overlay">
+                            <div class="composition-grid-lines diagonal"></div>
+                        </div>
                     </div>
-                    <div class="treatment-card">
-                        <div class="treatment-preview treated"></div>
-                        <div class="treatment-label">After Treatment</div>
+                    <div class="composition-info">
+                        <div class="composition-name">Diagonal Lines</div>
+                        <div class="composition-desc">Use 45° angles for dynamic movement</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Lighting -->
-        <div class="section">
-            <h2 class="section-title">Lighting Guidelines</h2>
-            <div class="card">
-                <div class="card-title">Lighting Specifications</div>
-                <p style="color: var(--steel-gray); margin-bottom: 16px;">Lighting should emphasize texture, depth, and the industrial nature of logistics operations.</p>
                 
-                <div class="photo-grid">
-                    <div class="photo-example">
-                        <div class="photo-placeholder good">
-                            <span>Golden hour / Dramatic industrial</span>
-                        </div>
-                        <div class="photo-info">
-                            <div class="photo-label good">✓ Approved</div>
-                            <div class="photo-desc">Dramatic side lighting with deep shadows creates visual interest</div>
+                <div class="composition-card">
+                    <div class="composition-visual">
+                        <div class="composition-overlay">
+                            <div class="composition-grid-lines center"></div>
                         </div>
                     </div>
-                    <div class="photo-example">
-                        <div class="photo-placeholder bad">
-                            <span>Flat overhead lighting</span>
-                        </div>
-                        <div class="photo-info">
-                            <div class="photo-label bad">✕ Avoid</div>
-                            <div class="photo-desc">Flat, even lighting lacks dimension and feels generic</div>
-                        </div>
+                    <div class="composition-info">
+                        <div class="composition-name">Centered Symmetry</div>
+                        <div class="composition-desc">For impactful hero and architectural shots</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <!-- Technical Specs -->
-        <div class="section">
-            <h2 class="section-title">Technical Specifications</h2>
-            <div class="card">
-                <div class="card-title">Image Requirements</div>
-                <ul class="spec-list">
-                    <li>
-                        <span class="spec-label">Minimum Resolution</span>
-                        <span class="spec-value">3000px (web), 300dpi (print)</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">File Format</span>
-                        <span class="spec-value">RAW for archive, JPEG for delivery</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Color Space</span>
-                        <span class="spec-value">sRGB (web), Adobe RGB (print)</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Aspect Ratios</span>
-                        <span class="spec-value">16:9, 4:3, 1:1</span>
-                    </li>
-                    <li>
-                        <span class="spec-label">Compression</span>
-                        <span class="spec-value">Maximum quality (85-100%)</span>
-                    </li>
-                </ul>
+        <!-- Do's and Don'ts -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">05 — Guidelines</div>
+                <h2 class="section-title">Do's & Don'ts</h2>
+                <p class="section-desc">Rules for maintaining photographic brand integrity.</p>
             </div>
-        </div>
+            
+            <div class="donts-grid">
+                <div class="dont-section do">
+                    <div class="dont-header">✓ Do</div>
+                    <ul class="dont-list">
+                        <li>Show scale with human elements for reference</li>
+                        <li>Capture golden hour light when possible</li>
+                        <li>Include brand colors naturally in environment</li>
+                        <li>Show clean, organized operations</li>
+                        <li>Feature diverse workforce authentically</li>
+                        <li>Use high-resolution, sharp imagery</li>
+                        <li>Show technology and modern equipment</li>
+                        <li>Capture motion and activity</li>
+                    </ul>
+                </div>
+                
+                <div class="dont-section dont">
+                    <div class="dont-header">✕ Don't</div>
+                    <ul class="dont-list">
+                        <li>Use stock photos that feel generic</li>
+                        <li>Over-saturate or heavily filter images</li>
+                        <li>Show messy or disorganized scenes</li>
+                        <li>Include visible safety violations</li>
+                        <li>Use dated or obsolete equipment</li>
+                        <li>Apply trendy filters or effects</li>
+                        <li>Crop logos or branding awkwardly</li>
+                        <li>Use low-resolution or blurry images</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
+    
+    <footer class="footer">
+        <img src="../logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
 </body>
 </html>
-

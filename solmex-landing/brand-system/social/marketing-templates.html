@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Social & Marketing Templates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --aluminum: #B0B5BA;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--carbon-black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--concrete);
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-45);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 36px;
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 16px;
+        }
+        
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 48px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        
+        .section-desc {
+            font-size: 15px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        /* Social Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .social-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .social-preview {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* LinkedIn Template */
+        .linkedin-post {
+            width: 100%;
+            height: 100%;
+            background: var(--carbon-black);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .linkedin-post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-45);
+        }
+        
+        .linkedin-logo {
+            width: 40px;
+            margin-bottom: auto;
+        }
+        
+        .linkedin-content {
+            margin-top: auto;
+        }
+        
+        .linkedin-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+        
+        .linkedin-subline {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Announcement Template */
+        .announcement-post {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-45);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .announcement-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .announcement-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--carbon-black);
+            margin-bottom: 8px;
+        }
+        
+        .announcement-subline {
+            font-size: 13px;
+            color: rgba(10, 10, 10, 0.7);
+        }
+        
+        /* Stats Template */
+        .stats-post {
+            width: 100%;
+            height: 100%;
+            background: var(--graphite);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-post::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 148, 59, 0.03) 20px,
+                    rgba(255, 148, 59, 0.03) 40px
+                );
+        }
+        
+        .stats-logo {
+            width: 36px;
+            margin-bottom: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            background: var(--gradient-45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-label {
+            font-size: 14px;
+            color: var(--aluminum);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-info {
+            padding: 20px;
+        }
+        
+        .social-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .social-size {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--solmex-orange);
+        }
+        
+        /* Presentation Slides */
+        .slides-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .slide-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .slide-preview {
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+        
+        .slide-title {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-45);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .slide-logo {
+            width: 64px;
+            filter: brightness(0) invert(0.1);
+            margin-bottom: 24px;
+        }
+        
+        .slide-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--carbon-black);
+            text-align: center;
+        }
+        
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .slide-header-logo {
+            width: 32px;
+        }
+        
+        .slide-section {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--solmex-orange);
+            letter-spacing: 0.1em;
+        }
+        
+        .slide-body-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--carbon-black);
+            margin-bottom: 16px;
+        }
+        
+        .slide-body-content {
+            display: flex;
+            gap: 16px;
+            flex: 1;
+        }
+        
+        .slide-placeholder {
+            flex: 1;
+            background: var(--mist);
+            border-radius: 8px;
+        }
+        
+        .slide-info {
+            padding: 20px;
+        }
+        
+        .slide-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .slide-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Case Study Layout */
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        
+        .case-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .case-card.full {
+            grid-column: span 2;
+        }
+        
+        .case-preview {
+            aspect-ratio: 16/9;
+            background: var(--graphite);
+            position: relative;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .case-preview::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 100px 100px;
+            border-color: transparent transparent rgba(255, 148, 59, 0.2) transparent;
+        }
+        
+        .case-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--solmex-orange);
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+        
+        .case-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: auto;
+        }
+        
+        .case-metrics {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .case-metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--gradient-45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .case-metric-label {
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        .case-info {
+            padding: 20px;
+        }
+        
+        .case-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .case-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Brand System</a>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-icon">📱</div>
+        <div class="hero-title">Social & Marketing</div>
+        <h1 class="hero-headline">Digital Templates</h1>
+        <p class="hero-sub">Ready-to-use templates for social media, presentations, and marketing materials.</p>
+    </section>
+    
+    <div class="container">
+        <!-- Social Media -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Social Media</div>
+                <h2 class="section-title">Post Templates</h2>
+                <p class="section-desc">Consistent templates for LinkedIn, Twitter, and other platforms.</p>
+            </div>
+            
+            <div class="social-grid">
+                <div class="social-card">
+                    <div class="social-preview">
+                        <div class="linkedin-post">
+                            <img src="../logo/solmex-logo.svg" alt="Solmex" class="linkedin-logo">
+                            <div class="linkedin-content">
+                                <div class="linkedin-headline">Intelligent logistics for the modern supply chain</div>
+                                <div class="linkedin-subline">gruposolmex.com</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-name">LinkedIn Post — Statement</div>
+                        <div class="social-size">1200 × 1200px</div>
+                    </div>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-preview">
+                        <div class="announcement-post">
+                            <div class="announcement-icon">🎉</div>
+                            <div class="announcement-headline">Nueva Terminal</div>
+                            <div class="announcement-subline">Guadalajara, Jalisco</div>
+                        </div>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-name">Announcement Post</div>
+                        <div class="social-size">1200 × 1200px</div>
+                    </div>
+                </div>
+                
+                <div class="social-card">
+                    <div class="social-preview">
+                        <div class="stats-post">
+                            <img src="../logo/solmex-logo.svg" alt="Solmex" class="stats-logo">
+                            <div style="margin-top: auto;">
+                                <div class="stats-value">2,847</div>
+                                <div class="stats-label">Active shipments this week</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-info">
+                        <div class="social-name">Statistics Post</div>
+                        <div class="social-size">1200 × 1200px</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Presentations -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Presentations</div>
+                <h2 class="section-title">Slide Templates</h2>
+                <p class="section-desc">Professional presentation templates for pitches and reports.</p>
+            </div>
+            
+            <div class="slides-grid">
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <div class="slide-title">
+                            <img src="../logo/solmex-logo.svg" alt="Solmex" class="slide-logo">
+                            <div class="slide-headline">Intelligent Logistics<br>Operator</div>
+                        </div>
+                    </div>
+                    <div class="slide-info">
+                        <div class="slide-name">Title Slide</div>
+                        <div class="slide-desc">Opening slide with full brand gradient</div>
+                    </div>
+                </div>
+                
+                <div class="slide-card">
+                    <div class="slide-preview">
+                        <div class="slide-content">
+                            <div class="slide-header">
+                                <span class="slide-section">OVERVIEW</span>
+                                <img src="../logo/solmex-logo.svg" alt="Solmex" class="slide-header-logo">
+                            </div>
+                            <div class="slide-body-title">Section Title Here</div>
+                            <div class="slide-body-content">
+                                <div class="slide-placeholder"></div>
+                                <div class="slide-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-info">
+                        <div class="slide-name">Content Slide</div>
+                        <div class="slide-desc">Two-column layout for content</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Case Studies -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Case Studies</div>
+                <h2 class="section-title">Project Layouts</h2>
+                <p class="section-desc">Templates for showcasing client success stories.</p>
+            </div>
+            
+            <div class="case-grid">
+                <div class="case-card full">
+                    <div class="case-preview">
+                        <div class="case-label">CASE STUDY</div>
+                        <div class="case-title">Terminal Monterrey<br>Expansion Project</div>
+                        <div class="case-metrics">
+                            <div>
+                                <div class="case-metric-value">+45%</div>
+                                <div class="case-metric-label">Capacity increase</div>
+                            </div>
+                            <div>
+                                <div class="case-metric-value">12mo</div>
+                                <div class="case-metric-label">Implementation</div>
+                            </div>
+                            <div>
+                                <div class="case-metric-value">24/7</div>
+                                <div class="case-metric-label">Operations</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-name">Hero Case Study</div>
+                        <div class="case-desc">Full-width layout for featured projects</div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-preview" style="aspect-ratio: 4/3;">
+                        <div class="case-label">PROJECT</div>
+                        <div class="case-title" style="font-size: 18px;">Cross-Border<br>Integration</div>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-name">Project Card</div>
+                        <div class="case-desc">Compact case study layout</div>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-preview" style="aspect-ratio: 4/3;">
+                        <div class="case-label">PROJECT</div>
+                        <div class="case-title" style="font-size: 18px;">Fleet Management<br>Optimization</div>
+                    </div>
+                    <div class="case-info">
+                        <div class="case-name">Project Card</div>
+                        <div class="case-desc">Compact case study layout</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <img src="../logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
+</body>
+</html>
+

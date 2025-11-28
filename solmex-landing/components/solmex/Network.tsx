@@ -128,8 +128,7 @@ export default function Network() {
           </h2>
           <p className="text-lg text-white/85 max-w-3xl mx-auto leading-relaxed">
             Tejemos una red de operadores certificados en puntos estratégicos
-            del país. tejemos una red de operadores certificados en puntos
-            estratégicos del país.
+            del país.
           </p>
         </motion.div>
 

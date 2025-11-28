@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Icon System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --aluminum: #B0B5BA;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+            --signal-red: #DC2626;
+            --safety-green: #16A34A;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--carbon-black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--concrete);
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            text-align: center;
+        }
+        
+        .hero-icons {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+        
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--solmex-orange);
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 16px;
+        }
+        
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section {
+            padding: 100px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        
+        .section-header {
+            margin-bottom: 48px;
+        }
+        
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        
+        .section-desc {
+            font-size: 15px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        /* Grid Anatomy */
+        .grid-demo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .grid-visual {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .grid-canvas {
+            width: 240px;
+            height: 240px;
+            position: relative;
+            background: 
+                linear-gradient(rgba(255, 148, 59, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 148, 59, 0.1) 1px, transparent 1px);
+            background-size: 10px 10px;
+            border: 2px solid rgba(255, 148, 59, 0.3);
+            border-radius: 4px;
+        }
+        
+        .grid-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .grid-icon svg {
+            width: 192px;
+            height: 192px;
+            stroke: var(--solmex-orange);
+        }
+        
+        .grid-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .spec-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            background: var(--gradient-45);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            min-width: 80px;
+        }
+        
+        .spec-label {
+            font-size: 14px;
+            color: var(--concrete);
+        }
+        
+        /* Icon Grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+        
+        .icon-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .icon-card:hover {
+            border-color: rgba(255, 148, 59, 0.4);
+            background: rgba(255, 148, 59, 0.05);
+        }
+        
+        .icon-card:hover svg {
+            stroke: var(--solmex-orange);
+        }
+        
+        .icon-card svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            stroke-width: 1.5;
+            fill: none;
+            margin-bottom: 12px;
+            transition: stroke 0.2s;
+        }
+        
+        .icon-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--concrete);
+            text-transform: lowercase;
+        }
+        
+        /* Size Demo */
+        .size-demo {
+            display: flex;
+            align-items: flex-end;
+            gap: 48px;
+            justify-content: center;
+            padding: 48px 0;
+        }
+        
+        .size-item {
+            text-align: center;
+        }
+        
+        .size-icon {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        
+        .size-icon svg {
+            stroke: var(--solmex-orange);
+            stroke-width: 1.5;
+            fill: none;
+        }
+        
+        .size-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--concrete);
+        }
+        
+        .size-use {
+            font-size: 12px;
+            color: var(--aluminum);
+            margin-top: 4px;
+        }
+        
+        /* Stroke Demo */
+        .stroke-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        
+        .stroke-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+        
+        .stroke-card svg {
+            width: 48px;
+            height: 48px;
+            stroke: white;
+            fill: none;
+            margin-bottom: 16px;
+        }
+        
+        .stroke-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--solmex-orange);
+            margin-bottom: 4px;
+        }
+        
+        .stroke-use {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        /* Category Headers */
+        .category-header {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: var(--aluminum);
+        }
+        
+        .category-section {
+            margin-bottom: 48px;
+        }
+        
+        /* Usage Examples */
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .usage-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .usage-header {
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--solmex-orange);
+            letter-spacing: 0.1em;
+        }
+        
+        .usage-content {
+            padding: 24px;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            width: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        .footer-text {
+            font-size: 13px;
+            color: var(--concrete);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="nav-back">← Brand System</a>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-icons">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2"/>
+                    <path d="M16 3l-4 4-4-4"/>
+                </svg>
+            </div>
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+            </div>
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 11l3 3L22 4"/>
+                    <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-title">Icon System</div>
+        <h1 class="hero-headline">Engineered Precision</h1>
+        <p class="hero-sub">A comprehensive icon library built on a 24×24 grid with consistent stroke weights and rounded corners derived from the logo geometry.</p>
+    </section>
+    
+    <div class="container">
+        <!-- Grid Anatomy -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Construction</div>
+                <h2 class="section-title">Icon Grid System</h2>
+                <p class="section-desc">All icons are built on a precise 24×24 pixel grid with consistent proportions derived from the Solmex logo geometry.</p>
+            </div>
+            
+            <div class="grid-demo">
+                <div class="grid-visual">
+                    <div class="grid-canvas">
+                        <div class="grid-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                <path d="M16 3l-4 4-4-4"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-specs">
+                    <div class="spec-item">
+                        <span class="spec-value">24px</span>
+                        <span class="spec-label">Base grid size for all icons</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-value">1.5px</span>
+                        <span class="spec-label">Standard stroke weight</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-value">2px</span>
+                        <span class="spec-label">Corner radius (rounded caps)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-value">2px</span>
+                        <span class="spec-label">Safe zone padding</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Icon Sizes -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Scaling</div>
+                <h2 class="section-title">Size System</h2>
+                <p class="section-desc">Icons scale proportionally. Use these standard sizes for consistency.</p>
+            </div>
+            
+            <div class="size-demo">
+                <div class="size-item">
+                    <div class="size-icon" style="width: 32px; height: 32px;">
+                        <svg viewBox="0 0 24 24" style="width: 16px; height: 16px;">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">16px</div>
+                    <div class="size-use">Dense UI</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-icon" style="width: 40px; height: 40px;">
+                        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px;">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">20px</div>
+                    <div class="size-use">Navigation</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-icon" style="width: 48px; height: 48px;">
+                        <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">24px</div>
+                    <div class="size-use">Standard</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-icon" style="width: 56px; height: 56px;">
+                        <svg viewBox="0 0 24 24" style="width: 32px; height: 32px;">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">32px</div>
+                    <div class="size-use">Feature</div>
+                </div>
+                <div class="size-item">
+                    <div class="size-icon" style="width: 72px; height: 72px;">
+                        <svg viewBox="0 0 24 24" style="width: 48px; height: 48px;">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                    </div>
+                    <div class="size-label">48px</div>
+                    <div class="size-use">Hero</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stroke Weights -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Stroke Weight</div>
+                <h2 class="section-title">Weight Variations</h2>
+                <p class="section-desc">Adjust stroke weight based on context while maintaining visual consistency.</p>
+            </div>
+            
+            <div class="stroke-grid">
+                <div class="stroke-card">
+                    <svg viewBox="0 0 24 24" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/>
+                        <path d="M16 3l-4 4-4-4"/>
+                    </svg>
+                    <div class="stroke-value">1px</div>
+                    <div class="stroke-use">Light / Small sizes</div>
+                </div>
+                <div class="stroke-card">
+                    <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/>
+                        <path d="M16 3l-4 4-4-4"/>
+                    </svg>
+                    <div class="stroke-value">1.5px</div>
+                    <div class="stroke-use">Standard (default)</div>
+                </div>
+                <div class="stroke-card">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/>
+                        <path d="M16 3l-4 4-4-4"/>
+                    </svg>
+                    <div class="stroke-value">2px</div>
+                    <div class="stroke-use">Bold / Emphasis</div>
+                </div>
+                <div class="stroke-card">
+                    <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/>
+                        <path d="M16 3l-4 4-4-4"/>
+                    </svg>
+                    <div class="stroke-value">2.5px</div>
+                    <div class="stroke-use">Heavy / Large sizes</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Operations Icons -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Icon Library</div>
+                <h2 class="section-title">Complete Set</h2>
+                <p class="section-desc">Core icons for operations, navigation, status, and actions.</p>
+            </div>
+            
+            <!-- Operations -->
+            <div class="category-section">
+                <h3 class="category-header">Operations & Logistics</h3>
+                <div class="icon-grid">
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2"/>
+                            <path d="M16 3l-4 4-4-4"/>
+                        </svg>
+                        <div class="icon-name">shipment</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/>
+                            <path d="M8 2v16M16 6v16"/>
+                        </svg>
+                        <div class="icon-name">route</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <div class="icon-name">schedule</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div class="icon-name">terminal</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                        <div class="icon-name">truck</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M2 8h20M6 12h4M6 16h8"/>
+                        </svg>
+                        <div class="icon-name">railcar</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <div class="icon-name">inventory</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        <div class="icon-name">dashboard</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Movement -->
+            <div class="category-section">
+                <h3 class="category-header">Movement & Flow</h3>
+                <div class="icon-grid">
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                        <div class="icon-name">arrow-right</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"/>
+                            <path d="M3 11V9a4 4 0 014-4h14"/>
+                            <polyline points="7 23 3 19 7 15"/>
+                            <path d="M21 13v2a4 4 0 01-4 4H3"/>
+                        </svg>
+                        <div class="icon-name">transfer</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                        <div class="icon-name">delivered</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <div class="icon-name">in-transit</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242"/>
+                            <path d="M12 12v9"/>
+                            <path d="M8 17l4 4 4-4"/>
+                        </svg>
+                        <div class="icon-name">loading</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242"/>
+                            <path d="M12 21v-9"/>
+                            <path d="M8 12l4-4 4 4"/>
+                        </svg>
+                        <div class="icon-name">unloading</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+                        </svg>
+                        <div class="icon-name">sync</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                        <div class="icon-name">dispatch</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Compliance & Safety -->
+            <div class="category-section">
+                <h3 class="category-header">Compliance & Safety</h3>
+                <div class="icon-grid">
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        <div class="icon-name">secure</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                        </svg>
+                        <div class="icon-name">verified</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <div class="icon-name">warning</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="15" y1="9" x2="9" y2="15"/>
+                            <line x1="9" y1="9" x2="15" y2="15"/>
+                        </svg>
+                        <div class="icon-name">error</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                        <div class="icon-name">info</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                        <div class="icon-name">locked</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2"/>
+                            <path d="M7 11V7a5 5 0 019.9-1"/>
+                        </svg>
+                        <div class="icon-name">unlocked</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        <div class="icon-name">document</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data & Analytics -->
+            <div class="category-section">
+                <h3 class="category-header">Data & Analytics</h3>
+                <div class="icon-grid">
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"/>
+                            <line x1="12" y1="20" x2="12" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="14"/>
+                        </svg>
+                        <div class="icon-name">chart-bar</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                        <div class="icon-name">analytics</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.21 15.89A10 10 0 118 2.83"/>
+                            <path d="M22 12A10 10 0 0012 2v10z"/>
+                        </svg>
+                        <div class="icon-name">chart-pie</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                            <polyline points="17 6 23 6 23 12"/>
+                        </svg>
+                        <div class="icon-name">trending-up</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
+                            <polyline points="17 18 23 18 23 12"/>
+                        </svg>
+                        <div class="icon-name">trending-down</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                        </svg>
+                        <div class="icon-name">database</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2"/>
+                            <rect x="9" y="9" width="6" height="6"/>
+                            <line x1="9" y1="1" x2="9" y2="4"/>
+                            <line x1="15" y1="1" x2="15" y2="4"/>
+                            <line x1="9" y1="20" x2="9" y2="23"/>
+                            <line x1="15" y1="20" x2="15" y2="23"/>
+                            <line x1="20" y1="9" x2="23" y2="9"/>
+                            <line x1="20" y1="14" x2="23" y2="14"/>
+                            <line x1="1" y1="9" x2="4" y2="9"/>
+                            <line x1="1" y1="14" x2="4" y2="14"/>
+                        </svg>
+                        <div class="icon-name">processor</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <div class="icon-name">network</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Actions -->
+            <div class="category-section">
+                <h3 class="category-header">Actions</h3>
+                <div class="icon-grid">
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <div class="icon-name">search</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        <div class="icon-name">add</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        <div class="icon-name">remove</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                        </svg>
+                        <div class="icon-name">edit</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"/>
+                            <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+                        </svg>
+                        <div class="icon-name">delete</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <div class="icon-name">download</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                        <div class="icon-name">upload</div>
+                    </div>
+                    <div class="icon-card">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+                        </svg>
+                        <div class="icon-name">settings</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="footer">
+        <img src="../logo/solmex-logo.svg" alt="Solmex" class="footer-logo">
+        <p class="footer-text">© 2025 Grupo Solmex. Brand Identity System v2.0</p>
+    </footer>
+</body>
+</html>
+
