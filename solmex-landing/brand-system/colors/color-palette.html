@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Color System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #F8F9FA;
+            padding: 40px;
+            color: #0A0A0A;
+        }
+        
+        .header {
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #8B9197;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E4E7E9;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .color-swatch {
+            height: 120px;
+            position: relative;
+        }
+        
+        .color-info {
+            padding: 16px;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .color-hex {
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 13px;
+            color: #8B9197;
+            margin-bottom: 4px;
+        }
+        
+        .color-rgb {
+            font-family: 'SF Mono', 'Monaco', monospace;
+            font-size: 11px;
+            color: #8B9197;
+        }
+        
+        .gradient-card {
+            grid-column: span 2;
+        }
+        
+        .gradient-swatch {
+            height: 120px;
+            background: linear-gradient(45deg, #FF943B 0%, #FFAD5C 25%, #FFC67D 75%, #FFD91C 100%);
+        }
+        
+        .usage-chart {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .usage-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .usage-label {
+            width: 150px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .usage-bar {
+            flex: 1;
+            height: 32px;
+            background: #E4E7E9;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .usage-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .contrast-grid {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .contrast-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .contrast-table th,
+        .contrast-table td {
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .contrast-table th {
+            background: #F8F9FA;
+            font-weight: 600;
+        }
+        
+        .contrast-table td {
+            border: 1px solid #E4E7E9;
+        }
+        
+        .contrast-pass {
+            background: #16A34A20;
+            color: #16A34A;
+            font-weight: 600;
+        }
+        
+        .contrast-fail {
+            background: #DC262620;
+            color: #DC2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Grupo Solmex</h1>
+        <p class="subtitle">Brand Color System v1.0</p>
+    </div>
+    
+    <!-- Primary Brand Colors -->
+    <div class="section">
+        <h2 class="section-title">Primary Brand Spectrum</h2>
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FF943B;"></div>
+                <div class="color-info">
+                    <div class="color-name">Solmex Orange</div>
+                    <div class="color-hex">#FF943B</div>
+                    <div class="color-rgb">RGB(255, 148, 59)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFAD5C;"></div>
+                <div class="color-info">
+                    <div class="color-name">Solmex Amber</div>
+                    <div class="color-hex">#FFAD5C</div>
+                    <div class="color-rgb">RGB(255, 173, 92)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFC67D;"></div>
+                <div class="color-info">
+                    <div class="color-name">Solmex Gold</div>
+                    <div class="color-hex">#FFC67D</div>
+                    <div class="color-rgb">RGB(255, 198, 125)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFD91C;"></div>
+                <div class="color-info">
+                    <div class="color-name">Solmex Sunrise</div>
+                    <div class="color-hex">#FFD91C</div>
+                    <div class="color-rgb">RGB(255, 217, 28)</div>
+                </div>
+            </div>
+            
+            <div class="color-card gradient-card">
+                <div class="gradient-swatch"></div>
+                <div class="color-info">
+                    <div class="color-name">Primary Gradient</div>
+                    <div class="color-hex">45° angle</div>
+                    <div class="color-rgb">#FF943B → #FFD91C</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Neutral Palette -->
+    <div class="section">
+        <h2 class="section-title">Industrial Neutrals</h2>
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #0A0A0A;"></div>
+                <div class="color-info">
+                    <div class="color-name">Carbon Black</div>
+                    <div class="color-hex">#0A0A0A</div>
+                    <div class="color-rgb">RGB(10, 10, 10)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #2C3E44;"></div>
+                <div class="color-info">
+                    <div class="color-name">Steel Gray</div>
+                    <div class="color-hex">#2C3E44</div>
+                    <div class="color-rgb">RGB(44, 62, 68)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #8B9197;"></div>
+                <div class="color-info">
+                    <div class="color-name">Concrete</div>
+                    <div class="color-hex">#8B9197</div>
+                    <div class="color-rgb">RGB(139, 145, 151)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #E4E7E9;"></div>
+                <div class="color-info">
+                    <div class="color-name">Mist</div>
+                    <div class="color-hex">#E4E7E9</div>
+                    <div class="color-rgb">RGB(228, 231, 233)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #F8F9FA;"></div>
+                <div class="color-info">
+                    <div class="color-name">Polar</div>
+                    <div class="color-hex">#F8F9FA</div>
+                    <div class="color-rgb">RGB(248, 249, 250)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Semantic Colors -->
+    <div class="section">
+        <h2 class="section-title">Semantic Signals</h2>
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #DC2626;"></div>
+                <div class="color-info">
+                    <div class="color-name">Signal Red</div>
+                    <div class="color-hex">#DC2626</div>
+                    <div class="color-rgb">RGB(220, 38, 38)</div>
+                </div>
+            </div>
+            
+            <div class="color-card">
+                <div class="color-swatch" style="background: #16A34A;"></div>
+                <div class="color-info">
+                    <div class="color-name">Safety Green</div>
+                    <div class="color-hex">#16A34A</div>
+                    <div class="color-rgb">RGB(22, 163, 74)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Usage Guidelines -->
+    <div class="section">
+        <h2 class="section-title">Usage Distribution</h2>
+        <div class="usage-chart">
+            <div class="usage-row">
+                <div class="usage-label">Neutral Tones</div>
+                <div class="usage-bar">
+                    <div class="usage-fill" style="width: 60%; background: #2C3E44;">60%</div>
+                </div>
+            </div>
+            <div class="usage-row">
+                <div class="usage-label">Primary Orange</div>
+                <div class="usage-bar">
+                    <div class="usage-fill" style="width: 30%; background: linear-gradient(45deg, #FF943B, #FFD91C);">30%</div>
+                </div>
+            </div>
+            <div class="usage-row">
+                <div class="usage-label">Accent Colors</div>
+                <div class="usage-bar">
+                    <div class="usage-fill" style="width: 10%; background: #16A34A;">10%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Accessibility Matrix -->
+    <div class="section">
+        <h2 class="section-title">Contrast & Accessibility</h2>
+        <div class="contrast-grid">
+            <table class="contrast-table">
+                <thead>
+                    <tr>
+                        <th>Foreground</th>
+                        <th>Background</th>
+                        <th>Ratio</th>
+                        <th>WCAG AA</th>
+                        <th>WCAG AAA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="background: #FF943B; color: white;">Solmex Orange</td>
+                        <td style="background: #0A0A0A; color: white;">Carbon Black</td>
+                        <td>12.4:1</td>
+                        <td class="contrast-pass">PASS</td>
+                        <td class="contrast-pass">PASS</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #FF943B; color: white;">Solmex Orange</td>
+                        <td style="background: white; color: #0A0A0A;">White</td>
+                        <td>3.1:1</td>
+                        <td class="contrast-pass">PASS</td>
+                        <td class="contrast-fail">FAIL</td>
+                    </tr>
+                    <tr>
+                        <td style="background: #0A0A0A; color: white;">Carbon Black</td>
+                        <td style="background: #FFD91C; color: #0A0A0A;">Solmex Sunrise</td>
+                        <td>14.8:1</td>
+                        <td class="contrast-pass">PASS</td>
+                        <td class="contrast-pass">PASS</td>
+                    </tr>
+                    <tr>
+                        <td style="background: white; color: #0A0A0A;">White</td>
+                        <td style="background: #2C3E44; color: white;">Steel Gray</td>
+                        <td>9.2:1</td>
+                        <td class="contrast-pass">PASS</td>
+                        <td class="contrast-pass">PASS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

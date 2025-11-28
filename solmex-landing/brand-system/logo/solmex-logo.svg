@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grupo Solmex Official Logo -->
+  <defs>
+    <!-- Brand Gradient -->
+    <linearGradient id="solmexGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" style="stop-color:#FF943B;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#FFAD5C;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#FFC67D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD91C;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Mask for diagonal cut -->
+    <mask id="logoMask">
+      <rect width="200" height="200" fill="white"/>
+      <polygon points="200,200 140,200 200,140" fill="black"/>
+    </mask>
+  </defs>
+  
+  <!-- Main circle with gradient and diagonal cut -->
+  <circle cx="100" cy="100" r="90" fill="url(#solmexGradient)" mask="url(#logoMask)"/>
+  
+  <!-- Grid guides for logo construction (hidden by default) -->
+  <g id="construction-grid" style="display:none">
+    <line x1="100" y1="0" x2="100" y2="200" stroke="#FF943B" stroke-width="0.5" opacity="0.3"/>
+    <line x1="0" y1="100" x2="200" y2="100" stroke="#FF943B" stroke-width="0.5" opacity="0.3"/>
+    <line x1="140" y1="200" x2="200" y2="140" stroke="#FF943B" stroke-width="0.5" opacity="0.3"/>
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#FF943B" stroke-width="0.5" opacity="0.3"/>
+  </g>
+</svg>

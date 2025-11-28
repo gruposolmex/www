@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Grupo Solmex Icon System -->
+  <rect width="800" height="600" fill="#F8F9FA"/>
+  
+  <!-- Title -->
+  <text x="40" y="40" font-family="Inter, sans-serif" font-size="24" font-weight="600" fill="#0A0A0A">
+    Grupo Solmex - Icon System
+  </text>
+  <text x="40" y="65" font-family="Inter, sans-serif" font-size="14" fill="#8B9197">
+    24x24px grid • 1.5px stroke • 2px corner radius
+  </text>
+  
+  <!-- Icon Grid Background -->
+  <g id="icon-grid">
+    <!-- Operational Icons Row -->
+    <text x="40" y="110" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
+      OPERATIONAL
+    </text>
+    
+    <!-- Terminal Icon -->
+    <g transform="translate(40, 130)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <rect x="4" y="4" width="16" height="14" rx="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="4" y1="20" x2="20" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <circle cx="8" cy="8" r="1" fill="#FF943B"/>
+      </g>
+    </g>
+    
+    <!-- Gate Icon -->
+    <g transform="translate(100, 130)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <path d="M 4 20 L 4 4 L 20 4 L 20 20" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="12" y1="4" x2="12" y2="16" stroke="#FF943B" stroke-width="1.5"/>
+        <circle cx="8" cy="16" r="1.5" fill="#FF943B"/>
+        <circle cx="16" cy="16" r="1.5" fill="#FF943B"/>
+      </g>
+    </g>
+    
+    <!-- Dock Icon -->
+    <g transform="translate(160, 130)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <rect x="2" y="8" width="20" height="12" rx="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="7" y1="8" x2="7" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="12" y1="8" x2="12" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="17" y1="8" x2="17" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="2" y1="4" x2="22" y2="4" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Forklift Icon -->
+    <g transform="translate(220, 130)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <rect x="4" y="10" width="12" height="8" rx="1" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="6" cy="20" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="14" cy="20" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="16" y1="14" x2="20" y2="14" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="20" y1="4" x2="20" y2="18" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Movement Icons Row -->
+    <text x="40" y="210" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
+      MOVEMENT
+    </text>
+    
+    <!-- Arrow 45° Icon -->
+    <g transform="translate(40, 230)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <line x1="6" y1="18" x2="18" y2="6" stroke="#FF943B" stroke-width="1.5" stroke-linecap="round"/>
+        <polyline points="11,6 18,6 18,13" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    
+    <!-- Route Icon -->
+    <g transform="translate(100, 230)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <circle cx="6" cy="6" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="18" cy="18" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <path d="M 8 8 Q 12 4, 16 8 T 16 16" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+      </g>
+    </g>
+    
+    <!-- Flow Icon -->
+    <g transform="translate(160, 230)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <circle cx="6" cy="12" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="18" cy="6" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="18" cy="18" r="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="8" y1="12" x2="16" y2="7" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="8" y1="12" x2="16" y2="17" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Sync Icon -->
+    <g transform="translate(220, 230)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <path d="M 4 8 A 8 8 0 0 1 12 4 L 20 4" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <polyline points="17,2 20,4 17,6" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 20 16 A 8 8 0 0 1 12 20 L 4 20" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <polyline points="7,18 4,20 7,22" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    
+    <!-- Data Icons Row -->
+    <text x="40" y="310" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
+      DATA & METRICS
+    </text>
+    
+    <!-- Dashboard Icon -->
+    <g transform="translate(40, 330)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <rect x="4" y="4" width="6" height="8" rx="1" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <rect x="14" y="4" width="6" height="5" rx="1" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <rect x="4" y="16" width="6" height="4" rx="1" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <rect x="14" y="13" width="6" height="7" rx="1" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+      </g>
+    </g>
+    
+    <!-- Analytics Icon -->
+    <g transform="translate(100, 330)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <line x1="4" y1="20" x2="20" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="4" y1="4" x2="4" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <polyline points="7,16 10,12 14,14 18,8" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    
+    <!-- Report Icon -->
+    <g transform="translate(160, 330)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <path d="M 6 4 L 14 4 L 18 8 L 18 20 L 6 20 Z" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <polyline points="14,4 14,8 18,8" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <line x1="9" y1="12" x2="15" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="9" y1="16" x2="13" y2="16" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Status Icon -->
+    <g transform="translate(220, 330)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <circle cx="12" cy="12" r="8" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="12" cy="12" r="2" fill="#FF943B"/>
+        <line x1="12" y1="4" x2="12" y2="6" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="12" y1="18" x2="12" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="4" y1="12" x2="6" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="18" y1="12" x2="20" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Safety Icons Row -->
+    <text x="40" y="410" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
+      SAFETY & COMPLIANCE
+    </text>
+    
+    <!-- Shield Icon -->
+    <g transform="translate(40, 430)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <path d="M 12 4 L 4 7 L 4 12 C 4 16 8 20 12 20 C 16 20 20 16 20 12 L 20 7 Z" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <polyline points="8,12 11,15 16,9" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    
+    <!-- Alert Icon -->
+    <g transform="translate(100, 430)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <path d="M 12 4 L 3 18 L 21 18 Z" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <line x1="12" y1="9" x2="12" y2="13" stroke="#FF943B" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="12" cy="15.5" r="0.5" fill="#FF943B"/>
+      </g>
+    </g>
+    
+    <!-- Verified Icon -->
+    <g transform="translate(160, 430)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <circle cx="12" cy="12" r="8" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <polyline points="8,12 11,15 16,9" stroke="#FF943B" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    
+    <!-- Checkpoint Icon -->
+    <g transform="translate(220, 430)">
+      <rect width="48" height="48" rx="4" fill="white" stroke="#E4E7E9"/>
+      <g transform="translate(12, 12)">
+        <rect x="6" y="4" width="12" height="16" rx="2" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <line x1="9" y1="8" x2="15" y2="8" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="9" y1="12" x2="15" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="9" y1="16" x2="12" y2="16" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+    </g>
+    
+    <!-- Construction Grid Example -->
+    <g transform="translate(400, 130)">
+      <text x="0" y="-10" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197">
+        ICON CONSTRUCTION GRID
+      </text>
+      <rect width="200" height="200" rx="8" fill="white" stroke="#E4E7E9"/>
+      
+      <!-- Grid lines -->
+      <g opacity="0.3">
+        <line x1="0" y1="50" x2="200" y2="50" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <line x1="0" y1="100" x2="200" y2="100" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <line x1="0" y1="150" x2="200" y2="150" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <line x1="50" y1="0" x2="50" y2="200" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+        <line x1="150" y1="0" x2="150" y2="200" stroke="#FF943B" stroke-width="0.5" stroke-dasharray="2,2"/>
+      </g>
+      
+      <!-- Safe area -->
+      <rect x="25" y="25" width="150" height="150" stroke="#FFD91C" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="4,4"/>
+      
+      <!-- Example icon at scale -->
+      <g transform="translate(50, 50) scale(4)">
+        <circle cx="12" cy="12" r="8" stroke="#FF943B" stroke-width="1.5" fill="none"/>
+        <circle cx="12" cy="12" r="2" fill="#FF943B"/>
+        <line x1="12" y1="4" x2="12" y2="6" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="12" y1="18" x2="12" y2="20" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="4" y1="12" x2="6" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+        <line x1="18" y1="12" x2="20" y2="12" stroke="#FF943B" stroke-width="1.5"/>
+      </g>
+      
+      <!-- Annotations -->
+      <text x="210" y="50" font-family="SF Mono, monospace" font-size="10" fill="#8B9197">24x24px canvas</text>
+      <text x="210" y="65" font-family="SF Mono, monospace" font-size="10" fill="#8B9197">20x20px live area</text>
+      <text x="210" y="80" font-family="SF Mono, monospace" font-size="10" fill="#8B9197">1.5px stroke</text>
+      <text x="210" y="95" font-family="SF Mono, monospace" font-size="10" fill="#8B9197">2px corner radius</text>
+    </g>
+  </g>
+</svg>

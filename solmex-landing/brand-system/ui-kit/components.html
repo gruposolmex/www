@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - UI Component Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-amber: #FFAD5C;
+            --solmex-gold: #FFC67D;
+            --solmex-sunrise: #FFD91C;
+            --gradient-primary: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            
+            --carbon-black: #0A0A0A;
+            --steel-gray: #2C3E44;
+            --concrete: #8B9197;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+            
+            --signal-red: #DC2626;
+            --safety-green: #16A34A;
+            
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.05);
+            --shadow-md: 0 4px 6px rgba(10, 10, 10, 0.1);
+            --shadow-lg: 0 10px 15px rgba(10, 10, 10, 0.15);
+            --shadow-xl: 0 20px 25px rgba(10, 10, 10, 0.2);
+            
+            --transition: all 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--polar);
+            padding: 40px;
+            color: var(--carbon-black);
+        }
+        
+        .header {
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--concrete);
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .component-group {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .component-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--concrete);
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+        
+        .component-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        /* BUTTONS */
+        .btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            line-height: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 2px 4px rgba(255, 148, 59, 0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 148, 59, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--solmex-orange);
+            border: 1px solid var(--solmex-orange);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 148, 59, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .btn-ghost {
+            background: rgba(255, 148, 59, 0.1);
+            color: var(--solmex-orange);
+            border: none;
+        }
+        
+        .btn-ghost:hover {
+            background: rgba(255, 148, 59, 0.2);
+        }
+        
+        .btn-danger {
+            background: var(--signal-red);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #B91C1C;
+            transform: translateY(-1px);
+        }
+        
+        .btn-success {
+            background: var(--safety-green);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #15803D;
+            transform: translateY(-1px);
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+        
+        .btn-icon {
+            padding: 12px;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+        }
+        
+        /* CARDS */
+        .card {
+            background: white;
+            border: 1px solid var(--mist);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            border-color: var(--solmex-orange);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .card-active {
+            border-color: var(--solmex-orange);
+            border-width: 2px;
+            box-shadow: 0 0 0 4px rgba(255, 148, 59, 0.1);
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .card-description {
+            color: var(--concrete);
+            line-height: 1.5;
+        }
+        
+        /* KPI CARDS */
+        .kpi-card {
+            background: white;
+            border: 1px solid var(--mist);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            min-width: 200px;
+        }
+        
+        .kpi-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+        
+        .kpi-label {
+            font-size: 12px;
+            color: var(--concrete);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .kpi-trend {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .kpi-trend.up {
+            color: var(--safety-green);
+        }
+        
+        .kpi-trend.down {
+            color: var(--signal-red);
+        }
+        
+        /* BADGES */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .badge-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background: var(--mist);
+            color: var(--steel-gray);
+        }
+        
+        .badge-success {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--safety-green);
+        }
+        
+        .badge-danger {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--signal-red);
+        }
+        
+        .badge-warning {
+            background: rgba(255, 217, 28, 0.1);
+            color: #D97706;
+        }
+        
+        /* INPUTS */
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--steel-gray);
+        }
+        
+        .input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--mist);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: var(--solmex-orange);
+            box-shadow: 0 0 0 3px rgba(255, 148, 59, 0.1);
+        }
+        
+        .input-error {
+            border-color: var(--signal-red);
+        }
+        
+        .input-success {
+            border-color: var(--safety-green);
+        }
+        
+        /* TOGGLES */
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--mist);
+            transition: var(--transition);
+            border-radius: var(--radius-full);
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .toggle input:checked + .toggle-slider {
+            background: var(--gradient-primary);
+        }
+        
+        .toggle input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+        
+        /* TABLES */
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--mist);
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table thead {
+            background: var(--polar);
+        }
+        
+        .table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--concrete);
+            border-bottom: 2px solid var(--mist);
+        }
+        
+        .table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--mist);
+            font-size: 14px;
+        }
+        
+        .table tbody tr:hover {
+            background: rgba(255, 148, 59, 0.05);
+        }
+        
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* NAVIGATION */
+        .nav {
+            display: flex;
+            gap: 32px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nav-item {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--steel-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .nav-item:hover {
+            color: var(--solmex-orange);
+        }
+        
+        .nav-item.active {
+            color: var(--solmex-orange);
+        }
+        
+        .nav-item.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+        }
+        
+        /* ALERTS */
+        .alert {
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .alert-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .alert-info {
+            background: rgba(255, 148, 59, 0.1);
+            border-left: 4px solid var(--solmex-orange);
+            color: var(--steel-gray);
+        }
+        
+        .alert-success {
+            background: rgba(22, 163, 74, 0.1);
+            border-left: 4px solid var(--safety-green);
+            color: var(--steel-gray);
+        }
+        
+        .alert-warning {
+            background: rgba(255, 217, 28, 0.1);
+            border-left: 4px solid #FFC107;
+            color: var(--steel-gray);
+        }
+        
+        .alert-danger {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid var(--signal-red);
+            color: var(--steel-gray);
+        }
+        
+        /* PROGRESS BARS */
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: var(--mist);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            transition: width 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        /* TOOLTIPS */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip-content {
+            visibility: hidden;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--carbon-black);
+            color: white;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .tooltip-content:after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 4px;
+            border-style: solid;
+            border-color: var(--carbon-black) transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltip-content {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* MODALS */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        
+        .modal {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .modal-header {
+            margin-bottom: 24px;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .modal-body {
+            margin-bottom: 24px;
+            color: var(--steel-gray);
+            line-height: 1.6;
+        }
+        
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Grupo Solmex</h1>
+        <p class="subtitle">UI Component Library v1.0</p>
+    </div>
+    
+    <!-- Buttons -->
+    <div class="section">
+        <h2 class="section-title">Buttons</h2>
+        
+        <div class="component-group">
+            <div class="component-label">Button Variants</div>
+            <div class="component-row">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-ghost">Ghost Button</button>
+                <button class="btn btn-danger">Danger Button</button>
+                <button class="btn btn-success">Success Button</button>
+            </div>
+            
+            <div class="component-label">Button Sizes</div>
+            <div class="component-row">
+                <button class="btn btn-primary btn-large">Large Button</button>
+                <button class="btn btn-primary">Default Button</button>
+                <button class="btn btn-primary btn-small">Small Button</button>
+                <button class="btn btn-primary btn-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 5v10m5-5H5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cards -->
+    <div class="section">
+        <h2 class="section-title">Cards</h2>
+        
+        <div class="component-group">
+            <div class="component-label">Card States</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="card">
+                    <div class="card-title">Default Card</div>
+                    <div class="card-description">Standard card with hover effect and border transition.</div>
+                </div>
+                <div class="card card-active">
+                    <div class="card-title">Active Card</div>
+                    <div class="card-description">Selected or active state with orange border.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="component-group">
+            <div class="component-label">KPI Cards</div>
+            <div class="component-row">
+                <div class="kpi-card">
+                    <div class="kpi-value">98.7%</div>
+                    <div class="kpi-label">Disponibilidad</div>
+                    <div class="kpi-trend up">↑ 2.3%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">24/7</div>
+                    <div class="kpi-label">Monitoreo</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">1,847</div>
+                    <div class="kpi-label">Envíos Activos</div>
+                    <div class="kpi-trend down">↓ 5.1%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Badges -->
+    <div class="section">
+        <h2 class="section-title">Badges & Chips</h2>
+        
+        <div class="component-group">
+            <div class="component-label">Badge Variants</div>
+            <div class="component-row">
+                <span class="badge badge-primary">Premium</span>
+                <span class="badge badge-secondary">Pendiente</span>
+                <span class="badge badge-success">Activo</span>
+                <span class="badge badge-danger">Crítico</span>
+                <span class="badge badge-warning">Atención</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Forms -->
+    <div class="section">
+        <h2 class="section-title">Form Elements</h2>
+        
+        <div class="component-group">
+            <div class="component-label">Input Fields</div>
+            <div style="max-width: 400px;">
+                <div class="input-group">
+                    <label class="input-label">Terminal ID</label>
+                    <input type="text" class="input" placeholder="Ingrese ID de terminal">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Código de Rastreo</label>
+                    <input type="text" class="input input-success" value="TRK-2024-0847">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Número Inválido</label>
+                    <input type="text" class="input input-error" value="XXX-000">
+                </div>
+            </div>
+            
+            <div class="component-label">Toggle Switches</div>
+            <div class="component-row" style="align-items: center; gap: 32px;">
+                <label class="toggle">
+                    <input type="checkbox">
+                    <span class="toggle-slider"></span>
+                </label>
+                <label class="toggle">
+                    <input type="checkbox" checked>
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tables -->
+    <div class="section">
+        <h2 class="section-title">Data Tables</h2>
+        
+        <div class="component-group">
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Terminal</th>
+                            <th>Estado</th>
+                            <th>Disponibilidad</th>
+                            <th>Última Actividad</th>
+                            <th>SLA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VER-001</td>
+                            <td><span class="badge badge-success">Activo</span></td>
+                            <td>99.2%</td>
+                            <td>Hace 2 min</td>
+                            <td>Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>MTY-003</td>
+                            <td><span class="badge badge-success">Activo</span></td>
+                            <td>98.7%</td>
+                            <td>Hace 15 min</td>
+                            <td>Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>GDL-002</td>
+                            <td><span class="badge badge-warning">Mantenimiento</span></td>
+                            <td>94.3%</td>
+                            <td>Hace 1 hora</td>
+                            <td>En Riesgo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="section">
+        <h2 class="section-title">Navigation</h2>
+        
+        <div class="component-group">
+            <nav class="nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Terminales</a>
+                <a href="#" class="nav-item">Operaciones</a>
+                <a href="#" class="nav-item">Reportes</a>
+                <a href="#" class="nav-item">Configuración</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Alerts -->
+    <div class="section">
+        <h2 class="section-title">Alerts & Notifications</h2>
+        
+        <div class="component-group">
+            <div class="alert alert-info">
+                <span class="alert-icon">ℹ</span>
+                <span>Nueva terminal agregada a la red certificada.</span>
+            </div>
+            <div class="alert alert-success">
+                <span class="alert-icon">✓</span>
+                <span>Operación completada exitosamente. SLA: 99.8%</span>
+            </div>
+            <div class="alert alert-warning">
+                <span class="alert-icon">⚠</span>
+                <span>Terminal MTY-003 programada para mantenimiento.</span>
+            </div>
+            <div class="alert alert-danger">
+                <span class="alert-icon">✕</span>
+                <span>Incidente crítico detectado en Terminal GDL-002.</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Progress Bars -->
+    <div class="section">
+        <h2 class="section-title">Progress Indicators</h2>
+        
+        <div class="component-group">
+            <div class="component-label">Loading Progress</div>
+            <div class="progress">
+                <div class="progress-bar" style="width: 67%;"></div>
+            </div>
+            <br>
+            <div class="progress">
+                <div class="progress-bar" style="width: 98.7%;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tooltips -->
+    <div class="section">
+        <h2 class="section-title">Tooltips</h2>
+        
+        <div class="component-group">
+            <div class="component-row">
+                <div class="tooltip">
+                    <button class="btn btn-secondary">Hover for info</button>
+                    <span class="tooltip-content">Terminal certificada Solmex</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
