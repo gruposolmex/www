@@ -112,7 +112,7 @@
     
     <!-- Data Icons Row -->
     <text x="40" y="310" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
-      DATA & METRICS
+      DATA &amp; METRICS
     </text>
     
     <!-- Dashboard Icon -->
@@ -162,7 +162,7 @@
     
     <!-- Safety Icons Row -->
     <text x="40" y="410" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#8B9197" text-transform="uppercase">
-      SAFETY & COMPLIANCE
+      SAFETY &amp; COMPLIANCE
     </text>
     
     <!-- Shield Icon -->
