@@ -1,5 +1,5 @@
 import Navbar from '@/components/solmex/Navbar';
-import Hero from '@/components/solmex/Hero';
+import Hero from '@/components/Hero/Hero';
 import WhatIsSolmex from '@/components/solmex/WhatIsSolmex';
 import ValueProp from '@/components/solmex/ValueProp';
 import HowItWorks from '@/components/solmex/HowItWorks';

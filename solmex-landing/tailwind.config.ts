@@ -11,15 +11,17 @@ const config: Config = {
       colors: {
         // Brand System v2.0 - Primary Spectrum
         solmex: {
-          orange: '#FF943B',      // Primary Brand Orange (updated)
+          orange: '#FF9C37',      // Primary Brand Orange
+          yellow: '#FFD81C',      // Primary Brand Yellow
+          base: '#12292E',        // Deep petroleum black-green
+          
+          // Extended palette
           'orange-alt': '#FF9C37', // Logo gradient start
           amber: '#FFAD5C',       // Mid-gradient
           gold: '#FFC67D',        // Light gradient
           sunrise: '#FFD91C',     // Logo gradient end
-          yellow: '#FFD81C',      // Kept for compatibility
           
           // Legacy colors (for backward compatibility)
-          base: '#12292E',
           gray: '#344044',
           charcoal: '#1B2729',
           slate: '#CED4D4',
@@ -56,13 +58,14 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(180deg, #FF9C37 0%, #FFD81C 100%)',
-        'gradient-45': 'linear-gradient(45deg, #FF943B 0%, #FFD91C 100%)',
-        'gradient-90': 'linear-gradient(90deg, #FF943B 0%, #FFD91C 100%)',
-        'gradient-radial': 'radial-gradient(circle, #FFD91C 0%, #FF943B 100%)',
-        'pattern-diagonal': 'repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 148, 59, 0.05) 20px, rgba(255, 148, 59, 0.05) 40px)',
-        'pattern-grid': 'linear-gradient(rgba(255, 148, 59, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 148, 59, 0.03) 1px, transparent 1px)',
-        'pattern-dots': 'radial-gradient(rgba(255, 148, 59, 0.15) 1.5px, transparent 1.5px)',
+        'gradient-primary': 'linear-gradient(90deg, #FF9C37 0%, #FFD81C 100%)',
+        'gradient-dark-overlay': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 80%)',
+        'gradient-45': 'linear-gradient(45deg, #FF9C37 0%, #FFD81C 100%)',
+        'gradient-90': 'linear-gradient(90deg, #FF9C37 0%, #FFD81C 100%)',
+        'gradient-radial': 'radial-gradient(circle, #FFD81C 0%, #FF9C37 100%)',
+        'pattern-diagonal': 'repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255, 156, 55, 0.05) 20px, rgba(255, 156, 55, 0.05) 40px)',
+        'pattern-grid': 'linear-gradient(rgba(255, 156, 55, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 156, 55, 0.03) 1px, transparent 1px)',
+        'pattern-dots': 'radial-gradient(rgba(255, 156, 55, 0.15) 1.5px, transparent 1.5px)',
       },
       backgroundSize: {
         'pattern-grid': '48px 48px',

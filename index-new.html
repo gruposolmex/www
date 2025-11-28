@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Grupo Solmex - La red inteligente de terminales logísticas en México. Operación confiable, evidencia verificable, coordinación centralizada.">
+    <meta name="keywords" content="logística, terminales, México, transporte, ferrocarril, operador logístico">
+    <title>Grupo Solmex | Operador Logístico Inteligente</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo-solmex-square.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP & Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              solmex: {
+                base: '#12292E',
+                orange: '#FF9C37',
+                yellow: '#FFD81C',
+              }
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', 'sans-serif'],
+              'display': ['Space Grotesk', 'system-ui', 'sans-serif'],
+            },
+            backgroundImage: {
+              'gradient-primary': 'linear-gradient(90deg, #FF9C37 0%, #FFD81C 100%)',
+              'gradient-dark-overlay': 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 80%)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+        /* ===== BRAND SYSTEM TOKENS ===== */
+        :root {
+            /* Primary Brand Colors */
+            --solmex-base: #12292E;
+            --solmex-orange: #FF9C37;
+            --solmex-yellow: #FFD81C;
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(90deg, #FF9C37 0%, #FFD81C 100%);
+            --gradient-dark-overlay: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 80%);
+            --gradient-45: linear-gradient(45deg, #FF9C37 0%, #FFD81C 100%);
+            
+            /* Typography */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        /* ===== BASE RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--solmex-base);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ===== HERO SECTION - AWWWARDS 2025 ===== */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--solmex-base);
+        }
+        
+        /* Hero Background Layers */
+        .hero-bg-layers {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-bg-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(18, 41, 46, 0.95) 0%, rgba(18, 41, 46, 0.7) 50%, rgba(18, 41, 46, 0.95) 100%);
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            opacity: 0.3;
+            background-image: url('stripes-45.svg');
+            background-size: 300px 300px;
+            background-repeat: repeat;
+            transform: scale(1.1);
+        }
+        
+        .hero-freight {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        
+        .hero-freight img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: blur(8px);
+            transform: scale(1.1);
+        }
+        
+        .hero-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            background: var(--gradient-dark-overlay);
+            pointer-events: none;
+        }
+        
+        /* Hero Content */
+        .hero-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-container {
+                padding: 0 48px;
+            }
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: repeat(14, 1fr);
+                gap: 32px;
+            }
+        }
+        
+        .hero-content {
+            grid-column: span 1;
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-content {
+                grid-column: span 10;
+            }
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 156, 55, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 156, 55, 0.2);
+            border-radius: 999px;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--solmex-orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .hero-badge span {
+            color: var(--solmex-orange);
+            font-weight: 500;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .hero-title-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.875rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            max-width: 42rem;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(25px);
+        }
+        
+        /* Hero CTAs */
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .btn-hero-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border-radius: 12px;
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hero-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 156, 55, 0.3);
+        }
+        
+        .btn-hero-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-45);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .btn-hero-primary:hover::after {
+            opacity: 1;
+        }
+        
+        .btn-hero-primary span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-hero-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.125rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-hero-secondary:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Isotype */
+        .hero-isotype {
+            position: absolute;
+            right: 10%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 160px;
+            opacity: 0;
+            scale: 0.8;
+        }
+        
+        @media (max-width: 1023px) {
+            .hero-isotype {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 48px auto 0;
+            }
+        }
+        
+        .hero-isotype-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero-isotype img {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 20px 40px rgba(255, 156, 55, 0.3));
+        }
+        
+        .hero-isotype-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, var(--solmex-yellow) 0%, var(--solmex-orange) 100%);
+            opacity: 0.3;
+            filter: blur(60px);
+            transform: scale(1.5);
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+        
+        /* Hero Stats Panel */
+        .hero-stats {
+            grid-column: span 1;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(40px);
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-stats {
+                grid-column: span 4;
+                justify-content: flex-end;
+            }
+        }
+        
+        .stats-panel {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 24rem;
+            width: 100%;
+        }
+        
+        .stats-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .stats-header-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--solmex-orange);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .stats-header h3 {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .stat-item {
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label span {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+        
+        .stat-trend {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .stat-value {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .stat-unit {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .stat-bar {
+            margin-top: 12px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        
+        .stat-bar-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 999px;
+            transition: width 1s ease-out;
+        }
+        
+        /* Existing Styles (preserved from original) */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 40px;
+            }
+        }
+        
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(18, 41, 46, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .navbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .navbar-logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .navbar-links {
+            display: none;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-links {
+                display: flex;
+            }
+        }
+        
+        .navbar-links a {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        
+        .navbar-links a:hover {
+            color: white;
+        }
+        
+        .navbar-cta {
+            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .navbar-cta:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(30, 30, 30, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 16px 0;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none;
+        }
+        
+        /* Rest of the sections remain the same as original */
+        .services {
+            background: #1A1A1A;
+        }
+        
+        .network {
+            background: var(--solmex-base);
+        }
+        
+        .contact {
+            background: #1A1A1A;
+        }
+        
+        .footer {
+            background: var(--solmex-base);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 48px 0;
+        }
+        
+        /* Reuse existing styles for other sections */
+    </style>
+  </head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-inner">
+            <a href="/">
+                <img src="logo-solmex-full.svg" alt="Grupo Solmex" class="navbar-logo">
+            </a>
+            
+            <div class="navbar-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#red">Red de terminales</a>
+                <a href="#ventajas">Ventajas</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#contacto" class="navbar-cta">Hablar con un asesor</a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#servicios">Servicios</a>
+        <a href="#red">Red de terminales</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+
+    <!-- HERO SECTION - AWWWARDS 2025 -->
+    <section class="hero-section" id="inicio">
+        <!-- Background Layers -->
+        <div class="hero-bg-layers">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-pattern"></div>
+            <div class="hero-freight">
+                <img src="freight-blur.jpg" alt="Freight Background" loading="eager">
+            </div>
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="hero-container">
+            <div class="hero-grid">
+                <!-- Main Content -->
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <div class="hero-badge-dot"></div>
+                        <span>Operador Logístico Inteligente</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        La red inteligente de
+                        <span class="hero-title-gradient">terminales</span> en México
+                    </h1>
+                    
+                    <h2 class="hero-subtitle">
+                        Operación confiable. Evidencia verificable.
+                    </h2>
+                    
+                    <p class="hero-description">
+                        Coordinamos una red de terminales certificadas para que su carga
+                        se mueva con certeza, trazabilidad y respuesta inmediata.
+                    </p>
+                    
+                    <div class="hero-ctas">
+                        <a href="#contacto" class="btn-hero-primary">
+                            <span>Conectar mi operación</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#contacto" class="btn-hero-secondary">
+                            <span>Agendar una llamada</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Isotype for mobile -->
+                    <div class="hero-isotype lg:hidden">
+                        <div class="hero-isotype-wrapper">
+                            <img src="solmex-isotype.svg" alt="Solmex Isotype">
+                            <div class="hero-isotype-glow"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Panel -->
+                <div class="hero-stats">
+                    <div class="stats-panel">
+                        <div class="stats-header">
+                            <div class="stats-header-dot"></div>
+                            <h3>KPIs en Tiempo Real</h3>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">
+                                <span>Disponibilidad</span>
+                                <svg class="stat-trend" fill="none" viewBox="0 0 24 24" stroke="#16A34A" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">
+                                <span class="stat-number">98.7</span>
+                                <span class="stat-unit">%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 98.7%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">
+                                <span>Tiempos promedio de estancia</span>
+                                <svg class="stat-trend" fill="none" viewBox="0 0 24 24" stroke="#FF9C37" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">
+                                <span class="stat-number">12.4</span>
+                                <span class="stat-unit">h</span>
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 51.7%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">
+                                <span>Incidentes resueltos</span>
+                                <svg class="stat-trend" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.4)" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                                </svg>
+                            </div>
+                            <div class="stat-value">
+                                <span class="stat-number">100</span>
+                                <span class="stat-unit">%</span>
+                            </div>
+                            <div class="stat-bar">
+                                <div class="stat-bar-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Isotype for desktop -->
+                <div class="hero-isotype hidden lg:block">
+                    <div class="hero-isotype-wrapper">
+                        <img src="solmex-isotype.svg" alt="Solmex Isotype">
+                        <div class="hero-isotype-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keep all other sections from original index.html -->
+    <!-- You can copy the rest of the sections here from the original file -->
+
+    <script>
+        // Initialize Lenis smooth scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            smoothWheel: true,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Page load animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create main timeline
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: 'power3.out',
+                }
+            });
+
+            tl.to('.hero-badge', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                delay: 0.2
+            })
+            .to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+            }, '-=0.3')
+            .to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+            }, '-=0.4')
+            .to('.hero-description', {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+            }, '-=0.4')
+            .to('.hero-ctas', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+            }, '-=0.3')
+            .to('.hero-isotype', {
+                opacity: 1,
+                scale: 1,
+                duration: 1,
+                ease: 'elastic.out(1, 0.5)'
+            }, '-=0.8')
+            .to('.hero-stats', {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+            }, '-=0.6')
+            .to('.stat-item', {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                stagger: 0.1
+            }, '-=0.4');
+
+            // Parallax scrolling
+            gsap.to('.hero-pattern', {
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 0.3,
+                },
+                y: 150,
+                ease: 'none',
+            });
+
+            gsap.to('.hero-freight', {
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 0.8,
+                },
+                y: -100,
+                scale: 1.2,
+                ease: 'none',
+            });
+
+            // Mouse parallax for isotype
+            let mouseX = 0;
+            let mouseY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+
+                gsap.to('.hero-isotype-wrapper', {
+                    x: mouseX * 20,
+                    y: mouseY * 20,
+                    duration: 1,
+                    ease: 'power2.out',
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+  </body>
+</html>
