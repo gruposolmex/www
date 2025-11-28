@@ -41,3 +41,4 @@
     <rect x="1200" y="500" width="800" height="400" fill="none" stroke="#E4E7E9" stroke-width="2" stroke-dasharray="10,5"/>
     <text x="1600" y="700" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" fill="#E4E7E9">[Destinatario / Recipient]</text>
 </svg>
+
