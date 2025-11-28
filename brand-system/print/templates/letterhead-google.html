@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Grupo Solmex - Hoja Membretada</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 1in;
+            background: white;
+            color: #0A0A0A;
+            line-height: 1.6;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #FF943B;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-section img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .logo-text .black { color: #0A0A0A; }
+        .logo-text .orange { color: #FF943B; }
+        
+        .tagline {
+            font-size: 12px;
+            color: #8B9197;
+            margin-top: 4px;
+        }
+        
+        .company-info {
+            text-align: right;
+            font-size: 12px;
+            color: #8B9197;
+        }
+        
+        .company-info strong {
+            color: #0A0A0A;
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .content {
+            min-height: 7in;
+        }
+        
+        .date-location {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .editable {
+            background-color: #FFF9E6;
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+        
+        .subject {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .subject strong {
+            color: #0A0A0A;
+        }
+        
+        .greeting {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .body-text {
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-align: justify;
+        }
+        
+        .closing {
+            margin-top: 40px;
+            font-size: 14px;
+        }
+        
+        .signature {
+            margin-top: 60px;
+            border-top: 1px solid #0A0A0A;
+            padding-top: 10px;
+            width: 250px;
+        }
+        
+        .signature .name {
+            font-weight: 700;
+        }
+        
+        .signature .position {
+            color: #8B9197;
+            font-size: 13px;
+        }
+        
+        .signature .company {
+            color: #FF943B;
+            font-size: 13px;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 2px solid #FF943B;
+            font-size: 11px;
+            color: #8B9197;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer span {
+            color: #FF943B;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-section">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAB4UlEQVR42uXaxW7DQBgE4J77DGWGJA01adLXTJmZmZmZ+XGmSXtxHcPGu/UeZvQfLVn6ZNm/R1uETDsyaXSk0ZlCVwrdKfS0oTc7SfQl0Z/EQAKDCQy1YvhnRuIYjWMsjvEYJmKYjOZmKorpCGYimA1jLoz5MBZacrMYwlIIyyGsBLEaxFp2AlgPYKMZZCnSo7xJCK1FeYsQWovydhMftBblHUJoLco7jXzQksqmCCrvEkJLPsuWcVXeY4SWe2PYxVl5v4EPWvK97Bw75QNCaMmvn2sslQ8JoSV3DNdYKh/V80FLbnIiyVdmhFa1LzvHpHxcl39J8f/kzz1yDZpfY4b2p5MzKZ9wQvvTFhmVTwmhfWuLjMpntXzQvvUYRuVzQmjlynY9hlH5ooYPWrmyXY9hVL4khFaunL/JmZ7lS05o1+bzN2qVr6opoVU1n+LK14TQgs2nWuWbKj5o8eZTofJtFV/XId58KlS+I4QuqJNTpXxfyQdtucm5VMzSyozQdvuySDwrPxBCO/yVuMaz8mMFJbTdv59rPCs/EULLnPn0rPxczgctc07Os/ILIbTC5lNc+ZUQuqC2yLn5FFd+LeODVt4WiSi/EUJrUX4vJYTWofxBCK1F+ZMQWovyVwkb9DdsC7J+lzbvEgAAAABJRU5ErkJggg==" alt="Solmex">
+            <div>
+                <div class="logo-text"><span class="black">GRUPO</span><span class="orange">SOLMEX</span></div>
+                <div class="tagline">Soluciones Logísticas de México</div>
+            </div>
+        </div>
+        <div class="company-info">
+            <strong>Soluciones Logísticas FyT S.A. de C.V.</strong>
+            Vivero 193, Entre Habaneras y Palmeras<br>
+            Fracc. Jardines de Virginia<br>
+            C.P. 94294, Veracruz, México
+        </div>
+    </div>
+    
+    <div class="content">
+        <div class="date-location">
+            <span class="editable">[Ciudad]</span>, <span class="editable">[Fecha]</span>
+        </div>
+        
+        <div class="subject">
+            <strong>Asunto:</strong> <span class="editable">[Escriba el asunto de la carta]</span>
+        </div>
+        
+        <div class="greeting">
+            Estimado/a <span class="editable">[Nombre del destinatario]</span>:
+        </div>
+        
+        <div class="body-text editable">
+            [Escriba aquí el contenido de su carta. Seleccione este texto y reemplácelo con su mensaje.]
+        </div>
+        
+        <div class="body-text editable">
+            [Agregue más párrafos según sea necesario.]
+        </div>
+        
+        <div class="body-text editable">
+            [Párrafo de cierre con conclusiones o siguiente paso a seguir.]
+        </div>
+        
+        <div class="closing">
+            Atentamente,
+        </div>
+        
+        <div class="signature">
+            <div class="name editable">[Su Nombre Completo]</div>
+            <div class="position editable">[Su Cargo]</div>
+            <div class="company">Grupo Solmex</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div><span>Tel:</span> +52 229 264 4088</div>
+        <div><span>Web:</span> gruposolmex.com</div>
+        <div><span>Email:</span> info@gruposolmex.com</div>
+    </div>
+</body>
+</html>
+

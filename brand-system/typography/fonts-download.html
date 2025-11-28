@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Download Fonts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+            --gradient-45: linear-gradient(45deg, #FF943B 0%, #FFD91C 100%);
+            --carbon-black: #0A0A0A;
+            --graphite: #1A1A1A;
+            --steel-gray: #2C3E44;
+            --iron: #4A5568;
+            --concrete: #8B9197;
+            --aluminum: #B0B5BA;
+            --mist: #E4E7E9;
+            --polar: #F8F9FA;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--carbon-black);
+            color: white;
+            line-height: 1.6;
+        }
+        
+        .nav-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--concrete);
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+        
+        .nav-back:hover {
+            background: var(--solmex-orange);
+            color: white;
+            border-color: var(--solmex-orange);
+        }
+        
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 40px 60px;
+            text-align: center;
+        }
+        
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-45);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            font-size: 36px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 16px;
+        }
+        
+        .hero-headline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+        
+        .hero-sub {
+            font-size: 18px;
+            color: var(--concrete);
+            max-width: 600px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+        }
+        
+        .section {
+            margin-bottom: 80px;
+        }
+        
+        .section-header {
+            margin-bottom: 40px;
+        }
+        
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--solmex-orange);
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .section-desc {
+            font-size: 16px;
+            color: var(--concrete);
+            max-width: 700px;
+        }
+        
+        .font-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+        
+        .font-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,148,59,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .font-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .font-specimen-large {
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .font-info {
+            flex: 1;
+        }
+        
+        .font-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .font-role {
+            font-size: 14px;
+            color: var(--solmex-orange);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        
+        .font-desc {
+            font-size: 14px;
+            color: var(--concrete);
+            line-height: 1.6;
+        }
+        
+        .font-weights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .font-weight {
+            background: rgba(255,148,59,0.1);
+            border: 1px solid rgba(255,148,59,0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--solmex-orange);
+        }
+        
+        .download-section {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 24px;
+        }
+        
+        .download-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .download-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.2s;
+        }
+        
+        .download-link:hover {
+            background: rgba(255,148,59,0.1);
+            border-color: var(--solmex-orange);
+            transform: translateX(4px);
+        }
+        
+        .download-link-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-45);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .download-link-info {
+            flex: 1;
+        }
+        
+        .download-link-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .download-link-desc {
+            font-size: 12px;
+            color: var(--concrete);
+        }
+        
+        .download-link-arrow {
+            color: var(--solmex-orange);
+            font-size: 20px;
+        }
+        
+        .install-instructions {
+            background: rgba(66,133,244,0.1);
+            border: 1px solid rgba(66,133,244,0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+        
+        .install-instructions h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: #4285F4;
+        }
+        
+        .install-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        
+        .install-steps li {
+            counter-increment: step-counter;
+            margin-bottom: 16px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--concrete);
+        }
+        
+        .install-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: #4285F4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .install-steps code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--solmex-orange);
+        }
+        
+        .license-info {
+            background: rgba(76,175,80,0.1);
+            border: 1px solid rgba(76,175,80,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        
+        .license-info h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            color: #4CAF50;
+            margin-bottom: 8px;
+        }
+        
+        .license-info p {
+            font-size: 12px;
+            color: var(--concrete);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <a href="../typography/typography-specimen.html" class="nav-back">← Typography</a>
+    
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-icon">Aa</div>
+        <div class="hero-title">Download Fonts</div>
+        <h1 class="hero-headline">Install Brand Fonts</h1>
+        <p class="hero-sub">Download and install the complete Grupo Solmex typography system on your computer for use in documents, presentations, and design work.</p>
+    </section>
+    
+    <div class="container">
+        <!-- Space Grotesk -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">01 — Display Font</div>
+                <h2 class="section-title">Space Grotesk</h2>
+                <p class="section-desc">Geometric sans-serif for headlines and display text. Licensed under SIL Open Font License.</p>
+            </div>
+            
+            <div class="font-card" style="font-family: 'Space Grotesk', sans-serif;">
+                <div class="font-header">
+                    <div class="font-specimen-large">Ag</div>
+                    <div class="font-info">
+                        <div class="font-name">Space Grotesk</div>
+                        <div class="font-role">Display & Headlines</div>
+                        <div class="font-desc">A technical, engineered geometric sans-serif. Perfect for headlines, titles, and brand statements.</div>
+                        <div class="font-weights">
+                            <span class="font-weight">Regular 400</span>
+                            <span class="font-weight">Medium 500</span>
+                            <span class="font-weight">SemiBold 600</span>
+                            <span class="font-weight">Bold 700</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <div class="download-title">📥 Download Options</div>
+                    <div class="download-links">
+                        <a href="https://fonts.google.com/specimen/Space+Grotesk" target="_blank" class="download-link">
+                            <div class="download-link-icon">G</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">Google Fonts (Recommended)</div>
+                                <div class="download-link-desc">Official source • All weights • Variable font available</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                        <a href="https://github.com/floriankarsten/space-grotesk" target="_blank" class="download-link">
+                            <div class="download-link-icon">⚡</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">GitHub Repository</div>
+                                <div class="download-link-desc">Source files • Latest versions • Variable fonts</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Inter -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">02 — Body Font</div>
+                <h2 class="section-title">Inter</h2>
+                <p class="section-desc">Optimized for screens with excellent legibility. Licensed under SIL Open Font License.</p>
+            </div>
+            
+            <div class="font-card" style="font-family: 'Inter', sans-serif;">
+                <div class="font-header">
+                    <div class="font-specimen-large">Ag</div>
+                    <div class="font-info">
+                        <div class="font-name">Inter</div>
+                        <div class="font-role">Body & UI</div>
+                        <div class="font-desc">Designed specifically for computer screens. Used for body text, UI elements, and detailed content.</div>
+                        <div class="font-weights">
+                            <span class="font-weight">Light 300</span>
+                            <span class="font-weight">Regular 400</span>
+                            <span class="font-weight">Medium 500</span>
+                            <span class="font-weight">SemiBold 600</span>
+                            <span class="font-weight">Bold 700</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <div class="download-title">📥 Download Options</div>
+                    <div class="download-links">
+                        <a href="https://fonts.google.com/specimen/Inter" target="_blank" class="download-link">
+                            <div class="download-link-icon">G</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">Google Fonts (Recommended)</div>
+                                <div class="download-link-desc">Official source • All weights • Variable font available</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                        <a href="https://rsms.me/inter/" target="_blank" class="download-link">
+                            <div class="download-link-icon">🌐</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">Official Website</div>
+                                <div class="download-link-desc">rsms.me/inter • Latest releases • Variable fonts</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                        <a href="https://github.com/rsms/inter" target="_blank" class="download-link">
+                            <div class="download-link-icon">⚡</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">GitHub Repository</div>
+                                <div class="download-link-desc">Source files • All versions • Build tools</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- JetBrains Mono -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">03 — Monospace Font</div>
+                <h2 class="section-title">JetBrains Mono</h2>
+                <p class="section-desc">Monospace typeface for code and technical content. Licensed under SIL Open Font License.</p>
+            </div>
+            
+            <div class="font-card" style="font-family: 'JetBrains Mono', monospace;">
+                <div class="font-header">
+                    <div class="font-specimen-large">Ag</div>
+                    <div class="font-info">
+                        <div class="font-name">JetBrains Mono</div>
+                        <div class="font-role">Code & Data</div>
+                        <div class="font-desc">Designed for developers. Used for code, data displays, labels, and technical content.</div>
+                        <div class="font-weights">
+                            <span class="font-weight">Regular 400</span>
+                            <span class="font-weight">Medium 500</span>
+                            <span class="font-weight">SemiBold 600</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <div class="download-title">📥 Download Options</div>
+                    <div class="download-links">
+                        <a href="https://fonts.google.com/specimen/JetBrains+Mono" target="_blank" class="download-link">
+                            <div class="download-link-icon">G</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">Google Fonts (Recommended)</div>
+                                <div class="download-link-desc">Official source • All weights • Easy installation</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                        <a href="https://www.jetbrains.com/lp/mono/" target="_blank" class="download-link">
+                            <div class="download-link-icon">🌐</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">Official Website</div>
+                                <div class="download-link-desc">jetbrains.com/mono • Latest releases • Variable fonts</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                        <a href="https://github.com/JetBrains/JetBrainsMono" target="_blank" class="download-link">
+                            <div class="download-link-icon">⚡</div>
+                            <div class="download-link-info">
+                                <div class="download-link-name">GitHub Repository</div>
+                                <div class="download-link-desc">Source files • All versions • Build tools</div>
+                            </div>
+                            <div class="download-link-arrow">→</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Installation Instructions -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">04 — Installation</div>
+                <h2 class="section-title">How to Install</h2>
+                <p class="section-desc">Follow these steps to install the fonts on your operating system.</p>
+            </div>
+            
+            <div class="install-instructions">
+                <h3>📘 Installation Steps</h3>
+                <ol class="install-steps">
+                    <li>
+                        <strong>Download the fonts:</strong> Click any of the download links above to visit the official source. Download the font files (usually .ttf or .otf format).
+                    </li>
+                    <li>
+                        <strong>Extract the files:</strong> If you downloaded a ZIP file, extract it to a folder on your computer.
+                    </li>
+                    <li>
+                        <strong>Install on your system:</strong>
+                        <ul style="margin-top: 8px; margin-left: 20px; list-style: disc;">
+                            <li><strong>Windows:</strong> Right-click each font file → "Install" or drag to <code>C:\Windows\Fonts</code></li>
+                            <li><strong>macOS:</strong> Double-click each font file → "Install Font" or use Font Book app</li>
+                            <li><strong>Linux:</strong> Copy to <code>~/.fonts/</code> or <code>~/.local/share/fonts/</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Restart applications:</strong> Close and reopen any applications (Word, PowerPoint, etc.) to use the new fonts.
+                    </li>
+                    <li>
+                        <strong>Verify installation:</strong> Open a document editor and check if the fonts appear in your font list.
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="license-info">
+                <h4>✅ License Information</h4>
+                <p>
+                    All fonts in the Grupo Solmex brand system are licensed under the <strong>SIL Open Font License (OFL)</strong>. 
+                    This means you can freely use, modify, and distribute these fonts for both personal and commercial projects. 
+                    No attribution required, though it's appreciated. For full license details, visit the official font websites.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+

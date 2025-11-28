@@ -1,0 +1,196 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="ProgId" content="Excel.Sheet">
+<meta name="Generator" content="Grupo Solmex Brand System">
+<style>
+    body { font-family: Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    td, th { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #FF943B; color: white; font-weight: bold; }
+    .header { font-size: 24px; font-weight: bold; }
+    .header-black { color: #0A0A0A; }
+    .header-orange { color: #FF943B; }
+    .subheader { color: #8B9197; font-size: 12px; }
+    .section-title { background-color: #f5f5f5; font-weight: bold; }
+    .editable { background-color: #FFF9E6; }
+    .total-row { background-color: #0A0A0A; color: white; font-weight: bold; }
+    .footer { color: #FF943B; font-size: 11px; border-top: 2px solid #FF943B; }
+</style>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="7" style="border: none; padding-bottom: 20px;">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAB4UlEQVR42uXaxW7DQBgE4J77DGWGJA01adLXTJmZmZmZ+XGmSXtxHcPGu/UeZvQfLVn6ZNm/R1uETDsyaXSk0ZlCVwrdKfS0oTc7SfQl0Z/EQAKDCQy1YvhnRuIYjWMsjvEYJmKYjOZmKorpCGYimA1jLoz5MBZacrMYwlIIyyGsBLEaxFp2AlgPYKMZZCnSo7xJCK1FeYsQWovydhMftBblHUJoLco7jXzQksqmCCrvEkJLPsuWcVXeY4SWe2PYxVl5v4EPWvK97Bw75QNCaMmvn2sslQ8JoSV3DNdYKh/V80FLbnIiyVdmhFa1LzvHpHxcl39J8f/kzz1yDZpfY4b2p5MzKZ9wQvvTFhmVTwmhfWuLjMpntXzQvvUYRuVzQmjlynY9hlH5ooYPWrmyXY9hVL4khFaunL/JmZ7lS05o1+bzN2qVr6opoVU1n+LK14TQgs2nWuWbKj5o8eZTofJtFV/XId58KlS+I4QuqJNTpXxfyQdtucm5VMzSyozQdvuySDwrPxBCO/yVuMaz8mMFJbTdv59rPCs/EULLnPn0rPxczgctc07Os/ILIbTC5lNc+ZUQuqC2yLn5FFd+LeODVt4WiSi/EUJrUX4vJYTWofxBCK1F+ZMQWovyVwkb9DdsC7J+lzbvEgAAAABJRU5ErkJggg==" alt="Grupo Solmex Logo" style="height: 40px;">
+            <br>
+            <span class="header header-black">GRUPO</span><span class="header header-orange">SOLMEX</span>
+            <br>
+            <span class="subheader">Soluciones Logísticas FyT S.A. de C.V.</span>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="7" style="border: none; text-align: center; font-size: 20px; font-weight: bold; padding: 15px 0; color: #0A0A0A;">
+            REPORTE DE GASTOS
+        </td>
+    </tr>
+    <tr><td colspan="7" style="border: none; height: 10px;"></td></tr>
+    <tr class="section-title">
+        <td colspan="7">INFORMACIÓN DEL EMPLEADO</td>
+    </tr>
+    <tr>
+        <td><strong>Nombre:</strong></td>
+        <td class="editable">[Tu Nombre]</td>
+        <td></td>
+        <td><strong>Departamento:</strong></td>
+        <td class="editable">[Departamento]</td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td><strong>Fecha Reporte:</strong></td>
+        <td class="editable">[DD/MM/AAAA]</td>
+        <td></td>
+        <td><strong>Periodo:</strong></td>
+        <td class="editable">[Mes Año]</td>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td><strong>No. Empleado:</strong></td>
+        <td class="editable">[ID]</td>
+        <td></td>
+        <td><strong>Proyecto:</strong></td>
+        <td class="editable">[Proyecto]</td>
+        <td colspan="2"></td>
+    </tr>
+    <tr><td colspan="7" style="border: none; height: 15px;"></td></tr>
+    <tr class="section-title">
+        <td colspan="7">DETALLE DE GASTOS</td>
+    </tr>
+    <tr>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Proveedor</th>
+        <th>No. Factura</th>
+        <th>Monto</th>
+        <th>Notas</th>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td class="editable">[DD/MM]</td>
+        <td class="editable">[Descripción del gasto]</td>
+        <td class="editable">[Categoría]</td>
+        <td class="editable">[Proveedor]</td>
+        <td class="editable">[#]</td>
+        <td class="editable">$0.00</td>
+        <td class="editable"></td>
+    </tr>
+    <tr>
+        <td colspan="5" style="text-align: right; font-weight: bold;">SUBTOTAL:</td>
+        <td class="editable">$0.00</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="5" style="text-align: right; font-weight: bold;">IVA (16%):</td>
+        <td class="editable">$0.00</td>
+        <td></td>
+    </tr>
+    <tr class="total-row">
+        <td colspan="5" style="text-align: right;">TOTAL:</td>
+        <td>$0.00</td>
+        <td></td>
+    </tr>
+    <tr><td colspan="7" style="border: none; height: 20px;"></td></tr>
+    <tr class="section-title">
+        <td colspan="7">APROBACIONES</td>
+    </tr>
+    <tr>
+        <td><strong>Solicitante:</strong></td>
+        <td colspan="2" style="border-bottom: 1px solid #000;"></td>
+        <td><strong>Firma:</strong></td>
+        <td colspan="3" style="border-bottom: 1px solid #000;"></td>
+    </tr>
+    <tr>
+        <td><strong>Supervisor:</strong></td>
+        <td colspan="2" style="border-bottom: 1px solid #000;"></td>
+        <td><strong>Firma:</strong></td>
+        <td colspan="3" style="border-bottom: 1px solid #000;"></td>
+    </tr>
+    <tr>
+        <td><strong>Finanzas:</strong></td>
+        <td colspan="2" style="border-bottom: 1px solid #000;"></td>
+        <td><strong>Firma:</strong></td>
+        <td colspan="3" style="border-bottom: 1px solid #000;"></td>
+    </tr>
+    <tr><td colspan="7" style="border: none; height: 20px;"></td></tr>
+    <tr class="footer">
+        <td colspan="7" style="text-align: center;">
+            Grupo Solmex | Tel: +52 229 264 4088 | gruposolmex.com | info@gruposolmex.com
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

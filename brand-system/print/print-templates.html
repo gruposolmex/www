@@ -1069,8 +1069,8 @@
                 </div>
                 
                 <!-- Office Templates -->
-                <div class="download-title">📝 Plantillas Editables (RTF - Universal)</div>
-                <p style="font-size: 12px; color: var(--concrete); margin-bottom: 16px;">Formato RTF compatible con Word, Pages, LibreOffice, Google Docs y más.</p>
+                <div class="download-title">📝 Plantillas Microsoft Office</div>
+                <p style="font-size: 12px; color: var(--concrete); margin-bottom: 16px;">Archivos con logo embebido, compatibles con Word y Excel.</p>
                 <div class="download-grid" style="margin-bottom: 32px;">
                     <a href="templates/letterhead-word.rtf" download="Solmex-Hoja-Membretada.rtf" class="download-btn" style="border: 2px solid var(--solmex-orange);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1080,11 +1080,11 @@
                             <line x1="16" y1="17" x2="8" y2="17"/>
                         </svg>
                         <div class="download-btn-text">
-                            <span class="download-btn-name">⭐ Hoja Membretada</span>
-                            <span class="download-btn-size">RTF • Word / Pages / Docs</span>
+                            <span class="download-btn-name">⭐ Hoja Membretada Word</span>
+                            <span class="download-btn-size">RTF • Con logo PNG embebido</span>
                         </div>
                     </a>
-                    <a href="templates/expense-report.csv" download="Solmex-Reporte-Gastos.csv" class="download-btn">
+                    <a href="templates/expense-report.xls" download="Solmex-Reporte-Gastos.xls" class="download-btn" style="border: 2px solid var(--solmex-orange);">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                             <polyline points="14 2 14 8 20 8"/>
@@ -1092,8 +1092,51 @@
                             <line x1="16" y1="17" x2="8" y2="17"/>
                         </svg>
                         <div class="download-btn-text">
-                            <span class="download-btn-name">Reporte de Gastos</span>
-                            <span class="download-btn-size">CSV • Excel / Sheets / Numbers</span>
+                            <span class="download-btn-name">⭐ Reporte de Gastos Excel</span>
+                            <span class="download-btn-size">XLS • Con logo PNG embebido</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Google Drive Templates -->
+                <div class="download-title">🌐 Plantillas Google Drive</div>
+                <p style="font-size: 12px; color: var(--concrete); margin-bottom: 16px;">Archivos HTML optimizados para importar a Google Docs y Sheets.</p>
+                <div class="download-grid" style="margin-bottom: 32px;">
+                    <a href="templates/letterhead-google.html" download="Solmex-Membretada-Google.html" class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Hoja Membretada Google</span>
+                            <span class="download-btn-size">HTML → Importar a Google Docs</span>
+                        </div>
+                    </a>
+                    <a href="templates/expense-report.csv" download="Solmex-Reporte-Gastos.csv" class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Reporte de Gastos Sheets</span>
+                            <span class="download-btn-size">CSV → Importar a Google Sheets</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- PNG Logo Download -->
+                <div class="download-title">🖼️ Logo PNG (Para documentos)</div>
+                <p style="font-size: 12px; color: var(--concrete); margin-bottom: 16px;">Descarga el logo en formato PNG para insertarlo manualmente en cualquier documento.</p>
+                <div class="download-grid" style="margin-bottom: 32px;">
+                    <a href="templates/solmex-logo-horizontal.png" download="Solmex-Logo.png" class="download-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <polyline points="21,15 16,10 5,21"/>
+                        </svg>
+                        <div class="download-btn-text">
+                            <span class="download-btn-name">Logo PNG</span>
+                            <span class="download-btn-size">120x40px • Para insertar en documentos</span>
                         </div>
                     </a>
                 </div>
@@ -1110,6 +1153,19 @@
                         <span>• Google Sheets</span>
                         <span>• LibreOffice</span>
                     </div>
+                </div>
+                
+                <!-- Google Import Instructions -->
+                <div style="background: rgba(66,133,244,0.1); border: 1px solid rgba(66,133,244,0.3); border-radius: 12px; padding: 16px 20px; margin-top: 16px;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #4285F4;">📘 Cómo importar a Google Drive:</h4>
+                    <ol style="font-size: 12px; color: var(--concrete); margin: 0; padding-left: 20px;">
+                        <li>Descarga el archivo HTML o CSV</li>
+                        <li>Ve a <strong>drive.google.com</strong></li>
+                        <li>Haz clic en <strong>Nuevo → Subir archivo</strong></li>
+                        <li>Selecciona el archivo descargado</li>
+                        <li>Haz clic derecho → <strong>Abrir con → Google Docs/Sheets</strong></li>
+                        <li>¡Listo! El documento se convertirá automáticamente</li>
+                    </ol>
                 </div>
                 
                 <!-- Logos -->
