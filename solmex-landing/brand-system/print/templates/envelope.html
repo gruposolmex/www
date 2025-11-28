@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Sobre Comercial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        @page {
+            size: 241mm 105mm;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+        
+        .instructions {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            background: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h1 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #0A0A0A;
+        }
+        
+        .instructions p, .instructions li {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        
+        .instructions ul { margin-left: 20px; }
+        
+        .print-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+        
+        .envelope {
+            width: 9.5in;
+            height: 4.125in;
+            background: white;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .gradient-stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: linear-gradient(90deg, #FF943B, #FFD91C);
+        }
+        
+        .return-address {
+            position: absolute;
+            top: 32px;
+            left: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        
+        .env-logo {
+            width: 48px;
+        }
+        
+        .return-text {
+            font-size: 10px;
+            color: #2C3E44;
+            line-height: 1.5;
+        }
+        
+        .recipient-area {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 24px 48px;
+            border: 2px dashed #E4E7E9;
+            border-radius: 4px;
+        }
+        
+        .recipient-area p {
+            font-size: 12px;
+            color: #8B9197;
+        }
+        
+        .editable {
+            background: #FFF9E6;
+            border: 1px dashed #FFD91C;
+            padding: 2px 6px;
+            border-radius: 2px;
+            display: inline-block;
+            min-width: 150px;
+            font-size: 14px;
+            color: #0A0A0A;
+        }
+        
+        @media print {
+            body { 
+                background: white;
+                padding: 0;
+            }
+            .instructions { display: none; }
+            .envelope {
+                box-shadow: none;
+            }
+            .recipient-area {
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>✉️ Plantilla de Sobre Comercial #10</h1>
+        <p><strong>Instrucciones:</strong></p>
+        <ul>
+            <li>Edita los campos de destinatario con la información correcta</li>
+            <li>Para imprimir: Archivo → Imprimir → Guardar como PDF</li>
+            <li>Tamaño: #10 Comercial (241mm × 105mm)</li>
+            <li>Imprime directamente en sobres o envía a la imprenta</li>
+        </ul>
+        <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+    
+    <div class="envelope">
+        <div class="gradient-stripe"></div>
+        
+        <div class="return-address">
+            <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="env-logo">
+            <div class="return-text">
+                Grupo Solmex S.A. de C.V.<br>
+                Av. Industrial 1234<br>
+                Monterrey, N.L. 64000<br>
+                México
+            </div>
+        </div>
+        
+        <div class="recipient-area">
+            <p style="margin-bottom: 8px;">Destinatario</p>
+            <div contenteditable="true">
+                <span class="editable">Nombre del Destinatario</span><br>
+                <span class="editable">Empresa / Organización</span><br>
+                <span class="editable">Dirección Línea 1</span><br>
+                <span class="editable">Ciudad, Estado, C.P.</span><br>
+                <span class="editable">País</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -16,8 +16,17 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    // Redirect to Nextcloud form with pre-filled data
+    const formUrl = 'https://nube.gruposolmex.com/index.php/apps/forms/s/SfQNaeFno5cbrGbd5pcArmQW';
+    const queryParams = new URLSearchParams({
+      nombre: formData.nombre,
+      empresa: formData.empresa,
+      correo: formData.correo,
+      telefono: formData.telefono,
+      mensaje: formData.mensaje,
+    });
+    // Open form in new tab with pre-filled data
+    window.open(`${formUrl}?${queryParams.toString()}`, '_blank');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

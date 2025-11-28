@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Solmex - Tarjetas de Presentación</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&family=Inter:wght@400&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --card-width: 90mm;
+            --card-height: 55mm;
+            --crop-length: 4mm;
+            --gap: 3mm;
+            --solmex-orange: #FF943B;
+            --solmex-sunrise: #FFD91C;
+        }
+        
+        @page {
+            size: letter landscape;
+            margin: 5mm;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        
+        /* Instructions Panel */
+        .instructions {
+            max-width: 900px;
+            margin: 0 auto 24px;
+            background: white;
+            padding: 20px 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        
+        .instructions h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: #0A0A0A;
+        }
+        
+        .customizer {
+            background: #FFF9E6;
+            border: 1px solid #FFD91C;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+        
+        .customizer h3 {
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #0A0A0A;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .form-group label {
+            font-size: 10px;
+            font-weight: 500;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group input {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--solmex-orange);
+        }
+        
+        .info-row {
+            display: flex;
+            gap: 24px;
+            font-size: 12px;
+            color: #666;
+            margin-top: 12px;
+        }
+        
+        .info-row strong { color: #333; }
+        
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #FF943B, #FFD91C);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255,148,59,0.4);
+        }
+        
+        /* Print Sheet - Landscape */
+        .print-sheet {
+            width: 279.4mm;
+            height: 200mm; /* Slightly less than full page to avoid overflow */
+            background: white;
+            margin: 0 auto 20px;
+            padding: 6mm;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sheet-label {
+            position: absolute;
+            top: 2mm;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 7px;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Cards Grid - 3x3 = 9 cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, var(--card-width));
+            grid-template-rows: repeat(3, var(--card-height));
+            gap: var(--gap);
+            justify-content: center;
+            align-content: center;
+            height: 100%;
+            padding-top: 4mm;
+        }
+        
+        /* Card with Crop Marks */
+        .card-wrapper {
+            position: relative;
+            width: var(--card-width);
+            height: var(--card-height);
+        }
+        
+        /* Crop Marks - thin lines */
+        .card-wrapper::before,
+        .card-wrapper::after {
+            content: '';
+            position: absolute;
+            background: #000;
+        }
+        
+        /* Corner crop marks using pseudo-elements on inner elements */
+        .crop-tl, .crop-tr, .crop-bl, .crop-br {
+            position: absolute;
+            width: var(--crop-length);
+            height: var(--crop-length);
+        }
+        
+        .crop-tl { top: calc(-1 * var(--gap) / 2 - var(--crop-length)); left: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-tr { top: calc(-1 * var(--gap) / 2 - var(--crop-length)); right: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-bl { bottom: calc(-1 * var(--gap) / 2 - var(--crop-length)); left: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        .crop-br { bottom: calc(-1 * var(--gap) / 2 - var(--crop-length)); right: calc(-1 * var(--gap) / 2 - var(--crop-length)); }
+        
+        .crop-tl::before, .crop-tl::after,
+        .crop-tr::before, .crop-tr::after,
+        .crop-bl::before, .crop-bl::after,
+        .crop-br::before, .crop-br::after {
+            content: '';
+            position: absolute;
+            background: #000;
+        }
+        
+        /* Top Left */
+        .crop-tl::before { bottom: 0; right: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-tl::after { bottom: 0; right: 0; width: 0.2mm; height: var(--crop-length); }
+        
+        /* Top Right */
+        .crop-tr::before { bottom: 0; left: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-tr::after { bottom: 0; left: 0; width: 0.2mm; height: var(--crop-length); }
+        
+        /* Bottom Left */
+        .crop-bl::before { top: 0; right: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-bl::after { top: 0; right: 0; width: 0.2mm; height: var(--crop-length); }
+        
+        /* Bottom Right */
+        .crop-br::before { top: 0; left: 0; width: var(--crop-length); height: 0.2mm; }
+        .crop-br::after { top: 0; left: 0; width: 0.2mm; height: var(--crop-length); }
+        
+        /* Business Card */
+        .business-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5mm;
+            overflow: hidden;
+        }
+        
+        .business-card.front {
+            background: white;
+            border: 0.2mm solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5mm;
+        }
+        
+        .business-card.front::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 12mm 12mm;
+            border-color: transparent transparent var(--solmex-orange) transparent;
+        }
+        
+        .card-logo {
+            width: 10mm;
+            height: auto;
+        }
+        
+        .card-info {
+            color: #0A0A0A;
+        }
+        
+        .card-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5mm;
+            font-weight: 600;
+            margin-bottom: 0.3mm;
+        }
+        
+        .card-title {
+            font-size: 2.5mm;
+            color: #8B9197;
+            margin-bottom: 2mm;
+        }
+        
+        .card-contact {
+            font-size: 2.2mm;
+            color: #2C3E44;
+            line-height: 1.4;
+        }
+        
+        .business-card.back {
+            background: linear-gradient(135deg, var(--solmex-orange) 0%, var(--solmex-sunrise) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+        
+        .back-logo {
+            width: 18mm;
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Page separator */
+        .page-break {
+            text-align: center;
+            padding: 16px 0;
+            font-size: 11px;
+            color: #999;
+        }
+        
+        /* Specs footer */
+        .specs-footer {
+            position: absolute;
+            bottom: 2mm;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            font-size: 6px;
+            color: #ccc;
+        }
+        
+        /* Print Styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            html, body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                height: auto;
+            }
+            
+            .instructions {
+                display: none !important;
+            }
+            
+            .print-sheet {
+                box-shadow: none;
+                margin: 0;
+                padding: 5mm;
+                page-break-inside: avoid;
+                height: auto;
+                min-height: 0;
+            }
+            
+            /* Only break after the first sheet (front) */
+            .print-sheet:first-of-type {
+                page-break-after: always;
+            }
+            
+            /* No break after the last sheet (back) */
+            .print-sheet:last-of-type {
+                page-break-after: avoid;
+            }
+            
+            .sheet-label, .specs-footer {
+                display: none !important;
+            }
+            
+            .business-card.front {
+                border: none;
+            }
+            
+            .business-card.back {
+                background: linear-gradient(135deg, #FF943B 0%, #FFD91C 100%) !important;
+            }
+            
+            .business-card.front::after {
+                border-color: transparent transparent #FF943B transparent !important;
+            }
+            
+            .page-break {
+                display: none !important;
+                height: 0;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>📇 Generador de Tarjetas de Presentación</h1>
+        
+        <div class="customizer">
+            <h3>✏️ Personaliza tu tarjeta</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="inputName" value="Carlos Mendoza" oninput="updateCards()">
+                </div>
+                <div class="form-group">
+                    <label>Puesto</label>
+                    <input type="text" id="inputTitle" value="Director de Operaciones" oninput="updateCards()">
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="text" id="inputPhone" value="+52 81 1234 5678" oninput="updateCards()">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" id="inputEmail" value="carlos.mendoza" oninput="updateCards()">
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-row">
+            <span><strong>Tarjeta:</strong> 90×55mm</span>
+            <span><strong>Hojas:</strong> 2 páginas (frente + reverso)</span>
+            <span><strong>Cantidad:</strong> 9 tarjetas × 2 = 18 total</span>
+            <span><strong>Orientación:</strong> Horizontal (landscape)</span>
+        </div>
+        
+        <div style="background: #fff3cd; border: 1px solid #ffc107; border-radius: 6px; padding: 10px 14px; margin-top: 12px; font-size: 12px; color: #856404;">
+            <strong>⚠️ Importante:</strong> Al imprimir, activa <strong>"Gráficos de fondo"</strong> o <strong>"Background graphics"</strong> en las opciones de impresión para que el reverso se imprima correctamente.
+        </div>
+        
+        <div class="btn-row">
+            <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar PDF</button>
+        </div>
+    </div>
+    
+    <!-- Print Sheet - Front Side (9 cards) -->
+    <div class="print-sheet">
+        <div class="sheet-label">Frente — Cortar por marcas</div>
+        
+        <div class="cards-grid">
+            <!-- Row 1 -->
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 3 -->
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card front">
+                    <img src="../../logo/solmex-logo-dark.svg" alt="Solmex" class="card-logo">
+                    <div class="card-info">
+                        <div class="card-name" data-field="name">Carlos Mendoza</div>
+                        <div class="card-title" data-field="title">Director de Operaciones</div>
+                        <div class="card-contact"><span data-field="phone">+52 81 1234 5678</span><br><span data-field="email">carlos.mendoza</span>@gruposolmex.com<br>gruposolmex.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="specs-footer">
+            <span>90×55mm</span>
+            <span>Radio 1.5mm</span>
+            <span>CMYK</span>
+        </div>
+    </div>
+    
+    <div class="page-break">— Página 2: Reverso —</div>
+    
+    <!-- Print Sheet - Back Side (9 cards) -->
+    <div class="print-sheet">
+        <div class="sheet-label">Reverso — Cortar por marcas</div>
+        
+        <div class="cards-grid">
+            <!-- 9 back cards -->
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+            <div class="card-wrapper">
+                <div class="crop-tl"></div><div class="crop-tr"></div><div class="crop-bl"></div><div class="crop-br"></div>
+                <div class="business-card back"><img src="../../logo/solmex-logo.svg" alt="Solmex" class="back-logo"></div>
+            </div>
+        </div>
+        
+        <div class="specs-footer">
+            <span>90×55mm</span>
+            <span>Radio 1.5mm</span>
+            <span>CMYK</span>
+        </div>
+    </div>
+    
+    <script>
+        function updateCards() {
+            const name = document.getElementById('inputName').value;
+            const title = document.getElementById('inputTitle').value;
+            const phone = document.getElementById('inputPhone').value;
+            const email = document.getElementById('inputEmail').value;
+            
+            document.querySelectorAll('[data-field="name"]').forEach(el => el.textContent = name);
+            document.querySelectorAll('[data-field="title"]').forEach(el => el.textContent = title);
+            document.querySelectorAll('[data-field="phone"]').forEach(el => el.textContent = phone);
+            document.querySelectorAll('[data-field="email"]').forEach(el => el.textContent = email);
+        }
+    </script>
+</body>
+</html>
