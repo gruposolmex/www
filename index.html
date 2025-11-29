@@ -1039,6 +1039,35 @@
             border-color: rgba(255, 156, 55, 0.5);
             box-shadow: 0 0 0 3px rgba(255, 156, 55, 0.1);
         }
+        
+        /* Partner Onboarding Form Styles */
+        .form-step-content {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-step-content[style*="display: none"] {
+            display: none !important;
+        }
+        
+        .form-step-content input[type="checkbox"] {
+            accent-color: var(--solmex-accent-orange);
+            cursor: pointer;
+        }
+        
+        .form-step-content label[style*="cursor: pointer"]:hover {
+            color: var(--solmex-text-primary);
+        }
 
         .form-textarea {
             resize: none;
@@ -1513,7 +1542,7 @@
         
         /* ===== LEAFLET MAP STYLING ===== */
         .leaflet-container {
-            background: var(--solmex-bg-alt);
+            background: transparent !important;
             border-radius: 0.75rem;
             height: 400px;
             width: 100%;
@@ -1521,7 +1550,11 @@
         }
         
         .leaflet-tile-container img {
-            filter: brightness(0.7) contrast(1.1) saturate(0.8);
+            filter: brightness(0.5) contrast(1.4) saturate(0.8) hue-rotate(-10deg);
+        }
+        
+        #solmexMap {
+            background-color: #1a2a2f;
         }
         
         .leaflet-control-zoom {
@@ -1557,26 +1590,109 @@
             background: rgba(13, 17, 23, 0.95) !important;
         }
         
+        /* Animated marker circles */
+        .marker-pulse {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .marker-pulse-outer {
+            border: 3px solid rgba(255, 156, 55, 0.6);
+            animation: pulse-ring-outer 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .marker-pulse-inner {
+            border: 2px solid rgba(255, 216, 28, 0.8);
+            animation: pulse-ring-inner 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse-ring-outer {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse-ring-inner {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+        
         .custom-marker {
+            position: relative;
             background: var(--gradient-primary);
             border: 3px solid white;
             border-radius: 50%;
             width: 24px !important;
             height: 24px !important;
-            box-shadow: 0 0 20px rgba(255, 156, 55, 0.6);
-            animation: pulse-marker 2s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(255, 156, 55, 0.8), 0 0 60px rgba(255, 216, 28, 0.4);
+            animation: sparkle 2s ease-in-out infinite;
         }
         
         .custom-marker.hub {
-            width: 32px !important;
-            height: 32px !important;
+            width: 40px !important;
+            height: 40px !important;
             border-width: 4px;
-            box-shadow: 0 0 30px rgba(255, 156, 55, 0.8);
+            box-shadow: 0 0 40px rgba(255, 156, 55, 1), 0 0 80px rgba(255, 216, 28, 0.6);
         }
         
-        @keyframes pulse-marker {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.9; }
+        @keyframes sparkle {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255, 156, 55, 0.8), 0 0 60px rgba(255, 216, 28, 0.4);
+            }
+            50% { 
+                transform: scale(1.15);
+                box-shadow: 0 0 50px rgba(255, 156, 55, 1), 0 0 100px rgba(255, 216, 28, 0.8);
+            }
+        }
+        
+        /* Route glow effect */
+        .route-glow {
+            filter: drop-shadow(0 0 8px rgba(255, 216, 28, 0.8)) drop-shadow(0 0 16px rgba(255, 216, 28, 0.5));
+        }
+        
+        /* Endpoint circle styles */
+        .leaflet-interactive[fill="#FFD81C"] {
+            filter: drop-shadow(0 0 12px rgba(255, 216, 28, 1)) drop-shadow(0 0 24px rgba(255, 216, 28, 0.6));
+            animation: circlePulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes circlePulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 12px rgba(255, 216, 28, 1)) drop-shadow(0 0 24px rgba(255, 216, 28, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 20px rgba(255, 216, 28, 1)) drop-shadow(0 0 40px rgba(255, 216, 28, 0.8));
+            }
         }
         
         .map-legend {
@@ -1780,7 +1896,7 @@
             <div class="hero-overlay"></div>
             <div class="hero-pattern"></div>
             <div class="hero-freight">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80&auto=format" alt="Operación logística ferroviaria" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80&auto=format&fit=crop" alt="Operación logística ferroviaria" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80';">
             </div>
         </div>
 
@@ -2155,37 +2271,37 @@
             
             <div class="photo-gallery">
                 <div class="photo-item reveal-scale delay-1">
-                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="Terminal ferroviaria">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop" alt="Terminal ferroviaria" onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Terminal Ferroviaria</p>
                     </div>
                 </div>
                 <div class="photo-item reveal-scale delay-2">
-                    <img src="https://images.unsplash.com/photo-1601581875308-fafbf5b4c5b0?w=800&q=80" alt="Operación logística">
+                    <img src="https://images.unsplash.com/photo-1601581875308-fafbf5b4c5b0?w=800&q=80&auto=format&fit=crop" alt="Operación logística" onerror="this.src='https://images.unsplash.com/photo-1601581875308-fafbf5b4c5b0?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Operación Logística</p>
                     </div>
                 </div>
                 <div class="photo-item reveal-scale delay-3">
-                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80" alt="Transporte de carga">
+                    <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80&auto=format&fit=crop" alt="Transporte de carga" onerror="this.src='https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Transporte de Carga</p>
                     </div>
                 </div>
                 <div class="photo-item reveal-scale delay-4">
-                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80" alt="Almacén logístico">
+                    <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80&auto=format&fit=crop" alt="Almacén logístico" onerror="this.src='https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Centro de Distribución</p>
                     </div>
                 </div>
                 <div class="photo-item reveal-scale delay-5">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Operación portuaria">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop" alt="Operación portuaria" onerror="this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Operación Portuaria</p>
                     </div>
                 </div>
                 <div class="photo-item reveal-scale delay-6">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Coordinación logística">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop" alt="Coordinación logística" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80';">
                     <div class="photo-overlay">
                         <p class="photo-caption">Coordinación Centralizada</p>
                     </div>
@@ -2298,6 +2414,21 @@
                         </li>
                     </ul>
 
+                    <div class="glass network-emphasis" style="margin-top: 2rem;">
+                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.125rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--solmex-text-primary);">
+                            ¿Opera una terminal?
+                        </h3>
+                        <p style="font-size: 0.875rem; color: var(--solmex-text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
+                            Estamos seleccionando operadores de alto nivel para sumarse a nuestra red certificada.
+                        </p>
+                        <a href="#partner-onboarding" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                            <span>Quiero integrar mi terminal</span>
+                            <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    
                     <div class="glass network-emphasis">
                         <div class="network-emphasis-icon">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2337,6 +2468,273 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Partner Onboarding Section -->
+    <section class="section section-alt" id="partner-onboarding">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-eyebrow">Únase a la Red</p>
+                <h2 class="section-title font-display">Onboarding para Terminales</h2>
+                <p class="section-description">
+                    ¿Opera una terminal y quiere integrarse a la red Solmex? Complete el formulario para iniciar el proceso de certificación.
+                </p>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <form class="glass contact-form" id="partnerForm" style="padding: 3rem;">
+                    <!-- Progress Indicator -->
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 3rem; position: relative;">
+                        <div style="position: absolute; top: 1rem; left: 0; right: 0; height: 2px; background: var(--solmex-border-subtle); z-index: 0;"></div>
+                        <div class="form-step" data-step="1" style="position: relative; z-index: 10; text-align: center; flex: 1;">
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; color: white; font-weight: 700; font-size: 0.875rem;">1</div>
+                            <div style="font-size: 0.75rem; color: var(--solmex-text-muted);">Información</div>
+                        </div>
+                        <div class="form-step" data-step="2" style="position: relative; z-index: 10; text-align: center; flex: 1;">
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--solmex-border-subtle); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; color: var(--solmex-text-muted); font-weight: 700; font-size: 0.875rem;">2</div>
+                            <div style="font-size: 0.75rem; color: var(--solmex-text-muted);">Terminal</div>
+                        </div>
+                        <div class="form-step" data-step="3" style="position: relative; z-index: 10; text-align: center; flex: 1;">
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--solmex-border-subtle); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; color: var(--solmex-text-muted); font-weight: 700; font-size: 0.875rem;">3</div>
+                            <div style="font-size: 0.75rem; color: var(--solmex-text-muted);">Servicios</div>
+                        </div>
+                        <div class="form-step" data-step="4" style="position: relative; z-index: 10; text-align: center; flex: 1;">
+                            <div style="width: 2rem; height: 2rem; border-radius: 50%; background: var(--solmex-border-subtle); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; color: var(--solmex-text-muted); font-weight: 700; font-size: 0.875rem;">4</div>
+                            <div style="font-size: 0.75rem; color: var(--solmex-text-muted);">Contrato</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Contact Information -->
+                    <div class="form-step-content" data-step-content="1">
+                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Información de Contacto</h3>
+                        
+                        <div class="form-grid form-grid-2">
+                            <div class="form-field">
+                                <label class="form-label" for="partner-nombre">Nombre Completo *</label>
+                                <input type="text" id="partner-nombre" name="nombre" class="form-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="partner-cargo">Cargo *</label>
+                                <input type="text" id="partner-cargo" name="cargo" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid form-grid-2">
+                            <div class="form-field">
+                                <label class="form-label" for="partner-empresa">Empresa / Terminal *</label>
+                                <input type="text" id="partner-empresa" name="empresa" class="form-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="partner-rfc">RFC (opcional)</label>
+                                <input type="text" id="partner-rfc" name="rfc" class="form-input" placeholder="ABC123456789">
+                            </div>
+                        </div>
+
+                        <div class="form-grid form-grid-2">
+                            <div class="form-field">
+                                <label class="form-label" for="partner-email">Correo Electrónico *</label>
+                                <input type="email" id="partner-email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="partner-telefono">Teléfono *</label>
+                                <input type="tel" id="partner-telefono" name="telefono" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente: Información de Terminal</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Terminal Information -->
+                    <div class="form-step-content" data-step-content="2" style="display: none;">
+                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Información de la Terminal</h3>
+                        
+                        <div class="form-field">
+                            <label class="form-label" for="partner-direccion">Dirección Completa de la Terminal *</label>
+                            <textarea id="partner-direccion" name="direccion" class="form-textarea" rows="3" required placeholder="Calle, número, colonia, ciudad, estado, código postal"></textarea>
+                        </div>
+
+                        <div class="form-grid form-grid-2">
+                            <div class="form-field">
+                                <label class="form-label" for="partner-ciudad">Ciudad *</label>
+                                <input type="text" id="partner-ciudad" name="ciudad" class="form-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="partner-estado">Estado *</label>
+                                <input type="text" id="partner-estado" name="estado" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid form-grid-2">
+                            <div class="form-field">
+                                <label class="form-label" for="partner-codigo-postal">Código Postal *</label>
+                                <input type="text" id="partner-codigo-postal" name="codigo_postal" class="form-input" required>
+                            </div>
+                            <div class="form-field">
+                                <label class="form-label" for="partner-coordenadas">Coordenadas GPS (opcional)</label>
+                                <input type="text" id="partner-coordenadas" name="coordenadas" class="form-input" placeholder="19.4326, -99.1332">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="partner-capacidad">Capacidad de Almacenamiento</label>
+                            <input type="text" id="partner-capacidad" name="capacidad" class="form-input" placeholder="Ej: 5,000 m² o 2,000 toneladas">
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="partner-infraestructura">Infraestructura Disponible *</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="bodega" style="width: 1rem; height: 1rem;">
+                                    Bodega / Almacén
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="patio" style="width: 1rem; height: 1rem;">
+                                    Patio de Maniobras
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="dique" style="width: 1rem; height: 1rem;">
+                                    Dique / Muelle
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="bascula" style="width: 1rem; height: 1rem;">
+                                    Báscula
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="cctv" style="width: 1rem; height: 1rem;">
+                                    CCTV / Seguridad
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="infraestructura" value="wms" style="width: 1rem; height: 1rem;">
+                                    Sistema WMS
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(1)">Anterior</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente: Servicios</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Services -->
+                    <div class="form-step-content" data-step-content="3" style="display: none;">
+                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Servicios Ofrecidos</h3>
+                        
+                        <div class="form-field">
+                            <label class="form-label" for="partner-servicios">Servicios que Ofrece su Terminal *</label>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.5rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="almacenamiento" style="width: 1rem; height: 1rem;">
+                                    Almacenamiento
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="carga_descarga" style="width: 1rem; height: 1rem;">
+                                    Carga / Descarga
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="transbordo" style="width: 1rem; height: 1rem;">
+                                    Transbordo
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="consolidacion" style="width: 1rem; height: 1rem;">
+                                    Consolidación
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="distribucion" style="width: 1rem; height: 1rem;">
+                                    Distribución
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="cadena_frio" style="width: 1rem; height: 1rem;">
+                                    Cadena de Frío
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="manejo_peligrosos" style="width: 1rem; height: 1rem;">
+                                    Materiales Peligrosos
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--solmex-text-muted); cursor: pointer;">
+                                    <input type="checkbox" name="servicios" value="ferroviario" style="width: 1rem; height: 1rem;">
+                                    Conexión Ferroviaria
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="partner-tipos-carga">Tipos de Carga que Maneja *</label>
+                            <textarea id="partner-tipos-carga" name="tipos_carga" class="form-textarea" rows="3" required placeholder="Ej: Granos, minerales, productos industriales, contenedores, etc."></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="partner-experiencia">Años de Experiencia Operando</label>
+                            <input type="number" id="partner-experiencia" name="experiencia" class="form-input" min="0" placeholder="Ej: 5">
+                        </div>
+
+                        <div class="form-field">
+                            <label class="form-label" for="partner-certificaciones">Certificaciones (opcional)</label>
+                            <textarea id="partner-certificaciones" name="certificaciones" class="form-textarea" rows="2" placeholder="Ej: ISO 9001, NOM-006-SCT, etc."></textarea>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(2)">Anterior</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(4)">Siguiente: Contrato</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Contract & Agreement -->
+                    <div class="form-step-content" data-step-content="4" style="display: none;">
+                        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">Términos y Condiciones</h3>
+                        
+                        <div class="form-field">
+                            <label class="form-label" for="partner-adicional">Información Adicional</label>
+                            <textarea id="partner-adicional" name="adicional" class="form-textarea" rows="4" placeholder="Cuéntenos sobre su terminal, fortalezas, o cualquier información relevante..."></textarea>
+                        </div>
+
+                        <div style="background: rgba(255, 148, 59, 0.1); border: 1px solid rgba(255, 148, 59, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin: 2rem 0;">
+                            <h4 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--solmex-accent-orange);">Proceso de Integración</h4>
+                            <ol style="margin-left: 1.5rem; color: var(--solmex-text-muted); font-size: 0.875rem; line-height: 1.8;">
+                                <li>Revisión de su solicitud (2-3 días hábiles)</li>
+                                <li>Evaluación técnica y visita a la terminal</li>
+                                <li>Negociación de términos y SLAs</li>
+                                <li>Firma de contrato y capacitación</li>
+                                <li>Integración a la red Solmex</li>
+                            </ol>
+                        </div>
+
+                        <div class="form-field">
+                            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
+                                <input type="checkbox" name="acepta_terminos" required style="margin-top: 0.25rem; width: 1.25rem; height: 1.25rem; flex-shrink: 0;">
+                                <span style="font-size: 0.875rem; color: var(--solmex-text-muted); line-height: 1.6;">
+                                    Acepto que Soluciones Logísticas FyT S.A. de C.V. (Grupo Solmex) procese mi información para evaluar mi solicitud de integración a la red. 
+                                    Entiendo que seré contactado por un representante de Solmex y que mis datos serán tratados conforme al 
+                                    <a href="aviso-privacidad.html" target="_blank" style="color: var(--solmex-accent-orange); text-decoration: underline;">Aviso de Privacidad</a>. *
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="form-field">
+                            <label style="display: flex; align-items: flex-start; gap: 0.75rem; cursor: pointer;">
+                                <input type="checkbox" name="acepta_contrato" required style="margin-top: 0.25rem; width: 1.25rem; height: 1.25rem; flex-shrink: 0;">
+                                <span style="font-size: 0.875rem; color: var(--solmex-text-muted); line-height: 1.6;">
+                                    Estoy de acuerdo en iniciar el proceso de evaluación y firma de contrato de integración a la red Solmex. 
+                                    Entiendo que el contrato final será revisado y negociado antes de su firma. *
+                                </span>
+                            </label>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(3)">Anterior</button>
+                            <button type="submit" class="btn btn-primary">
+                                <span>Enviar Solicitud</span>
+                                <svg style="width: 1.25rem; height: 1.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -3087,12 +3485,13 @@ _Enviado desde: gruposolmex.com_`;
                 return;
             }
             
-            // Create custom minimal dark tile layer
+            // Create custom minimal dark tile layer with better land color
             const minimalDark = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 maxZoom: 18,
                 tileSize: 256,
-                zoomOffset: 0
+                zoomOffset: 0,
+                opacity: 0.7
             });
             
             // Initialize map centered on Mexico
@@ -3104,61 +3503,77 @@ _Enviado desde: gruposolmex.com_`;
                 layers: [minimalDark]
             });
             
-            // Apply dark filter to tiles
+            // Apply better color filter to tiles - darker background but visible land
             map.on('tileload', function(e) {
                 const img = e.tile;
-                img.style.filter = 'brightness(0.6) contrast(1.2) saturate(0.7)';
+                // Better balance: darker but visible land with good contrast
+                img.style.filter = 'brightness(0.5) contrast(1.4) saturate(0.8) hue-rotate(-10deg)';
+                // Add dark blue-green tint for land
+                img.style.mixBlendMode = 'multiply';
             });
             
-            // Terminal locations with coordinates
+            // Add a base color layer for land
+            map.getContainer().style.backgroundColor = '#1a2a2f';
+            
+            // Terminal locations with coordinates (verified)
             const terminals = [
                 {
                     name: 'CDMX',
                     subtitle: 'Hub Central',
-                    coords: [19.4326, -99.1332],
+                    coords: [19.4326, -99.1332], // Mexico City
                     type: 'hub',
                     description: 'Centro de coordinación principal de la red Solmex'
                 },
                 {
                     name: 'Guadalajara',
                     subtitle: 'Hub Occidente',
-                    coords: [20.6597, -103.3496],
+                    coords: [20.6597, -103.3496], // Guadalajara, Jalisco
                     type: 'terminal',
                     description: 'Terminal estratégica para el occidente de México'
                 },
                 {
                     name: 'Veracruz',
                     subtitle: 'Puerto Principal',
-                    coords: [19.1738, -96.1342],
+                    coords: [19.1738, -96.1342], // Veracruz, Veracruz
                     type: 'terminal',
                     description: 'Terminal portuaria con conexión ferroviaria'
                 },
                 {
                     name: 'Monterrey',
                     subtitle: 'Hub Norte',
-                    coords: [25.6866, -100.3161],
+                    coords: [25.6866, -100.3161], // Monterrey, Nuevo León
                     type: 'hub',
                     description: 'Centro logístico del norte de México'
                 },
                 {
                     name: 'Colima',
                     subtitle: 'Terminal Pacífico',
-                    coords: [19.2433, -103.7247],
+                    coords: [19.2433, -103.7247], // Colima, Colima
                     type: 'terminal',
                     description: 'Terminal estratégica en la costa del Pacífico'
                 }
             ];
             
-            // Create custom icon function
+            // Create custom icon function with animated circles
             function createCustomIcon(type) {
-                const size = type === 'hub' ? 32 : 24;
+                const size = type === 'hub' ? 40 : 24;
                 const borderWidth = type === 'hub' ? 4 : 3;
+                const pulseSize = type === 'hub' ? 80 : 60;
                 
                 return L.divIcon({
                     className: 'custom-marker ' + type,
-                    html: `<div style="width: ${size}px; height: ${size}px; background: linear-gradient(135deg, #FF9C37, #FFD81C); border: ${borderWidth}px solid white; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 156, 55, 0.6);"></div>`,
-                    iconSize: [size, size],
-                    iconAnchor: [size / 2, size / 2]
+                    html: `
+                        <div style="position: relative; width: ${pulseSize}px; height: ${pulseSize}px; display: flex; align-items: center; justify-content: center;">
+                            <!-- Outer pulse ring -->
+                            <div class="marker-pulse marker-pulse-outer" style="position: absolute; width: ${pulseSize}px; height: ${pulseSize}px; border-radius: 50%;"></div>
+                            <!-- Inner pulse ring -->
+                            <div class="marker-pulse marker-pulse-inner" style="position: absolute; width: ${pulseSize * 0.7}px; height: ${pulseSize * 0.7}px; border-radius: 50%;"></div>
+                            <!-- Main marker -->
+                            <div style="position: relative; z-index: 10; width: ${size}px; height: ${size}px; background: linear-gradient(135deg, #FF9C37, #FFD81C); border: ${borderWidth}px solid white; border-radius: 50%; box-shadow: 0 0 30px rgba(255, 156, 55, 0.8), 0 0 60px rgba(255, 216, 28, 0.4);"></div>
+                        </div>
+                    `,
+                    iconSize: [pulseSize, pulseSize],
+                    iconAnchor: [pulseSize / 2, pulseSize / 2]
                 });
             }
             
@@ -3187,13 +3602,72 @@ _Enviado desde: gruposolmex.com_`;
                 [[19.2433, -103.7247], [20.6597, -103.3496]] // Colima to Guadalajara
             ];
             
+            // Add rail routes with yellow glow effect and glowing circles at endpoints
             railRoutes.forEach(route => {
-                L.polyline(route, {
-                    color: '#FF9C37',
-                    weight: 3,
-                    opacity: 0.6,
+                // Shadow/glow layer
+                const shadowLayer = L.polyline(route, {
+                    color: '#FFD81C',
+                    weight: 8,
+                    opacity: 0.4,
+                    dashArray: '10, 5',
+                    className: 'route-glow'
+                }).addTo(map);
+                
+                // Main route line
+                const mainLayer = L.polyline(route, {
+                    color: '#FFD81C',
+                    weight: 4,
+                    opacity: 0.8,
                     dashArray: '10, 5'
                 }).addTo(map);
+                
+                // Add glowing circles at route endpoints
+                const startPoint = route[0];
+                const endPoint = route[route.length - 1];
+                
+                // Start point circle
+                const startCircle = L.circleMarker(startPoint, {
+                    radius: 12,
+                    fillColor: '#FFD81C',
+                    color: '#FFD81C',
+                    weight: 3,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                // End point circle
+                const endCircle = L.circleMarker(endPoint, {
+                    radius: 12,
+                    fillColor: '#FFD81C',
+                    color: '#FFD81C',
+                    weight: 3,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                // Add pulsing effect to endpoint circles
+                function pulseCircle(circle) {
+                    let scale = 1;
+                    const pulseInterval = setInterval(() => {
+                        scale = scale === 1 ? 1.3 : 1;
+                        circle.setRadius(12 * scale);
+                        circle.setStyle({
+                            fillOpacity: scale === 1 ? 0.8 : 0.4
+                        });
+                    }, 1500);
+                }
+                
+                pulseCircle(startCircle);
+                pulseCircle(endCircle);
+                
+                // Add animation to route
+                let offset = 0;
+                setInterval(() => {
+                    offset = (offset + 1) % 15;
+                    mainLayer.setStyle({
+                        dashOffset: offset
+                    });
+                }, 100);
             });
             
             // Fit map to show all terminals
@@ -3219,6 +3693,147 @@ _Enviado desde: gruposolmex.com_`;
                 }, { threshold: 0.1 });
                 
                 mapObserver.observe(mapSection);
+            }
+        });
+        
+        // ===== PARTNER ONBOARDING FORM =====
+        function nextStep(step) {
+            const currentStep = step - 1;
+            const nextStepEl = step;
+            
+            // Hide current step
+            document.querySelector(`[data-step-content="${currentStep}"]`).style.display = 'none';
+            
+            // Show next step
+            document.querySelector(`[data-step-content="${nextStepEl}"]`).style.display = 'block';
+            
+            // Update progress indicator
+            document.querySelectorAll('.form-step').forEach((el, idx) => {
+                const stepNum = idx + 1;
+                const stepCircle = el.querySelector('div');
+                if (stepNum <= step) {
+                    stepCircle.style.background = 'var(--gradient-primary)';
+                    stepCircle.style.color = 'white';
+                } else {
+                    stepCircle.style.background = 'var(--solmex-border-subtle)';
+                    stepCircle.style.color = 'var(--solmex-text-muted)';
+                }
+            });
+            
+            // Scroll to top of form
+            document.getElementById('partnerForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        function prevStep(step) {
+            const currentStep = step + 1;
+            const prevStepEl = step;
+            
+            // Hide current step
+            document.querySelector(`[data-step-content="${currentStep}"]`).style.display = 'none';
+            
+            // Show previous step
+            document.querySelector(`[data-step-content="${prevStepEl}"]`).style.display = 'block';
+            
+            // Update progress indicator
+            document.querySelectorAll('.form-step').forEach((el, idx) => {
+                const stepNum = idx + 1;
+                const stepCircle = el.querySelector('div');
+                if (stepNum <= step) {
+                    stepCircle.style.background = 'var(--gradient-primary)';
+                    stepCircle.style.color = 'white';
+                } else {
+                    stepCircle.style.background = 'var(--solmex-border-subtle)';
+                    stepCircle.style.color = 'var(--solmex-text-muted)';
+                }
+            });
+            
+            // Scroll to top of form
+            document.getElementById('partnerForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Handle form submission
+        document.getElementById('partnerForm')?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Enviando...</span>';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {
+                tipo: 'terminal_partner',
+                nombre: formData.get('nombre'),
+                cargo: formData.get('cargo'),
+                empresa: formData.get('empresa'),
+                rfc: formData.get('rfc'),
+                email: formData.get('email'),
+                telefono: formData.get('telefono'),
+                direccion: formData.get('direccion'),
+                ciudad: formData.get('ciudad'),
+                estado: formData.get('estado'),
+                codigo_postal: formData.get('codigo_postal'),
+                coordenadas: formData.get('coordenadas'),
+                capacidad: formData.get('capacidad'),
+                infraestructura: Array.from(formData.getAll('infraestructura')),
+                servicios: Array.from(formData.getAll('servicios')),
+                tipos_carga: formData.get('tipos_carga'),
+                experiencia: formData.get('experiencia'),
+                certificaciones: formData.get('certificaciones'),
+                adicional: formData.get('adicional'),
+                acepta_terminos: formData.get('acepta_terminos') ? 'Sí' : 'No',
+                acepta_contrato: formData.get('acepta_contrato') ? 'Sí' : 'No'
+            };
+            
+            try {
+                // Save to localStorage as backup
+                const submissions = JSON.parse(localStorage.getItem('solmex_partner_submissions') || '[]');
+                submissions.push({ ...data, timestamp: new Date().toISOString() });
+                localStorage.setItem('solmex_partner_submissions', JSON.stringify(submissions));
+                
+                // Send to Nextcloud form (same endpoint as contact form)
+                const response = await fetch('https://cloud.gruposolmex.com/apps/forms/api/v1.2/forms/1/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        formId: '1',
+                        answers: Object.entries(data).map(([key, value]) => ({
+                            questionId: key,
+                            text: Array.isArray(value) ? value.join(', ') : String(value)
+                        }))
+                    })
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    alert('¡Solicitud enviada exitosamente! Un representante de Solmex se pondrá en contacto con usted en las próximas 48 horas.');
+                    this.reset();
+                    // Reset to step 1
+                    document.querySelectorAll('.form-step-content').forEach((el, idx) => {
+                        el.style.display = idx === 0 ? 'block' : 'none';
+                    });
+                    document.querySelectorAll('.form-step').forEach((el, idx) => {
+                        const stepCircle = el.querySelector('div');
+                        if (idx === 0) {
+                            stepCircle.style.background = 'var(--gradient-primary)';
+                            stepCircle.style.color = 'white';
+                        } else {
+                            stepCircle.style.background = 'var(--solmex-border-subtle)';
+                            stepCircle.style.color = 'var(--solmex-text-muted)';
+                        }
+                    });
+                } else {
+                    throw new Error('Error al enviar');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Su solicitud ha sido guardada localmente. Nos pondremos en contacto con usted pronto.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
             }
         });
     </script>
