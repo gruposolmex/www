@@ -1186,6 +1186,343 @@
                 grid-template-columns: 1fr !important;
             }
         }
+        
+        /* ===== PARTNER MODAL (STEP-BASED) ===== */
+        .partner-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .partner-modal.active {
+            display: flex;
+        }
+        
+        .partner-modal-content {
+            background: var(--solmex-bg-alt);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 1.5rem;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .modal-header {
+            padding: 2rem 2.5rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(13, 17, 23, 0.5);
+        }
+        
+        .modal-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--solmex-text-primary);
+        }
+        
+        .modal-close {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(13, 17, 23, 0.5);
+            color: var(--solmex-text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .modal-close:hover {
+            background: var(--solmex-accent-orange);
+            border-color: var(--solmex-accent-orange);
+            color: white;
+        }
+        
+        .modal-close svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        /* Step Progress Indicator */
+        .step-progress {
+            padding: 1.5rem 2.5rem;
+            background: rgba(13, 17, 23, 0.3);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .step-progress-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-item {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+        
+        .step-item::after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 1rem;
+            width: calc(100% - 1.5rem);
+            height: 2px;
+            background: rgba(148, 163, 184, 0.2);
+            z-index: 0;
+        }
+        
+        .step-item:last-child::after {
+            display: none;
+        }
+        
+        .step-item.completed::after {
+            background: var(--gradient-primary);
+        }
+        
+        .step-item.active::after {
+            background: linear-gradient(to right, var(--solmex-accent-orange), rgba(148, 163, 184, 0.2));
+        }
+        
+        .step-number {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: rgba(148, 163, 184, 0.2);
+            color: var(--solmex-text-muted);
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s;
+        }
+        
+        .step-item.active .step-number {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--solmex-accent-orange);
+            box-shadow: 0 0 20px rgba(255, 156, 55, 0.4);
+        }
+        
+        .step-item.completed .step-number {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .step-item.completed .step-number::before {
+            content: '✓';
+            font-size: 0.875rem;
+        }
+        
+        .step-label {
+            font-size: 0.75rem;
+            color: var(--solmex-text-muted);
+            font-weight: 500;
+            display: none;
+        }
+        
+        .step-item.active .step-label {
+            color: var(--solmex-accent-orange);
+            display: block;
+        }
+        
+        .step-progress-text {
+            font-size: 0.875rem;
+            color: var(--solmex-text-muted);
+            text-align: center;
+        }
+        
+        .step-progress-text strong {
+            color: var(--solmex-accent-orange);
+        }
+        
+        /* Modal Body */
+        .modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2.5rem;
+        }
+        
+        .step-content {
+            display: none;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .step-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--solmex-text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-description {
+            font-size: 0.9375rem;
+            color: var(--solmex-text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        /* Modal Footer */
+        .modal-footer {
+            padding: 1.5rem 2.5rem;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            background: rgba(13, 17, 23, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .modal-footer-buttons {
+            display: flex;
+            gap: 1rem;
+            flex: 1;
+            justify-content: flex-end;
+        }
+        
+        .btn-step {
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        
+        .btn-step-secondary {
+            background: rgba(13, 17, 23, 0.5);
+            border-color: rgba(148, 163, 184, 0.2);
+            color: var(--solmex-text-primary);
+        }
+        
+        .btn-step-secondary:hover {
+            background: rgba(13, 17, 23, 0.7);
+            border-color: rgba(148, 163, 184, 0.4);
+        }
+        
+        .btn-step-primary {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-step-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(255, 156, 55, 0.3);
+        }
+        
+        .btn-step-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .step-validation-message {
+            font-size: 0.875rem;
+            color: var(--signal-red);
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .step-validation-message.show {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .partner-modal {
+                padding: 1rem;
+            }
+            
+            .partner-modal-content {
+                max-height: 95vh;
+            }
+            
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 1.5rem;
+            }
+            
+            .step-label {
+                display: none !important;
+            }
+            
+            .step-progress-bar {
+                gap: 0.25rem;
+            }
+            
+            .step-number {
+                width: 1.75rem;
+                height: 1.75rem;
+                font-size: 0.75rem;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+            }
+            
+            .modal-footer-buttons {
+                width: 100%;
+                flex-direction: column-reverse;
+            }
+            
+            .btn-step {
+                width: 100%;
+            }
+        }
 
         /* Success Toast */
         .toast {
@@ -2538,11 +2875,66 @@
                 </p>
             </div>
 
-            <div class="glass" style="max-width: 900px; margin: 0 auto; padding: 3rem;">
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" id="openPartnerModal" style="padding: 1rem 2rem; font-size: 1rem;">
+                    Iniciar Proceso de Integración
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Modal (Step-based Form) -->
+    <div class="partner-modal" id="partnerModal" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="partner-modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Únase a la Red Solmex</h2>
+                <button class="modal-close" id="closePartnerModal" aria-label="Cerrar modal">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Step Progress Indicator -->
+            <div class="step-progress">
+                <div class="step-progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6">
+                    <div class="step-item active" data-step="1">
+                        <div class="step-number">1</div>
+                        <span class="step-label">Contacto</span>
+                    </div>
+                    <div class="step-item" data-step="2">
+                        <div class="step-number">2</div>
+                        <span class="step-label">Ubicación</span>
+                    </div>
+                    <div class="step-item" data-step="3">
+                        <div class="step-number">3</div>
+                        <span class="step-label">Perfil</span>
+                    </div>
+                    <div class="step-item" data-step="4">
+                        <div class="step-number">4</div>
+                        <span class="step-label">Servicios</span>
+                    </div>
+                    <div class="step-item" data-step="5">
+                        <div class="step-number">5</div>
+                        <span class="step-label">Certificaciones</span>
+                    </div>
+                    <div class="step-item" data-step="6">
+                        <div class="step-number">6</div>
+                        <span class="step-label">Finalizar</span>
+                    </div>
+                </div>
+                <p class="step-progress-text">Paso <strong id="currentStepNumber">1</strong> de <strong>6</strong></p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
                 <form id="partnerForm" class="partner-form">
-                    <!-- Información de Contacto -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Información de Contacto</h3>
+                    <!-- Step 1: Información de Contacto -->
+                    <div class="step-content active" data-step="1">
+                        <h3 class="step-title">Información de Contacto</h3>
+                        <p class="step-description">Comencemos con sus datos de contacto para poder comunicarnos con usted.</p>
+                        
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="partner-name" class="form-label">Nombre Completo *</label>
@@ -2561,11 +2953,14 @@
                                 <input type="text" id="partner-company" name="partnerCompany" class="form-input" required>
                             </div>
                         </div>
+                        <div class="step-validation-message" id="step1-validation"></div>
                     </div>
 
-                    <!-- Ubicación de la Terminal -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Ubicación de la Terminal</h3>
+                    <!-- Step 2: Ubicación de la Terminal -->
+                    <div class="step-content" data-step="2">
+                        <h3 class="step-title">Ubicación de la Terminal</h3>
+                        <p class="step-description">Proporcione la ubicación exacta de su terminal para evaluar su integración a la red.</p>
+                        
                         <div class="form-grid">
                             <div class="form-group">
                                 <label for="terminal-address" class="form-label">Dirección Completa *</label>
@@ -2592,11 +2987,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="step-validation-message" id="step2-validation"></div>
                     </div>
 
-                    <!-- Perfil de la Terminal -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Perfil de la Terminal</h3>
+                    <!-- Step 3: Perfil de la Terminal -->
+                    <div class="step-content" data-step="3">
+                        <h3 class="step-title">Perfil de la Terminal</h3>
+                        <p class="step-description">Describa las características principales de su terminal y su capacidad operativa.</p>
+                        
                         <div class="form-group">
                             <label for="terminal-type" class="form-label">Tipo de Terminal *</label>
                             <select id="terminal-type" name="terminalType" class="form-input" required>
@@ -2617,12 +3015,14 @@
                             <label for="terminal-description" class="form-label">Descripción de la Terminal *</label>
                             <textarea id="terminal-description" name="terminalDescription" class="form-input" rows="4" required placeholder="Describa las características principales de su terminal, infraestructura disponible, equipamiento, etc."></textarea>
                         </div>
+                        <div class="step-validation-message" id="step3-validation"></div>
                     </div>
 
-                    <!-- Servicios Ofrecidos -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Servicios Ofrecidos</h3>
-                        <p class="form-help-text">Seleccione todos los servicios que su terminal puede ofrecer:</p>
+                    <!-- Step 4: Servicios Ofrecidos -->
+                    <div class="step-content" data-step="4">
+                        <h3 class="step-title">Servicios Ofrecidos</h3>
+                        <p class="step-description">Seleccione todos los servicios que su terminal puede ofrecer a la red Solmex.</p>
+                        
                         <div class="checkbox-grid">
                             <label class="checkbox-label">
                                 <input type="checkbox" name="services" value="almacenamiento" class="checkbox-input">
@@ -2663,9 +3063,11 @@
                         </div>
                     </div>
 
-                    <!-- Certificaciones y Compliance -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Certificaciones y Compliance</h3>
+                    <!-- Step 5: Certificaciones y Compliance -->
+                    <div class="step-content" data-step="5">
+                        <h3 class="step-title">Certificaciones y Compliance</h3>
+                        <p class="step-description">Comparta información sobre certificaciones y cumplimiento normativo de su terminal.</p>
+                        
                         <div class="form-group">
                             <label for="certifications" class="form-label">Certificaciones</label>
                             <textarea id="certifications" name="certifications" class="form-input" rows="3" placeholder="Liste las certificaciones que posee (ISO, NOM, etc.)"></textarea>
@@ -2676,9 +3078,11 @@
                         </div>
                     </div>
 
-                    <!-- Información Adicional -->
-                    <div class="form-section">
-                        <h3 class="form-section-title">Información Adicional</h3>
+                    <!-- Step 6: Información Adicional y Términos -->
+                    <div class="step-content" data-step="6">
+                        <h3 class="step-title">Información Final</h3>
+                        <p class="step-description">Complete la información adicional y acepte los términos para finalizar su solicitud.</p>
+                        
                         <div class="form-group">
                             <label for="years-operating" class="form-label">Años de Operación</label>
                             <input type="number" id="years-operating" name="yearsOperating" class="form-input" min="0" placeholder="Ej: 10">
@@ -2691,35 +3095,41 @@
                             <label for="why-join" class="form-label">¿Por qué quiere unirse a la red Solmex? *</label>
                             <textarea id="why-join" name="whyJoin" class="form-input" rows="3" required placeholder="Comparta sus motivaciones y expectativas"></textarea>
                         </div>
-                    </div>
-
-                    <!-- Términos y Condiciones -->
-                    <div class="form-section">
-                        <div class="form-group">
+                        
+                        <div class="form-group" style="margin-top: 2rem;">
                             <label class="checkbox-label" style="align-items: flex-start;">
                                 <input type="checkbox" id="terms-accept" name="termsAccept" class="checkbox-input" required style="margin-top: 0.25rem;">
                                 <span style="font-size: 0.875rem; line-height: 1.6;">
                                     Acepto que Grupo Solmex procese mi información para evaluar mi solicitud de integración a la red. 
                                     Entiendo que se realizará una evaluación y que el contacto será establecido según los criterios de la empresa. 
-                                    <a href="#aviso-privacidad" style="color: var(--solmex-accent-orange); text-decoration: underline;">Ver aviso de privacidad</a>.
+                                    <a href="aviso-privacidad.html" target="_blank" style="color: var(--solmex-accent-orange); text-decoration: underline;">Ver aviso de privacidad</a>.
                                 </span>
                             </label>
                         </div>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem 2rem; font-size: 1rem;">
-                            Enviar Solicitud de Integración
-                        </button>
-                        <p style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: var(--solmex-text-muted);">
-                            Un representante de Solmex se pondrá en contacto con usted en un plazo de 5 días hábiles.
-                        </p>
+                        <div class="step-validation-message" id="step6-validation"></div>
                     </div>
                 </form>
             </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn-step btn-step-secondary" id="prevStep" style="display: none;">
+                    ← Anterior
+                </button>
+                <div class="modal-footer-buttons">
+                    <button type="button" class="btn-step btn-step-secondary" id="closeModalBtn">
+                        Cancelar
+                    </button>
+                    <button type="button" class="btn-step btn-step-primary" id="nextStep">
+                        Siguiente →
+                    </button>
+                    <button type="button" class="btn-step btn-step-primary" id="submitForm" style="display: none;">
+                        Enviar Solicitud
+                    </button>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- Contact Section -->
     <section class="section" id="contact">
@@ -3702,52 +4112,319 @@ _Enviado desde: gruposolmex.com_`;
                 mapObserver.observe(mapSection);
             }
             
-            // Partner onboarding form handler
+            // ===== PARTNER MODAL STEP-BASED FORM =====
+            const partnerModal = document.getElementById('partnerModal');
+            const openPartnerModalBtn = document.getElementById('openPartnerModal');
+            const closePartnerModalBtn = document.getElementById('closePartnerModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
             const partnerForm = document.getElementById('partnerForm');
-            if (partnerForm) {
-                partnerForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
+            const nextStepBtn = document.getElementById('nextStep');
+            const prevStepBtn = document.getElementById('prevStep');
+            const submitFormBtn = document.getElementById('submitForm');
+            
+            let currentStep = 1;
+            const totalSteps = 6;
+            
+            // Step validation rules
+            const stepValidations = {
+                1: () => {
+                    const name = document.getElementById('partner-name').value.trim();
+                    const email = document.getElementById('partner-email').value.trim();
+                    const phone = document.getElementById('partner-phone').value.trim();
+                    const company = document.getElementById('partner-company').value.trim();
                     
-                    const formData = new FormData(partnerForm);
-                    const data = Object.fromEntries(formData);
+                    if (!name || !email || !phone || !company) {
+                        return { valid: false, message: 'Por favor complete todos los campos requeridos' };
+                    }
                     
-                    // Get selected services
-                    const services = Array.from(partnerForm.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
-                    data.services = services;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        return { valid: false, message: 'Por favor ingrese un correo electrónico válido' };
+                    }
                     
-                    // Show loading state
-                    const submitBtn = partnerForm.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Enviando...';
+                    return { valid: true };
+                },
+                2: () => {
+                    const address = document.getElementById('terminal-address').value.trim();
+                    const city = document.getElementById('terminal-city').value.trim();
+                    const state = document.getElementById('terminal-state').value.trim();
+                    const zip = document.getElementById('terminal-zip').value.trim();
                     
-                    try {
-                        // Here you would send to your backend/Nextcloud
-                        console.log('Partner form data:', data);
+                    if (!address || !city || !state || !zip) {
+                        return { valid: false, message: 'Por favor complete todos los campos requeridos' };
+                    }
+                    
+                    return { valid: true };
+                },
+                3: () => {
+                    const type = document.getElementById('terminal-type').value;
+                    const description = document.getElementById('terminal-description').value.trim();
+                    
+                    if (!type || !description) {
+                        return { valid: false, message: 'Por favor complete todos los campos requeridos' };
+                    }
+                    
+                    return { valid: true };
+                },
+                4: () => {
+                    // Step 4 (services) is optional, always valid
+                    return { valid: true };
+                },
+                5: () => {
+                    // Step 5 (certifications) is optional, always valid
+                    return { valid: true };
+                },
+                6: () => {
+                    const whyJoin = document.getElementById('why-join').value.trim();
+                    const termsAccepted = document.getElementById('terms-accept').checked;
+                    
+                    if (!whyJoin) {
+                        return { valid: false, message: 'Por favor explique por qué quiere unirse a la red Solmex' };
+                    }
+                    
+                    if (!termsAccepted) {
+                        return { valid: false, message: 'Debe aceptar los términos y condiciones para continuar' };
+                    }
+                    
+                    return { valid: true };
+                }
+            };
+            
+            // Open modal
+            if (openPartnerModalBtn) {
+                openPartnerModalBtn.addEventListener('click', () => {
+                    openModal();
+                });
+            }
+            
+            // Close modal handlers
+            const closeModal = () => {
+                partnerModal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+            
+            if (closePartnerModalBtn) {
+                closePartnerModalBtn.addEventListener('click', closeModal);
+            }
+            
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeModal);
+            }
+            
+            // Close on backdrop click
+            if (partnerModal) {
+                partnerModal.addEventListener('click', (e) => {
+                    if (e.target === partnerModal) {
+                        closeModal();
+                    }
+                });
+            }
+            
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && partnerModal && partnerModal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+            
+            // Open modal function
+            function openModal() {
+                currentStep = 1;
+                updateStepDisplay();
+                if (partnerModal) {
+                    partnerModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Focus first input for accessibility
+                    setTimeout(() => {
+                        const firstInput = partnerForm?.querySelector('input, select, textarea');
+                        if (firstInput) firstInput.focus();
+                    }, 100);
+                }
+            }
+            
+            // Update step display
+            function updateStepDisplay() {
+                // Update step content visibility
+                document.querySelectorAll('.step-content').forEach((step, index) => {
+                    if (index + 1 === currentStep) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+                
+                // Update step indicators
+                document.querySelectorAll('.step-item').forEach((item, index) => {
+                    const stepNum = index + 1;
+                    item.classList.remove('active', 'completed');
+                    
+                    if (stepNum < currentStep) {
+                        item.classList.add('completed');
+                    } else if (stepNum === currentStep) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // Update step number text
+                const currentStepNumber = document.getElementById('currentStepNumber');
+                if (currentStepNumber) {
+                    currentStepNumber.textContent = currentStep;
+                }
+                
+                // Update progress bar
+                const progressBar = document.querySelector('.step-progress-bar');
+                if (progressBar) {
+                    progressBar.setAttribute('aria-valuenow', currentStep);
+                }
+                
+                // Update buttons
+                if (prevStepBtn) {
+                    prevStepBtn.style.display = currentStep > 1 ? 'block' : 'none';
+                }
+                
+                if (currentStep === totalSteps) {
+                    if (nextStepBtn) nextStepBtn.style.display = 'none';
+                    if (submitFormBtn) submitFormBtn.style.display = 'block';
+                } else {
+                    if (nextStepBtn) nextStepBtn.style.display = 'block';
+                    if (submitFormBtn) submitFormBtn.style.display = 'none';
+                }
+            }
+            
+            // Validate current step
+            function validateStep(step) {
+                const validation = stepValidations[step];
+                if (!validation) return { valid: true };
+                
+                const result = validation();
+                const validationMsg = document.getElementById(`step${step}-validation`);
+                
+                if (validationMsg) {
+                    if (result.valid) {
+                        validationMsg.classList.remove('show');
+                        validationMsg.textContent = '';
+                    } else {
+                        validationMsg.classList.add('show');
+                        validationMsg.textContent = result.message;
+                    }
+                }
+                
+                return result;
+            }
+            
+            // Next step
+            if (nextStepBtn) {
+                nextStepBtn.addEventListener('click', () => {
+                    const validation = validateStep(currentStep);
+                    
+                    if (validation.valid) {
+                        currentStep++;
+                        updateStepDisplay();
                         
-                        // Simulate API call
-                        await new Promise(resolve => setTimeout(resolve, 1500));
-                        
-                        // Show success message
-                        const toast = document.getElementById('successToast');
-                        if (toast) {
-                            toast.classList.add('show');
-                            setTimeout(() => toast.classList.remove('show'), 5000);
+                        // Scroll to top of modal body
+                        const modalBody = document.querySelector('.modal-body');
+                        if (modalBody) {
+                            modalBody.scrollTop = 0;
                         }
                         
-                        // Reset form
+                        // Focus first input in new step
+                        setTimeout(() => {
+                            const activeStep = document.querySelector('.step-content.active');
+                            const firstInput = activeStep?.querySelector('input, select, textarea');
+                            if (firstInput) firstInput.focus();
+                        }, 100);
+                    }
+                });
+            }
+            
+            // Previous step
+            if (prevStepBtn) {
+                prevStepBtn.addEventListener('click', () => {
+                    if (currentStep > 1) {
+                        currentStep--;
+                        updateStepDisplay();
+                        
+                        // Scroll to top of modal body
+                        const modalBody = document.querySelector('.modal-body');
+                        if (modalBody) {
+                            modalBody.scrollTop = 0;
+                        }
+                        
+                        // Focus first input in new step
+                        setTimeout(() => {
+                            const activeStep = document.querySelector('.step-content.active');
+                            const firstInput = activeStep?.querySelector('input, select, textarea');
+                            if (firstInput) firstInput.focus();
+                        }, 100);
+                    }
+                });
+            }
+            
+            // Submit form
+            if (submitFormBtn && partnerForm) {
+                submitFormBtn.addEventListener('click', async () => {
+                    const validation = validateStep(currentStep);
+                    
+                    if (!validation.valid) {
+                        return;
+                    }
+                    
+                    // Disable submit button
+                    submitFormBtn.disabled = true;
+                    submitFormBtn.textContent = 'Enviando...';
+                    
+                    try {
+                        const formData = new FormData(partnerForm);
+                        
+                        // Collect services checkboxes
+                        const services = Array.from(partnerForm.querySelectorAll('input[name="services"]:checked')).map(cb => cb.value);
+                        
+                        const data = {
+                            type: 'partner-onboarding',
+                            ...Object.fromEntries(formData),
+                            services: services
+                        };
+                        
+                        console.log('Partner form data:', data);
+                        
+                        // TODO: Integrate with Nextcloud form submission
+                        // For now, just show success message
+                        showToast('¡Solicitud enviada!', 'Nos pondremos en contacto con usted en breve.');
+                        
+                        // Reset form and close modal
                         partnerForm.reset();
+                        closeModal();
                         
-                        // Scroll to top of form
-                        document.getElementById('partner-onboarding').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        
+                        // Reset to first step
+                        currentStep = 1;
+                        updateStepDisplay();
                     } catch (error) {
                         console.error('Error submitting partner form:', error);
-                        alert('Hubo un error al enviar el formulario. Por favor, intente nuevamente.');
+                        showToast('Error', 'Hubo un problema al enviar su solicitud. Por favor, intente nuevamente.');
                     } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = originalText;
+                        submitFormBtn.disabled = false;
+                        submitFormBtn.textContent = 'Enviar Solicitud';
                     }
+                });
+            }
+            
+            // Real-time validation feedback
+            if (partnerForm) {
+                partnerForm.querySelectorAll('input, select, textarea').forEach(field => {
+                    field.addEventListener('blur', () => {
+                        if (field.hasAttribute('required') && !field.value.trim()) {
+                            field.style.borderColor = 'var(--signal-red)';
+                        } else {
+                            field.style.borderColor = '';
+                        }
+                    });
+                    
+                    field.addEventListener('input', () => {
+                        if (field.style.borderColor === 'var(--signal-red)' && field.value.trim()) {
+                            field.style.borderColor = '';
+                        }
+                    });
                 });
             }
         });
