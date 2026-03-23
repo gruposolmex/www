@@ -1,0 +1,383 @@
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+
+/** Payload enviado al backend (campos operativos + contacto). */
+export interface NodeClassificationPayload {
+  nombre: string;
+  empresa: string;
+  email: string;
+  telefono: string;
+  tipoNodo: string;
+  capacidad: string;
+  ubicacion: string;
+  infraestructura: string;
+  mensaje: string;
+}
+
+export default function CTASection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [formState, setFormState] = useState<
+    'idle' | 'submitting' | 'success' | 'error'
+  >('idle');
+  const [formData, setFormData] = useState<NodeClassificationPayload>({
+    nombre: '',
+    empresa: '',
+    email: '',
+    telefono: '',
+    tipoNodo: 'terminal_intermodal',
+    capacidad: '',
+    ubicacion: '',
+    infraestructura: '',
+    mensaje: '',
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.reveal').forEach((el) => {
+              el.classList.add('visible');
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormState('submitting');
+    try {
+      const response = await fetch('/api/nextcloud/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          data: {
+            ...formData,
+            source: 'REQUEST_NODE_CLASSIFICATION',
+          },
+        }),
+      });
+      if (response.ok) {
+        setFormState('success');
+        setFormData({
+          nombre: '',
+          empresa: '',
+          email: '',
+          telefono: '',
+          tipoNodo: 'terminal_intermodal',
+          capacidad: '',
+          ubicacion: '',
+          infraestructura: '',
+          mensaje: '',
+        });
+      } else {
+        setFormState('error');
+      }
+    } catch {
+      setFormState('error');
+    }
+  };
+
+  return (
+    <section
+      ref={sectionRef}
+      id="contacto"
+      className="relative section-y bg-[#0A0A0A] overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#FF943B]/30 to-transparent" />
+      <div className="absolute inset-0 dot-grid opacity-[0.03] pointer-events-none" />
+
+      <div className="page-shell relative z-10">
+        <div className="mb-20 lg:mb-28 max-w-3xl">
+          <span className="reveal section-label block">
+            REQUEST_NODE_CLASSIFICATION
+          </span>
+          <h2 className="reveal stagger-1 font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase mb-8 lg:mb-10">
+            Ingrese datos
+            <br />
+            <span className="text-[#FF943B]">de su nodo.</span>
+          </h2>
+          <p className="reveal stagger-2 text-[#8E9192] text-lg leading-[1.88]">
+            La clasificación es el paso previo a la validación. Sin nodo
+            caracterizado no hay entrada formal a la capa de asignación.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10">
+          <div className="reveal stagger-2 lg:col-span-7">
+            <div className="bg-[#131313] p-12 lg:p-16 border border-[rgba(68,71,72,0.12)]">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="w-3 h-3 bg-[#FF943B]" />
+                <h3 className="font-display text-xl font-bold uppercase tracking-tight">
+                  Formulario operativo
+                </h3>
+              </div>
+
+              {formState === 'success' ? (
+                <div className="text-center py-16">
+                  <div className="w-16 h-16 bg-[#FF943B] flex items-center justify-center mx-auto mb-6">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#0A0A0A"
+                      strokeWidth="3"
+                    >
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="font-display text-xl font-bold uppercase mb-2">
+                    Solicitud en cola
+                  </h4>
+                  <p className="text-[#8E9192] text-sm">
+                    Revisión de perfil de nodo. Contacto de seguimiento por los
+                    medios proporcionados.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid sm:grid-cols-2 gap-7">
+                    <div>
+                      <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                        Tipo de nodo *
+                      </label>
+                      <select
+                        name="tipoNodo"
+                        required
+                        value={formData.tipoNodo}
+                        onChange={handleChange}
+                        className="form-input-industrial appearance-none cursor-pointer"
+                      >
+                        <option value="terminal_intermodal">
+                          Terminal intermodal
+                        </option>
+                        <option value="puerto">Puerto / recinto</option>
+                        <option value="patio_ferroviario">Patio ferroviario</option>
+                        <option value="almacen_granel">Almacén granel / silos</option>
+                        <option value="otro">Otro (detallar en notas)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                        Capacidad *
+                      </label>
+                      <input
+                        type="text"
+                        name="capacidad"
+                        required
+                        value={formData.capacidad}
+                        onChange={handleChange}
+                        className="form-input-industrial"
+                        placeholder="p. ej. muelle, vagones/día, TEU, m²"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                      Ubicación *
+                    </label>
+                    <input
+                      type="text"
+                      name="ubicacion"
+                      required
+                      value={formData.ubicacion}
+                      onChange={handleChange}
+                      className="form-input-industrial"
+                      placeholder="Ciudad, estado, corredor, código postal"
+                    />
+                  </div>
+                  <div>
+                    <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                      Infraestructura *
+                    </label>
+                    <textarea
+                      name="infraestructura"
+                      required
+                      rows={3}
+                      value={formData.infraestructura}
+                      onChange={handleChange}
+                      className="form-input-industrial resize-none"
+                      placeholder="Servicios ferroviarios, pesaje, conectividad, certificaciones, restricciones."
+                    />
+                  </div>
+
+                  <div className="pt-4 border-t border-[rgba(68,71,72,0.15)]">
+                    <p className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.15em] mb-6">
+                      CONTACTO_RESPUESTA
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-7">
+                      <div>
+                        <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                          Nombre *
+                        </label>
+                        <input
+                          type="text"
+                          name="nombre"
+                          required
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          className="form-input-industrial"
+                          placeholder="Nombre completo"
+                        />
+                      </div>
+                      <div>
+                        <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                          Organización *
+                        </label>
+                        <input
+                          type="text"
+                          name="empresa"
+                          required
+                          value={formData.empresa}
+                          onChange={handleChange}
+                          className="form-input-industrial"
+                          placeholder="Razón social o unidad operativa"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid sm:grid-cols-2 gap-7 mt-7">
+                      <div>
+                        <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                          Email *
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="form-input-industrial"
+                          placeholder="correo@organización.com"
+                        />
+                      </div>
+                      <div>
+                        <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                          Teléfono
+                        </label>
+                        <input
+                          type="tel"
+                          name="telefono"
+                          value={formData.telefono}
+                          onChange={handleChange}
+                          className="form-input-industrial"
+                          placeholder="+52 …"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.2em] block mb-2">
+                      Notas de operación
+                    </label>
+                    <textarea
+                      name="mensaje"
+                      rows={3}
+                      value={formData.mensaje}
+                      onChange={handleChange}
+                      className="form-input-industrial resize-none"
+                      placeholder="Ventanas horarias, clientes ancla, riesgos conocidos…"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={formState === 'submitting'}
+                    className="btn-primary-industrial w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {formState === 'submitting'
+                      ? 'TRANSMITIENDO…'
+                      : 'ENVIAR CLASIFICACIÓN'}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  {formState === 'error' && (
+                    <p className="text-[#FFB4AB] text-sm text-center">
+                      Error al enviar. Intente de nuevo o use WhatsApp.
+                    </p>
+                  )}
+                </form>
+              )}
+            </div>
+          </div>
+
+          <div className="reveal stagger-3 lg:col-span-5 flex flex-col gap-8">
+            {[
+              {
+                label: 'OPERADORES',
+                title: 'Sin clasificación no hay cola',
+                desc: 'El formulario alimenta el perfil técnico del nodo. A partir de ahí se abre o cierra la ruta de validación.',
+                items: [
+                  'Datos estructurados, no “lead genérico”',
+                  'Prioridad futura ligada a desempeño',
+                  'Transparencia sobre tipo de activo',
+                ],
+              },
+              {
+                label: 'CLIENTES',
+                title: 'Demanda bajo protocolo',
+                desc: 'Los cargadores enlazan demanda a la capa; la asignación sigue las mismas reglas de evidencia.',
+                items: [
+                  'Un contrato-marco con la capa',
+                  'Nodos homogéneos bajo estándar',
+                  'Menos superficie de disputa bilateral',
+                ],
+              },
+            ].map((card) => (
+              <div
+                key={card.label}
+                className="bg-[#131313] p-12 lg:p-14 flex-1 relative overflow-hidden border border-[rgba(68,71,72,0.1)]"
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-[#FF943B]" />
+                <span className="font-mono text-[10px] text-[#FF943B] uppercase tracking-[0.2em] block mb-4 font-bold">
+                  PARA_{card.label}
+                </span>
+                <h3 className="font-display text-lg font-bold uppercase mb-4 tracking-tight">
+                  {card.title}
+                </h3>
+                <p className="text-[#8E9192] text-sm leading-[1.82] mb-8">
+                  {card.desc}
+                </p>
+                <ul className="space-y-3">
+                  {card.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-widest text-[#B0B5BA]"
+                    >
+                      <span className="w-1.5 h-1.5 bg-[#FF943B] shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
