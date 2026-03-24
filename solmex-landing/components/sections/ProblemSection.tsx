@@ -33,31 +33,32 @@ export default function ProblemSection() {
 
       <div className="page-shell">
         <div className="mb-20 lg:mb-28">
-          <span className="reveal section-label block">DIAGNÓSTICO_DE_RED</span>
+          <span className="reveal section-label block">EL_PROBLEMA</span>
           <h2 className="reveal stagger-1 font-display text-[clamp(2rem,5vw,4.25rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase max-w-4xl">
-            La Fragmentación es
+            Sin reglas comunes,
             <br />
-            el Impuesto Oculto
+            el dinero se va
             <br />
-            <span className="text-[#FF943B]">al Crecimiento.</span>
+            <span className="text-[#FF943B]">en desorden.</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-14 lg:gap-14 xl:gap-16">
           <div className="lg:col-span-5">
             <p className="reveal stagger-2 text-[#B0B5BA] text-lg leading-[1.95] mb-12 lg:mb-14">
-              En redes no coordinadas, activos ociosos y vacíos estructurales
-              erosionan margen de forma continua. Solmex sustituye el corretaje
-              manual por una capa de asignación con evidencia.
+              Patios y terminales sueltos = camiones parados, viajes en vacío y
+              tiempo en teléfono. Cada quien negocia por su lado y nadie ve el
+              mismo tablero. Solmex pone un solo criterio y un solo registro de
+              qué se hizo y cuándo.
             </p>
 
-            <div className="reveal stagger-3 bg-[#0A0A0A] p-10 lg:p-12 border-l-4 border-[#FFB4AB]">
+            <div className="reveal stagger-3 bg-[#0A0A0A] p-12 lg:p-16 border-l-4 border-[#FFB4AB]">
               <div className="flex justify-between items-end mb-4 gap-4">
                 <span className="font-mono text-[10px] uppercase text-[#8E9192] tracking-[0.2em]">
-                  FUGA_OPERATIVA // REDES_NO_COORDINADAS
+                  COSTO_POR_DESORDEN // SIN_COORDINADOR
                 </span>
                 <span className="font-mono text-xs text-[#FFB4AB] font-bold uppercase tracking-[0.12em] shrink-0">
-                  SEVERIDAD: ALTA
+                  MUY_ALTO
                 </span>
               </div>
               <div className="h-2 w-full bg-[#1C1B1B] relative overflow-hidden">
@@ -75,20 +76,20 @@ export default function ProblemSection() {
 
           <div className="lg:col-span-7">
             <div className="reveal stagger-2 grid grid-cols-2 h-full">
-              <div className="bg-[#0A0A0A] p-12 lg:p-14 border-r border-[rgba(68,71,72,0.15)]">
+              <div className="bg-[#0A0A0A] p-14 lg:p-20 border-r border-[rgba(68,71,72,0.15)]">
                 <div className="flex items-center gap-2 mb-10">
                   <span className="w-2 h-2 bg-[#FFB4AB]" />
                   <span className="font-mono text-[10px] uppercase text-[#8E9192] tracking-[0.2em] font-bold">
-                    SIN_COORDINACIÓN
+                    ASÍ_HOY
                   </span>
                 </div>
-                <ul className="space-y-6">
+                <ul className="space-y-7">
                   {[
-                    'Demanda fragmentada e impredecible',
-                    'Contratos spot con márgenes decrecientes',
-                    'Confianza basada en relaciones, no datos',
-                    'Operaciones opacas sin trazabilidad',
-                    'Disputas resueltas manualmente',
+                    'Pedidos dispersos: correo, WhatsApp, llamada',
+                    'Contratos spot que no sostienen margen',
+                    '“Confío en fulano” en lugar de datos',
+                    'Nadie sabe en tiempo real dónde va la carga',
+                    'Reclamos largos porque no hay prueba clara',
                   ].map((item, i) => (
                     <li
                       key={i}
@@ -102,20 +103,20 @@ export default function ProblemSection() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#1C1B1B] p-12 lg:p-14">
+              <div className="bg-[#1C1B1B] p-14 lg:p-20">
                 <div className="flex items-center gap-2 mb-10">
                   <span className="w-2 h-2 bg-[#FF943B]" />
                   <span className="font-mono text-[10px] uppercase text-[#FF943B] tracking-[0.2em] font-bold">
                     CON_SOLMEX
                   </span>
                 </div>
-                <ul className="space-y-6">
+                <ul className="space-y-7">
                   {[
-                    'Demanda agregada y flujo estructurado',
-                    'Asignación prioritaria por rendimiento verificable',
-                    'Evidencia de ejecución en cada operación',
-                    'Visibilidad operativa extremo a extremo',
-                    'Cierre por prueba, no por negociación manual',
+                    'Demanda vista en un solo marco operativo',
+                    'Quién mueve mejor recibe el siguiente embarque',
+                    'Cada movimiento deja rastro comprobable',
+                    'Visibilidad de punta a punta para usted y el cliente',
+                    'Se cierra con hechos, no con pleitos eternos',
                   ].map((item, i) => (
                     <li
                       key={i}

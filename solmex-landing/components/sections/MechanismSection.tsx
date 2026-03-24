@@ -23,9 +23,10 @@ export default function MechanismSection() {
   const steps = [
     {
       num: '01',
-      title: 'Datos de Ejecución',
-      description: 'Telemetría continua y prueba de entrega desde cada nodo activo. Sin lagunas. Sin supuestos.',
-      detail: 'FUENTE: TELEMETRÍA MULTI-CANAL',
+      title: 'Qué pasó en piso',
+      description:
+        'Cada movimiento deja registro: salida, llegada, incidentes. No “creo que ya salió”: datos que todos ven igual.',
+      detail: 'ORIGEN: OPERACIÓN_REAL',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF943B" strokeWidth="1.5">
           <path d="M12 20V10M18 20V4M6 20v-4" />
@@ -34,9 +35,10 @@ export default function MechanismSection() {
     },
     {
       num: '02',
-      title: 'Ranking de Prioridad',
-      description: 'Algoritmos propietarios evalúan confiabilidad, rendimiento histórico y posicionamiento en tiempo real.',
-      detail: 'LÓGICA: PRUEBA_DE_EJECUCIÓN',
+      title: 'Quién va primero',
+      description:
+        'Se ordena a los operadores por cumplimiento real: entregas a tiempo, sin sorpresas. No es opinión: es historial.',
+      detail: 'CRITERIO: RESULTADO_MEDIDO',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF943B" strokeWidth="1.5">
           <path d="M3 3v18h18M7 16l4-4 4 4 5-5" />
@@ -45,9 +47,10 @@ export default function MechanismSection() {
     },
     {
       num: '03',
-      title: 'Asignación de Demanda',
-      description: 'Contratos Tier-1 se enrutan dinámicamente a los nodos de mayor rendimiento en la red.',
-      detail: 'CANAL: ASIGNACIÓN_DIRECTA',
+      title: 'A quién le toca el siguiente embarque',
+      description:
+        'El siguiente volumen va al que está arriba en esa lista y tiene capacidad. El cliente grande no negocia cada envío con diez personas.',
+      detail: 'SALIDA: ASIGNACIÓN_CLARA',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF943B" strokeWidth="1.5">
           <path d="M22 12h-6l-2 3h-4l-2-3H2" /><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z" />
@@ -62,13 +65,16 @@ export default function MechanismSection() {
 
       <div className="page-shell">
         <div className="mb-20 lg:mb-28">
-          <span className="reveal section-label block">ARQUITECTURA_DEL_SISTEMA</span>
+          <span className="reveal section-label block">CÓMO_LO_HACEMOS</span>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-10">
             <h2 className="reveal stagger-1 font-display text-[clamp(2rem,5vw,4.5rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase">
-              El Motor de Asignación.
+              Tres pasos,
+              <br />
+              <span className="text-[#FF943B]">sin magia.</span>
             </h2>
-            <p className="reveal stagger-2 text-[#8E9192] text-sm max-w-sm leading-[1.75] font-mono">
-              Tres capas de procesamiento transforman datos crudos en asignación de demanda de alto valor.
+            <p className="reveal stagger-2 text-[#8E9192] text-sm max-w-md leading-[1.8]">
+              De la operación diaria a la decisión de a quién mandar la carga:
+              mismo lenguaje para el director y para el patio.
             </p>
           </div>
         </div>
@@ -83,7 +89,7 @@ export default function MechanismSection() {
                   </svg>
                 </div>
               )}
-              <div className="bg-[#0A0A0A] p-12 lg:p-14 xl:p-16 h-full flex flex-col border-r border-[rgba(68,71,72,0.1)] last:border-r-0 group hover:bg-[#1C1B1B] transition-colors duration-500">
+              <div className="bg-[#0A0A0A] p-14 lg:p-16 xl:p-20 h-full flex flex-col border-r border-[rgba(68,71,72,0.1)] last:border-r-0 group hover:bg-[#1C1B1B] transition-colors duration-500">
                 <div className="flex items-center justify-between mb-10">
                   <div className="w-14 h-14 bg-[#FF943B] flex items-center justify-center">
                     <span className="font-mono text-lg font-bold text-[#0A0A0A]">{step.num}</span>

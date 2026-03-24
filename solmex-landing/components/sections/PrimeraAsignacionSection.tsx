@@ -2,14 +2,10 @@
 
 import React, { useEffect, useRef } from 'react';
 
-/**
- * Primer momento de valor: qué ocurre tras la validación del nodo.
- */
-
 const OUTCOMES = [
-  'El nodo entra en la capa de asignación.',
-  'Comienza a recibir flujo estructurado.',
-  'El desempeño determina la prioridad futura.',
+  'Su terminal queda en lista para recibir embarques de la red.',
+  'Empieza a entrar carga con el mismo formato de reporte que los demás.',
+  'Lo que haga en los siguientes movimientos define si sube o baja de prioridad.',
 ] as const;
 
 export default function PrimeraAsignacionSection() {
@@ -43,11 +39,13 @@ export default function PrimeraAsignacionSection() {
       <div className="page-shell">
         <div className="grid lg:grid-cols-12 gap-14 lg:gap-16 items-start">
           <div className="lg:col-span-5">
-            <span className="reveal section-label block">PRIMERA_ASIGNACIÓN</span>
+            <span className="reveal section-label block">DESPUÉS_DEL_ALTA</span>
             <h2 className="reveal stagger-1 font-display text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase text-[#E5E2E1]">
-              Una vez
+              Cuando ya
               <br />
-              <span className="text-[#FF943B]">validado.</span>
+              lo
+              <br />
+              <span className="text-[#FF943B]">revisamos.</span>
             </h2>
           </div>
           <div className="lg:col-span-7">
@@ -55,7 +53,7 @@ export default function PrimeraAsignacionSection() {
               {OUTCOMES.map((line, i) => (
                 <li
                   key={i}
-                  className="flex gap-6 items-start p-8 lg:p-10 border-b border-[rgba(68,71,72,0.15)] last:border-0"
+                  className="flex gap-8 items-start p-10 lg:p-14 border-b border-[rgba(68,71,72,0.15)] last:border-0"
                 >
                   <span
                     className="font-mono text-[#FF943B] text-lg font-bold shrink-0 mt-0.5"
@@ -69,8 +67,9 @@ export default function PrimeraAsignacionSection() {
                 </li>
               ))}
             </ul>
-            <p className="reveal stagger-3 mt-8 font-mono text-[9px] text-[#444748] uppercase tracking-[0.16em]">
-              Estado siguiente: elegible para volumen priorizado según reglas de la red.
+            <p className="reveal stagger-3 mt-12 text-[#8E9192] text-sm leading-[1.8]">
+              Siguiente paso: puede recibir volumen priorizado según las reglas
+              que ya conoce el resto de la red.
             </p>
           </div>
         </div>

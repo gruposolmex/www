@@ -3,30 +3,29 @@
 import React, { Fragment, useEffect, useRef } from 'react';
 
 /**
- * Ciclo económico explícito del sistema Solmex.
- * Pasos mecánicos y declarativos: demanda → ingreso.
+ * Ciclo del negocio en lenguaje de director: pedido → pago.
  */
 
 const LOOP_STEPS = [
   {
     key: 'DEMANDA',
-    line: 'Demanda institucional entra al sistema.',
+    line: 'El cliente pide un movimiento de carga; queda registrado en el sistema.',
   },
   {
     key: 'ASIGNACIÓN',
-    line: 'La capa asigna volumen a nodos clasificados.',
+    line: 'Se elige qué terminal o patio ejecuta, según reglas y historial.',
   },
   {
     key: 'EJECUCIÓN',
-    line: 'El nodo ejecuta bajo protocolo y telemetría.',
+    line: 'Ese operador mueve la carga y reporta avances de forma estándar.',
   },
   {
     key: 'VALIDACIÓN',
-    line: 'La prueba de ejecución cierra el ciclo operativo.',
+    line: 'Se confirma que se hizo lo acordado (tiempos, entrega, documento).',
   },
   {
     key: 'INGRESO',
-    line: 'El ingreso sigue al cumplimiento verificable.',
+    line: 'Se factura y se paga en función de ese cumplimiento comprobado.',
   },
 ] as const;
 
@@ -59,14 +58,16 @@ export default function EconomicLoopSection() {
       <div className="absolute inset-0 dot-grid opacity-[0.035] pointer-events-none" />
 
       <div className="page-shell relative z-10">
-        <div className="mb-16 lg:mb-20 max-w-4xl">
-          <span className="reveal section-label block">CICLO_ECONÓMICO</span>
+        <div className="mb-20 lg:mb-24 max-w-4xl">
+          <span className="reveal section-label block">DE_PEDIDO_A_PAGO</span>
           <h2 className="reveal stagger-1 font-display text-[clamp(1.75rem,4vw,3.25rem)] font-bold leading-[0.96] tracking-[-0.02em] uppercase text-[#E5E2E1]">
-            El loop del sistema.
-            <span className="text-[#FF943B]"> Cerrado por diseño.</span>
+            Así gira
+            <span className="text-[#FF943B]"> el negocio.</span>
           </h2>
-          <p className="reveal stagger-2 mt-6 text-[#8E9192] text-sm leading-[1.85] max-w-2xl font-mono uppercase tracking-[0.08em]">
-            Sin rendimiento verificable no hay reasignación prioritaria.
+          <p className="reveal stagger-2 mt-6 text-[#8E9192] text-base leading-[1.85] max-w-2xl">
+            Si no hay comprobante de buena ejecución, no hay argumento para darle
+            otra vez la carga al mismo operador. El equipo lo puede repetir sin
+            traducir.
           </p>
         </div>
 
@@ -81,8 +82,8 @@ export default function EconomicLoopSection() {
                   <span className="font-mono text-[#FF943B] text-sm">↓</span>
                 </div>
               )}
-              <div className="flex-1 min-w-0 flex flex-col p-8 lg:p-9 border-b lg:border-b-0 lg:border-r border-[rgba(68,71,72,0.2)] last:border-r-0 last:border-b-0">
-                <div className="flex items-baseline gap-3 mb-4">
+              <div className="flex-1 min-w-0 flex flex-col p-10 lg:p-12 xl:p-14 border-b lg:border-b-0 lg:border-r border-[rgba(68,71,72,0.2)] last:border-r-0 last:border-b-0">
+                <div className="flex items-baseline gap-3 mb-5">
                   <span className="font-mono text-[10px] text-[#444748]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -108,9 +109,9 @@ export default function EconomicLoopSection() {
           ))}
         </div>
 
-        <p className="reveal stagger-4 mt-10 font-mono text-[9px] text-[#444748] uppercase tracking-[0.18em] max-w-3xl">
-          Secuencia obligatoria: la participación en la capa exige atravesar
-          validación. El loop no admite atajos sin evidencia.
+        <p className="reveal stagger-4 mt-14 text-[#8E9192] text-sm leading-[1.8] max-w-3xl">
+          No hay atajos: quien quiere cargar en la red tiene que pasar por el
+          mismo recorrido. Eso es lo que alinea a operadores y clientes.
         </p>
       </div>
     </section>

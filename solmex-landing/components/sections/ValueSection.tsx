@@ -26,56 +26,55 @@ export default function ValueSection() {
     <section ref={sectionRef} className="relative bg-[#0E0E0E]">
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#FF943B]/20 to-transparent" />
 
-      {/* Línea central del sistema — dominante visual */}
       <div className="relative overflow-hidden border-b border-[rgba(68,71,72,0.15)]">
         <div className="absolute inset-0 diagonal-stripes opacity-[0.04] pointer-events-none" />
-        <div className="page-shell section-y py-20! lg:py-28! relative z-10">
+        <div className="page-shell section-y py-24! lg:py-32! relative z-10">
           <p className="reveal font-mono text-[10px] text-[#FF943B] tracking-[0.25em] uppercase text-center mb-8 font-bold">
-            LEY_DEL_SISTEMA
+            REGLA_SIMPLE
           </p>
           <h2 className="reveal stagger-1 font-display text-[clamp(2.25rem,7.5vw,5.5rem)] font-bold leading-[0.92] tracking-[-0.03em] uppercase text-center max-w-6xl mx-auto">
-            <span className="text-[#E5E2E1]">El rendimiento es </span>
+            <span className="text-[#E5E2E1]">Aquí manda el resultado: </span>
             <br className="hidden sm:block" />
-            <span className="text-[#FF943B]">la única moneda.</span>
+            <span className="text-[#FF943B]">no el discurso.</span>
           </h2>
           <p className="reveal stagger-2 mt-10 text-center text-[#8E9192] text-base sm:text-lg leading-[1.9] max-w-2xl mx-auto">
-            Sin prueba de ejecución no hay prioridad. La red no premia
-            promesas: premia consistencia verificable.
+            El que entrega bien y a tiempo vuelve a recibir carga de la red. El
+            que falla, pierde turno. Así lo puede decir usted a su gente sin
+            PowerPoint.
           </p>
         </div>
       </div>
 
       <div className="page-shell section-y">
-        {/* Operadores */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14 mb-32 lg:mb-40">
+        <div className="grid lg:grid-cols-12 gap-14 lg:gap-12 xl:gap-16 mb-36 lg:mb-44">
           <div className="lg:col-span-5">
             <span className="reveal font-mono text-[10px] text-[#FF943B] tracking-[0.2em] uppercase mb-5 block font-bold">
-              LADO DE OFERTA // OPERADORES
+              SI_USTED_MUEVE_CARGA
             </span>
             <h3 className="reveal stagger-1 font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase mb-10 lg:mb-12 text-[#E5E2E1]">
-              Acceso por
+              Gane volumen
               <br />
-              <span className="text-[#FF943B]">mérito operativo.</span>
+              <span className="text-[#FF943B]">con hechos.</span>
             </h3>
             <p className="reveal stagger-2 text-[#8E9192] text-base leading-[1.95] mb-12 max-w-md">
-              Los contratos de mayor valor van a nodos con historial
-              verificable. No es marketplace abierto: es capa de asignación con
-              reglas explícitas.
+              Los embarques más valiosos no se subastan al aire: van a quien ya
+              demostró en piso que cumple. Usted compite con resultados, no con
+              relaciones solas.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
                 {
-                  title: 'JERARQUÍA_POR_EVIDENCIA',
-                  desc: 'El ranking interno prioriza cumplimiento demostrable, no volumen auto-declarado.',
+                  title: 'ORDEN_POR_RESULTADO',
+                  desc: 'Arriba quien cumple plazos y entrega sin sorpresas; abajo quien genera problemas.',
                 },
                 {
-                  title: 'ACCESO_TIER_INSTITUCIONAL',
-                  desc: 'La verificación técnica reduce fricción con cargadores que exigen estándar único.',
+                  title: 'MISMO_ESTÁNDAR_QUE_EL_CLIENTE',
+                  desc: 'El cargador grande quiere una sola regla para todos sus patios: eso es lo que negocia con Solmex.',
                 },
                 {
-                  title: 'DISPUTAS_POR_DATOS',
-                  desc: 'La evidencia de ejecución sustituye ciclos largos de reclamación bilateral.',
+                  title: 'MENOS_HORAS_EN_RECLAMOS',
+                  desc: 'Si hay registro de qué pasó, el pleito se acorta. Si no, vuelve el teléfono.',
                 },
               ].map((item, i) => (
                 <div
@@ -100,20 +99,20 @@ export default function ValueSection() {
 
           <div className="reveal stagger-2 lg:col-span-7 bg-[#131313] relative">
             <div className="absolute inset-0 diagonal-stripes opacity-[0.03]" />
-            <div className="relative p-14 lg:p-20 flex flex-col justify-between min-h-[380px]">
+            <div className="relative p-16 lg:p-24 flex flex-col justify-between min-h-[400px]">
               <div>
-                <div className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.2em] mb-6">
-                  SOLMEX_ALLOCATION_ENGINE // OPERATOR_VIEW
+                <div className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.2em] mb-8">
+                  VISTA_OPERADOR
                 </div>
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-6">
                   {[
-                    { value: 'RANKED', label: 'MODO_ASIGNACIÓN' },
-                    { value: 'OPEN', label: 'VENTANA_NODOS' },
-                    { value: 'EVIDENCE', label: 'CIERRE_OPERATIVO' },
-                    { value: 'T1', label: 'CANAL_PRIORITARIO' },
+                    { value: 'Medido', label: 'DESEMPEÑO' },
+                    { value: 'Abierto', label: 'A_SU_PLANTA' },
+                    { value: 'Registrado', label: 'CADA_MOVIMIENTO' },
+                    { value: 'Prioridad', label: 'SI_CUMPLE' },
                   ].map((m) => (
-                    <div key={m.label} className="p-6 bg-[#0A0A0A] border border-[rgba(68,71,72,0.12)]">
-                      <span className="font-mono text-lg sm:text-xl font-bold text-[#FF943B] block mb-1 uppercase tracking-[0.06em]">
+                    <div key={m.label} className="p-8 bg-[#0A0A0A] border border-[rgba(68,71,72,0.12)]">
+                      <span className="font-mono text-lg sm:text-xl font-bold text-[#FF943B] block mb-1 tracking-[0.02em]">
                         {m.value}
                       </span>
                       <span className="font-mono text-[8px] text-[#444748] uppercase tracking-[0.15em]">
@@ -123,9 +122,9 @@ export default function ValueSection() {
                   ))}
                 </div>
               </div>
-              <div className="mt-10 pt-8 border-t border-[rgba(68,71,72,0.15)]">
+              <div className="mt-12 pt-10 border-t border-[rgba(68,71,72,0.15)]">
                 <a href="#contacto" className="btn-outline-industrial">
-                  CLASIFICAR NODO
+                  REGISTRAR MI TERMINAL
                   <svg
                     width="14"
                     height="14"
@@ -142,24 +141,23 @@ export default function ValueSection() {
           </div>
         </div>
 
-        {/* Clientes */}
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 xl:gap-14">
+        <div className="grid lg:grid-cols-12 gap-14 lg:gap-12 xl:gap-16">
           <div className="reveal stagger-2 lg:col-span-7 bg-[#131313] relative order-2 lg:order-1">
             <div className="absolute inset-0 dot-grid opacity-[0.03]" />
-            <div className="relative p-14 lg:p-20 flex flex-col justify-between min-h-[380px]">
+            <div className="relative p-16 lg:p-24 flex flex-col justify-between min-h-[400px]">
               <div>
-                <div className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.2em] mb-6">
-                  SOLMEX_COORDINATION_LAYER // CLIENT_VIEW
+                <div className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.2em] mb-8">
+                  VISTA_CARGADOR
                 </div>
-                <div className="grid grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-6">
                   {[
-                    { value: 'SINGLE', label: 'INTERFAZ_CONTRATO' },
-                    { value: 'CLOSED', label: 'BUCLE_VALIDACIÓN' },
-                    { value: 'E2E', label: 'TRAZA_OPERATIVA' },
-                    { value: 'ROUTED', label: 'POLÍTICA_DEMANDA' },
+                    { value: 'Un trato', label: 'CON_LA_RED' },
+                    { value: 'Con datos', label: 'NO_SOLO_PALABRAS' },
+                    { value: 'Punta a punta', label: 'VISIBILIDAD' },
+                    { value: 'Activo', label: 'REASIGNACIÓN' },
                   ].map((m) => (
-                    <div key={m.label} className="p-6 bg-[#0A0A0A] border border-[rgba(68,71,72,0.12)]">
-                      <span className="font-mono text-lg sm:text-xl font-bold text-[#FF943B] block mb-1 uppercase tracking-[0.06em]">
+                    <div key={m.label} className="p-8 bg-[#0A0A0A] border border-[rgba(68,71,72,0.12)]">
+                      <span className="font-mono text-lg sm:text-xl font-bold text-[#FF943B] block mb-1 tracking-[0.02em]">
                         {m.value}
                       </span>
                       <span className="font-mono text-[8px] text-[#444748] uppercase tracking-[0.15em]">
@@ -169,9 +167,9 @@ export default function ValueSection() {
                   ))}
                 </div>
               </div>
-              <div className="mt-10 pt-8 border-t border-[rgba(68,71,72,0.15)]">
+              <div className="mt-12 pt-10 border-t border-[rgba(68,71,72,0.15)]">
                 <a href="#contacto" className="btn-outline-industrial">
-                  ENLAZAR DEMANDA
+                  HABLAR SOBRE MI DEMANDA
                   <svg
                     width="14"
                     height="14"
@@ -189,30 +187,30 @@ export default function ValueSection() {
 
           <div className="lg:col-span-5 order-1 lg:order-2">
             <span className="reveal font-mono text-[10px] text-[#FF943B] tracking-[0.2em] uppercase mb-5 block font-bold">
-              LADO DE DEMANDA // CLIENTES
+              SI_USTED_CONTRATA_MOVIMIENTOS
             </span>
             <h3 className="reveal stagger-1 font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase mb-10 lg:mb-12 text-[#E5E2E1]">
-              Un sistema
+              Un solo
               <br />
-              gestionado, no
+              contrato-marco,
               <br />
-              <span className="text-[#FF943B]">un marketplace.</span>
+              <span className="text-[#FF943B]">muchas plantas.</span>
             </h3>
             <p className="reveal stagger-2 text-[#8E9192] text-base leading-[1.95] mb-12 max-w-md">
-              Una interfaz contrato. El protocolo impone un estándar de
-              ejecución en el corredor; usted compra resultado coordinado, no
-              fragmentos negociados uno a uno.
+              No es un marketplace donde cada envío es una subasta distinta.
+              Es una mesa con reglas iguales para todos sus operadores: mismo
+              formato de reporte, misma forma de cerrar un movimiento.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {[
                 {
-                  title: 'EJECUCIÓN_ATADA_A_TELEMETRÍA',
-                  desc: 'Las transferencias quedan sujetas a reglas y registro, no a interpretación posterior.',
+                  title: 'TODO_QUEDA_REGISTRADO',
+                  desc: 'Salidas, llegadas, incidencias: si no está en el sistema, no cuenta como argumento.',
                 },
                 {
-                  title: 'REDIRECCIÓN_POR_ESTADO',
-                  desc: 'Ante degradación de un nodo, la demanda se reencamina según política de la capa.',
+                  title: 'SI_UN_PATIO_FALLA',
+                  desc: 'La carga se puede mover a otro que esté en la red, sin renegociar desde cero cada vez.',
                 },
               ].map((item, i) => (
                 <div
