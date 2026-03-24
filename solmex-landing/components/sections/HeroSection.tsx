@@ -14,12 +14,12 @@ const LatamGlobe = dynamic(() => import('@/components/ui/LatamGlobe'), {
   ),
 });
 
-/** Indicadores cualitativos (sin porcentajes no verificados). */
+/** Indicadores en español claro (estilo tablero). */
 const TICKER = [
-  { value: 'COORDINATED', label: 'RED_MESH' },
-  { value: 'STRUCTURED', label: 'FLUJO_ASIGNADO' },
-  { value: 'ACTIVE', label: 'CAPA_OPERATIVA' },
-  { value: 'VERIFIED', label: 'MODO_EJECUCIÓN' },
+  { value: 'Una sola red', label: 'TERMINALES_Y_PATIOS' },
+  { value: 'Carga asignada', label: 'PROTOCOLOS_ESTABLECIDOS' },
+  { value: 'Operación activa', label: 'SEGUIMIENTO' },
+  { value: 'Con comprobante', label: 'ENTREGA' },
 ] as const;
 
 export default function HeroSection() {
@@ -94,8 +94,8 @@ export default function HeroSection() {
                   <span className="relative inline-flex h-2.5 w-2.5 bg-[#FF943B]" />
                 </span>
                 <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-[#8E9192] font-bold">
-                  Sistema activo &middot; Asignación por capa &middot; Validación
-                  obligatoria
+                  Coordinación de carga &middot; Terminales y patios &middot; Mismo
+                  estándar para todos
                 </span>
               </div>
 
@@ -104,11 +104,11 @@ export default function HeroSection() {
                 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] xl:text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[0.96] tracking-[-0.03em] mb-8 uppercase max-w-xl xl:max-w-2xl"
                 style={{ opacity: 0 }}
               >
-                La Capa de
+                Carga industrial
                 <br />
-                Asignación para
+                coordinada en
                 <br />
-                <span className="text-[#FF943B]">Logística Prioritaria.</span>
+                <span className="text-[#FF943B]">toda la cadena.</span>
               </h1>
 
               <p
@@ -116,9 +116,10 @@ export default function HeroSection() {
                 className="text-base sm:text-lg text-[#8E9192] mb-12 leading-[1.9] max-w-xl"
                 style={{ opacity: 0 }}
               >
-                Convertimos demanda fragmentada en flujo estructurado. La red
-                asigna volumen industrial a nodos que cumplen el protocolo: el
-                rendimiento es la moneda de acceso.
+                Solmex alinea a quien mueve la carga (terminales, patios,
+                intermodales) con quien la pide. Se define quién ejecuta, cuándo
+                y con qué comprobante. Menos idas y vueltas: quien cumple en
+                tiempo y forma sigue recibiendo volumen.
               </p>
 
               <div
@@ -127,7 +128,7 @@ export default function HeroSection() {
                 style={{ opacity: 0 }}
               >
                 <a href="#contacto" className="btn-primary-industrial">
-                  SOLICITAR CLASIFICACIÓN
+                  REGISTRAR MI TERMINAL
                   <svg
                     width="14"
                     height="14"
@@ -140,7 +141,7 @@ export default function HeroSection() {
                   </svg>
                 </a>
                 <a href="#ciclo-economico" className="btn-secondary-industrial">
-                  VER CICLO ECONÓMICO
+                  CÓMO FUNCIONA
                 </a>
               </div>
             </div>
@@ -171,11 +172,11 @@ export default function HeroSection() {
         className="relative z-10 border-t border-[rgba(68,71,72,0.2)]"
         style={{ opacity: 0 }}
       >
-        <div className="page-shell py-7 sm:py-8">
-          <div className="flex flex-wrap items-baseline gap-x-10 gap-y-5 sm:gap-x-14">
+        <div className="page-shell py-9 sm:py-11">
+          <div className="flex flex-wrap items-baseline gap-x-12 gap-y-6 sm:gap-x-16">
             {TICKER.map((m) => (
               <div key={m.label} className="flex items-baseline gap-3">
-                <span className="font-mono text-sm sm:text-base font-bold text-[#FF943B] uppercase tracking-[0.06em]">
+                <span className="font-mono text-sm sm:text-base font-bold text-[#FF943B] tracking-[0.02em]">
                   {m.value}
                 </span>
                 <span className="font-mono text-[9px] text-[#444748] uppercase tracking-[0.15em]">

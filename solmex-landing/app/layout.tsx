@@ -25,17 +25,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    'Solmex | La Capa de Asignación para Logística Prioritaria',
+  title: 'Solmex | Coordinación de carga industrial en México',
   description:
-    'Solmex es la infraestructura institucional que dirige la demanda Tier-1 a nodos de alto rendimiento. Red coordinada de terminales en México con evidencia verificable y trazabilidad total.',
+    'Alineamos terminales, patios e intermodales con cargadores grandes: quién mueve la carga, cuándo y con comprobante. Menos fricción, protocolos establecidos, trazabilidad operativa.',
   keywords:
-    'logística, asignación de demanda, terminales, México, infraestructura logística, coordinación, red logística, evidencia verificable, trazabilidad',
+    'logística México, coordinación de carga, terminales intermodales, transporte ferroviario, cadena de suministro, patios ferroviarios, trazabilidad logística, Grupo Solmex',
   openGraph: {
-    title:
-      'Solmex | La Capa de Asignación para Logística Prioritaria',
+    title: 'Solmex | Carga industrial coordinada en toda la cadena',
     description:
-      'La infraestructura que convierte demanda fragmentada en volúmenes estables. Red coordinada de terminales en México.',
+      'Red que asigna volumen con criterio único: el que cumple en tiempo y forma sigue recibiendo carga. Terminales y clientes bajo el mismo estándar.',
     type: 'website',
     locale: 'es_MX',
     siteName: 'Grupo Solmex',
@@ -43,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Solmex | La Capa de Asignación para Logística Prioritaria',
+    title: 'Solmex | Coordinación de carga industrial en México',
     description:
-      'Infraestructura institucional para coordinación logística de siguiente generación en México y LATAM.',
+      'Terminales y cargadores conectados con protocolos establecidos y comprobante de ejecución. Operación seria para cuentas grandes.',
   },
   robots: {
     index: true,
@@ -82,7 +80,7 @@ export default function RootLayout({
               alternateName: 'Soluciones Logísticas FyT S.A. de C.V.',
               url: 'https://gruposolmex.com',
               description:
-                'Infraestructura institucional para la coordinación logística de siguiente generación en México y LATAM.',
+                'Coordinación de carga industrial entre terminales, patios e intermodales y clientes grandes en México. Protocolos establecidos y trazabilidad operativa.',
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'MX',

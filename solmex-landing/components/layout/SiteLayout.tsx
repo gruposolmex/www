@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 /**
  * SiteLayout - Industrial Authority Shell
@@ -25,10 +24,10 @@ export default function SiteLayout({
   }, []);
 
   const navLinks = [
-    { label: 'CICLO', href: '#ciclo-economico' },
-    { label: 'RED', href: '#red' },
-    { label: 'PROTOCOLO', href: '#protocolo' },
-    { label: 'EVIDENCIA', href: '#evidencia' },
+    { label: 'PROCESO', href: '#ciclo-economico' },
+    { label: 'FERROCARRIL', href: '#red' },
+    { label: 'OPERACIÓN', href: '#protocolo' },
+    { label: 'TABLERO', href: '#evidencia' },
     { label: 'CONTACTO', href: '#contacto' },
   ];
 
@@ -80,7 +79,7 @@ export default function SiteLayout({
               href="#contacto"
               className="btn-primary-industrial py-2.5! px-5! text-[11px]!"
             >
-              CLASIFICAR NODO
+              REGISTRAR TERMINAL
             </a>
           </nav>
 
@@ -141,7 +140,7 @@ export default function SiteLayout({
             className="btn-primary-industrial mt-6 text-center"
             onClick={closeMobileMenu}
           >
-            CLASIFICAR NODO
+            REGISTRAR TERMINAL
           </a>
         </nav>
       </div>
@@ -150,29 +149,29 @@ export default function SiteLayout({
       <main id="main-content">{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[#0E0E0E] py-20 lg:py-24">
+      <footer className="bg-[#0E0E0E] py-24 lg:py-28">
         <div className="page-shell">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-14 lg:gap-16 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 lg:gap-20 mb-24">
             <div className="md:col-span-2">
               <span className="font-display text-xl font-bold tracking-tighter text-[#FF943B] uppercase block mb-4">
                 SOLMEX
               </span>
               <p className="text-[#8E9192] text-sm max-w-sm leading-relaxed">
-                Infraestructura institucional para la coordinación
-                logística de siguiente generación en México y LATAM.
+                Coordinación de carga industrial entre terminales y grandes
+                cuentas en México. Protocolos establecidos y trazabilidad operativa.
               </p>
             </div>
             <div>
               <h5 className="font-mono text-[11px] text-[#E5E2E1] uppercase tracking-[0.15em] mb-5 font-bold">
                 Red
               </h5>
-              <ul className="space-y-3 text-sm text-[#8E9192]">
+              <ul className="space-y-4 text-sm text-[#8E9192]">
                 <li>
                   <a
                     href="#ciclo-economico"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Ciclo económico
+                    Proceso (pedido a pago)
                   </a>
                 </li>
                 <li>
@@ -180,7 +179,7 @@ export default function SiteLayout({
                     href="#red"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Capa ferroviaria
+                    Ferrocarril
                   </a>
                 </li>
                 <li>
@@ -188,7 +187,7 @@ export default function SiteLayout({
                     href="#protocolo"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Protocolo
+                    Cómo operamos
                   </a>
                 </li>
                 <li>
@@ -196,7 +195,7 @@ export default function SiteLayout({
                     href="#evidencia"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Evidencia
+                    Tablero
                   </a>
                 </li>
               </ul>
@@ -205,7 +204,7 @@ export default function SiteLayout({
               <h5 className="font-mono text-[11px] text-[#E5E2E1] uppercase tracking-[0.15em] mb-5 font-bold">
                 Legal
               </h5>
-              <ul className="space-y-3 text-sm text-[#8E9192]">
+              <ul className="space-y-4 text-sm text-[#8E9192]">
                 <li>
                   <a
                     href="/aviso-privacidad"
@@ -226,7 +225,7 @@ export default function SiteLayout({
             </div>
           </div>
 
-          <div className="pt-10 border-t border-[rgba(68,71,72,0.15)] flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="pt-12 border-t border-[rgba(68,71,72,0.15)] flex flex-col md:flex-row justify-between items-center gap-8">
             <p className="font-mono text-[10px] text-[#8E9192] uppercase tracking-[0.15em]">
               &copy; {new Date().getFullYear()} Soluciones Logísticas
               FyT S.A. de C.V. Todos los derechos reservados.
