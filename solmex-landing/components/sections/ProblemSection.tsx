@@ -35,24 +35,25 @@ export default function ProblemSection() {
         <div className="mb-20 lg:mb-28">
           <span className="reveal section-label block">EL_PROBLEMA</span>
           <h2 className="reveal stagger-1 font-display text-[clamp(2rem,5vw,4.25rem)] font-bold leading-[0.94] tracking-[-0.02em] uppercase max-w-4xl">
-            Sin reglas comunes,
+            Sin marco común,
             <br />
-            el dinero se va
+            la operación
             <br />
-            <span className="text-[#FF943B]">en desorden.</span>
+            <span className="text-[#FF943B]">genera ineficiencia.</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-14 lg:gap-14 xl:gap-16">
           <div className="lg:col-span-5">
             <p className="reveal stagger-2 text-[#B0B5BA] text-lg leading-[1.95] mb-12 lg:mb-14">
-              Patios y terminales sueltos = camiones parados, viajes en vacío y
-              tiempo en teléfono. Cada quien negocia por su lado y nadie ve el
-              mismo tablero. Solmex pone un solo criterio y un solo registro de
-              qué se hizo y cuándo.
+              La dispersión de patios y terminales se asocia a tiempos de espera,
+              movimientos subutilizados y elevada carga coordinativa por canales
+              informales. Sin marco compartido, cada actor negocia de forma
+              aislada. Solmex aplica reglas comunes y un registro único de
+              actividades y tiempos.
             </p>
 
-            <div className="reveal stagger-3 bg-[#0A0A0A] p-12 lg:p-16 border-l-4 border-[#FFB4AB]">
+            <div className="reveal stagger-3 bg-[#0A0A0A] py-12 lg:py-16 px-14 lg:px-20 border-l-4 border-[#FFB4AB]">
               <div className="flex justify-between items-end mb-4 gap-4">
                 <span className="font-mono text-[10px] uppercase text-[#8E9192] tracking-[0.2em]">
                   COSTO_POR_DESORDEN // SIN_COORDINADOR
@@ -76,20 +77,20 @@ export default function ProblemSection() {
 
           <div className="lg:col-span-7">
             <div className="reveal stagger-2 grid grid-cols-2 h-full">
-              <div className="bg-[#0A0A0A] p-14 lg:p-20 border-r border-[rgba(68,71,72,0.15)]">
+              <div className="bg-[#0A0A0A] py-14 lg:py-20 px-16 lg:px-24 border-r border-[rgba(68,71,72,0.15)]">
                 <div className="flex items-center gap-2 mb-10">
                   <span className="w-2 h-2 bg-[#FFB4AB]" />
                   <span className="font-mono text-[10px] uppercase text-[#8E9192] tracking-[0.2em] font-bold">
-                    ASÍ_HOY
+                    SIN_COORDINACIÓN_CENTRAL
                   </span>
                 </div>
                 <ul className="space-y-7">
                   {[
-                    'Pedidos dispersos: correo, WhatsApp, llamada',
-                    'Contratos spot que no sostienen margen',
-                    '“Confío en fulano” en lugar de datos',
-                    'Nadie sabe en tiempo real dónde va la carga',
-                    'Reclamos largos porque no hay prueba clara',
+                    'Pedidos fragmentados entre correo, mensajería y voz',
+                    'Contratos puntuales sin sustento en marco estable',
+                    'Decisiones basadas en relaciones en lugar de indicadores',
+                    'Ausencia de visibilidad en tiempo real del movimiento',
+                    'Controversias prolongadas por falta de evidencia objetiva',
                   ].map((item, i) => (
                     <li
                       key={i}
@@ -103,7 +104,7 @@ export default function ProblemSection() {
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#1C1B1B] p-14 lg:p-20">
+              <div className="bg-[#1C1B1B] py-14 lg:py-20 px-16 lg:px-24">
                 <div className="flex items-center gap-2 mb-10">
                   <span className="w-2 h-2 bg-[#FF943B]" />
                   <span className="font-mono text-[10px] uppercase text-[#FF943B] tracking-[0.2em] font-bold">
@@ -112,11 +113,11 @@ export default function ProblemSection() {
                 </div>
                 <ul className="space-y-7">
                   {[
-                    'Demanda vista en un solo marco operativo',
-                    'Quién mueve mejor recibe el siguiente embarque',
-                    'Cada movimiento deja rastro comprobable',
-                    'Visibilidad de punta a punta para usted y el cliente',
-                    'Se cierra con hechos, no con pleitos eternos',
+                    'Demanda integrada en un marco operativo único',
+                    'El siguiente embarque se orienta al mejor desempeño medido',
+                    'Cada movimiento genera rastro comprobable',
+                    'Visibilidad integral para mandante y operador',
+                    'Cierre de incidentes con base en evidencia documentada',
                   ].map((item, i) => (
                     <li
                       key={i}

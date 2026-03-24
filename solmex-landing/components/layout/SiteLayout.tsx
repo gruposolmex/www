@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { SolmexLogo } from '@/components/brand/SolmexLogo';
 
 /**
  * SiteLayout - Industrial Authority Shell
@@ -24,10 +25,13 @@ export default function SiteLayout({
   }, []);
 
   const navLinks = [
-    { label: 'PROCESO', href: '#ciclo-economico' },
+    { label: 'FLUJO', href: '#flujo-coordinado' },
+    { label: 'CONFIANZA', href: '#confianza' },
+    { label: 'INDUSTRIAS', href: '#industrias' },
+    { label: 'SERVICIOS', href: '#servicios' },
     { label: 'FERROCARRIL', href: '#red' },
-    { label: 'OPERACIÓN', href: '#protocolo' },
-    { label: 'TABLERO', href: '#evidencia' },
+    { label: 'COORDINACIÓN', href: '#coordinacion' },
+    { label: 'VALIDACIÓN', href: '#evidencia' },
     { label: 'CONTACTO', href: '#contacto' },
   ];
 
@@ -58,19 +62,21 @@ export default function SiteLayout({
       <header
         className={`header-industrial ${isScrolled ? 'scrolled' : ''}`}
       >
-        <div className="container flex items-center justify-between h-full">
-          <Link href="/" aria-label="Solmex">
-            <span className="font-display text-xl font-bold tracking-tighter text-[#FF943B] uppercase">
-              SOLMEX
-            </span>
+        <div className="page-shell flex w-full items-center justify-between h-full">
+          <Link
+            href="/"
+            className="flex shrink-0 items-center min-w-0"
+            aria-label="Solmex — inicio"
+          >
+            <SolmexLogo variant="horizontal" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[#8E9192] hover:text-[#FF943B] transition-colors duration-200"
+                className="font-mono text-[10px] xl:text-[11px] font-bold uppercase tracking-[0.12em] xl:tracking-[0.15em] text-[#8E9192] hover:text-[#FF943B] transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -79,7 +85,7 @@ export default function SiteLayout({
               href="#contacto"
               className="btn-primary-industrial py-2.5! px-5! text-[11px]!"
             >
-              REGISTRAR TERMINAL
+              SOLICITAR ACCESO
             </a>
           </nav>
 
@@ -103,10 +109,11 @@ export default function SiteLayout({
       <div
         className={`mobile-menu-panel ${isMobileMenuOpen ? 'active' : ''}`}
       >
-        <div className="flex items-center justify-between mb-10">
-          <span className="font-display text-lg font-bold text-[#FF943B] uppercase">
-            SOLMEX
-          </span>
+        <div className="flex items-center justify-between mb-10 gap-4 min-w-0">
+          <SolmexLogo
+            variant="horizontal"
+            className="max-w-[min(70vw,240px)] sm:max-w-[280px]"
+          />
           <button
             onClick={closeMobileMenu}
             aria-label="Cerrar menú"
@@ -140,7 +147,7 @@ export default function SiteLayout({
             className="btn-primary-industrial mt-6 text-center"
             onClick={closeMobileMenu}
           >
-            REGISTRAR TERMINAL
+            SOLICITAR ACCESO
           </a>
         </nav>
       </div>
@@ -153,12 +160,13 @@ export default function SiteLayout({
         <div className="page-shell">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 lg:gap-20 mb-24">
             <div className="md:col-span-2">
-              <span className="font-display text-xl font-bold tracking-tighter text-[#FF943B] uppercase block mb-4">
-                SOLMEX
-              </span>
+              <div className="mb-5">
+                <SolmexLogo variant="wordmark" className="h-10 sm:h-12 max-w-[min(100%,280px)]" />
+              </div>
               <p className="text-[#8E9192] text-sm max-w-sm leading-relaxed">
-                Coordinación de carga industrial entre terminales y grandes
-                cuentas en México. Protocolos establecidos y trazabilidad operativa.
+                Capa de coordinación para demanda logística confiable: red de
+                operadores y terminales validados, marco normativo común y
+                ejecución verificable.
               </p>
             </div>
             <div>
@@ -168,10 +176,34 @@ export default function SiteLayout({
               <ul className="space-y-4 text-sm text-[#8E9192]">
                 <li>
                   <a
-                    href="#ciclo-economico"
+                    href="#flujo-coordinado"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Proceso (pedido a pago)
+                    Flujo coordinado
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#confianza"
+                    className="hover:text-[#FF943B] transition-colors"
+                  >
+                    Operadores validados
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#industrias"
+                    className="hover:text-[#FF943B] transition-colors"
+                  >
+                    Industrias
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#servicios"
+                    className="hover:text-[#FF943B] transition-colors"
+                  >
+                    Servicios
                   </a>
                 </li>
                 <li>
@@ -184,10 +216,10 @@ export default function SiteLayout({
                 </li>
                 <li>
                   <a
-                    href="#protocolo"
+                    href="#coordinacion"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Cómo operamos
+                    Reglas de coordinación
                   </a>
                 </li>
                 <li>
@@ -195,7 +227,7 @@ export default function SiteLayout({
                     href="#evidencia"
                     className="hover:text-[#FF943B] transition-colors"
                   >
-                    Tablero
+                    Ejecución validada
                   </a>
                 </li>
               </ul>
@@ -231,7 +263,7 @@ export default function SiteLayout({
               FyT S.A. de C.V. Todos los derechos reservados.
             </p>
             <p className="font-mono text-[10px] text-[#444748] uppercase tracking-[0.15em]">
-              GRUPO SOLMEX &middot; INFRAESTRUCTURA DE ASIGNACIÓN
+              GRUPO SOLMEX &middot; COORDINACIÓN DE DEMANDA CONFIABLE
             </p>
           </div>
         </div>

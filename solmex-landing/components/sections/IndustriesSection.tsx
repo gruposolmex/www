@@ -3,176 +3,135 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * IndustriesSection Component
- * 
- * Shows 6 industries served by Solmex
+ * Sectores industriales atendidos por la red (sin mencionar participantes).
  */
+
+const INDUSTRIES = [
+  {
+    title: 'Manufactura e industria',
+    description:
+      'Movimientos para plantas manufactureras, automotriz, aeroespacial y bienes de capital con exigencia de plazos y trazabilidad.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Minería y metales',
+    description:
+      'Transporte y manejo de minerales, concentrados y productos metalúrgicos con enfoque en cumplimiento normativo y seguridad.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Agroindustria',
+    description:
+      'Granos, fertilizantes, insumos y productos agrícolas con requisitos de inventario, documentación y cadena logística integrada.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 3c-4 4-6 8-6 12a6 6 0 1012 0c0-4-2-8-6-12z" />
+        <path d="M12 9v10" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Química y petroquímica',
+    description:
+      'Productos químicos y petroquímicos con énfasis en procedimientos de seguridad, medio ambiente y control documental.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Construcción e infraestructura',
+    description:
+      'Materiales de construcción, cemento, acero, tubería y equipos pesados para proyectos de gran escala.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Retail y consumo',
+    description:
+      'Productos de consumo con alta frecuencia de movimiento y ventanas de entrega acotadas para centros de distribución.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+      </svg>
+    ),
+  },
+] as const;
+
 export default function IndustriesSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+            entry.target.querySelectorAll('.reveal').forEach((el) => {
+              el.classList.add('visible');
+            });
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.08 }
     );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements?.forEach((el) => observer.unobserve(el));
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  const industries = [
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-          ></path>
-        </svg>
-      ),
-      title: 'Manufactura e Industria',
-      description:
-        'Logística para plantas manufactureras, automotriz, aeroespacial y bienes de capital con tiempos críticos.',
-      bgImage: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-          ></path>
-        </svg>
-      ),
-      title: 'Minería y Metales',
-      description:
-        'Transporte de minerales, concentrados y productos metalúrgicos con manejo especializado y cumplimiento normativo.',
-      bgImage: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M3 15a4 4 0 004 4h9a5 5 0 10-.1M9 9a2 2 0 100-4 2 2 0 000 4zm0 0v2m0-2a2 2 0 110-4m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0v2m0-2a2 2 0 110-4m5 8v-2m0 2a2 2 0 100-4 2 2 0 000 4zm0-2v2m0-2a2 2 0 110-4"
-          ></path>
-        </svg>
-      ),
-      title: 'Agroindustria',
-      description:
-        'Cadena de frío, granos, fertilizantes y productos agrícolas con control de temperatura y humedad.',
-      bgImage: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-          ></path>
-        </svg>
-      ),
-      title: 'Química y Petroquímica',
-      description:
-        'Manejo seguro de productos químicos y petroquímicos con protocolos de seguridad y cumplimiento ambiental.',
-      bgImage: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          ></path>
-        </svg>
-      ),
-      title: 'Construcción e Infraestructura',
-      description:
-        'Transporte de materiales de construcción, cemento, acero y equipos pesados para proyectos de infraestructura.',
-      bgImage: 'https://images.unsplash.com/photo-1601581875308-fafbf5b4c5b0?w=800&q=80',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          ></path>
-        </svg>
-      ),
-      title: 'Retail y Consumo',
-      description:
-        'Distribución de productos de consumo masivo con alta frecuencia y cumplimiento de ventanas de entrega.',
-      bgImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    },
-  ];
-
   return (
-    <section className="section section-alt" id="industrias" ref={sectionRef}>
-      <div className="container">
-        <div className="section-header reveal">
-          <p className="section-eyebrow">Industrias</p>
-          <h2 className="section-title font-display">Atendemos las Industrias Clave de México</h2>
-          <p className="section-description">
-            Nuestra experiencia abarca múltiples sectores industriales con soluciones
-            especializadas para cada necesidad.
-          </p>
-        </div>
+    <section
+      ref={sectionRef}
+      id="industrias"
+      className="relative section-y bg-[#0A0A0A] border-y border-[rgba(68,71,72,0.12)]"
+    >
+      <div className="absolute inset-0 dot-grid opacity-[0.035] pointer-events-none" />
 
-        <div className="industries-grid">
-          {industries.map((industry, index) => (
-            <div
-              key={index}
-              className={`glass service-card reveal delay-${index + 1}`}
-              style={{ position: 'relative', overflow: 'hidden', minHeight: '320px' }}
+      <div className="page-shell relative z-10">
+        <header className="mb-16 lg:mb-24 max-w-3xl">
+          <span className="reveal section-label block">SECTORES</span>
+          <h2 className="reveal stagger-1 font-display text-[clamp(1.85rem,4vw,3.25rem)] font-bold leading-[1.02] tracking-[-0.02em] uppercase text-[#E5E2E1]">
+            Industrias
+            <span className="text-[#FF943B]"> en la red</span>
+          </h2>
+          <p className="reveal stagger-2 mt-8 text-[#8E9192] text-base sm:text-lg leading-[2] max-w-2xl">
+            La demanda coordinada abarca verticales industriales con requisitos
+            distintos de tiempo, documentación y modal. El listado describe
+            sectores habituales; la operación concreta se alinea al perfil de
+            cada instalación validada.
+          </p>
+        </header>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 xl:gap-12">
+          {INDUSTRIES.map((item, i) => (
+            <article
+              key={item.title}
+              className={`reveal stagger-${Math.min(i + 1, 6)} group bg-[#131313] border border-[rgba(68,71,72,0.18)] py-10 px-8 sm:px-9 lg:py-12 lg:px-10 min-w-0 flex flex-col`}
             >
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: `linear-gradient(135deg, rgba(255,156,55,0.2), rgba(255,216,28,0.1))`,
-                  backgroundImage: `url(${industry.bgImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  opacity: 0.15,
-                  zIndex: 0,
-                }}
-              ></div>
-              <div style={{ position: 'relative', zIndex: 10 }}>
-                <div className="service-icon">{industry.icon}</div>
-                <h3 className="service-title">{industry.title}</h3>
-                <p className="service-description">{industry.description}</p>
+              <div className="w-12 h-12 bg-[#FF943B] flex items-center justify-center text-[#0A0A0A] mb-8 shrink-0">
+                {item.icon}
               </div>
-            </div>
+              <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-tight text-[#E5E2E1] mb-5 leading-snug">
+                {item.title}
+              </h3>
+              <p className="text-[#8E9192] text-sm sm:text-base leading-[1.95] flex-1">
+                {item.description}
+              </p>
+            </article>
           ))}
         </div>
       </div>
     </section>
   );
 }
-
-

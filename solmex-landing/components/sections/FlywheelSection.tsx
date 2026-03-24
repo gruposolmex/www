@@ -23,27 +23,27 @@ export default function FlywheelSection() {
   const steps = [
     {
       num: '01',
-      title: 'Entran más terminales',
+      title: 'Mayor cobertura de terminales',
       description:
-        'Cada patio o intermodal serio que se suma hace la red más útil para el cargador. Más oferta bajo las mismas reglas.',
+        'Cada patio o intermodal acreditado incrementa la utilidad de la red para el mandante, bajo un mismo marco normativo.',
     },
     {
       num: '02',
-      title: 'Los datos se vuelven mejores',
+      title: 'Mayor solidez de la información',
       description:
-        'A más movimientos, más claro se ve quién cumple y quién no. El criterio deja de ser “oídas”.',
+        'A mayor volumen de movimientos, el cumplimiento se distingue con mayor claridad; el criterio deja de depender de apreciaciones informales.',
     },
     {
       num: '03',
-      title: 'Baja el costo del desorden',
+      title: 'Menor costo de la desorganización',
       description:
-        'Menos tiempo en llamadas, menos retrabajo, menos carga mal ubicada. El sistema hace más peso que el heroísmo individual.',
+        'Se reduce el tiempo en coordinación reactiva, el retrabajo y la ubicación inadecuada de carga. La red absorbe parte de la responsabilidad operativa que antes recaía en esfuerzos individuales aislados.',
     },
     {
       num: '04',
-      title: 'Quién no está, pierde visibilidad',
+      title: 'Fuera del marco, menor visibilidad',
       description:
-        'Los grandes volúmenes se concentran en quien ya está adentro. Afuera cuesta más entrar cuando la red ya es el canal natural.',
+        'Quien no adhiere a las reglas compartidas tiene acceso más limitado a la demanda prioritaria, en función del estándar y de la evidencia operativa, no como sanción discrecional.',
     },
   ];
 
@@ -53,20 +53,22 @@ export default function FlywheelSection() {
 
       <div className="page-shell relative z-10">
         <div className="grid lg:grid-cols-12">
-          <div className="lg:col-span-5 p-12 lg:p-24 xl:p-28 flex flex-col justify-center border-r border-black/10">
+          <div className="lg:col-span-5 py-12 lg:py-24 xl:py-28 px-14 lg:px-28 xl:px-32 flex flex-col justify-center border-r border-black/10">
             <span className="reveal font-mono text-[10px] text-black/50 uppercase tracking-[0.2em] block mb-8 font-bold">
-              POR_QUÉ_IMPORTA_ENTRAR
+              ACCESO_Y_COORDINACIÓN
             </span>
-            <h2 className="reveal stagger-1 font-display text-[clamp(2.5rem,5vw,5rem)] font-bold tracking-[-0.03em] uppercase leading-[0.94] mb-10">
-              La red
+            <h2 className="reveal stagger-1 font-display text-[clamp(1.85rem,4.2vw,3.75rem)] font-bold tracking-[-0.03em] uppercase leading-[0.96] mb-10">
+              Sin coordinación,
               <br />
-              se fortalece
+              el acceso a demanda
               <br />
-              sola.
+              <span className="text-black">es limitado.</span>
             </h2>
             <p className="reveal stagger-2 text-black/60 text-base leading-[1.88] max-w-sm">
-              Cada operación bien hecha refuerza el estándar. Cada terminal que
-              se queda fuera tiene menos oportunidad de ver la carga prioritaria.
+              Dentro del marco compartido, cada operación conforme al estándar
+              refuerza la confianza en la red. Fuera de dicho marco, la demanda
+              prioritaria presenta menor visibilidad, en coherencia con la
+              exigencia de uniformidad normativa.
             </p>
           </div>
 
@@ -74,7 +76,7 @@ export default function FlywheelSection() {
             {steps.map((step, i) => (
               <div
                 key={step.num}
-                className={`reveal stagger-${i + 1} p-14 lg:p-16 border-b border-black/10 ${i % 2 === 0 ? 'sm:border-r border-black/10' : ''} flex flex-col`}
+                className={`reveal stagger-${i + 1} py-14 lg:py-16 px-16 lg:px-20 border-b border-black/10 ${i % 2 === 0 ? 'sm:border-r border-black/10' : ''} flex flex-col`}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <span className="w-8 h-8 bg-black text-[#FF943B] flex items-center justify-center font-mono text-xs font-bold">

@@ -3,118 +3,146 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * ServicesSection Component
- * 
- * Main services section showing:
- * - Operación Confiable
- * - Coordinación Centralizada
- * - Evidencia Verificable
- * 
- * Follows @brand-system guidelines
+ * Familias de servicio logístico multimodal (referencia de procesos estándar
+ * en la industria). No se publican miembros ni marcas de la red.
  */
+
+const PROCESS_STEPS = [
+  {
+    key: 'RECEPCIÓN',
+    line:
+      'Notificación de salida, arribo por ferrocarril o carretera, aceptación de mercancía, verificación documental e instrucciones de almacenamiento.',
+  },
+  {
+    key: 'PESAJE',
+    line:
+      'Metrología ferroviaria y carretera, determinación de masas y, cuando aplica, verificación de masa bruta (VGM) conforme a normativa.',
+  },
+  {
+    key: 'DESCARGA',
+    line:
+      'Granel sólido o líquido, producto envasado, contenedores, tubería y perfiles de acero, según infraestructura disponible.',
+  },
+  {
+    key: 'MANIOBRAS',
+    line:
+      'Envasado, mezclado, etiquetado, emplayado, flejado y trasvase, conforme a especificación del movimiento.',
+  },
+  {
+    key: 'CARGA_Y_CONSOLIDACIÓN',
+    line:
+      'Carga y consolidación hacia ferrocarril y carretera: granel, envasado, contenedores y cargas especiales.',
+  },
+  {
+    key: 'ALMACENAJE',
+    line:
+      'Patio, almacén techado, contenedores en vacío o lleno, inventario y control de existencias.',
+  },
+  {
+    key: 'CROSS_DOCK',
+    line:
+      'Transbordo entre modos: contenedor, ferrotolva, autotolva, camión y furgón, con registro homogéneo del movimiento.',
+  },
+] as const;
+
+const DOMAIN_APPLICATIONS = [
+  'Graneles y productos a granel (sólidos y líquidos).',
+  'Producto envasado, saco suelto y carga paletizada.',
+  'Contenedores e intermodal (recepción, inventario, mensajería con sistemas del mandante).',
+  'Tubería, perfiles y carga larga con sujeción y documentación de exportación.',
+  'Polímeros y resinas (granel y envasado, rotulado y consolidación).',
+  'Cadena alimentaria y productos sensibles (resguardo, muestreo y despacho).',
+  'Coordinación con puntos de verificación fitosanitaria e inspección documentada.',
+] as const;
+
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('active');
+            entry.target.querySelectorAll('.reveal').forEach((el) => {
+              el.classList.add('visible');
+            });
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.06 }
     );
-
-    const elements = sectionRef.current?.querySelectorAll('.reveal');
-    elements?.forEach((el) => observer.observe(el));
-
-    return () => {
-      elements?.forEach((el) => observer.unobserve(el));
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  const services = [
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          ></path>
-        </svg>
-      ),
-      title: 'Operación Confiable',
-      description: 'Terminales certificadas, procesos estandarizados, ejecución predecible.',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-          ></path>
-        </svg>
-      ),
-      title: 'Coordinación Centralizada',
-      description:
-        'Un solo punto de contacto para toda su red. Respuesta rápida. Escalamiento inmediato.',
-    },
-    {
-      icon: (
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-          ></path>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-          ></path>
-        </svg>
-      ),
-      title: 'Evidencia Verificable',
-      description:
-        'Fotos, video, registros de tiempo, métricas y trazabilidad operacional en un solo panel.',
-    },
-  ];
-
   return (
-    <section className="section section-alt" id="services" ref={sectionRef}>
-      <div className="container">
-        <div className="section-header reveal">
-          <h2 className="section-title font-display">Confianza operacional como servicio</h2>
-          <p className="section-description">
-            Solmex combina experiencia operativa, disciplina logística y tecnología para entregar
-            terminales confiables respaldadas por evidencia verificable. Nuestro modelo integra a
-            los mejores operadores del país bajo un solo estándar, un solo punto de coordinación y
-            un solo lenguaje de desempeño.
+    <section
+      ref={sectionRef}
+      id="servicios"
+      className="relative section-y bg-[#131313]"
+    >
+      <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#FF943B]/20 to-transparent" />
+
+      <div className="page-shell relative z-10">
+        <header className="mb-16 lg:mb-24 max-w-3xl">
+          <span className="reveal section-label block">CAPACIDADES</span>
+          <h2 className="reveal stagger-1 font-display text-[clamp(1.85rem,4vw,3.25rem)] font-bold leading-[1.02] tracking-[-0.02em] uppercase text-[#E5E2E1]">
+            Servicios
+            <span className="text-[#FF943B]"> logísticos</span>
+          </h2>
+          <p className="reveal stagger-2 mt-8 text-[#8E9192] text-base sm:text-lg leading-[2] max-w-2xl">
+            El catálogo siguiente resume familias de servicio habituales en
+            operación multimodal y ferroviaria. La oferta efectiva depende del
+            perfil de cada terminal u operador validado en la red; no se
+            divulgan participantes ni marcas de forma pública.
           </p>
+        </header>
+
+        <div className="mb-20 lg:mb-28">
+          <h3 className="reveal stagger-2 font-mono text-[10px] text-[#444748] uppercase tracking-[0.25em] mb-10 lg:mb-12 font-bold">
+            PROCESO_OPERATIVO
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {PROCESS_STEPS.map((step, i) => (
+              <div
+                key={step.key}
+                className={`reveal stagger-${Math.min(i + 2, 8)} bg-[#0A0A0A] border border-[rgba(68,71,72,0.15)] py-9 px-7 sm:px-9 lg:py-10 lg:px-10 min-w-0`}
+              >
+                <div className="flex items-baseline gap-3 mb-5 flex-wrap">
+                  <span className="font-mono text-[10px] text-[#444748]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="font-mono text-xs font-bold text-[#FF943B] tracking-widest uppercase">
+                    {step.key}
+                  </span>
+                </div>
+                <p className="text-[#B0B5BA] text-sm sm:text-base leading-[1.95]">
+                  {step.line}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="services-grid">
-          {services.map((service, index) => (
-            <div key={index} className={`glass service-card reveal delay-${index + 1}`}>
-              <div className="service-icon">{service.icon}</div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-            </div>
-          ))}
+        <div>
+          <h3 className="reveal stagger-3 font-mono text-[10px] text-[#444748] uppercase tracking-[0.25em] mb-10 lg:mb-12 font-bold">
+            ÁMBITOS_DE_APLICACIÓN
+          </h3>
+          <ul className="reveal stagger-4 space-y-6 lg:space-y-8 max-w-3xl">
+            {DOMAIN_APPLICATIONS.map((line) => (
+              <li
+                key={line}
+                className="flex gap-4 text-[#8E9192] text-sm sm:text-base leading-[1.95] border-l-2 border-[#FF943B]/35 pl-5 sm:pl-6"
+              >
+                <span className="text-[#FF943B] font-mono text-xs shrink-0 mt-0.5">
+                  —
+                </span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
   );
 }
-
-

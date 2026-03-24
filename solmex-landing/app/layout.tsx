@@ -25,15 +25,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Solmex | Coordinación de carga industrial en México',
+  title: 'Solmex | Capa de coordinación para demanda logística confiable',
   description:
-    'Alineamos terminales, patios e intermodales con cargadores grandes: quién mueve la carga, cuándo y con comprobante. Menos fricción, protocolos establecidos, trazabilidad operativa.',
+    'Red coordinada de operadores y terminales validados para demanda estructurada: selección, asignación, ejecución verificable y priorización conforme a desempeño documentado. Modelo distinto al mercado abierto genérico.',
   keywords:
     'logística México, coordinación de carga, terminales intermodales, transporte ferroviario, cadena de suministro, patios ferroviarios, trazabilidad logística, Grupo Solmex',
   openGraph: {
-    title: 'Solmex | Carga industrial coordinada en toda la cadena',
+    title: 'Solmex | Demanda logística confiable, coordinada',
     description:
-      'Red que asigna volumen con criterio único: el que cumple en tiempo y forma sigue recibiendo carga. Terminales y clientes bajo el mismo estándar.',
+      'Operadores y terminales validados, marco normativo común y ejecución verificable. Punto de acceso único para el mandante; priorización acorde al cumplimiento medido.',
     type: 'website',
     locale: 'es_MX',
     siteName: 'Grupo Solmex',
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Solmex | Coordinación de carga industrial en México',
+    title: 'Solmex | Capa de coordinación para demanda confiable',
     description:
-      'Terminales y cargadores conectados con protocolos establecidos y comprobante de ejecución. Operación seria para cuentas grandes.',
+      'Red validada, flujo coordinado (demanda a validación) y ejecución verificable en tiempo real. Esquema distinto al marketplace abierto.',
   },
   robots: {
     index: true,
@@ -80,7 +80,7 @@ export default function RootLayout({
               alternateName: 'Soluciones Logísticas FyT S.A. de C.V.',
               url: 'https://gruposolmex.com',
               description:
-                'Coordinación de carga industrial entre terminales, patios e intermodales y clientes grandes en México. Protocolos establecidos y trazabilidad operativa.',
+                'Coordinación de demanda logística confiable entre operadores y terminales validados en México. Marco normativo común, asignación explícita y ejecución verificable.',
               address: {
                 '@type': 'PostalAddress',
                 addressCountry: 'MX',

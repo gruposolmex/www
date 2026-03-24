@@ -57,7 +57,7 @@ export default function RailSection() {
                   <NorthAmericaRailGlobe className="relative z-1 w-full h-full" size={720} />
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-10 sm:p-12 bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/95 to-transparent pt-28">
+              <div className="absolute bottom-0 left-0 right-0 py-10 sm:py-12 px-12 sm:px-16 bg-linear-to-t from-[#0A0A0A] via-[#0A0A0A]/95 to-transparent pt-28">
                 <p className="font-mono text-[8px] sm:text-[9px] text-[#5c5f60] uppercase tracking-[0.15em] mb-3 max-w-xl">
                   Ilustración de corredores; puntos = puertos, cruces y patios
                   clave en México, EE. UU. y Canadá.
@@ -95,24 +95,26 @@ export default function RailSection() {
               <span className="text-[#FF943B]">y el mayor riesgo.</span>
             </h2>
             <p className="reveal stagger-2 text-[#8E9192] text-base leading-[1.95] mb-6">
-              En tonelaje, el tren manda. Si el ferrocarril se atora o se pelea
-              con el patio, todo el embarque se retrasa. Por eso Solmex mete
-              orden ahí primero: sin eso, el resto del trayecto no se sostiene.
+              En términos de tonelaje, el modo ferroviario concentra el flujo. La
+              fricción entre ferrocarril e instalación de maniobra retrasa el
+              embarque completo. Por ello la coordinación prioriza la interfaz
+              ferroviaria; sin alineación en ese eslabón, el resto del corredor
+              pierde predictibilidad.
             </p>
             <p className="reveal stagger-3 text-[#E5E2E1] text-base leading-[1.95] mb-12 font-medium border-l-2 border-[#FF943B]/60 pl-5">
-              El ferrocarril concentra la mayor parte del volumen industrial.
-              Quien coordina bien el rail reduce el riesgo de parar toda la
-              cadena.
+              El ferrocarril concentra la mayor parte del volumen industrial. Una
+              coordinación adecuada en dicho segmento mitiga el riesgo de
+              interrupción de la cadena logística.
             </p>
 
-            <div className="reveal stagger-3 bg-[#131313] p-12 lg:p-16 border-l-4 border-[#FF943B] mb-12">
+            <div className="reveal stagger-3 bg-[#131313] py-12 lg:py-16 px-14 lg:px-20 border-l-4 border-[#FF943B] mb-12">
               <p className="font-mono text-[10px] text-[#FF943B] uppercase tracking-[0.2em] mb-2 font-bold">
                 REGLA_PRÁCTICA
               </p>
               <p className="text-[#B0B5BA] text-sm leading-[1.82]">
-                &ldquo;Arregle primero lo más difícil. Si el rail y los cruces
-                están alineados, el resto del trayecto —camión, barco,
-                almacén— tiene un estándar que ya se puede repetir.&rdquo;
+                &ldquo;Priorizar el eslabón más crítico: con ferrocarril y cruces
+                alineados, los modos complementarios—carretera, marítimo,
+                almacenaje— pueden replicar un estándar ya definido.&rdquo;
               </p>
             </div>
 
@@ -121,7 +123,7 @@ export default function RailSection() {
                 { value: 'Prioridad', label: 'EN_LA_RED' },
                 { value: '24/7', label: 'SEGUIMIENTO' },
               ].map((s) => (
-                <div key={s.label} className="bg-[#131313] p-8">
+                <div key={s.label} className="bg-[#131313] py-8 px-10">
                   <span className="font-display text-2xl font-bold text-[#FF943B] block mb-1">
                     {s.value}
                   </span>
